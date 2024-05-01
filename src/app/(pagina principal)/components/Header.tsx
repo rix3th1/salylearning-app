@@ -5,7 +5,6 @@ import Puntos1 from "../svgs/Puntos1";
 import Puntos2 from "../svgs/Puntos2";
 import Puntos3 from "../svgs/Puntos3";
 import Puntos4 from "../svgs/Puntos4";
-import Image from "next/image";
 
 export default function Header() {
   const modalInicioSesion = useRef<HTMLDivElement>(null);
@@ -239,12 +238,10 @@ export default function Header() {
               {/* Imagen de encabezado */}
               <div className="d-flex justify-content-center mt-5 mt-xxl-0">
                 <div className="profile bg-gradient-primary-to-secondary">
-                  <Image
+                  <img
                     className="profile-img"
                     src="/img/SALYCAPIBARA.png"
                     alt="..."
-                    width={480}
-                    height={700}
                   />
                   <div className="dots-1">
                     {/* Puntos SVG*/}
