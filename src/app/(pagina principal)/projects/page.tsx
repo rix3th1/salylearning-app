@@ -1,5 +1,4 @@
 import { type Metadata } from "next";
-import Script from "next/script";
 import CallToActionSection from "./components/CallToActionSection";
 import ProjectsSection from "./components/ProjectsSection";
 
