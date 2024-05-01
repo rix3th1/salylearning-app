@@ -21,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html className={plusJakartaSans.className} lang="es">
-      <body className="d-flex flex-column">
+    <html lang="es">
+      <body className={plusJakartaSans.className + " d-flex flex-column"}>
         <main className="flex-shrink-0 ">
           <Nav />
 
