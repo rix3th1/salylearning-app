@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-white py-4 mt-auto">
@@ -9,9 +11,9 @@ export default function Footer() {
             </div>
           </div>
           <div className="col-auto">
-            <a className="small" href="#!">
+            <Link className="small" href="#">
               Privacidad
-            </a>
+            </Link>
           </div>
         </div>
       </div>

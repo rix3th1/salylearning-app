@@ -1,5 +1,6 @@
 {
   "name": "salylearning-app",
+  "description": "Saly Learning",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +9,25 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "keywords": [
+    "Saly Learning Software",
+    "Audiolibros",
+    "Audio enseñanza",
+    "Institución Técnica Santa Lucia",
+    "Sede Agua Negra"
+  ],
+  "author": {
+    "name": "Richard A. Rich",
+    "email": "rojasricor@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "SANDRA MILENA MURCIA G"
+    },
+    {
+      "name": "INGRID LISETH VELÁSQUEZ G"
+    }
+  ],
   "dependencies": {
     "next": "14.2.3",
     "react": "^18",

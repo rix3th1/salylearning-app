@@ -1,4 +1,4 @@
-export default function Section() {
+export default function IndexSection() {
   return (
     <section className="bg-light py-5">
       <div className="container px-5">

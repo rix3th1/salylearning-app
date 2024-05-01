@@ -1,14 +1,17 @@
+import { type Metadata } from "next";
 import Script from "next/script";
-import Header from "./components/Header";
-import Section from "./components/Section";
+import IndexHeader from "./components/IndexHeader";
+import IndexSection from "./components/IndexSection";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Software Saly | Inicio",
+};
+
+export default function HomePage() {
   return (
     <>
-      <Header />
-      <Section />
-
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
+      <IndexHeader />
+      <IndexSection />
     </>
   );
 }

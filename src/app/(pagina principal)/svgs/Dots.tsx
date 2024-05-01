@@ -1,4 +1,4 @@
-export default function Puntos3() {
+export default function Dots() {
   return (
     <svg
       version="1.1"
