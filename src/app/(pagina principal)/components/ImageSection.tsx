@@ -1,4 +1,6 @@
-import Dots from "../svgs/Dots";
+import Image from "next/image";
+import Dots from "../assets/svgs/Dots";
+import SALYCAPIBARA from "../assets/SALYCAPIBARA.png";
 
 export default function ImageSection() {
   return (
@@ -6,10 +8,17 @@ export default function ImageSection() {
       {/* Imagen de encabezado */}
       <div className="d-flex justify-content-center mt-5 mt-xxl-0">
         <div className="profile bg-gradient-primary-to-secondary">
-          <img
+          <Image
             className="profile-img"
-            src="/img/SALYCAPIBARA.png"
+            quality={100}
+            src={SALYCAPIBARA}
             alt="SALYLEARNING CAPIBARA"
+            width={280}
+            height={300}
+            style={{
+              width: "auto",
+            }}
+            priority
           />
           {/* SVG Dots */}
           <div className="dots-1">

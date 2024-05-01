@@ -22,6 +22,7 @@ export default function FormIniciarSesion() {
           className="form-control"
           placeholder="Ingrese su contraseña"
           required
+          autoComplete="current-password"
         />
       </div>
       <div className="form-group mx-sm-4 py-2">
