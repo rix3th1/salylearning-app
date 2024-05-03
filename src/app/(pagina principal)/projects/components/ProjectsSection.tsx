@@ -10,7 +10,7 @@ export default function ProjectsSection() {
             {/* Project Cards */}
 
             {projects.map((project, i) => (
-              <ProjectCard {...project} key={i} />
+              <ProjectCard key={i} {...project} />
             ))}
           </div>
         </div>

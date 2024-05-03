@@ -4,16 +4,21 @@ import {
   MdHelpOutline,
   MdMenu,
 } from "react-icons/md";
+import Image from "next/image";
 
 export default function InternalNav() {
   return (
     <nav className="navbar-user-top full-reset" style={{ position: "sticky" }}>
       <ul className="list-unstyled full-reset">
         <figure>
-          <img
+          <Image
             src="/img/user.png"
             alt="Imagen usuario"
             className="img-responsive img-circle center-box"
+            width={100}
+            height={100}
+            quality={100}
+            priority
           />
         </figure>
         <li style={{ color: "#fff", cursor: "default" }}>

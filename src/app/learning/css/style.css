@@ -1,12 +1,5 @@
 html,
 body {
-  overflow: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-}
-
-html,
-body {
   height: 100%;
   margin: 0;
   padding: 0;

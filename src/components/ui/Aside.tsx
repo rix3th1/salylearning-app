@@ -1,11 +1,13 @@
 import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
 import Image from "next/image";
+import Link from "next/link";
 import {
   MdAccountCircle,
   MdAssignment,
   MdBook,
-  MdBookmarkBorder,
+  MdBookmark,
   MdCheckCircle,
+  MdClose,
   MdHelpOutline,
   MdHome,
   MdKeyboardArrowDown,
@@ -26,15 +28,13 @@ export default function Aside() {
       <div className="visible-xs font-movile-menu mobile-menu-button"></div>
       <div className="full-reset container-menu-movile custom-scroll-containers">
         <div className="logo full-reset all-tittles">
-          <i
-            className="visible-xs zmdi zmdi-close pull-left mobile-menu-button"
+          <MdClose
+            className="visible-xs pull-left mobile-menu-button"
             style={{
-              lineHeight: "55px",
               cursor: "pointer",
-              padding: "0 10px",
-              marginLeft: "7px",
+              margin: "17px 26px",
             }}
-          ></i>
+          />
           SALY LEARNING
         </div>
         <div
@@ -63,9 +63,9 @@ export default function Aside() {
         <div className="full-reset nav-lateral-list-menu">
           <ul className="list-unstyled">
             <li>
-              <a href="home.html">
+              <Link href="/learning">
                 <MdHome style={{ fontSize: 15 }} /> &nbsp;&nbsp; Inicio
-              </a>
+              </Link>
             </li>
             <li>
               <div
@@ -85,16 +85,16 @@ export default function Aside() {
               </div>
               <ul className="list-unstyled">
                 <li>
-                  <a href="book.html">
+                  <Link href="/learning/books/new">
                     <MdBook />
                     &nbsp;&nbsp; Nuevo libro
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="catalog.html">
-                    <MdBookmarkBorder />
+                  <Link href="/learning/books/popular">
+                    <MdBookmark />
                     &nbsp;&nbsp; Populares
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -117,42 +117,42 @@ export default function Aside() {
               </div>
               <ul className="list-unstyled">
                 <li>
-                  <a href="loan.html">
+                  <Link href="loan.html">
                     <MdCheckCircle />
                     &nbsp;&nbsp;Completados
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="loanpending.html">
+                  <Link href="loanpending.html">
                     <MdStarHalf />
                     &nbsp;&nbsp; Pendientes
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="loanreservation.html">
+                  <Link href="loanreservation.html">
                     <MdLocationOff />
                     &nbsp;&nbsp;No logrados
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="report.html">
+              <Link href="/learning/reports-and-statistics">
                 <MdTrendingUp />
                 &nbsp;&nbsp; Reportes y estadísticas
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="advancesettings.html">
+              <Link href="/learning/account-settings">
                 <MdAccountCircle />
                 &nbsp;&nbsp; Configuración de cuenta
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="category.html">
+              <Link href="category.html">
                 <MdHelpOutline />
                 &nbsp;&nbsp; Preguntas frecuentes
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

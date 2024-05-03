@@ -1,3 +1,4 @@
+import { type Metadata } from "next";
 import {
   MdAssignmentInd,
   MdBookmarkBorder,
@@ -8,6 +9,10 @@ import {
   MdThumbUp,
   MdTrendingUp,
 } from "react-icons/md";
+
+export const metadata: Metadata = {
+  title: "Inicio: Docentes | Saly Learning",
+};
 
 export default function HomePage() {
   return (

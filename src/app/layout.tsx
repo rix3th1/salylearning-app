@@ -1,12 +1,6 @@
 import pkg from "@/../package.json";
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["200", "300", "400", "500", "600", "700", "800"],
-  display: "swap",
-});
+import "./globals.css";
 
 export const metadata: Metadata = {
   applicationName: pkg.name,
@@ -31,7 +25,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/icons/book.ico" type="image/x-icon" />
       </head>
 
-      <body className={plusJakartaSans.className}>{children}</body>
+      <body>{children}</body>
     </html>
   );
 }
