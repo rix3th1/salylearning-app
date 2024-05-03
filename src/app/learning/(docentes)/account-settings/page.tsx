@@ -318,7 +318,7 @@ export default function TeacherAccountSettingsPage() {
             >
               {/* Columna izquierda */}
               <div className="col-md-6">
-                <form action="" method="post">
+                <form>
                   <div className="form-group text-center pt-3">
                     <h3 className="all-tittles" style={{ textAlign: "center" }}>
                       Actualizar perfil de usuario
@@ -329,6 +329,8 @@ export default function TeacherAccountSettingsPage() {
                       type="text"
                       className="form-control"
                       placeholder="Nombre usuario"
+                      name="username"
+                      autoComplete="username"
                     />
                   </div>
                   <div className="form-group mx-sm-4 pt-3">
@@ -336,6 +338,8 @@ export default function TeacherAccountSettingsPage() {
                       type="text"
                       className="form-control"
                       placeholder="Nombres"
+                      name="first_name"
+                      autoComplete="off"
                     />
                   </div>
                   <div className="form-group mx-sm-4 pt-3">
@@ -343,6 +347,8 @@ export default function TeacherAccountSettingsPage() {
                       type="text"
                       className="form-control"
                       placeholder="Apellidos"
+                      name="last_name"
+                      autoComplete="off"
                     />
                   </div>
                   <div className="form-group mx-sm-4 pt-3">
@@ -350,6 +356,8 @@ export default function TeacherAccountSettingsPage() {
                       type="gmail"
                       className="form-control"
                       placeholder="Correo electrónico"
+                      name="email"
+                      autoComplete="email"
                     />
                   </div>
                   <div className="form-group mx-sm-4 pt-3">
@@ -357,6 +365,7 @@ export default function TeacherAccountSettingsPage() {
                       type="gmail"
                       className="form-control"
                       placeholder="Confirmar correo electrónico"
+                      name="email-confirm"
                     />
                   </div>
                   <div className="form-group mx-sm-4 pt-3">
@@ -364,18 +373,25 @@ export default function TeacherAccountSettingsPage() {
                       type="number"
                       className="form-control"
                       placeholder="Código docente"
+                      name="cod_docente"
                     />
                   </div>
-                  {/*<div class="form-group mx-sm-4 pt-3">
-                      <select class="form-control" id="gradoEscolar" name="gradoEscolar">
-                        <option value="select_grado">Seleccione su grado escolar</option>
-                        <option value="primero">Primero</option>
-                        <option value="segundo">Segundo</option>
-                        <option value="tercero">Tercero</option>
-                        <option value="cuarto">Cuarto</option>
-                        <option value="quinto">Quinto</option>
-                      </select>
-                    </div>*/}
+                  {/* <div className="form-group mx-sm-4 pt-3">
+                    <select
+                      className="form-control"
+                      id="gradoEscolar"
+                      name="gradoEscolar"
+                    >
+                      <option value="select_grado">
+                        Seleccione su grado escolar
+                      </option>
+                      <option value="primero">Primero</option>
+                      <option value="segundo">Segundo</option>
+                      <option value="tercero">Tercero</option>
+                      <option value="cuarto">Cuarto</option>
+                      <option value="quinto">Quinto</option>
+                    </select>
+                  </div> */}
                   <div className="form-group mx-sm-4 pt-3">
                     <label htmlFor="fechaNacimiento">
                       Fecha de Nacimiento:
@@ -392,6 +408,7 @@ export default function TeacherAccountSettingsPage() {
                       type="text"
                       className="form-control"
                       placeholder="Ciudad"
+                      name="city"
                     />
                   </div>
                   <button type="submit" className="btn btn-primary">
@@ -400,146 +417,158 @@ export default function TeacherAccountSettingsPage() {
                 </form>
               </div>
               {/* Columna derecha */}
+
               <div className="col-md-6">
-                {/* Cambio de contraseña */}
-                <div className="form-group mx-sm-4 pt-3">
-                  <label htmlFor="contrasenaActual">Cambiar contraseña</label>
-                  <input
-                    type={passwordsVisibility.password ? "text" : "password"}
-                    className="form-control"
-                    id="passwordInput"
-                    placeholder="Ingrese su Contraseña"
-                    required
-                  />
-                  {!passwordsVisibility.password ? (
-                    <MdVisibility
-                      onClick={() =>
-                        setPasswordsVisibility({
-                          ...passwordsVisibility,
-                          password: !passwordsVisibility.password,
-                        })
-                      }
-                      style={{
-                        position: "absolute",
-                        top: "20%",
-                        transform: "translateY(-100%)",
-                        right: 20,
-                        cursor: "pointer",
-                      }}
+                <form>
+                  {/* Cambio de contraseña */}
+                  <div className="form-group mx-sm-4 pt-3">
+                    <label htmlFor="contrasenaActual">Cambiar contraseña</label>
+                    <input
+                      type={passwordsVisibility.password ? "text" : "password"}
+                      className="form-control"
+                      id="contrasenaActual"
+                      placeholder="Ingrese su Contraseña"
+                      required
+                      autoComplete="current-password"
                     />
-                  ) : (
-                    <MdVisibilityOff
-                      onClick={() =>
-                        setPasswordsVisibility({
-                          ...passwordsVisibility,
-                          password: !passwordsVisibility.password,
-                        })
+                    {!passwordsVisibility.password ? (
+                      <MdVisibility
+                        onClick={() =>
+                          setPasswordsVisibility({
+                            ...passwordsVisibility,
+                            password: !passwordsVisibility.password,
+                          })
+                        }
+                        style={{
+                          position: "absolute",
+                          top: "20%",
+                          transform: "translateY(-100%)",
+                          right: 20,
+                          cursor: "pointer",
+                        }}
+                      />
+                    ) : (
+                      <MdVisibilityOff
+                        onClick={() =>
+                          setPasswordsVisibility({
+                            ...passwordsVisibility,
+                            password: !passwordsVisibility.password,
+                          })
+                        }
+                        style={{
+                          position: "absolute",
+                          top: "20%",
+                          transform: "translateY(-100%)",
+                          right: 20,
+                          cursor: "pointer",
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div className="form-group mx-sm-4 pt-3">
+                    <label htmlFor="nuevaContrasena">Nueva Contraseña</label>
+                    <input
+                      type={
+                        passwordsVisibility.newPassword ? "text" : "password"
                       }
-                      style={{
-                        position: "absolute",
-                        top: "20%",
-                        transform: "translateY(-100%)",
-                        right: 20,
-                        cursor: "pointer",
-                      }}
+                      className="form-control"
+                      id="nuevaContrasena"
+                      name="nuevaContrasena"
+                      placeholder="Ingrese la nueva contraseña"
+                      autoComplete="new-password"
                     />
-                  )}
-                </div>
-                <div className="form-group mx-sm-4 pt-3">
-                  <label htmlFor="nuevaContrasena">Nueva Contraseña</label>
-                  <input
-                    type={passwordsVisibility.newPassword ? "text" : "password"}
-                    className="form-control"
-                    id="nuevaContrasena"
-                    name="nuevaContrasena"
-                    placeholder="Ingrese la nueva contraseña"
-                  />
 
-                  {!passwordsVisibility.newPassword ? (
-                    <MdVisibility
-                      onClick={() =>
-                        setPasswordsVisibility({
-                          ...passwordsVisibility,
-                          newPassword: !passwordsVisibility.newPassword,
-                        })
+                    {!passwordsVisibility.newPassword ? (
+                      <MdVisibility
+                        onClick={() =>
+                          setPasswordsVisibility({
+                            ...passwordsVisibility,
+                            newPassword: !passwordsVisibility.newPassword,
+                          })
+                        }
+                        style={{
+                          position: "absolute",
+                          top: "49%",
+                          transform: "translateY(-100%)",
+                          right: 20,
+                          cursor: "pointer",
+                        }}
+                      />
+                    ) : (
+                      <MdVisibilityOff
+                        onClick={() =>
+                          setPasswordsVisibility({
+                            ...passwordsVisibility,
+                            newPassword: !passwordsVisibility.newPassword,
+                          })
+                        }
+                        style={{
+                          position: "absolute",
+                          top: "49%",
+                          transform: "translateY(-100%)",
+                          right: 20,
+                          cursor: "pointer",
+                        }}
+                      />
+                    )}
+                  </div>
+                  <div className="form-group mx-sm-4 pt-3">
+                    <label htmlFor="confirmarContrasena">
+                      Confirmar Contraseña
+                    </label>
+                    <input
+                      type={
+                        passwordsVisibility.confirmPassword
+                          ? "text"
+                          : "password"
                       }
-                      style={{
-                        position: "absolute",
-                        top: "49%",
-                        transform: "translateY(-100%)",
-                        right: 20,
-                        cursor: "pointer",
-                      }}
+                      className="form-control"
+                      id="confirmarContrasena"
+                      name="confirmarContrasena"
+                      placeholder="Confirme la nueva contraseña"
+                      autoComplete="new-password"
                     />
-                  ) : (
-                    <MdVisibilityOff
-                      onClick={() =>
-                        setPasswordsVisibility({
-                          ...passwordsVisibility,
-                          newPassword: !passwordsVisibility.newPassword,
-                        })
-                      }
-                      style={{
-                        position: "absolute",
-                        top: "49%",
-                        transform: "translateY(-100%)",
-                        right: 20,
-                        cursor: "pointer",
-                      }}
-                    />
-                  )}
-                </div>
-                <div className="form-group mx-sm-4 pt-3">
-                  <label htmlFor="confirmarContrasena">
-                    Confirmar Contraseña
-                  </label>
-                  <input
-                    type={
-                      passwordsVisibility.confirmPassword ? "text" : "password"
-                    }
-                    className="form-control"
-                    id="confirmarContrasena"
-                    name="confirmarContrasena"
-                    placeholder="Confirme la nueva contraseña"
-                  />
 
-                  {!passwordsVisibility.confirmPassword ? (
-                    <MdVisibility
-                      onClick={() =>
-                        setPasswordsVisibility({
-                          ...passwordsVisibility,
-                          confirmPassword: !passwordsVisibility.confirmPassword,
-                        })
-                      }
-                      style={{
-                        position: "absolute",
-                        top: "78%",
-                        transform: "translateY(-100%)",
-                        right: 20,
-                        cursor: "pointer",
-                      }}
-                    />
-                  ) : (
-                    <MdVisibilityOff
-                      onClick={() =>
-                        setPasswordsVisibility({
-                          ...passwordsVisibility,
-                          confirmPassword: !passwordsVisibility.confirmPassword,
-                        })
-                      }
-                      style={{
-                        position: "absolute",
-                        top: "78%",
-                        transform: "translateY(-100%)",
-                        right: 20,
-                        cursor: "pointer",
-                      }}
-                    />
-                  )}
-                </div>
-                <button type="submit" className="btn btn-primary">
-                  Enviar
-                </button>
+                    {!passwordsVisibility.confirmPassword ? (
+                      <MdVisibility
+                        onClick={() =>
+                          setPasswordsVisibility({
+                            ...passwordsVisibility,
+                            confirmPassword:
+                              !passwordsVisibility.confirmPassword,
+                          })
+                        }
+                        style={{
+                          position: "absolute",
+                          top: "78%",
+                          transform: "translateY(-100%)",
+                          right: 20,
+                          cursor: "pointer",
+                        }}
+                      />
+                    ) : (
+                      <MdVisibilityOff
+                        onClick={() =>
+                          setPasswordsVisibility({
+                            ...passwordsVisibility,
+                            confirmPassword:
+                              !passwordsVisibility.confirmPassword,
+                          })
+                        }
+                        style={{
+                          position: "absolute",
+                          top: "78%",
+                          transform: "translateY(-100%)",
+                          right: 20,
+                          cursor: "pointer",
+                        }}
+                      />
+                    )}
+                  </div>
+                  <button type="submit" className="btn btn-primary">
+                    Enviar
+                  </button>
+                </form>
               </div>
             </div>
           </div>
