@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Dots from "../assets/svgs/Dots";
-import SALYCAPIBARA from "../assets/SALYCAPIBARA.png";
+import Dots from "../svgs/Dots";
+import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
 
 export default function ImageSection() {
   return (

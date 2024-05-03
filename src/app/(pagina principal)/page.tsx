@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Software Saly | Inicio",
 };
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <>
       <IndexHeader />
