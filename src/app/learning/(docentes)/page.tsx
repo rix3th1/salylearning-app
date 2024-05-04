@@ -31,7 +31,7 @@ export default function HomePage() {
             <MdPeople />
           </div>
           <div className="tile-name all-tittles">
-            <Link href="report.html">Grados</Link>
+            <Link href="/learning/reports-and-statistics">Grados</Link>
           </div>
           <div className="tile-num full-reset">3</div>
         </article>
@@ -40,7 +40,7 @@ export default function HomePage() {
             <MdLibraryBooks />
           </div>
           <div className="tile-name all-tittles">
-            <Link href="book.html">Libros</Link>
+            <Link href="/learning/books/new">Libros</Link>
           </div>
           <div className="tile-num full-reset">30</div>
         </article>
@@ -49,7 +49,7 @@ export default function HomePage() {
             <MdBookmarkBorder />
           </div>
           <div className="tile-name all-tittles">
-            <Link href="catalog.html">Géneros literarios</Link>
+            <Link href="/learning/books/popular">Géneros literarios</Link>
           </div>
           <div className="tile-num full-reset">4</div>
         </article>
@@ -58,7 +58,9 @@ export default function HomePage() {
             <MdAssignmentInd />
           </div>
           <div className="tile-name all-tittles">
-            <Link href="loanpending.html">Preguntas pendientes</Link>
+            <Link href="/learning/questionaries/pending">
+              Preguntas pendientes
+            </Link>
           </div>
           <div className="tile-num full-reset">17</div>
         </article>
@@ -67,7 +69,9 @@ export default function HomePage() {
             <MdOutlineRestore />
           </div>
           <div className="tile-name all-tittles" style={{ width: "90%" }}>
-            <Link href="loanreservation.html">Cuestionarios no logrados</Link>
+            <Link href="/learning/questionaries/not-achieved">
+              Cuestionarios no logrados
+            </Link>
           </div>
           <div className="tile-num full-reset">9</div>
         </article>
@@ -76,7 +80,9 @@ export default function HomePage() {
             <MdCalendarMonth />
           </div>
           <div className="tile-name all-tittles">
-            <Link href="loan.html">Cuestionarios completados</Link>
+            <Link href="/learning/questionaries/completed">
+              Cuestionarios completados
+            </Link>
           </div>
           <div className="tile-num full-reset">7</div>
         </article>
@@ -85,7 +91,9 @@ export default function HomePage() {
             <MdTrendingUp />
           </div>
           <div className="tile-name all-tittles" style={{ width: "90%" }}>
-            <Link href="report.html">Reportes y Estadísticas</Link>
+            <Link href="/learning/reports-and-statistics">
+              Reportes y Estadísticas
+            </Link>
           </div>
           <div className="tile-num full-reset">&nbsp;</div>
         </article>

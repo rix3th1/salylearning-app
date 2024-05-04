@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function CallToActionSection() {
   return (
     <section className="py-5 bg-gradient-primary-to-secondary text-white">
@@ -5,12 +7,12 @@ export default function CallToActionSection() {
         <h2 className="display-4 fw-bolder mb-4">
           Si quieres una aventura, lánzate a la lectura!
         </h2>
-        <a
+        <Link
           className="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder"
-          href="index.html"
+          href="/"
         >
-          Iniciar
-        </a>
+          Iniciar aventura
+        </Link>
       </div>
     </section>
   );

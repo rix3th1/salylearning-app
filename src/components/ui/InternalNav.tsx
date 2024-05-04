@@ -26,14 +26,12 @@ export default function InternalNav() {
         </li>
         <li
           className="tooltips-general exit-system-button"
-          data-href="index.html"
           title="Salir del sistema"
         >
           <MdOutlinePowerSettingsNew style={{ fontSize: 25, marginTop: 15 }} />
         </li>
         <li
           className="tooltips-general search-book-button"
-          data-href="searchbook.html"
           title="Buscar libro"
         >
           <MdSearch style={{ fontSize: 25, marginTop: 15 }} />
