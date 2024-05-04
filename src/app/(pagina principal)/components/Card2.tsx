@@ -1,5 +1,5 @@
+import comoImage from "@/assets/como.png";
 import Image from "next/image";
-import image from "../resume/assets/como.png";
 
 export default function Card2() {
   return (
@@ -12,11 +12,10 @@ export default function Card2() {
                 className="img-fluid rounded-3"
                 quality={100}
                 placeholder="blur"
-                src={image}
+                src={comoImage}
                 alt="importancia"
-                width={image.width}
-                height={image.height}
-                priority
+                width={comoImage.width}
+                height={comoImage.height}
               />
             </div>
           </div>

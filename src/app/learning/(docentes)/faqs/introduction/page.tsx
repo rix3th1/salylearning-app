@@ -42,6 +42,7 @@ export default function IntroductionPage() {
               width={160}
               height={160}
               quality={100}
+              priority
             />
           </div>
           <div className="col-xs-12 col-sm-8 col-md-8 text-justify lead">

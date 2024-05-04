@@ -1,3 +1,8 @@
+import ayudaImage from "@/../public/img/ayuda.png";
+import misLibrosImage from "@/../public/img/mis-libros.png";
+import leyendoImage from "@/../public/img/niñoleyendo.jpeg";
+import rendimientoImage from "@/../public/img/rendimiento.png";
+import preguntaImage from "@/assets/pregunta_niño.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -42,6 +47,7 @@ export default function FaqsPage() {
               width={110}
               height={110}
               quality={100}
+              priority
             />
           </div>
           <div className="col-xs-12 col-sm-8 col-md-8 text-justify lead">
@@ -64,12 +70,13 @@ export default function FaqsPage() {
           <div className="media">
             <div className="float-start">
               <Image
-                src="/img/niñoleyendo.jpeg"
+                src={leyendoImage}
                 alt="Niño leyendo"
                 width={200}
                 height={200}
                 style={{ minWidth: 200, borderRadius: "10px" }}
                 quality={100}
+                placeholder="blur"
               />
             </div>
             <div
@@ -118,8 +125,9 @@ export default function FaqsPage() {
                 height={200}
                 style={{ minWidth: 200, borderRadius: "10px" }}
                 quality={100}
-                src="/img/pregunta_niño.jpeg"
+                src={preguntaImage}
                 alt="Niño preguntando"
+                placeholder="blur"
               />
             </div>
           </div>
@@ -130,8 +138,9 @@ export default function FaqsPage() {
                 height={200}
                 style={{ minWidth: 200, borderRadius: "10px" }}
                 quality={100}
-                src="/img/rendimiento.png"
+                src={rendimientoImage}
                 alt="Estadísticas"
+                placeholder="blur"
               />
             </div>
             <div
@@ -181,8 +190,9 @@ export default function FaqsPage() {
                 height={200}
                 style={{ minWidth: 200, borderRadius: "10px" }}
                 quality={100}
-                src="/img/mis-libros.png"
+                src={misLibrosImage}
                 alt="Dispositivos móviles"
+                placeholder="blur"
               />
             </div>
           </div>
@@ -193,8 +203,9 @@ export default function FaqsPage() {
                 height={200}
                 style={{ minWidth: 200, borderRadius: "10px" }}
                 quality={100}
-                src="/img/ayuda.png"
+                src={ayudaImage}
                 alt="Contacto"
+                placeholder="blur"
               />
             </div>
             <div

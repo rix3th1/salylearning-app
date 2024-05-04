@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Dots from "../svgs/Dots";
-import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
+import Dots from "./svgs/Dots";
 
 export default function ImageSection() {
   return (
@@ -11,7 +10,7 @@ export default function ImageSection() {
           <Image
             className="profile-img"
             quality={100}
-            src={SALYCAPIBARA}
+            src="/img/SALYCAPIBARA.png"
             alt="SALYLEARNING CAPIBARA"
             width={280}
             height={300}

@@ -1,5 +1,5 @@
+import preguntaImage from "@/assets/pregunta_niño.png";
 import Image from "next/image";
-import image from "../resume/assets/pregunta_niño.png";
 
 export default function Card1() {
   return (
@@ -12,11 +12,10 @@ export default function Card1() {
                 className="img-fluid rounded-3"
                 placeholder="blur"
                 quality={100}
-                src={image}
-                width={image.width}
-                height={image.height}
+                src={preguntaImage}
+                width={preguntaImage.width}
+                height={preguntaImage.height}
                 alt="Pregunta"
-                priority
               />
             </div>
           </div>

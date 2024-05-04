@@ -1,5 +1,5 @@
+import porqueImage from "@/assets/porque.png";
 import Image from "next/image";
-import image from "../resume/assets/porque.png";
 
 export default function Card3() {
   return (
@@ -12,11 +12,10 @@ export default function Card3() {
                 className="img-fluid rounded-3"
                 quality={100}
                 placeholder="blur"
-                src={image}
+                src={porqueImage}
                 alt="imagen como desarrollar"
-                width={image.width}
-                height={image.height}
-                priority
+                width={porqueImage.width}
+                height={porqueImage.height}
               />
             </div>
           </div>

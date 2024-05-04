@@ -1,5 +1,5 @@
+import visionImage from "@/assets/vision.jpg";
 import Image from "next/image";
-import visionImage from "../assets/vision.jpg";
 
 interface IProps {
   title: string;
@@ -23,7 +23,6 @@ export default function ProjectCard({ title, description }: IProps) {
             alt={title}
             width={visionImage.width}
             height={visionImage.height}
-            priority
           />
         </article>
       </div>
