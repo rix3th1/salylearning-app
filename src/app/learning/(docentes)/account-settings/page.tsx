@@ -92,7 +92,11 @@ export default function TeacherAccountSettingsPage() {
                           style={{ display: "none" }}
                           accept="image/*"
                         />
-                        <button type="button" className="btn btn-primary">
+                        <button
+                          type="button"
+                          className="btn btn-primary"
+                          style={{ marginRight: "15px" }}
+                        >
                           Subir foto
                         </button>
                         <button

@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import Link from "next/link";
 import {
   MdAssignmentInd,
   MdBookmarkBorder,
@@ -30,7 +31,7 @@ export default function HomePage() {
             <MdPeople />
           </div>
           <div className="tile-name all-tittles">
-            <a href="report.html">Grados</a>
+            <Link href="report.html">Grados</Link>
           </div>
           <div className="tile-num full-reset">3</div>
         </article>
@@ -39,7 +40,7 @@ export default function HomePage() {
             <MdLibraryBooks />
           </div>
           <div className="tile-name all-tittles">
-            <a href="book.html">Libros</a>
+            <Link href="book.html">Libros</Link>
           </div>
           <div className="tile-num full-reset">30</div>
         </article>
@@ -48,7 +49,7 @@ export default function HomePage() {
             <MdBookmarkBorder />
           </div>
           <div className="tile-name all-tittles">
-            <a href="catalog.html">Géneros literarios</a>
+            <Link href="catalog.html">Géneros literarios</Link>
           </div>
           <div className="tile-num full-reset">4</div>
         </article>
@@ -57,7 +58,7 @@ export default function HomePage() {
             <MdAssignmentInd />
           </div>
           <div className="tile-name all-tittles">
-            <a href="loanpending.html">Preguntas pendientes</a>
+            <Link href="loanpending.html">Preguntas pendientes</Link>
           </div>
           <div className="tile-num full-reset">17</div>
         </article>
@@ -66,7 +67,7 @@ export default function HomePage() {
             <MdOutlineRestore />
           </div>
           <div className="tile-name all-tittles" style={{ width: "90%" }}>
-            <a href="loanreservation.html">Cuestionarios no logrados</a>
+            <Link href="loanreservation.html">Cuestionarios no logrados</Link>
           </div>
           <div className="tile-num full-reset">9</div>
         </article>
@@ -75,7 +76,7 @@ export default function HomePage() {
             <MdCalendarMonth />
           </div>
           <div className="tile-name all-tittles">
-            <a href="loan.html">Cuestionarios completados</a>
+            <Link href="loan.html">Cuestionarios completados</Link>
           </div>
           <div className="tile-num full-reset">7</div>
         </article>
@@ -84,7 +85,7 @@ export default function HomePage() {
             <MdTrendingUp />
           </div>
           <div className="tile-name all-tittles" style={{ width: "90%" }}>
-            <a href="report.html">Reportes y Estadísticas</a>
+            <Link href="report.html">Reportes y Estadísticas</Link>
           </div>
           <div className="tile-num full-reset">&nbsp;</div>
         </article>

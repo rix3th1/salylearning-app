@@ -117,19 +117,19 @@ export default function Aside() {
               </div>
               <ul className="list-unstyled">
                 <li>
-                  <Link href="loan.html">
+                  <Link href="/learning/questionaries/completed">
                     <MdCheckCircle />
                     &nbsp;&nbsp;Completados
                   </Link>
                 </li>
                 <li>
-                  <Link href="loanpending.html">
+                  <Link href="/learning/questionaries/pending">
                     <MdStarHalf />
                     &nbsp;&nbsp; Pendientes
                   </Link>
                 </li>
                 <li>
-                  <Link href="loanreservation.html">
+                  <Link href="/learning/questionaries/not-achieved">
                     <MdLocationOff />
                     &nbsp;&nbsp;No logrados
                   </Link>
@@ -149,7 +149,7 @@ export default function Aside() {
               </Link>
             </li>
             <li>
-              <Link href="category.html">
+              <Link href="/learning/faqs">
                 <MdHelpOutline />
                 &nbsp;&nbsp; Preguntas frecuentes
               </Link>

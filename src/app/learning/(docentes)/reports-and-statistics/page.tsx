@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Script from "next/script";
 
 export default function ReportsAndStatisticsPage() {
@@ -78,17 +79,35 @@ export default function ReportsAndStatisticsPage() {
             <div className="fila-ranking">
               <div className="columna">
                 {/* Contenido de la primera columna */}
-                <div className="ranking">
-                  <img src="/img/category.png" alt="Primer Lugar" />
+                <div className="ranking" style={{ marginRight: "1rem" }}>
+                  <Image
+                    width={525}
+                    height={525}
+                    quality={100}
+                    src="/img/category.png"
+                    alt="Primer Lugar"
+                  />
                   <p>Primer Lugar</p>
                 </div>
-                <div className="fila-lugares">
+                <div className="fila-lugares" style={{ marginRight: "1rem" }}>
                   <div className="lugar">
-                    <img src="/img/category.png" alt="Segundo Lugar" />
+                    <Image
+                      width={260}
+                      height={260}
+                      quality={100}
+                      src="/img/category.png"
+                      alt="Segundo Lugar"
+                    />
                     <p>Segundo Lugar</p>
                   </div>
                   <div className="lugar">
-                    <img src="/img/category.png" alt="Tercer Lugar" />
+                    <Image
+                      width={260}
+                      height={260}
+                      quality={100}
+                      src="/img/category.png"
+                      alt="Tercer Lugar"
+                    />
                     <p>Tercer Lugar</p>
                   </div>
                 </div>
@@ -98,7 +117,10 @@ export default function ReportsAndStatisticsPage() {
                 <p>Contenido de la segunda columna</p>
                 <div className="other-positions">
                   <div className="position">
-                    <img
+                    <Image
+                      width={110}
+                      height={110}
+                      quality={100}
                       src="/img/category.png"
                       alt="Imagen Pequeña"
                       className="small-image"
@@ -106,7 +128,10 @@ export default function ReportsAndStatisticsPage() {
                     <p>4. Cuarto Puesto</p>
                   </div>
                   <div className="position">
-                    <img
+                    <Image
+                      width={110}
+                      height={110}
+                      quality={100}
                       src="/img/category.png"
                       alt="Imagen Pequeña"
                       className="small-image"
@@ -114,7 +139,10 @@ export default function ReportsAndStatisticsPage() {
                     <div>5. Quinto Puesto</div>
                   </div>
                   <div className="position">
-                    <img
+                    <Image
+                      width={110}
+                      height={110}
+                      quality={100}
                       src="/img/category.png"
                       alt="Imagen Pequeña"
                       className="small-image"
@@ -122,7 +150,10 @@ export default function ReportsAndStatisticsPage() {
                     <div>6. Sexto Puesto</div>
                   </div>
                   <div className="position">
-                    <img
+                    <Image
+                      width={110}
+                      height={110}
+                      quality={100}
                       src="/img/category.png"
                       alt="Imagen Pequeña"
                       className="small-image"
@@ -130,7 +161,10 @@ export default function ReportsAndStatisticsPage() {
                     <div>7. Séptimo Puesto</div>
                   </div>
                   <div className="position">
-                    <img
+                    <Image
+                      width={110}
+                      height={110}
+                      quality={100}
                       src="/img/category.png"
                       alt="Imagen Pequeña"
                       className="small-image"
@@ -138,7 +172,10 @@ export default function ReportsAndStatisticsPage() {
                     <div>8. Octavo Puesto</div>
                   </div>
                   <div className="position">
-                    <img
+                    <Image
+                      width={110}
+                      height={110}
+                      quality={100}
                       src="/img/category.png"
                       alt="Imagen Pequeña"
                       className="small-image"
@@ -146,7 +183,10 @@ export default function ReportsAndStatisticsPage() {
                     <div>9. Noveno Puesto</div>
                   </div>
                   <div className="position">
-                    <img
+                    <Image
+                      width={110}
+                      height={110}
+                      quality={100}
                       src="/img/category.png"
                       alt="Imagen Pequeña"
                       className="small-image"
