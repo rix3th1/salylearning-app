@@ -7,7 +7,8 @@ export default function Footer() {
         <div className="row align-items-center justify-content-between flex-column flex-sm-row">
           <div className="col-auto">
             <div className="small m-0">
-              SALY&copy; Todos los Derechos Reservados 2023
+              SALY&copy; Todos los derechos reservados{" "}
+              {new Date().getFullYear()}
             </div>
           </div>
           <div className="col-auto">

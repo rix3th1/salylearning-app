@@ -1,5 +1,6 @@
 import preguntaImage from "@/assets/pregunta_niño.png";
 import Image from "next/image";
+import { MdOpenInNew } from "react-icons/md";
 
 export default function Card1() {
   return (
@@ -33,8 +34,10 @@ export default function Card1() {
             <a
               className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder my-2"
               href="https://www.educo.org/blog/¿como-trabajar-la-comprension-lectora-en-ninos-y-n"
+              target="_blank"
             >
-              Más info.
+              Más info.&nbsp;
+              <MdOpenInNew style={{ marginBottom: "2px" }} />
             </a>
           </div>
         </div>

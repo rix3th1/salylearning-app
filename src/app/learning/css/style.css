@@ -302,18 +302,7 @@ select.material-control {
   border: none;
   border-bottom: 1px solid #5264ae;
 }
-select.material-control,
-select.no-style {
-  -ms-appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  background: #fff url(/icons/SelectMaterialIndicator.png) no-repeat scroll
-    right 0.75rem center / 9px 13px;
-}
-select.material-control:hover,
-select.no-style {
-  cursor: pointer;
-}
+
 /*Estado activo*/
 input.material-control:focus,
 select.material-control {

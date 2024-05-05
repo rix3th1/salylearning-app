@@ -1,6 +1,6 @@
 import checkListImage from "@/assets/checklist.png";
 import Image from "next/image";
-import { MdInfo, MdSearch } from "react-icons/md";
+import { MdInfo, MdOpenInNew, MdSearch } from "react-icons/md";
 
 export default function PopularBooksPage() {
   return (
@@ -78,8 +78,10 @@ export default function PopularBooksPage() {
                   href="https://es.wikipedia.org/wiki/Matilda"
                   className="btn btn-info btn-xs"
                   style={{ marginRight: 10 }}
+                  target="_blank"
                 >
-                  <MdInfo /> Más información
+                  <MdInfo /> Más información&nbsp;
+                  <MdOpenInNew />
                 </a>
               </p>
             </div>
