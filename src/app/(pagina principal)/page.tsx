@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import IndexHeader from "./components/IndexHeader";
 import IndexSection from "./components/IndexSection";
 

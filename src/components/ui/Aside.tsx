@@ -66,7 +66,7 @@ export default function Aside() {
         <div className="full-reset nav-lateral-list-menu">
           <ul className="list-unstyled">
             <li>
-              <Link href="/learning">
+              <Link href="/learning/teachers">
                 <MdHome style={{ fontSize: 15 }} /> &nbsp;&nbsp; Inicio
               </Link>
             </li>
@@ -88,13 +88,13 @@ export default function Aside() {
               </div>
               <ul className="list-unstyled">
                 <li>
-                  <Link href="/learning/books/new">
+                  <Link href="/learning/teachers/books/new">
                     <MdBook />
                     &nbsp;&nbsp; Nuevo libro
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/books/popular">
+                  <Link href="/learning/teachers/books/popular">
                     <MdBookmark />
                     &nbsp;&nbsp; Populares
                   </Link>
@@ -120,19 +120,19 @@ export default function Aside() {
               </div>
               <ul className="list-unstyled">
                 <li>
-                  <Link href="/learning/questionaries/completed">
+                  <Link href="/learning/teachers/questionaries/completed">
                     <MdCheckCircle />
                     &nbsp;&nbsp;Completados
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/questionaries/pending">
+                  <Link href="/learning/teachers/questionaries/pending">
                     <MdStarHalf />
                     &nbsp;&nbsp;Pendientes
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/questionaries/not-achieved">
+                  <Link href="/learning/teachers/questionaries/not-achieved">
                     <MdLocationOff />
                     &nbsp;&nbsp;No logrados
                   </Link>
@@ -158,13 +158,13 @@ export default function Aside() {
               </div>
               <ul className="list-unstyled">
                 <li>
-                  <Link href="/learning/reports">
+                  <Link href="/learning/teachers/reports">
                     <MdTrendingUp />
                     &nbsp;&nbsp;Reportes
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/statistics">
+                  <Link href="/learning/teachers/statistics">
                     <MdBarChart />
                     &nbsp;&nbsp;Estadísticas
                   </Link>
@@ -190,13 +190,13 @@ export default function Aside() {
               </div>
               <ul className="list-unstyled">
                 <li>
-                  <Link href="/learning/account-settings/profile">
+                  <Link href="/learning/teachers/account-settings/profile">
                     <MdPerson />
                     &nbsp;&nbsp;Perfíl
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/account-settings/advanced">
+                  <Link href="/learning/teachers/account-settings/advanced">
                     <MdManageAccounts />
                     &nbsp;&nbsp;Avanzadas
                   </Link>
@@ -204,7 +204,7 @@ export default function Aside() {
               </ul>
             </li>
             <li>
-              <Link href="/learning/faqs">
+              <Link href="/learning/teachers/faqs">
                 <MdHelpOutline />
                 &nbsp;&nbsp; Preguntas frecuentes
               </Link>

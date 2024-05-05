@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import CallToActionSection from "./components/CallToActionSection";
 import ProjectsSection from "./components/ProjectsSection";
 

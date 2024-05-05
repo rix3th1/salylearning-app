@@ -7,7 +7,7 @@ import "./css/bootstrap.min.css";
 import "./css/style.css";
 
 export const metadata: Metadata = {
-  title: "Inicio: Docentes | Saly Learning",
+  title: "Inicio | Saly Learning",
 };
 
 export default function LearningLayout({
