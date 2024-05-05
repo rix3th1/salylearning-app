@@ -1,3 +1,4 @@
+import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -48,7 +49,7 @@ export default function Aside() {
             <Image
               className="img-responsive center-box"
               quality={100}
-              src="/img/SALYCAPIBARA.png"
+              src={SALYCAPIBARA}
               alt="SALYLEARNING CAPIBARA"
               width={280}
               height={300}

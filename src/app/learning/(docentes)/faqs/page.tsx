@@ -51,14 +51,9 @@ export default function FaqsPage() {
             />
           </div>
           <div className="col-xs-12 col-sm-8 col-md-8 text-justify lead">
-            ¡Bienvenido a la sección de Preguntas Frecuentes de &quote;Saly
-            Learning&quote;! Aquí encontrarás respuestas a las dudas más comunes
-            sobre Saly. Explorando esta sección, podrás conocer más sobre el
-            funcionamiento del software, cómo se integra en la institución
-            educativa, y cómo acceder al soporte técnico en caso de necesitar
-            ayuda. ¡Descubre todo lo que necesitas saber para aprovechar al
-            máximo &quote;Saly Learning&quote; y mejorar la experiencia
-            educativa!
+            {
+              '¡Bienvenido a la sección de Preguntas Frecuentes de "Saly Learning"! Aquí encontrarás respuestas a las dudas más comunes sobre Saly. Explorando esta sección, podrás conocer más sobre el funcionamiento del software, cómo se integra en la institución educativa, y cómo acceder al soporte técnico en caso de necesitar ayuda. ¡Descubre todo lo que necesitas saber para aprovechar al máximo "Saly Learning" y mejorar la experiencia educativa!'
+            }
           </div>
         </div>
       </div>
@@ -88,7 +83,7 @@ export default function FaqsPage() {
               }}
             >
               <h4 style={{ fontWeight: "bold" }}>
-                ¿Cómo funciona &quote;Saly Learning&quote;?
+                {'¿Cómo funciona "Saly Learning"?'}
               </h4>
               <p className="all-parrafos">
                 Saly Learning utiliza una interfaz interactiva y actividades
