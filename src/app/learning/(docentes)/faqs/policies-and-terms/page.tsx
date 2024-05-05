@@ -1,3 +1,4 @@
+import userImage from "@/assets/user04.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,7 +36,7 @@ export default function PoliciesAndTermsPage() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/user04.png"
+              src={userImage}
               alt="user"
               className="img-responsive center-box"
               style={{ maxWidth: 110 }}

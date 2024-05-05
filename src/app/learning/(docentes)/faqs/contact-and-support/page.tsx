@@ -1,3 +1,4 @@
+import sectionImage from "@/assets/section.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -35,7 +36,7 @@ export default function ContactAndSupportPage() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/section.png"
+              src={sectionImage}
               alt="user"
               className="img-responsive center-box"
               style={{ maxWidth: 110 }}

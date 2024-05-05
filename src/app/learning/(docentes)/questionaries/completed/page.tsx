@@ -1,3 +1,4 @@
+import calendarBookImage from "@/assets/calendar_book.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +29,7 @@ export default function CompletedQuestionariesPage() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/calendar_book.png"
+              src={calendarBookImage}
               alt="calendario"
               className="img-responsive center-box"
               style={{ maxWidth: 110 }}

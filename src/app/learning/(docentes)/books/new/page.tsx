@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { MdSave, MdUpload } from "react-icons/md";
+import flatBookImage from "@/assets/flat-book.png";
 
 export default function NewBookPage() {
   return (
@@ -16,7 +17,7 @@ export default function NewBookPage() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/flat-book.png"
+              src={flatBookImage}
               alt="pdf"
               className="img-responsive center-box"
               style={{ maxWidth: 110 }}

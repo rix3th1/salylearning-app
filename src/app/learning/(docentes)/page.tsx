@@ -31,7 +31,7 @@ export default function HomePage() {
             <MdPeople />
           </div>
           <div className="tile-name all-tittles">
-            <Link href="/learning/reports-and-statistics">Grados</Link>
+            <Link href="/learning/reports">Grados</Link>
           </div>
           <div className="tile-num full-reset">3</div>
         </article>
@@ -91,9 +91,7 @@ export default function HomePage() {
             <MdTrendingUp />
           </div>
           <div className="tile-name all-tittles" style={{ width: "90%" }}>
-            <Link href="/learning/reports-and-statistics">
-              Reportes y Estadísticas
-            </Link>
+            <Link href="/learning/statistics">Reportes y Estadísticas</Link>
           </div>
           <div className="tile-num full-reset">&nbsp;</div>
         </article>

@@ -1,6 +1,7 @@
+import guiaImage from "@/assets/guia.png";
+import preguntaImage from "@/assets/pregunta_niño.png";
 import Image from "next/image";
 import Link from "next/link";
-import preguntaImage from "@/assets/pregunta_niño.png";
 
 export default function IntroductionPage() {
   return (
@@ -36,7 +37,7 @@ export default function IntroductionPage() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/guia.png"
+              src={guiaImage}
               alt="user"
               className="img-responsive center-box"
               style={{ maxWidth: 160 }}

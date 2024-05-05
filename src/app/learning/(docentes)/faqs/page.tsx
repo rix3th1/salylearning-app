@@ -1,4 +1,5 @@
 import ayudaImage from "@/assets/ayuda.png";
+import categoryImage from "@/assets/category.png";
 import misLibrosImage from "@/assets/mis-libros.png";
 import leyendoImage from "@/assets/niñoleyendo.jpeg";
 import preguntaImage from "@/assets/pregunta_niño.png";
@@ -40,7 +41,7 @@ export default function FaqsPage() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/category.png"
+              src={categoryImage}
               alt="user"
               className="img-responsive center-box"
               style={{ maxWidth: 110 }}

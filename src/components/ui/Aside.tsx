@@ -4,6 +4,7 @@ import Link from "next/link";
 import {
   MdAccountCircle,
   MdAssignment,
+  MdBarChart,
   MdBook,
   MdBookmark,
   MdCheckCircle,
@@ -12,7 +13,9 @@ import {
   MdHome,
   MdKeyboardArrowDown,
   MdLocationOff,
+  MdManageAccounts,
   MdMarkAsUnread,
+  MdPerson,
   MdStarHalf,
   MdTrendingUp,
 } from "react-icons/md";
@@ -109,7 +112,7 @@ export default function Aside() {
               >
                 <span>
                   <MdMarkAsUnread />
-                  &nbsp;&nbsp;Cuestionarios
+                  &nbsp;&nbsp; Cuestionarios
                 </span>
                 <MdKeyboardArrowDown
                   style={{ fontSize: 20, margin: "0 5px" }}
@@ -125,7 +128,7 @@ export default function Aside() {
                 <li>
                   <Link href="/learning/questionaries/pending">
                     <MdStarHalf />
-                    &nbsp;&nbsp; Pendientes
+                    &nbsp;&nbsp;Pendientes
                   </Link>
                 </li>
                 <li>
@@ -137,16 +140,68 @@ export default function Aside() {
               </ul>
             </li>
             <li>
-              <Link href="/learning/reports-and-statistics">
-                <MdTrendingUp />
-                &nbsp;&nbsp; Reportes y estadísticas
-              </Link>
+              <div
+                className="dropdown-menu-button"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span>
+                  <MdTrendingUp />
+                  &nbsp;&nbsp; Reportes y estadísticas
+                </span>
+                <MdKeyboardArrowDown
+                  style={{ fontSize: 20, margin: "0 5px" }}
+                />
+              </div>
+              <ul className="list-unstyled">
+                <li>
+                  <Link href="/learning/reports">
+                    <MdTrendingUp />
+                    &nbsp;&nbsp;Reportes
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/learning/statistics">
+                    <MdBarChart />
+                    &nbsp;&nbsp;Estadísticas
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
-              <Link href="/learning/account-settings">
-                <MdAccountCircle />
-                &nbsp;&nbsp; Configuración de cuenta
-              </Link>
+              <div
+                className="dropdown-menu-button"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span>
+                  <MdAccountCircle />
+                  &nbsp;&nbsp; Configuración de cuenta
+                </span>
+                <MdKeyboardArrowDown
+                  style={{ fontSize: 20, margin: "0 5px" }}
+                />
+              </div>
+              <ul className="list-unstyled">
+                <li>
+                  <Link href="/learning/account-settings/profile">
+                    <MdPerson />
+                    &nbsp;&nbsp;Perfíl
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/learning/account-settings/advanced">
+                    <MdManageAccounts />
+                    &nbsp;&nbsp;Avanzadas
+                  </Link>
+                </li>
+              </ul>
             </li>
             <li>
               <Link href="/learning/faqs">

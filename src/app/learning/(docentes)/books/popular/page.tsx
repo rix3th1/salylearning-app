@@ -1,3 +1,4 @@
+import checkListImage from "@/assets/checklist.png";
 import Image from "next/image";
 import { MdInfo, MdSearch } from "react-icons/md";
 
@@ -15,7 +16,7 @@ export default function PopularBooksPage() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/checklist.png"
+              src={checkListImage}
               alt="pdf"
               className="img-responsive center-box"
               width={110}

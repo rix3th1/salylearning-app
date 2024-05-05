@@ -1,3 +1,4 @@
+import calendarImage from "@/assets/calendar.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +29,7 @@ export default function NotAchievedQuestionaries() {
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
             <Image
-              src="/img/calendar.png"
+              src={calendarImage}
               alt="clock"
               className="img-responsive center-box"
               style={{ maxWidth: 110 }}
