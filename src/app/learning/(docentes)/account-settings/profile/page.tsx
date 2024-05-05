@@ -23,7 +23,12 @@ export default function TeacherAccountSettingsPage() {
 
       <div
         className="container-fluid"
-        style={{ padding: 20, margin: 20, backgroundColor: "#adb5bd" }}
+        style={{
+          padding: 20,
+          margin: 20,
+          marginBottom: "100px",
+          backgroundColor: "#adb5bd",
+        }}
       >
         <div className="row">
           <div className="col-md-6" style={{ margin: "5px 0" }}>
