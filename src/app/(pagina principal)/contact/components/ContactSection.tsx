@@ -1,4 +1,5 @@
 import ContactForm from "./ContactForm";
+import { MdCall } from "react-icons/md";
 
 export default function ContactSection() {
   return (
@@ -8,7 +9,7 @@ export default function ContactSection() {
         <div className="bg-light rounded-4 py-5 px-4 px-md-5">
           <article className="text-center mb-5">
             <div className="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3">
-              <span style={{ fontSize: 35 }}>✉</span>
+              <MdCall />
             </div>
             <h1 className="fw-bolder">Póngase en contacto</h1>
             <p className="lead fw-normal text-muted mb-0">Trabajemos juntos</p>
