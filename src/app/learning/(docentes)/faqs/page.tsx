@@ -1,8 +1,8 @@
-import ayudaImage from "@/../public/img/ayuda.png";
-import misLibrosImage from "@/../public/img/mis-libros.png";
-import leyendoImage from "@/../public/img/niñoleyendo.jpeg";
-import rendimientoImage from "@/../public/img/rendimiento.png";
+import ayudaImage from "@/assets/ayuda.png";
+import misLibrosImage from "@/assets/mis-libros.png";
+import leyendoImage from "@/assets/niñoleyendo.jpeg";
 import preguntaImage from "@/assets/pregunta_niño.png";
+import rendimientoImage from "@/assets/rendimiento.png";
 import Image from "next/image";
 import Link from "next/link";
 
