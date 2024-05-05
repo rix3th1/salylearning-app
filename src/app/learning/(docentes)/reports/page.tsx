@@ -24,9 +24,9 @@ export default function ReportsAndStatisticsPage() {
         </ul>
       </div>
 
-      <div className="container-fluid" style={{ margin: "50px 0" }}>
-        <div className="fila-ranking">
-          <div className="columna">
+      <div className="container-fluid" style={{ margin: "15px" }}>
+        <div className="row">
+          <div className="col-md-5">
             {/* Contenido de la primera columna */}
             <div className="ranking" style={{ marginRight: "1rem" }}>
               <Image
@@ -61,7 +61,7 @@ export default function ReportsAndStatisticsPage() {
               </div>
             </div>
           </div>
-          <div className="columna-ranking">
+          <div className="col-md-7" style={{ marginTop: "2rem" }}>
             {/* Contenido de demás lugares */}
             <p>Contenido de la segunda columna</p>
             <div className="other-positions">
@@ -146,27 +146,34 @@ export default function ReportsAndStatisticsPage() {
           </div>
         </div>
         {/*divs en una fila  */}
-        <div className="chart-puntuacion">
-          <div className="container-wrapper">
-            <div className="chart-style02">
+        <div className="container-fluid">
+          <div className="row chart-puntuacion">
+            <div className="chart-style02 col-md-4">
               <h3>Promedio Puntuación Grado Tercero</h3>
               <canvas id="ranking-chart-2" width={350} height={350} />
             </div>
-            <div className="chart-style02">
+            <div className="chart-style02 col-md-4">
               <h3>Promedio Puntuación Grado Cuarto</h3>
               <canvas id="ranking-chart-3" width={350} height={350} />
             </div>
-            <div className="chart-style02">
+            <div className="chart-style02 col-md-4">
               <h3>Promedio Puntuación Grado Quinto</h3>
               <canvas id="ranking-chart-4" width={350} height={350} />
             </div>
           </div>
         </div>
+
         {/*div estudiantes activos*/}
         <div className="chart-style02">
           <h2>Estudiantes Registrados</h2>
           <div id="active-students-list" className="student">
-            <ul id="active-students">{/* estudiantes activos */}</ul>
+            <ul id="active-students">
+              {Array.from({ length: 10 }, (_, i) => (
+                <li key={i} className="text-danger">
+                  Estudiante {i + 1}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

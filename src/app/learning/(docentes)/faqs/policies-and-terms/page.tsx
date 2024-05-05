@@ -66,6 +66,8 @@ export default function PoliciesAndTermsPage() {
                 incluye el nombre del usuario, dirección de correo electrónico y
                 datos de rendimiento en la plataforma.
               </p>
+              <hr />
+
               <h3>Uso de la Información</h3>
               <p className="all-parrafos">
                 La información recopilada se utiliza para adaptar el contenido
@@ -73,6 +75,8 @@ export default function PoliciesAndTermsPage() {
                 experiencia de aprendizaje y enviar comunicaciones relacionadas
                 con el servicio.
               </p>
+              <hr />
+
               <h3>Seguridad</h3>
               <p className="all-parrafos">
                 Implementamos medidas de seguridad física, electrónica y
@@ -80,12 +84,15 @@ export default function PoliciesAndTermsPage() {
                 embargo, no podemos garantizar la seguridad absoluta en la
                 transmisión de datos por Internet.
               </p>
+              <hr />
+
               <h3>Cookies</h3>
               <p className="all-parrafos">
                 Utilizamos cookies para mejorar la experiencia del usuario. Los
                 usuarios pueden gestionar las preferencias de cookies a través
                 de la configuración del navegador.
               </p>
+              <hr />
             </div>
             {/* Columna de Términos de Servicio */}
             <div className="col-md-4">
@@ -96,12 +103,16 @@ export default function PoliciesAndTermsPage() {
                 cumplir con nuestros términos de servicio. Se espera que los
                 usuarios respeten las normas y regulaciones establecidas.
               </p>
+              <hr />
+
               <h3>Responsabilidades del Usuario</h3>
               <p className="all-parrafos">
                 Los usuarios son responsables de mantener la confidencialidad de
                 su información de inicio de sesión y deben notificar cualquier
                 uso no autorizado de su cuenta.
               </p>
+              <hr />
+
               <h3>Propiedad Intelectual</h3>
               <p className="all-parrafos">
                 Saly Learning retiene los derechos de propiedad intelectual
@@ -109,12 +120,15 @@ export default function PoliciesAndTermsPage() {
                 pueden utilizar el contenido solo con fines educativos y no
                 comerciales.
               </p>
+              <hr />
+
               <h3>Limitaciones de Responsabilidad</h3>
               <p className="all-parrafos">
                 Saly Learning no se hace responsable de cualquier pérdida de
                 datos, interrupciones del servicio o daños indirectos derivados
                 del uso de la plataforma.
               </p>
+              <hr />
             </div>
             {/* Columna de Normas de Conducta */}
             <div className="col-md-4">
@@ -126,6 +140,8 @@ export default function PoliciesAndTermsPage() {
                 plataforma. Se espera un comportamiento respetuoso y
                 colaborativo.
               </p>
+              <hr />
+
               <h3>Prohibiciones</h3>
               <p className="all-parrafos">
                 Está prohibido el uso de Saly Learning para actividades
@@ -133,7 +149,8 @@ export default function PoliciesAndTermsPage() {
                 intelectual de terceros. El spam y cualquier forma de abuso
                 también están estrictamente prohibidos.
               </p>
-              <p />
+              <hr />
+
               <h3>Resolución de Conflictos</h3>
               <p className="all-parrafos">
                 Las disputas entre usuarios y la plataforma serán abordadas de
@@ -141,18 +158,23 @@ export default function PoliciesAndTermsPage() {
                 reclamaciones a través de nuestro servicio de atención al
                 cliente.
               </p>
+              <hr />
+
               <h3>Cancelación de Cuenta</h3>
               <p className="all-parrafos">
                 Saly Learning se reserva el derecho de cancelar la cuenta de un
                 usuario en caso de violación de los términos de servicio o por
                 razones de seguridad.
               </p>
+              <hr />
+
               <h3>Actualizaciones y Cambios</h3>
               <p className="all-parrafos">
                 Los usuarios serán notificados por correo electrónico sobre
                 cambios importantes en las políticas y términos. Se espera que
                 los usuarios revisen regularmente las actualizaciones.
               </p>
+              <hr />
             </div>
           </div>
         </div>

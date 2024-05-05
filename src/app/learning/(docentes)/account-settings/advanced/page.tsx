@@ -140,7 +140,11 @@ export default function TeacherAccountSettingsPage() {
                     name="city"
                   />
                 </div>
-                <button type="submit" className="btn btn-primary">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                  style={{ marginBottom: "40px" }}
+                >
                   Actualizar perfil
                 </button>
               </form>
@@ -150,6 +154,11 @@ export default function TeacherAccountSettingsPage() {
             <div className="col-md-6">
               <form>
                 {/* Cambio de contraseña */}
+                <div className="form-group text-center pt-3">
+                  <h3 className="all-tittles" style={{ textAlign: "center" }}>
+                    Cambia tu contraseña
+                  </h3>
+                </div>
                 <div className="form-group mx-sm-4 pt-3">
                   <label htmlFor="contrasenaActual">Cambiar contraseña</label>
                   <input

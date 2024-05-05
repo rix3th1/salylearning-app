@@ -70,10 +70,12 @@ export default function IntroductionPage() {
               </p>
             </div>
           </div>
+          <hr />
+
           {/* Objetivos de Saly Learning */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
-              <div className="col-md-6">
+              <div className="col-md-6 text-center">
                 <div className="bg-light p-4 rounded-4 shadow d-flex align-items-center justify-content-center">
                   <Image
                     className="img-fluid"
@@ -98,6 +100,8 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
+
           {/* Experiencia Interactiva */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
@@ -113,7 +117,7 @@ export default function IntroductionPage() {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6">
+              <div className="col-md-6 text-center">
                 <div className="bg-light p-4 rounded-4 shadow d-flex align-items-center justify-content-center">
                   <Image
                     className="img-fluid"
@@ -128,10 +132,12 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
+
           {/* Adaptabilidad a Diferentes Niveles */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
-              <div className="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
+              <div className="col-md-6 text-center order-md-2 d-flex align-items-center justify-content-center">
                 <div className="bg-light p-4 rounded-4 shadow">
                   <Image
                     className="img-fluid"
@@ -158,6 +164,8 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
+
           {/* Control Educativo */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
@@ -173,7 +181,7 @@ export default function IntroductionPage() {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
+              <div className="col-md-6 text-center order-md-2 d-flex align-items-center justify-content-center">
                 <div className="bg-light p-4 rounded-4 shadow">
                   <Image
                     className="img-fluid"
@@ -188,10 +196,12 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
+
           {/* Estadísticas y Seguimiento del Progreso */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
-              <div className="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
+              <div className="col-md-6 text-center order-md-2 d-flex align-items-center justify-content-center">
                 <div className="bg-light p-4 rounded-4 shadow">
                   <Image
                     className="img-fluid"
@@ -220,6 +230,8 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
+
           {/* Plataforma Responsiva */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
@@ -235,7 +247,7 @@ export default function IntroductionPage() {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
+              <div className="col-md-6 text-center order-md-2 d-flex align-items-center justify-content-center">
                 <div className="bg-light p-4 rounded-4 shadow">
                   <Image
                     className="img-fluid"
@@ -250,10 +262,12 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
+
           {/* Compromiso con la Seguridad */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
-              <div className="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
+              <div className="col-md-6 text-center order-md-2 d-flex align-items-center justify-content-center">
                 <div className="bg-light p-4 rounded-4 shadow">
                   <Image
                     className="img-fluid"
@@ -278,6 +292,8 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
+
           {/* Invitación a Participar */}
           <div className="card shadow border-0 rounded-4 mb-5">
             <div className="row g-0">
@@ -291,7 +307,7 @@ export default function IntroductionPage() {
                   </p>
                 </div>
               </div>
-              <div className="col-md-6 order-md-2 d-flex align-items-center justify-content-center">
+              <div className="col-md-6 text-center order-md-2 d-flex align-items-center justify-content-center">
                 <div className="bg-light p-4 rounded-4 shadow">
                   <Image
                     className="img-fluid"
@@ -306,6 +322,7 @@ export default function IntroductionPage() {
               </div>
             </div>
           </div>
+          <hr />
         </div>
       </div>
     </>

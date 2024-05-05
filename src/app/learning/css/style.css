@@ -809,6 +809,7 @@ canvas {
   justify-content: space-around;
   margin-top: 20px;
 }
+
 .chart-style {
   border: 2px solid #1e30f3;
   border-radius: 10px;
@@ -817,20 +818,14 @@ canvas {
   margin-top: 35px;
 }
 .chart-puntuacion {
-  display: flex;
-  justify-content: space-around;
   margin-top: 20px;
+  margin-bottom: 20px;
   border: 2px solid #e0e0e0;
   border-radius: 10px;
-  padding: 10px;
+  padding: 20px;
   box-shadow: 5px 15px 10px rgba(173, 181, 189);
 }
-.chart-style02 {
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 10px;
-  margin-top: 5px;
-}
+
 .container-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -921,18 +916,27 @@ canvas {
   height: 50px;
   margin-right: 10px;
 }
+
 /* Estilos para el gráfico */
 .chart-style02 {
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
   background-color: #f0f0f0;
   padding: 20px;
-  border-radius: 10px;
+  margin: 0;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+.chart-style02 h3 {
+  font-size: medium;
+  text-align: center;
+  margin: 0;
+  font-weight: bold;
+}
+
 .chart-style02 h2 {
-  color: #333;
-  font-size: 1.5em;
-  margin-bottom: 10px;
+  font-size: x-large;
+  font-weight: bold;
 }
 
 .student {

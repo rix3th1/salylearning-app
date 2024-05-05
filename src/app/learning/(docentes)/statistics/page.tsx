@@ -22,31 +22,36 @@ export default function ReportsAndStatisticsPage() {
         </ul>
       </div>
 
-      <div
-        className="container-fluid"
-        style={{ margin: "50px 0", padding: "0 px" }}
-      >
-        <h2>Contenido de Estadísticas general</h2>
-        <div className="chart-row">
+      <div className="container-fluid" style={{ margin: "50px 20px" }}>
+        <h2>Contenido de estadísticas generales</h2>
+        <div className="row text-center">
           {/* Primera fila de gráficos de barras */}
-          <div className="chart-style">
-            <h3>Libros completados</h3>
-            <canvas id="bar-chart-1" width={400} height={400} />
+          <div className="col-md-6">
+            <div className="chart-style">
+              <h3>Libros completados</h3>
+              <canvas id="bar-chart-1" width={400} height={400} />
+            </div>
           </div>
-          <div className="chart-style">
-            <h3>Libros Incompletos</h3>
-            <canvas id="bar-chart-2" width={400} height={400} />
+          <div className="col-md-6">
+            <div className="chart-style">
+              <h3>Libros Incompletos</h3>
+              <canvas id="bar-chart-2" width={400} height={400} />
+            </div>
           </div>
         </div>
-        <div className="chart-row">
+        <div className="row text-center">
           {/* Segunda fila de gráficos circulares */}
-          <div className="chart-style">
-            <h3>Actividades completadas</h3>
-            <canvas id="pie-chart-1" width={400} height={400} />
+          <div className="col-md-6">
+            <div className="chart-style">
+              <h3>Actividades completadas</h3>
+              <canvas id="pie-chart-1" width={400} height={400} />
+            </div>
           </div>
-          <div className="chart-style">
-            <h3>Actividades pendientes</h3>
-            <canvas id="pie-chart-2" width={400} height={400} />
+          <div className="col-md-6">
+            <div className="chart-style">
+              <h3>Actividades pendientes</h3>
+              <canvas id="pie-chart-2" width={400} height={400} />
+            </div>
           </div>
         </div>
       </div>

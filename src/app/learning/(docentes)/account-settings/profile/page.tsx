@@ -26,19 +26,14 @@ export default function TeacherAccountSettingsPage() {
         style={{ padding: 20, margin: 20, backgroundColor: "#adb5bd" }}
       >
         <div className="row">
-          <div
-            className="col-xs-12 col-md-6"
-            style={{
-              width: "30%",
-              borderRadius: 15,
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              backgroundColor: "#fff",
-              padding: "10px 20px 15px 5px",
-              justifyContent: "space-between",
-            }}
-          >
-            <div className="report-content">
-              <div className="card mb-4">
+          <div className="col-md-6" style={{ margin: "5px 0" }}>
+            <div
+              style={{
+                borderRadius: 15,
+                backgroundColor: "#fff",
+              }}
+            >
+              <div className="report-content">
                 <div className="card-body text-center">
                   <Image
                     id="avatar"
@@ -87,187 +82,185 @@ export default function TeacherAccountSettingsPage() {
               </div>
             </div>
           </div>
-          {/* Modal para mostrar las opciones de avatar */}
-          <div
-            className="modal fade"
-            id="avatarModal"
-            tabIndex={-1}
-            role="dialog"
-            aria-labelledby="avatarModalLabel"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog" role="document">
-              <div
-                className="modal-content"
-                style={{ backgroundColor: "#ced4da" }}
-              >
-                <div className="modal-header">
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span
-                      aria-hidden="true"
-                      style={{
-                        position: "relative",
-                        fontSize: 35,
-                        top: "8px",
-                      }}
-                    >
-                      ×
-                    </span>
-                  </button>
-                  <h5
-                    className="modal-title"
-                    id="avatarModalLabel"
-                    style={{ fontSize: "2rem", textAlign: "center" }}
-                  >
-                    Por favor, elige un avatar
-                  </h5>
+
+          <div className="col-md-6" style={{ margin: "5px 0" }}>
+            <div
+              style={{
+                borderRadius: 15,
+                backgroundColor: "#fff",
+                padding: "22px",
+              }}
+            >
+              <div className="report-content">
+                <div className="col-sm-3">
+                  <p className="mb-0">Nombres</p>
                 </div>
-                <div className="modal-body">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <ul className="list-group avatar-list">
-                        <li
-                          className="list-group-item avatar-option"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="Avatar 1"
-                        >
-                          <Image
-                            width={400}
-                            height={400}
-                            quality={100}
-                            src="/img/user.png"
-                            alt="Avatar 1"
-                            className="img-thumbnail"
-                          />
-                        </li>
-                        <li
-                          className="list-group-item avatar-option"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="Avatar 2"
-                        >
-                          <Image
-                            width={400}
-                            height={400}
-                            quality={100}
-                            src="/img/user01.png"
-                            alt="Avatar 2"
-                            className="img-thumbnail"
-                          />
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="col-md-6">
-                      <ul className="list-group avatar-list">
-                        <li
-                          className="list-group-item avatar-option"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="Avatar 3"
-                        >
-                          <Image
-                            width={400}
-                            height={400}
-                            quality={100}
-                            src="/img/user02.png"
-                            alt="Avatar 3"
-                            className="img-thumbnail"
-                          />
-                        </li>
-                        <li
-                          className="list-group-item avatar-option"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title="Avatar 4"
-                        >
-                          <Image
-                            width={400}
-                            height={400}
-                            quality={100}
-                            src="/img/user05.png"
-                            alt="Avatar 4"
-                            className="img-thumbnail"
-                          />
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                <div className="col-sm-9">
+                  <p className="text-muted mb-0">Elizabeth</p>
                 </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    data-dismiss="modal"
-                  >
-                    Cerrar
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-primary"
-                    id="guardarBtn"
-                    disabled
-                  >
-                    Guardar
-                  </button>
+              </div>
+              <div className="report-content">
+                <div className="col-sm-3">
+                  <p className="mb-0">Apellidos</p>
+                </div>
+                <div className="col-sm-9">
+                  <p className="text-muted mb-0">Báthory</p>
+                </div>
+              </div>
+              <div className="report-content">
+                <div className="col-sm-3">
+                  <p className="mb-0">Edad</p>
+                </div>
+                <div className="col-sm-9">
+                  <p className="text-muted mb-0">20</p>
+                </div>
+              </div>
+              <div className="report-content">
+                <div className="col-sm-3">
+                  <p className="mb-0">Grado</p>
+                </div>
+                <div className="col-sm-9">
+                  <p className="text-muted mb-0">quinto</p>
+                </div>
+              </div>
+              <div className="report-content">
+                <div className="col-sm-3">
+                  <p className="mb-0">Correo electrónico</p>
+                </div>
+                <div className="col-sm-9">
+                  <p className="text-muted mb-0">Elizabeth123@gmail.com</p>
                 </div>
               </div>
             </div>
           </div>
-          <div
-            className="col-xs-12 col-md-6"
-            style={{
-              borderRadius: 15,
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-              backgroundColor: "#fff",
-              padding: "10px 20px 15px 5px",
-              justifyContent: "space-between",
-            }}
-          >
-            <div className="report-content">
-              <div className="col-sm-3">
-                <p className="mb-0">Nombres</p>
-              </div>
-              <div className="col-sm-9">
-                <p className="text-muted mb-0">Elizabeth</p>
+        </div>
+      </div>
+
+      {/* Modal para mostrar las opciones de avatar */}
+      <div
+        className="modal fade"
+        id="avatarModal"
+        tabIndex={-1}
+        role="dialog"
+        aria-labelledby="avatarModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog" role="document">
+          <div className="modal-content" style={{ backgroundColor: "#ced4da" }}>
+            <div className="modal-header">
+              <button
+                type="button"
+                className="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span
+                  aria-hidden="true"
+                  style={{
+                    position: "relative",
+                    fontSize: 35,
+                    top: "8px",
+                  }}
+                >
+                  ×
+                </span>
+              </button>
+              <h5
+                className="modal-title"
+                id="avatarModalLabel"
+                style={{ fontSize: "2rem", textAlign: "center" }}
+              >
+                Por favor, elige un avatar
+              </h5>
+            </div>
+            <div className="modal-body">
+              <div className="row">
+                <div className="col-md-6">
+                  <ul className="list-group avatar-list">
+                    <li
+                      className="list-group-item avatar-option"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Avatar 1"
+                    >
+                      <Image
+                        width={400}
+                        height={400}
+                        quality={100}
+                        src="/img/user.png"
+                        alt="Avatar 1"
+                        className="img-thumbnail"
+                      />
+                    </li>
+                    <li
+                      className="list-group-item avatar-option"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Avatar 2"
+                    >
+                      <Image
+                        width={400}
+                        height={400}
+                        quality={100}
+                        src="/img/user01.png"
+                        alt="Avatar 2"
+                        className="img-thumbnail"
+                      />
+                    </li>
+                  </ul>
+                </div>
+                <div className="col-md-6">
+                  <ul className="list-group avatar-list">
+                    <li
+                      className="list-group-item avatar-option"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Avatar 3"
+                    >
+                      <Image
+                        width={400}
+                        height={400}
+                        quality={100}
+                        src="/img/user02.png"
+                        alt="Avatar 3"
+                        className="img-thumbnail"
+                      />
+                    </li>
+                    <li
+                      className="list-group-item avatar-option"
+                      data-toggle="tooltip"
+                      data-placement="top"
+                      title="Avatar 4"
+                    >
+                      <Image
+                        width={400}
+                        height={400}
+                        quality={100}
+                        src="/img/user05.png"
+                        alt="Avatar 4"
+                        className="img-thumbnail"
+                      />
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <div className="report-content">
-              <div className="col-sm-3">
-                <p className="mb-0">Apellidos</p>
-              </div>
-              <div className="col-sm-9">
-                <p className="text-muted mb-0">Báthory</p>
-              </div>
-            </div>
-            <div className="report-content">
-              <div className="col-sm-3">
-                <p className="mb-0">Edad</p>
-              </div>
-              <div className="col-sm-9">
-                <p className="text-muted mb-0">20</p>
-              </div>
-            </div>
-            <div className="report-content">
-              <div className="col-sm-3">
-                <p className="mb-0">Grado</p>
-              </div>
-              <div className="col-sm-9">
-                <p className="text-muted mb-0">quinto</p>
-              </div>
-            </div>
-            <div className="report-content">
-              <div className="col-sm-3">
-                <p className="mb-0">Correo electrónico</p>
-              </div>
-              <div className="col-sm-9">
-                <p className="text-muted mb-0">Elizabeth123@gmail.com</p>
-              </div>
+            <div className="modal-footer">
+              <button
+                type="button"
+                className="btn btn-primary"
+                data-dismiss="modal"
+              >
+                Cerrar
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary"
+                id="guardarBtn"
+                disabled
+              >
+                Guardar
+              </button>
             </div>
           </div>
         </div>

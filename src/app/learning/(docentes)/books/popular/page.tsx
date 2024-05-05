@@ -45,7 +45,7 @@ export default function PopularBooksPage() {
       </div>
 
       <div className="container-fluid" id="libros-container">
-        {Array.from({ length: 10 }).map((_, i) => (
+        {Array.from({ length: 10 }, (_, i) => (
           <div key={i} className="media media-hover" data-tiempo="semana">
             <div className="media-left media-middle">
               <a

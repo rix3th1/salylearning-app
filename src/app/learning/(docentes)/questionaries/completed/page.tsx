@@ -1,6 +1,7 @@
 import calendarBookImage from "@/assets/calendar_book.png";
 import Image from "next/image";
 import Link from "next/link";
+import { MdSchedule } from "react-icons/md";
 
 export default function CompletedQuestionariesPage() {
   return (
@@ -47,180 +48,38 @@ export default function CompletedQuestionariesPage() {
       </div>
       <div className="container-fluid">
         <h2 className="text-center all-tittles">Cuestionarios completos</h2>
+
         <div className="table-responsive">
-          <div className="div-table" style={{ margin: "0 !important" }}>
-            <div
-              className="div-table-row div-table-row-list"
-              style={{ backgroundColor: "#dff0d8", fontWeight: "bold" }}
-            >
-              <div className="div-table-cell" style={{ width: "6%" }}>
-                #
-              </div>
-              <div className="div-table-cell" style={{ width: "22%" }}>
-                Nombre de libro
-              </div>
-              <div className="div-table-cell" style={{ width: "22%" }}>
-                Nombre de usuario
-              </div>
-              <div className="div-table-cell" style={{ width: "10%" }}>
-                Grado
-              </div>
-              <div className="div-table-cell" style={{ width: "10%" }}>
-                Fecha asignado
-              </div>
-              <div className="div-table-cell" style={{ width: "10%" }}>
-                Fecha entrega
-              </div>
-              <div className="div-table-cell" style={{ width: "8%" }}>
-                Ver puntuación
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="table-responsive">
-          <div className="div-table" style={{ margin: "0 !important" }}>
-            <div className="div-table-row div-table-row-list">
-              <div className="div-table-cell" style={{ width: "6%" }}>
-                #
-              </div>
-              <div className="div-table-cell" style={{ width: "22%" }}>
-                Nombre de libro
-              </div>
-              <div className="div-table-cell" style={{ width: "22%" }}>
-                Nombre de usuario
-              </div>
-              <div className="div-table-cell" style={{ width: "10%" }}>
-                Grado
-              </div>
-              <div className="div-table-cell" style={{ width: "10%" }}>
-                Fecha asignado
-              </div>
-              <div className="div-table-cell" style={{ width: "10%" }}>
-                Fecha Entrega
-              </div>
-              <div className="div-table-cell" style={{ width: "8%" }}>
-                <button className="btn btn-success">
-                  <i className="zmdi zmdi-time-restore" />
-                </button>
-              </div>
-            </div>
-          </div>
-          <div className="table-responsive">
-            <div className="div-table" style={{ margin: "0 !important" }}>
-              <div className="div-table-row div-table-row-list">
-                <div className="div-table-cell" style={{ width: "6%" }}>
-                  #
-                </div>
-                <div className="div-table-cell" style={{ width: "22%" }}>
-                  Nombre de libro
-                </div>
-                <div className="div-table-cell" style={{ width: "22%" }}>
-                  Nombre de usuario
-                </div>
-                <div className="div-table-cell" style={{ width: "10%" }}>
-                  Grado
-                </div>
-                <div className="div-table-cell" style={{ width: "10%" }}>
-                  Fecha asignado
-                </div>
-                <div className="div-table-cell" style={{ width: "10%" }}>
-                  Fecha Entrega
-                </div>
-                <div className="div-table-cell" style={{ width: "8%" }}>
-                  <button className="btn btn-success">
-                    <i className="zmdi zmdi-time-restore" />
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="table-responsive">
-              <div className="div-table" style={{ margin: "0 !important" }}>
-                <div className="div-table-row div-table-row-list">
-                  <div className="div-table-cell" style={{ width: "6%" }}>
-                    #
-                  </div>
-                  <div className="div-table-cell" style={{ width: "22%" }}>
-                    Nombre de libro
-                  </div>
-                  <div className="div-table-cell" style={{ width: "22%" }}>
-                    Nombre de usuario
-                  </div>
-                  <div className="div-table-cell" style={{ width: "10%" }}>
-                    Grado
-                  </div>
-                  <div className="div-table-cell" style={{ width: "10%" }}>
-                    Fecha asignado
-                  </div>
-                  <div className="div-table-cell" style={{ width: "10%" }}>
-                    Fecha Entrega
-                  </div>
-                  <div className="div-table-cell" style={{ width: "8%" }}>
+          <table className="table table-hover">
+            <thead>
+              <tr className="active">
+                <th>No.</th>
+                <th>Nombre de libro</th>
+                <th>Nombre de usuario</th>
+                <th>Grado</th>
+                <th>Fecha asignado</th>
+                <th>Fecha entrega</th>
+                <th>Ver puntuación</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Array.from({ length: 5 }, (_, i) => (
+                <tr key={i} className="info">
+                  <td>{i + 1}</td>
+                  <td>El principito</td>
+                  <td>Carlos</td>
+                  <td>3</td>
+                  <td>12/08/2021</td>
+                  <td>12/08/2021</td>
+                  <td>
                     <button className="btn btn-success">
-                      <i className="zmdi zmdi-time-restore" />
+                      <MdSchedule />
                     </button>
-                  </div>
-                </div>
-              </div>
-              <div className="table-responsive">
-                <div className="div-table" style={{ margin: "0 !important" }}>
-                  <div className="div-table-row div-table-row-list">
-                    <div className="div-table-cell" style={{ width: "6%" }}>
-                      #
-                    </div>
-                    <div className="div-table-cell" style={{ width: "22%" }}>
-                      Nombre de libro
-                    </div>
-                    <div className="div-table-cell" style={{ width: "22%" }}>
-                      Nombre de usuario
-                    </div>
-                    <div className="div-table-cell" style={{ width: "10%" }}>
-                      Grado
-                    </div>
-                    <div className="div-table-cell" style={{ width: "10%" }}>
-                      Fecha asignado
-                    </div>
-                    <div className="div-table-cell" style={{ width: "10%" }}>
-                      Fecha Entrega
-                    </div>
-                    <div className="div-table-cell" style={{ width: "8%" }}>
-                      <button className="btn btn-success">
-                        <i className="zmdi zmdi-time-restore" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <div className="table-responsive">
-                  <div className="div-table" style={{ margin: "0 !important" }}>
-                    <div className="div-table-row div-table-row-list">
-                      <div className="div-table-cell" style={{ width: "6%" }}>
-                        #
-                      </div>
-                      <div className="div-table-cell" style={{ width: "22%" }}>
-                        Nombre de libro
-                      </div>
-                      <div className="div-table-cell" style={{ width: "22%" }}>
-                        Nombre de usuario
-                      </div>
-                      <div className="div-table-cell" style={{ width: "10%" }}>
-                        Grado
-                      </div>
-                      <div className="div-table-cell" style={{ width: "10%" }}>
-                        Fecha asignado
-                      </div>
-                      <div className="div-table-cell" style={{ width: "10%" }}>
-                        Fecha Entrega
-                      </div>
-                      <div className="div-table-cell" style={{ width: "8%" }}>
-                        <button className="btn btn-success">
-                          <i className="zmdi zmdi-time-restore" />
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </>
