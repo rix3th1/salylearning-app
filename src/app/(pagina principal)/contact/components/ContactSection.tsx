@@ -1,5 +1,5 @@
-import ContactForm from "./ContactForm";
 import { MdCall } from "react-icons/md";
+import ContactForm from "./ContactForm";
 
 export default function ContactSection() {
   return (
