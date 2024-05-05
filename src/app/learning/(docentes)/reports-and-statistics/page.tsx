@@ -1,3 +1,4 @@
+import categoryImage from "@/assets/category.png";
 import Image from "next/image";
 import Script from "next/script";
 
@@ -84,7 +85,7 @@ export default function ReportsAndStatisticsPage() {
                     width={525}
                     height={525}
                     quality={100}
-                    src="/img/category.png"
+                    src={categoryImage}
                     alt="Primer Lugar"
                   />
                   <p>Primer Lugar</p>
@@ -95,7 +96,7 @@ export default function ReportsAndStatisticsPage() {
                       width={260}
                       height={260}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Segundo Lugar"
                     />
                     <p>Segundo Lugar</p>
@@ -105,7 +106,7 @@ export default function ReportsAndStatisticsPage() {
                       width={260}
                       height={260}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Tercer Lugar"
                     />
                     <p>Tercer Lugar</p>
@@ -121,7 +122,7 @@ export default function ReportsAndStatisticsPage() {
                       width={110}
                       height={110}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Imagen Pequeña"
                       className="small-image"
                     />
@@ -132,7 +133,7 @@ export default function ReportsAndStatisticsPage() {
                       width={110}
                       height={110}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Imagen Pequeña"
                       className="small-image"
                     />
@@ -143,7 +144,7 @@ export default function ReportsAndStatisticsPage() {
                       width={110}
                       height={110}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Imagen Pequeña"
                       className="small-image"
                     />
@@ -154,7 +155,7 @@ export default function ReportsAndStatisticsPage() {
                       width={110}
                       height={110}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Imagen Pequeña"
                       className="small-image"
                     />
@@ -165,7 +166,7 @@ export default function ReportsAndStatisticsPage() {
                       width={110}
                       height={110}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Imagen Pequeña"
                       className="small-image"
                     />
@@ -176,7 +177,7 @@ export default function ReportsAndStatisticsPage() {
                       width={110}
                       height={110}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Imagen Pequeña"
                       className="small-image"
                     />
@@ -187,7 +188,7 @@ export default function ReportsAndStatisticsPage() {
                       width={110}
                       height={110}
                       quality={100}
-                      src="/img/category.png"
+                      src={categoryImage}
                       alt="Imagen Pequeña"
                       className="small-image"
                     />
