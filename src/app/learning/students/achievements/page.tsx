@@ -64,14 +64,14 @@ export default function AchievementsPage() {
               <div className="row">
                 <div className="col-md-6">
                   <h4>Historial de Logros</h4>
-                  <div className="list-group">
-                    <a href="#" className="list-group-item">
+                  <ul className="list-group">
+                    <li className="list-group-item">
                       Leídos 5 libros (02/03/2024)
-                    </a>
-                    <a href="#" className="list-group-item">
+                    </li>
+                    <li className="list-group-item">
                       Respondidas correctamente 60 preguntas (01/03/2024)
-                    </a>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
                 <div className="col-md-6">
                   <h4>Logros Destacados</h4>

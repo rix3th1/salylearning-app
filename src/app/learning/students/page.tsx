@@ -1,6 +1,7 @@
 import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
 import leyendoImage from "@/assets/niñoleyendo.jpeg";
 import type { Metadata } from "next";
+import Link from "next/link";
 import {
   MdArrowLeft,
   MdArrowRight,
@@ -33,7 +34,7 @@ export default function HomePage() {
                   <MdMenuBook />
                 </div>
                 <div className="tile-name all-titles">
-                  <a href="book-student.html">Mis libros</a>
+                  <Link href="/learning/students/books">Mis libros</Link>
                 </div>
                 <div className="tile-num full-reset">3</div>
               </article>
@@ -42,7 +43,9 @@ export default function HomePage() {
                   <MdBarChart />
                 </div>
                 <div className="tile-name all-titles">
-                  <a href="Activity.html">¡Enfréntate a los Retos!</a>
+                  <Link href="/learning/students/activities/pending">
+                    ¡Enfréntate a los Retos!
+                  </Link>
                 </div>
                 <div className="tile-num full-reset">3</div>
               </article>
@@ -51,7 +54,7 @@ export default function HomePage() {
                   <MdTrendingUp />
                 </div>
                 <div className="tile-name all-titles">
-                  <a href="student-logros.html">Logros</a>
+                  <Link href="/learning/students/achievements">Logros</Link>
                 </div>
                 <div className="tile-num full-reset">3</div>
               </article>

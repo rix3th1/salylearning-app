@@ -1,5 +1,6 @@
 import preguntaImage from "@/assets/pregunta_niño.png";
 import Image from "next/image";
+import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 
 export default function Card1() {
@@ -31,14 +32,14 @@ export default function Card1() {
               conceptos favorables para su vida, además de poder entender lo que
               ha leído y sacar sus propias conclusiones.
             </div>
-            <a
+            <Link
               className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder my-2"
               href="https://www.educo.org/blog/¿como-trabajar-la-comprension-lectora-en-ninos-y-n"
               target="_blank"
             >
               Más info.&nbsp;
               <MdOpenInNew style={{ marginBottom: "2px" }} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

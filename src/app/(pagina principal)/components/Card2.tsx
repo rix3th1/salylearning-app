@@ -1,5 +1,6 @@
 import comoImage from "@/assets/como.png";
 import Image from "next/image";
+import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 
 export default function Card2() {
@@ -28,14 +29,14 @@ export default function Card2() {
               manejo de estas características será muy difícil entender el
               aprendizaje de la lectura.
             </div>
-            <a
+            <Link
               className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder my-2"
               href="https://www.educo.org/blog/¿como-trabajar-la-comprension-lectora-en-ninos-y-n"
               target="_blank"
             >
               Más info.&nbsp;
               <MdOpenInNew style={{ marginBottom: "2px" }} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

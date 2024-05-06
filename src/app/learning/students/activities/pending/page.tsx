@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function PendingActivitiesPage() {
   return (
     <>
@@ -8,26 +10,30 @@ export default function PendingActivitiesPage() {
           </h1>
         </div>
       </div>
+
       <section className="card-section text-center" id="contenido">
         <div className="container-fluid">
           <ul className="nav nav-tabs custom-tabs">
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                data-toggle="tab"
-                href="#por-hacer"
+            <li className="nav-item active">
+              <Link
+                className="nav-link"
+                href="/learning/students/activities/pending"
               >
                 Por hacer
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" data-toggle="tab" href="#hecho">
+              <Link
+                className="nav-link"
+                href="/learning/students/activities/done"
+              >
                 Hecho
-              </a>
+              </Link>
             </li>
           </ul>
+
           <div className="tab-content">
-            <div id="por-hacer" className="tab-pane fade show active">
+            <div id="por-hacer">
               {/* Contenido de "Por hacer" */}
               <h2>Actividades por hacer</h2>
               <p>
@@ -184,21 +190,6 @@ export default function PendingActivitiesPage() {
                     </button>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div id="sin-preguntas" style={{ display: "none" }}>
-              <img
-                src="/img/Terminaste.gif"
-                className="img-finish"
-                alt="estas al dia"
-              />
-            </div>
-            <div id="hecho" className="tab-pane fade">
-              {/* Contenido de "Hecho" */}
-              <h2>Actividades hechas</h2>
-              <p>¡Felicidades por completar estas actividades!</p>
-              <div className="row">
-                {/* Tarjetas de actividades hechas aquí */}
               </div>
             </div>
           </div>

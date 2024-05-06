@@ -14,16 +14,6 @@ export default function BooksPage() {
         className="card-section text-center"
         style={{ padding: "40px 0" }}
       >
-        <div className="container-fluid">
-          {/* <ul className="nav nav-tabs custom-tabs" style={{ fontSize: "17px" }}>
-            <li className="active">
-              <a href="book-student.html">Explorar libros</a>
-            </li>
-            <li>
-              <a href="favoritebok.html">Libros Favoritos</a>
-            </li>
-          </ul> */}
-        </div>
         <div className="container-fluid" style={{ margin: "50px 0" }}>
           <div className="row">
             <div className="col-xs-12 col-sm-4 col-md-3">
@@ -61,9 +51,9 @@ export default function BooksPage() {
                       alt="Imagen 1"
                     />
                     <div className="card-body">
-                      <a id="leer1" className="btn-book">
+                      <button id="leer1" className="btn-book">
                         Leer
-                      </a>
+                      </button>
                     </div>
                   </div>
                   {/* book 2 */}
@@ -74,9 +64,9 @@ export default function BooksPage() {
                       alt="Imagen 2"
                     />
                     <div className="card-body">
-                      <a id="leer2" className="btn-book">
+                      <button id="leer2" className="btn-book">
                         Leer
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -99,9 +89,9 @@ export default function BooksPage() {
                       alt="Imagen 1"
                     />
                     <div className="card-body">
-                      <a id="leer3" className="btn-book">
+                      <button id="leer3" className="btn-book">
                         Leer
-                      </a>
+                      </button>
                     </div>
                   </div>
                   {/* book 2 */}
@@ -112,9 +102,9 @@ export default function BooksPage() {
                       alt="Imagen 2"
                     />
                     <div className="card-body">
-                      <a id="leer4" className="btn-book">
+                      <button id="leer4" className="btn-book">
                         Leer
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -137,9 +127,9 @@ export default function BooksPage() {
                       alt="Imagen 1"
                     />
                     <div className="card-body">
-                      <a id="leer5" className="btn-book">
+                      <button id="leer5" className="btn-book">
                         Leer
-                      </a>
+                      </button>
                     </div>
                   </div>
                   {/* book 2 */}
@@ -150,9 +140,9 @@ export default function BooksPage() {
                       alt="Imagen 2"
                     />
                     <div className="card-body">
-                      <a id="leer6" className="btn-book">
+                      <button id="leer6" className="btn-book">
                         Leer
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import checkListImage from "@/assets/checklist.png";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { MdInfo, MdOpenInNew, MdSearch } from "react-icons/md";
 
 export const metadata: Metadata = {
@@ -53,10 +54,8 @@ export default function PopularBooksPage() {
         {Array.from({ length: 10 }, (_, i) => (
           <div key={i} className="media media-hover" data-tiempo="semana">
             <div className="media-left media-middle">
-              <a
-                href="#!"
+              <span
                 className="tooltips-general"
-                data-toggle="tooltip"
                 data-placement="right"
                 title="Más información del libro"
               >
@@ -68,7 +67,7 @@ export default function PopularBooksPage() {
                   height={60}
                   quality={75}
                 />
-              </a>
+              </span>
             </div>
             <div className="media-body">
               <h4 className="media-heading">Matilda, de Roald Dahl</h4>
@@ -79,7 +78,7 @@ export default function PopularBooksPage() {
                 <br />
               </div>
               <p className="text-center pull-right">
-                <a
+                <Link
                   href="https://es.wikipedia.org/wiki/Matilda"
                   className="btn btn-info btn-xs"
                   style={{ marginRight: 10 }}
@@ -87,7 +86,7 @@ export default function PopularBooksPage() {
                 >
                   <MdInfo /> Más información&nbsp;
                   <MdOpenInNew />
-                </a>
+                </Link>
               </p>
             </div>
           </div>

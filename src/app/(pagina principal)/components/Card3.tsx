@@ -1,5 +1,6 @@
 import porqueImage from "@/assets/porque.png";
 import Image from "next/image";
+import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
 
 export default function Card3() {
@@ -26,14 +27,14 @@ export default function Card3() {
               niños, continuamos con el paso del desarrollo en compresión
               lectora, algunos de los métodos.
             </div>
-            <a
+            <Link
               className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder my-2"
               href="https://www.educo.org/blog/¿como-trabajar-la-comprension-lectora-en-ninos-y-n"
               target="_blank"
             >
               Más info.&nbsp;
               <MdOpenInNew style={{ marginBottom: "2px" }} />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
