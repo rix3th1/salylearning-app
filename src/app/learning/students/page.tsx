@@ -1,10 +1,10 @@
 import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
-import leyendoImage from "@/assets/niñoleyendo.jpeg";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
-  MdArrowLeft,
-  MdArrowRight,
+  MdArrowCircleLeft,
+  MdArrowCircleRight,
   MdBarChart,
   MdMenuBook,
   MdPlayCircle,
@@ -74,10 +74,14 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div>
-                  <img
-                    src={SALYCAPIBARA.src}
+                  <Image
+                    src={SALYCAPIBARA}
+                    className="img-responsive center-box"
                     alt="Motivación"
-                    style={{ maxWidth: "80%", height: "auto" }}
+                    width={680}
+                    height={700}
+                    quality={100}
+                    style={{ width: "auto" }}
                   />
                   <div>
                     <MdPlayCircle />
@@ -86,9 +90,6 @@ export default function HomePage() {
               </div>
               <div className="container-items">
                 <div className="items">
-                  <div className="item active">
-                    <img src={SALYCAPIBARA.src} />
-                  </div>
                   <div className="item next">
                     <img src="/img/el libro de la selva.jpg" />
                   </div>
@@ -98,15 +99,12 @@ export default function HomePage() {
                   <div className="item">
                     <img src="/img/manolito gafotas.jpg" />
                   </div>
-                  <div className="item prev">
-                    <img src={leyendoImage.src} />
-                  </div>
                   <div className="button-container">
                     <div className="button">
-                      <MdArrowLeft />
+                      <MdArrowCircleLeft />
                     </div>
                     <div className="button">
-                      <MdArrowRight />
+                      <MdArrowCircleRight />
                     </div>
                   </div>
                 </div>
