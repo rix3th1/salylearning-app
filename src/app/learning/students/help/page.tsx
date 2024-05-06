@@ -25,7 +25,7 @@ export default function HelpPage() {
           </div>
           <div className="column-help1">
             <img src={ayudaImage.src} alt="Imagen 2" />
-            <h4>¿Cómo funciona "Saly Learning"?</h4>
+            <h4>{'¿Cómo funciona "Saly Learning"?'}</h4>
             <p>
               Saly Learning utiliza una interfaz interactiva y actividades
               diseñadas para mejorar la comprensión lectora. Los estudiantes

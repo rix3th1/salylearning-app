@@ -38,8 +38,9 @@ export default function DoneActivitiesPage() {
                 <div className="col-md-4">
                   <div className="activity-card por-hacer" id="actividad1">
                     <h5>
-                      ¿Cuál es el nombre del protagonista del libro "Charlie y
-                      la fábrica de chocolate" de Roald Dahl?
+                      {
+                        '¿Cuál es el nombre del protagonista del libro "Charlie y la fábrica de chocolate" de Roald Dahl?'
+                      }
                     </h5>
                     <p>
                       <input
@@ -88,8 +89,9 @@ export default function DoneActivitiesPage() {
                 <div className="col-md-4">
                   <div className="activity-card por-hacer" id="actividad2">
                     <h5>
-                      En el cuento clásico "La Cenicienta", ¿qué animal ayuda a
-                      Cenicienta a llegar al baile?
+                      {
+                        'En el cuento clásico "La Cenicienta", ¿qué animal ayuda a Cenicienta a llegar al baile?'
+                      }
                     </h5>
                     <p>
                       <input
@@ -136,8 +138,9 @@ export default function DoneActivitiesPage() {
                 <div className="col-md-4">
                   <div className="activity-card por-hacer" id="actividad3">
                     <h5>
-                      ¿Cuál es el nombre del protagonista del libro "El
-                      Principito" de Antoine de Saint-Exupéry?
+                      {
+                        '¿Cuál es el nombre del protagonista del libro "El Principito" de Antoine de Saint-Exupéry?'
+                      }
                     </h5>
                     <p>
                       <input
