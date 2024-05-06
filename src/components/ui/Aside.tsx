@@ -12,10 +12,12 @@ import {
   MdHelpOutline,
   MdHome,
   MdKeyboardArrowDown,
+  MdLocalActivity,
   MdLocationOff,
   MdManageAccounts,
   MdMarkAsUnread,
   MdPerson,
+  MdStar,
   MdStarHalf,
   MdTrendingUp,
 } from "react-icons/md";
@@ -97,6 +99,12 @@ export default function Aside() {
                   <Link href="/learning/teachers/books/popular">
                     <MdBookmark />
                     &nbsp;&nbsp; Populares
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/learning/students/books">
+                    <MdBook />
+                    &nbsp;&nbsp; Explorar libros
                   </Link>
                 </li>
               </ul>
@@ -181,6 +189,44 @@ export default function Aside() {
                 }}
               >
                 <span>
+                  <MdLocalActivity />
+                  &nbsp;&nbsp; Actividades
+                </span>
+                <MdKeyboardArrowDown
+                  style={{ fontSize: 20, margin: "0 5px" }}
+                />
+              </div>
+              <ul className="list-unstyled">
+                <li>
+                  <Link href="/learning/students/activities/done">
+                    <MdCheckCircle />
+                    &nbsp;&nbsp;Hecho
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/learning/students/activities/pending">
+                    <MdStar />
+                    &nbsp;&nbsp;Por hacer
+                  </Link>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <Link href="/learning/students/achievements">
+                <MdTrendingUp />
+                &nbsp;&nbsp; Mi progreso
+              </Link>
+            </li>
+            <li>
+              <div
+                className="dropdown-menu-button"
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span>
                   <MdAccountCircle />
                   &nbsp;&nbsp; Configuración de cuenta
                 </span>
@@ -204,9 +250,21 @@ export default function Aside() {
               </ul>
             </li>
             <li>
+              <Link href="/learning/students/account">
+                <MdAccountCircle />
+                &nbsp;&nbsp; Configuración
+              </Link>
+            </li>
+            <li>
               <Link href="/learning/teachers/faqs">
                 <MdHelpOutline />
                 &nbsp;&nbsp; Preguntas frecuentes
+              </Link>
+            </li>
+            <li>
+              <Link href="/learning/students/help">
+                <MdHelpOutline />
+                &nbsp;&nbsp; Ayuda
               </Link>
             </li>
           </ul>
