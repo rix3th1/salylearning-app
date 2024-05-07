@@ -1,5 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { MdFavorite } from "react-icons/md";
+
+export const metadata: Metadata = {
+  title: "Leer Libro: Estudiantes | Saly Learning",
+};
 
 export default function ReadBookPage() {
   return (

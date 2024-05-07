@@ -1,5 +1,10 @@
 import ayudaImage from "@/assets/ayuda.png";
 import porqueImage from "@/assets/porque.png";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Ayuda: Estudiantes | Saly Learning",
+};
 
 export default function HelpPage() {
   return (

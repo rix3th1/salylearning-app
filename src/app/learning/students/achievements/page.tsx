@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Logros: Estudiantes | Saly Learning",
+};
+
 export default function AchievementsPage() {
   return (
     <>

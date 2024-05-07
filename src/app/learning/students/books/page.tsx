@@ -1,4 +1,9 @@
 import calendarImage from "@/assets/calendar.png";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Libros: Estudiantes | Saly Learning",
+};
 
 export default function BooksPage() {
   return (

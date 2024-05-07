@@ -1,5 +1,5 @@
 import { getAllPages } from "@/libs/sitemap";
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Get all pages in the project

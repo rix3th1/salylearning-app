@@ -1,3 +1,9 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Configuración Cuenta: Estudiantes | Saly Learning",
+};
+
 export default function StudentsAccountPage() {
   return (
     <>
