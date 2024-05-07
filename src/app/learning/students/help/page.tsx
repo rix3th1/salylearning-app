@@ -76,7 +76,7 @@ export default function HelpPage() {
                 }}
               >
                 <h4 style={{ fontWeight: "bold" }}>
-                  ¿Cómo funciona "Saly Learning"?
+                  {'¿Cómo funciona "Saly Learning"?'}
                 </h4>
                 <p className="all-parrafos" />
                 <p>
