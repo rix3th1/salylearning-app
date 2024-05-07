@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Configuración Cuenta: Estudiantes | Saly Learning",
@@ -10,19 +11,32 @@ export default function StudentsAccountPage() {
       <div className="container">
         <div className="page-header">
           <h1 className="all-titles">
-            SALY LEARNING <small>Inicio</small>
+            SALY LEARNING <small>Actualizar perfíl estudiante</small>
           </h1>
         </div>
       </div>
-      <section className="profile-seccion">
-        <div className="container">
-          <div className="subcolumna">
-            <div className="profile-img-container">
-              <img
+
+      <section className="container-fluid">
+        <div className="row">
+          <div
+            className="col-md-8 col-md-offset-2"
+            style={{
+              backgroundColor: "#C6E4FA",
+              borderRadius: "10px",
+              border: "1px solid #D5D7D8",
+              padding: "20px",
+            }}
+          >
+            <div className="col-md-3 text-center">
+              <Image
+                width={150}
+                height={150}
+                quality={100}
                 id="avatar"
                 src="/img/user01.png"
                 alt="avatar"
                 className="rounded-circle img-fluid"
+                style={{ marginBottom: "1rem" }}
               />
               <input
                 type="file"
@@ -35,6 +49,7 @@ export default function StudentsAccountPage() {
                   type="button"
                   className="btn btn-primary mr-2"
                   id="uploadButton"
+                  style={{ margin: "0 .2rem" }}
                 >
                   Subir foto
                 </button>
@@ -42,12 +57,14 @@ export default function StudentsAccountPage() {
                   type="button"
                   className="btn btn-outline-primary"
                   id="open-avatar-modal"
+                  style={{ margin: "0 .2rem" }}
                 >
                   Elegir Avatar
                 </button>
               </div>
             </div>
-            <div className="profile-info">
+
+            <div className="col-md-9">
               <h4 className="mr-3">Datos del Alumno</h4>
               <div>
                 <hr />
@@ -116,45 +133,80 @@ export default function StudentsAccountPage() {
           </div>
         </div>
       </section>
+
       {/*modal selección avatar*/}
-      <div id="avatarModal" className="avatar-modal">
+      <div
+        id="avatarModal"
+        className="avatar-modal"
+        style={{ display: "none" }}
+      >
         <div className="avatar-modal-content">
           <span className="avatar-close">×</span>
           <h5>Selecciona tu foto de perfil</h5>
           <div id="avatar-options">
-            <img
+            <Image
               className="avatar-option"
               src="/img/user01.png"
               alt="avatar1"
+              width={100}
+              height={100}
+              quality={75}
             />
-            <img
+            <Image
               className="avatar-option"
               src="/img/user02.png"
               alt="avatar2"
+              width={100}
+              height={100}
+              quality={75}
             />
-            <img
+            <Image
               className="avatar-option"
               src="/img/user03.png"
               alt="avatar3"
+              width={100}
+              height={100}
+              quality={75}
             />
           </div>
           <div id="avatar-options">
-            <img
+            <Image
               className="avatar-option"
               src="/img/user04.png"
               alt="avatar4"
+              width={100}
+              height={100}
+              quality={75}
             />
-            <img
+            <Image
               className="avatar-option"
               src="/img/user05.png"
               alt="avatar5"
+              width={100}
+              height={100}
+              quality={75}
             />
-            <img className="avatar-option" src="/img/user.png" alt="avatar6" />
+            <Image
+              className="avatar-option"
+              src="/img/user.png"
+              alt="avatar6"
+              width={100}
+              height={100}
+              quality={75}
+            />
           </div>
-          <button id="accept-avatar" className="btn btn-outline-primary">
+          <button
+            id="accept-avatar"
+            className="btn btn-outline-primary"
+            style={{ margin: "0 .5rem", marginTop: "1rem" }}
+          >
             Aceptar
           </button>
-          <button id="cancel-avatar" className="btn btn-outline-primary">
+          <button
+            id="cancel-avatar"
+            className="btn btn-outline-primary"
+            style={{ margin: "0 .5rem", marginTop: "1rem" }}
+          >
             Cancelar
           </button>
         </div>
