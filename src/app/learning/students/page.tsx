@@ -3,17 +3,40 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  MdArrowCircleLeft,
-  MdArrowCircleRight,
   MdBarChart,
   MdMenuBook,
   MdPlayCircle,
   MdTrendingUp,
 } from "react-icons/md";
+import { ReactImageGalleryItem } from "react-image-gallery";
+import Carrousel from "../teachers/books/new/components/Carrousel";
 
 export const metadata: Metadata = {
   title: "Inicio: Estudiantes | Saly Learning",
 };
+
+const images: ReactImageGalleryItem[] = [
+  {
+    original: "/img/matilda.jpg",
+    originalAlt: "Matilda",
+    description: "Libro de Matilda",
+  },
+  {
+    original: "/img/manolito gafotas.jpg",
+    originalAlt: "Manolito gafotas",
+    description: "Libro de manolito gafotas",
+  },
+  {
+    original: "/img/el mago de oz.jpg",
+    originalAlt: "El mago de Oz",
+    description: "Libro del mago de Oz",
+  },
+  {
+    original: "/img/el libro de la selva.jpg",
+    originalAlt: "El libro de la selva",
+    description: "Libro de la selva",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -88,26 +111,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <div className="container-items">
-                <div className="items">
-                  <div className="item next">
-                    <img src="/img/el libro de la selva.jpg" />
-                  </div>
-                  <div className="item">
-                    <img src="/img/el mago de oz.jpg" />
-                  </div>
-                  <div className="item">
-                    <img src="/img/manolito gafotas.jpg" />
-                  </div>
-                  <div className="button-container">
-                    <div className="button">
-                      <MdArrowCircleLeft />
-                    </div>
-                    <div className="button">
-                      <MdArrowCircleRight />
-                    </div>
-                  </div>
-                </div>
+
+              <div className="container-fluid" style={{ width: "20rem" }}>
+                <Carrousel items={images} />
               </div>
             </div>
           </div>
