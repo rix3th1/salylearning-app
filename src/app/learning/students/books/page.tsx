@@ -1,5 +1,6 @@
 import calendarImage from "@/assets/calendar.png";
 import type { Metadata } from "next";
+import Image from "next/image";
 import type { ReactImageGalleryItem } from "react-image-gallery";
 import Carrousel from "../../teachers/books/new/components/Carrousel";
 
@@ -52,11 +53,13 @@ export default function BooksPage() {
         >
           <div className="row" style={{ padding: "50px" }}>
             <div className="col-xs-12 col-sm-4 col-md-3">
-              <img
+              <Image
                 src={calendarImage.src}
                 alt="clock"
                 className="img-responsive center-box"
-                style={{ maxWidth: 110 }}
+                width={110}
+                height={110}
+                quality={100}
               />
             </div>
             <div className="col-xs-12 col-sm-8 col-md-8 text-justify lead">
