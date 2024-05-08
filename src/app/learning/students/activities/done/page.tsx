@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -11,13 +12,16 @@ export default function PendingActivitiesPage() {
       <div className="container">
         <div className="page-header">
           <h1 className="all-titles">
-            SALY LEARNING <small>Actividades</small>
+            SALY LEARNING <small>Actividades hechas</small>
           </h1>
         </div>
       </div>
 
-      <section className="card-section text-center" id="contenido">
-        <div className="container-fluid">
+      <section className="container-fluid">
+        <div
+          className="container-flat-form text-center"
+          style={{ backgroundColor: "#d4edda" }}
+        >
           <ul className="nav nav-tabs custom-tabs">
             <li className="nav-item">
               <Link
@@ -38,14 +42,19 @@ export default function PendingActivitiesPage() {
           </ul>
 
           <div className="tab-content">
-            <img
+            <Image
               src="/img/Terminaste.gif"
               className="img-finish"
+              style={{ margin: "2rem 0", borderRadius: "10px" }}
               alt="estas al dia"
+              width={200}
+              height={300}
+              quality={100}
+              priority
             />
             <div id="hecho">
               {/* Contenido de "Hecho" */}
-              <h2>Actividades hechas</h2>
+              <h2>¡Actividades hechas!</h2>
               <p>¡Felicidades por completar estas actividades!</p>
               <div className="row">
                 {/* Tarjetas de actividades hechas aquí */}

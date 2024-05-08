@@ -49,7 +49,7 @@ export default function StudentsAccountPage() {
                   type="button"
                   className="btn btn-primary mr-2"
                   id="uploadButton"
-                  style={{ margin: "0 .2rem" }}
+                  style={{ margin: "1rem .2rem" }}
                 >
                   Subir foto
                 </button>

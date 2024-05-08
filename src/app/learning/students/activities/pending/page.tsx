@@ -11,13 +11,16 @@ export default function PendingActivitiesPage() {
       <div className="container">
         <div className="page-header">
           <h1 className="all-titles">
-            SALY LEARNING <small>Actividades</small>
+            SALY LEARNING <small>Actividades pendientes</small>
           </h1>
         </div>
       </div>
 
-      <section className="card-section text-center" id="contenido">
-        <div className="container-fluid">
+      <section className="container-fluid">
+        <div
+          className="container-flat-form text-center"
+          style={{ backgroundColor: "#d4edda" }}
+        >
           <ul className="nav nav-tabs custom-tabs">
             <li className="nav-item active">
               <Link
@@ -48,11 +51,11 @@ export default function PendingActivitiesPage() {
               <div className="row">
                 <div className="col-md-4">
                   <div className="activity-card por-hacer" id="actividad1">
-                    <h5>
+                    <h4>
                       {
                         '¿Cuál es el nombre del protagonista del libro "Charlie y la fábrica de chocolate" de Roald Dahl?'
                       }
-                    </h5>
+                    </h4>
                     <p>
                       <input
                         type="radio"
@@ -88,22 +91,16 @@ export default function PendingActivitiesPage() {
                       />
                       <label htmlFor="pregunta1-opcion4">Harry Potter</label>
                     </p>
-                    <button
-                      className="question-button"
-                      id="button_actividad1"
-                      disabled
-                    >
-                      enviar
-                    </button>
+                    <button className="btn btn-default">Enviar</button>
                   </div>
                 </div>
                 <div className="col-md-4">
                   <div className="activity-card por-hacer" id="actividad2">
-                    <h5>
+                    <h4>
                       {
                         'En el cuento clásico "La Cenicienta", ¿qué animal ayuda a Cenicienta a llegar al baile?'
                       }
-                    </h5>
+                    </h4>
                     <p>
                       <input
                         type="radio"
@@ -137,22 +134,16 @@ export default function PendingActivitiesPage() {
                       />
                       <label htmlFor="pregunta2-opcion4">Un gato</label>
                     </p>
-                    <button
-                      className="question-button"
-                      id="button_actividad2"
-                      disabled
-                    >
-                      enviar
-                    </button>
+                    <button className="btn btn-default">Enviar</button>
                   </div>
                 </div>
                 <div className="col-md-4">
                   <div className="activity-card por-hacer" id="actividad3">
-                    <h5>
+                    <h4>
                       {
                         '¿Cuál es el nombre del protagonista del libro "El Principito" de Antoine de Saint-Exupéry?'
                       }
-                    </h5>
+                    </h4>
                     <p>
                       <input
                         type="radio"
@@ -186,13 +177,7 @@ export default function PendingActivitiesPage() {
                       />
                       <label htmlFor="pregunta3-opcion4">Mowgli</label>
                     </p>
-                    <button
-                      className="question-button"
-                      id="button_actividad3"
-                      disabled
-                    >
-                      enviar
-                    </button>
+                    <button className="btn btn-default">Enviar</button>
                   </div>
                 </div>
               </div>
