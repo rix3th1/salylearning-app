@@ -12,13 +12,14 @@ export default function AdvancedSettingsForm() {
 
   return (
     <form>
+      <input type="hidden" name="username" id="username" />
       {/* Cambio de contraseña */}
       <div className="form-group text-center pt-3">
         <h3 className="all-tittles" style={{ textAlign: "center" }}>
           Cambia tu contraseña
         </h3>
       </div>
-      <div className="form-group mx-sm-4 pt-3">
+      <div className="form-group mx-sm-4 pt-3" style={{ position: "relative" }}>
         <label htmlFor="contrasenaActual">Cambiar contraseña</label>
         <input
           type={passwordsVisibility.password ? "text" : "password"}
@@ -28,41 +29,37 @@ export default function AdvancedSettingsForm() {
           required
           autoComplete="current-password"
         />
-        {!passwordsVisibility.password ? (
-          <MdVisibility
-            onClick={() =>
-              setPasswordsVisibility({
-                ...passwordsVisibility,
-                password: !passwordsVisibility.password,
-              })
-            }
-            style={{
-              position: "absolute",
-              top: "20%",
-              transform: "translateY(-100%)",
-              right: 20,
-              cursor: "pointer",
-            }}
-          />
-        ) : (
-          <MdVisibilityOff
-            onClick={() =>
-              setPasswordsVisibility({
-                ...passwordsVisibility,
-                password: !passwordsVisibility.password,
-              })
-            }
-            style={{
-              position: "absolute",
-              top: "20%",
-              transform: "translateY(-100%)",
-              right: 20,
-              cursor: "pointer",
-            }}
-          />
-        )}
+
+        <span
+          style={{
+            position: "absolute",
+            top: "60%",
+            right: 10,
+            cursor: "pointer",
+          }}
+        >
+          {!passwordsVisibility.password ? (
+            <MdVisibility
+              onClick={() =>
+                setPasswordsVisibility({
+                  ...passwordsVisibility,
+                  password: !passwordsVisibility.password,
+                })
+              }
+            />
+          ) : (
+            <MdVisibilityOff
+              onClick={() =>
+                setPasswordsVisibility({
+                  ...passwordsVisibility,
+                  password: !passwordsVisibility.password,
+                })
+              }
+            />
+          )}
+        </span>
       </div>
-      <div className="form-group mx-sm-4 pt-3">
+      <div className="form-group mx-sm-4 pt-3" style={{ position: "relative" }}>
         <label htmlFor="nuevaContrasena">Nueva Contraseña</label>
         <input
           type={passwordsVisibility.newPassword ? "text" : "password"}
@@ -73,41 +70,36 @@ export default function AdvancedSettingsForm() {
           autoComplete="new-password"
         />
 
-        {!passwordsVisibility.newPassword ? (
-          <MdVisibility
-            onClick={() =>
-              setPasswordsVisibility({
-                ...passwordsVisibility,
-                newPassword: !passwordsVisibility.newPassword,
-              })
-            }
-            style={{
-              position: "absolute",
-              top: "49%",
-              transform: "translateY(-100%)",
-              right: 20,
-              cursor: "pointer",
-            }}
-          />
-        ) : (
-          <MdVisibilityOff
-            onClick={() =>
-              setPasswordsVisibility({
-                ...passwordsVisibility,
-                newPassword: !passwordsVisibility.newPassword,
-              })
-            }
-            style={{
-              position: "absolute",
-              top: "49%",
-              transform: "translateY(-100%)",
-              right: 20,
-              cursor: "pointer",
-            }}
-          />
-        )}
+        <span
+          style={{
+            position: "absolute",
+            top: "61%",
+            right: 10,
+            cursor: "pointer",
+          }}
+        >
+          {!passwordsVisibility.newPassword ? (
+            <MdVisibility
+              onClick={() =>
+                setPasswordsVisibility({
+                  ...passwordsVisibility,
+                  newPassword: !passwordsVisibility.newPassword,
+                })
+              }
+            />
+          ) : (
+            <MdVisibilityOff
+              onClick={() =>
+                setPasswordsVisibility({
+                  ...passwordsVisibility,
+                  newPassword: !passwordsVisibility.newPassword,
+                })
+              }
+            />
+          )}
+        </span>
       </div>
-      <div className="form-group mx-sm-4 pt-3">
+      <div className="form-group mx-sm-4 pt-3" style={{ position: "relative" }}>
         <label htmlFor="confirmarContrasena">Confirmar Contraseña</label>
         <input
           type={passwordsVisibility.confirmPassword ? "text" : "password"}
@@ -118,39 +110,34 @@ export default function AdvancedSettingsForm() {
           autoComplete="new-password"
         />
 
-        {!passwordsVisibility.confirmPassword ? (
-          <MdVisibility
-            onClick={() =>
-              setPasswordsVisibility({
-                ...passwordsVisibility,
-                confirmPassword: !passwordsVisibility.confirmPassword,
-              })
-            }
-            style={{
-              position: "absolute",
-              top: "78%",
-              transform: "translateY(-100%)",
-              right: 20,
-              cursor: "pointer",
-            }}
-          />
-        ) : (
-          <MdVisibilityOff
-            onClick={() =>
-              setPasswordsVisibility({
-                ...passwordsVisibility,
-                confirmPassword: !passwordsVisibility.confirmPassword,
-              })
-            }
-            style={{
-              position: "absolute",
-              top: "78%",
-              transform: "translateY(-100%)",
-              right: 20,
-              cursor: "pointer",
-            }}
-          />
-        )}
+        <span
+          style={{
+            position: "absolute",
+            top: "60%",
+            right: 10,
+            cursor: "pointer",
+          }}
+        >
+          {!passwordsVisibility.confirmPassword ? (
+            <MdVisibility
+              onClick={() =>
+                setPasswordsVisibility({
+                  ...passwordsVisibility,
+                  confirmPassword: !passwordsVisibility.confirmPassword,
+                })
+              }
+            />
+          ) : (
+            <MdVisibilityOff
+              onClick={() =>
+                setPasswordsVisibility({
+                  ...passwordsVisibility,
+                  confirmPassword: !passwordsVisibility.confirmPassword,
+                })
+              }
+            />
+          )}
+        </span>
       </div>
       <button type="submit" className="btn btn-primary">
         Enviar
