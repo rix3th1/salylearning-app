@@ -1,9 +1,38 @@
 import calendarImage from "@/assets/calendar.png";
 import type { Metadata } from "next";
+import type { ReactImageGalleryItem } from "react-image-gallery";
+import Carrousel from "../../teachers/books/new/components/Carrousel";
 
 export const metadata: Metadata = {
   title: "Libros: Estudiantes | Saly Learning",
 };
+
+const images: ReactImageGalleryItem[] = [
+  {
+    original: "/img/matilda.jpg",
+    originalAlt: "Matilda",
+    description: "Libro de Matilda",
+    book_url: "/learning/students/books",
+  },
+  {
+    original: "/img/manolito gafotas.jpg",
+    originalAlt: "Manolito gafotas",
+    description: "Libro de manolito gafotas",
+    book_url: "/learning/students/books",
+  },
+  {
+    original: "/img/el mago de oz.jpg",
+    originalAlt: "El mago de Oz",
+    description: "Libro del mago de Oz",
+    book_url: "/learning/students/books",
+  },
+  {
+    original: "/img/el libro de la selva.jpg",
+    originalAlt: "El libro de la selva",
+    description: "Libro de la selva",
+    book_url: "/learning/students/books",
+  },
+];
 
 export default function BooksPage() {
   return (
@@ -11,16 +40,17 @@ export default function BooksPage() {
       <div className="container">
         <div className="page-header">
           <h1 className="all-titles">
-            SALY LEARNING <small>Inicio</small>
+            SALY LEARNING <small>Explorar libros</small>
           </h1>
         </div>
       </div>
-      <section
-        className="card-section text-center"
-        style={{ padding: "40px 0" }}
-      >
-        <div className="container-fluid" style={{ margin: "50px 0" }}>
-          <div className="row">
+
+      <section className="container-fluid">
+        <div
+          className="container-flat-form text-center"
+          style={{ backgroundColor: "#d4edda" }}
+        >
+          <div className="row" style={{ padding: "50px" }}>
             <div className="col-xs-12 col-sm-4 col-md-3">
               <img
                 src={calendarImage.src}
@@ -36,8 +66,7 @@ export default function BooksPage() {
               inolvidables. ¡La magia de la lectura te espera!
             </div>
           </div>
-        </div>
-        <div className="container-fluid" style={{ margin: "50px 0" }}>
+
           <div className="row">
             <div className="col-xs-12 col-sm-6 col-md-6 text-justify lead">
               <div className="custom-tile">
@@ -48,32 +77,7 @@ export default function BooksPage() {
                 mundo lleno de adrenalina y emoción.
                 {/*  */}
                 <div className="container-items">
-                  {/*book 1  */}
-                  <div className="card d-inline-block mr-2">
-                    <img
-                      src="/img/manolito gafotas.jpg"
-                      className="card-img-top"
-                      alt="Imagen 1"
-                    />
-                    <div className="card-body">
-                      <button id="leer1" className="btn-book">
-                        Leer
-                      </button>
-                    </div>
-                  </div>
-                  {/* book 2 */}
-                  <div className="card d-inline-block">
-                    <img
-                      src="/img/el libro de la selva.jpg"
-                      className="card-img-top"
-                      alt="Imagen 2"
-                    />
-                    <div className="card-body">
-                      <button id="leer2" className="btn-book">
-                        Leer
-                      </button>
-                    </div>
-                  </div>
+                  <Carrousel items={images.sort(() => Math.random())} />
                 </div>
               </div>
             </div>
@@ -86,32 +90,7 @@ export default function BooksPage() {
                 transportarán a universos donde los sueños se vuelven realidad y
                 la fantasía cobra vida.
                 <div className="container-items">
-                  {/*book 1  */}
-                  <div className="card d-inline-block mr-2">
-                    <img
-                      src="/img/manolito gafotas.jpg"
-                      className="card-img-top"
-                      alt="Imagen 1"
-                    />
-                    <div className="card-body">
-                      <button id="leer3" className="btn-book">
-                        Leer
-                      </button>
-                    </div>
-                  </div>
-                  {/* book 2 */}
-                  <div className="card d-inline-block">
-                    <img
-                      src="/img/el libro de la selva.jpg"
-                      className="card-img-top"
-                      alt="Imagen 2"
-                    />
-                    <div className="card-body">
-                      <button id="leer4" className="btn-book">
-                        Leer
-                      </button>
-                    </div>
-                  </div>
+                  <Carrousel items={images} />
                 </div>
               </div>
             </div>
@@ -124,32 +103,7 @@ export default function BooksPage() {
                 fascinante a través de los acontecimientos que han moldeado
                 nuestro mundo.
                 <div className="container-items">
-                  {/*book 1  */}
-                  <div className="card d-inline-block mr-2">
-                    <img
-                      src="/img/manolito gafotas.jpg"
-                      className="card-img-top"
-                      alt="Imagen 1"
-                    />
-                    <div className="card-body">
-                      <button id="leer5" className="btn-book">
-                        Leer
-                      </button>
-                    </div>
-                  </div>
-                  {/* book 2 */}
-                  <div className="card d-inline-block">
-                    <img
-                      src="/img/el libro de la selva.jpg"
-                      className="card-img-top"
-                      alt="Imagen 2"
-                    />
-                    <div className="card-body">
-                      <button id="leer6" className="btn-book">
-                        Leer
-                      </button>
-                    </div>
-                  </div>
+                  <Carrousel items={images} />
                 </div>
               </div>
             </div>

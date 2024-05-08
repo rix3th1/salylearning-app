@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MdBarChart, MdMenuBook, MdTrendingUp } from "react-icons/md";
-import { ReactImageGalleryItem } from "react-image-gallery";
+import type { ReactImageGalleryItem } from "react-image-gallery";
 import Carrousel from "../teachers/books/new/components/Carrousel";
 import Motivation from "./components/Motivation";
 
@@ -14,21 +14,25 @@ const images: ReactImageGalleryItem[] = [
     original: "/img/matilda.jpg",
     originalAlt: "Matilda",
     description: "Libro de Matilda",
+    book_url: "/learning/students/books",
   },
   {
     original: "/img/manolito gafotas.jpg",
     originalAlt: "Manolito gafotas",
     description: "Libro de manolito gafotas",
+    book_url: "/learning/students/books",
   },
   {
     original: "/img/el mago de oz.jpg",
     originalAlt: "El mago de Oz",
     description: "Libro del mago de Oz",
+    book_url: "/learning/students/books",
   },
   {
     original: "/img/el libro de la selva.jpg",
     originalAlt: "El libro de la selva",
     description: "Libro de la selva",
+    book_url: "/learning/students/books",
   },
 ];
 
