@@ -24,7 +24,7 @@ export default function AchievementsPage() {
           <div className="row">
             <div className="col-md-8">
               <div className="subcolumna">
-                <div className="table-responsive">
+                <div className="table-responsive" style={{ margin: "auto" }}>
                   <table className="tabla">
                     <tbody>
                       <tr>
