@@ -1,0 +1,266 @@
+/* Estilos para student page here */
+
+.avatar-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.avatar-modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Hacer el modal más grande */
+  max-width: 600px; /* Tamaño máximo del modal */
+  border-radius: 5px;
+  text-align: center; /* Centrar contenido */
+}
+
+.avatar-close {
+  color: #e21e80;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.avatar-close:hover,
+.avatar-close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.avatar-option {
+  width: auto;
+  height: auto;
+  max-width: 100px;
+  max-height: 100px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.avatar-option:hover {
+  border: 2px solid blue;
+}
+
+.btn-outline-primary {
+  color: #1e30f3;
+  border-color: #1e30f3;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #1e30f3;
+  border-color: #1e30f3;
+}
+
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(30, 48, 243, 0.5);
+}
+
+.btn-outline-primary:active {
+  color: #fff;
+  background-color: #1e30f3;
+  border-color: #1e30f3;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-outline-primary:disabled {
+  color: #1e30f3;
+  background-color: transparent;
+  border-color: #1e30f3;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active {
+  box-shadow: none;
+}
+
+/*Navs*/
+.custom-tabs {
+  display: flex;
+  justify-content: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: #fff;
+}
+
+.custom-tabs li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 200px;
+  text-align: center;
+}
+
+.custom-tabs li a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #1e30f3;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.custom-tabs li a:hover {
+  background-color: #cccc;
+  box-shadow: 0 2pxx 4px rgba(0, 0, 0, 1);
+  border: 0px solid #000;
+}
+
+.activity-card {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.activity-card.hecho {
+  background-color: #d4edda;
+}
+
+.activity-card.por-hacer {
+  background-color: #fcb67c;
+}
+
+.texto-nube {
+  background-color: #f2faf4;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.texto-nube p {
+  margin-bottom: 10px;
+}
+
+.btn-book {
+  display: inline-block;
+  margin: 0.2rem 0.5rem;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #e21e80;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-book:hover {
+  background-color: #6f42c1;
+  color: #fff;
+  text-decoration: none;
+}
+
+.custom-tile {
+  background-color: #f2f2f2;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.custom-tile-icon {
+  color: #6610f2;
+  font-size: 50px;
+}
+
+.custom-tile-name {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.custom-tile-num {
+  margin-top: 10px;
+  font-size: 20px;
+  color: #1e30f3;
+}
+
+.container-items {
+  max-width: 100%;
+  overflow: hidden;
+  box-shadow: 0 9px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+/*tarjeta libros*/
+.container-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.subcolumna {
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: #c6e4fa;
+  border-radius: 5px;
+}
+
+.subcolumna h4 {
+  font-size: x-large;
+}
+
+.subcolumna {
+  display: flex;
+}
+
+.subcolumna p {
+  margin-top: 2rem;
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-logros {
+  padding: 15px;
+  text-align: center;
+  border: 1px solid #adb5bd;
+}
+
+.tabla-logros p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.tabla-logros p::after {
+  content: " unidades";
+}
+
+.img-logros:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  transition: 300ms all;
+}
+
+.col-chart {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.col-chart h4 {
+  font-size: x-large;
+}
