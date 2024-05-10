@@ -47,68 +47,72 @@ export default function AchievementsPage() {
               </div>
 
               <div className="subcolumna">
-                <div className="col-md-12">
-                  <h4 style={{ marginBottom: "2rem" }}>Medallas Ganadas</h4>
-                  <div className="col-md-4">
-                    <Image
-                      src={genioEmergenteLogro}
-                      alt="Medalla 1"
-                      className="img-logros"
-                      width={200}
-                      height={300}
-                      quality={100}
-                      placeholder="blur"
-                    />
-                    <p>Leer 10 libros</p>
-                  </div>
-                  <div className="col-md-4">
-                    <Image
-                      src={genioDelQuizLogro}
-                      alt="Medalla 2"
-                      className="img-logros"
-                      width={200}
-                      height={300}
-                      quality={100}
-                      placeholder="blur"
-                    />
-                    <p>Responder 100 preguntas correctamente</p>
-                  </div>
-                  <div className="col-md-4">
-                    <Image
-                      src={faroDelSaberLogro}
-                      alt="Medalla 2"
-                      className="img-logros"
-                      width={200}
-                      height={300}
-                      quality={100}
-                      placeholder="blur"
-                    />
-                    <p>Responder 100 preguntas correctamente</p>
+                <div className="row">
+                  <div className="col-md-12">
+                    <h4 style={{ marginBottom: "2rem" }}>Medallas Ganadas</h4>
+                    <div className="col-md-4">
+                      <Image
+                        src={genioEmergenteLogro}
+                        alt="Medalla 1"
+                        className="img-logros"
+                        width={200}
+                        height={300}
+                        quality={100}
+                        placeholder="blur"
+                      />
+                      <p>Leer 10 libros</p>
+                    </div>
+                    <div className="col-md-4">
+                      <Image
+                        src={genioDelQuizLogro}
+                        alt="Medalla 2"
+                        className="img-logros"
+                        width={200}
+                        height={300}
+                        quality={100}
+                        placeholder="blur"
+                      />
+                      <p>Responder 100 preguntas correctamente</p>
+                    </div>
+                    <div className="col-md-4">
+                      <Image
+                        src={faroDelSaberLogro}
+                        alt="Medalla 2"
+                        className="img-logros"
+                        width={200}
+                        height={300}
+                        quality={100}
+                        placeholder="blur"
+                      />
+                      <p>Responder 100 preguntas correctamente</p>
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="subcolumna">
-                <div className="col-md-6">
-                  <h4>Historial de Logros</h4>
-                  <ul className="list-group" style={{ color: "#317DFF" }}>
-                    <li className="list-group-item">
-                      Leídos 5 libros (02/03/2024)
-                    </li>
-                    <li className="list-group-item">
-                      Respondidas correctamente 60 preguntas (01/03/2024)
-                    </li>
-                  </ul>
-                </div>
-                <div className="col-md-6">
-                  <h4>Logros Destacados</h4>
-                  <ul className="list-unstyled">
-                    <li>Leídos 15 libros en un mes</li>
-                    <li>
-                      Responder correctamente todas las preguntas de un libro
-                      difícil
-                    </li>
-                  </ul>
+                <div className="row">
+                  <div className="col-md-6">
+                    <h4>Historial de Logros</h4>
+                    <ul className="list-group" style={{ color: "#317DFF" }}>
+                      <li className="list-group-item">
+                        Leídos 5 libros (02/03/2024)
+                      </li>
+                      <li className="list-group-item">
+                        Respondidas correctamente 60 preguntas (01/03/2024)
+                      </li>
+                    </ul>
+                  </div>
+                  <div className="col-md-6">
+                    <h4>Logros Destacados</h4>
+                    <ul className="list-unstyled">
+                      <li>Leídos 15 libros en un mes</li>
+                      <li>
+                        Responder correctamente todas las preguntas de un libro
+                        difícil
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
