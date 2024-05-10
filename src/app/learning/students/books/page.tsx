@@ -54,12 +54,13 @@ export default function BooksPage() {
           <div className="row" style={{ padding: "50px" }}>
             <div className="col-xs-12 col-sm-4 col-md-3">
               <Image
-                src={calendarImage.src}
+                src={calendarImage}
                 alt="clock"
                 className="img-responsive center-box"
                 width={110}
                 height={110}
                 quality={100}
+                priority
               />
             </div>
             <div className="col-xs-12 col-sm-8 col-md-8 text-justify lead">

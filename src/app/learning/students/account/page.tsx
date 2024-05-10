@@ -37,6 +37,7 @@ export default function StudentsAccountPage() {
                 alt="avatar"
                 className="rounded-circle img-fluid"
                 style={{ marginBottom: "1rem" }}
+                priority
               />
               <input
                 type="file"

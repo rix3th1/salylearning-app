@@ -21,6 +21,7 @@ export default function Motivation() {
           height={700}
           quality={100}
           style={{ width: "auto" }}
+          priority
         />
         <div
           onClick={() => {

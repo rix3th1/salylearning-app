@@ -1,3 +1,4 @@
+import terminasteImage from "@/assets/Terminaste.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -43,14 +44,14 @@ export default function PendingActivitiesPage() {
 
           <div className="tab-content">
             <Image
-              src="/img/Terminaste.gif"
+              src={terminasteImage}
               className="img-finish"
               style={{ margin: "2rem 0", borderRadius: "10px" }}
               alt="estas al dia"
               width={200}
               height={300}
               quality={100}
-              priority
+              placeholder="blur"
             />
             <div id="hecho">
               {/* Contenido de "Hecho" */}
