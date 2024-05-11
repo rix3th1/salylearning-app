@@ -1,6 +1,6 @@
 {
   "name": "salylearning-app",
-  "description": "Saly Learning",
+  "description": "Plataforma de audiolibros para la audio enseñanza de niños y niñas de la Institución Técnica Santa Lucia: Sede Agua Negra",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,16 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "bugs": {
+    "email": "rojasricor@gmail.com",
+    "url": "https://github.com/rojasricor/salylearning-app/issues"
+  },
+  "displayName": "salylearning-app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rojasricor/salylearning-app"
+  },
+  "homepage": "https://salylearning-app.vercel.app",
   "keywords": [
     "Saly Learning Software",
     "Audiolibros",
@@ -16,6 +26,7 @@
     "Institución Técnica Santa Lucia",
     "Sede Agua Negra"
   ],
+  "publisher": "Saly Learning Software",
   "author": {
     "name": "Richard A. Rich",
     "email": "rojasricor@gmail.com"

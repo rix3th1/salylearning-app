@@ -3,13 +3,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  applicationName: pkg.name,
-  title: "Saly Learning Software",
-  description:
-    "Plataforma de audiolibros para la audio enseñanza de niños y niñas de la Institución Técnica Santa Lucia: Sede Agua Negra",
+  applicationName: pkg.displayName,
+  title: pkg.publisher,
+  description: pkg.description,
   generator: "Next JS",
-  creator: "Saly Learning Software",
-  publisher: "Vercel",
+  creator: pkg.publisher,
+  publisher: pkg.publisher,
   authors: pkg.contributors,
   keywords: pkg.keywords,
 };
