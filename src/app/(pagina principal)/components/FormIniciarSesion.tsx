@@ -7,6 +7,7 @@ import { toast } from "sonner";
 export default function FormIniciarSesion() {
   const router = useRouter();
 
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -21,6 +22,7 @@ export default function FormIniciarSesion() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       const res = await signIn("salylearning-app-credentials", {
@@ -44,6 +46,8 @@ export default function FormIniciarSesion() {
       if (error instanceof Error) {
         toast.error(error.message);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -74,8 +78,12 @@ export default function FormIniciarSesion() {
         />
       </div>
       <div className="form-group mx-sm-4 py-2">
-        <button type="submit" className="btn w-100 ingresar">
-          INGRESAR
+        <button
+          type="submit"
+          className="btn w-100 ingresar"
+          disabled={isLoading}
+        >
+          {isLoading ? "INGRESANDO..." : "INGRESAR"}
         </button>
       </div>
       <div className="form-group mx-sm-4 text-end py-4">
