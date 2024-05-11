@@ -1,7 +1,7 @@
 import pkg from "@/../package.json";
 import type { Metadata } from "next";
-import "./globals.css";
 import { Toaster } from "sonner";
+import "./globals.css";
 
 export const metadata: Metadata = {
   applicationName: pkg.displayName,
