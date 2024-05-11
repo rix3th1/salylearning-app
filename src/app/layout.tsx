@@ -1,6 +1,7 @@
 import pkg from "@/../package.json";
 import type { Metadata } from "next";
 import "./globals.css";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   applicationName: pkg.displayName,
@@ -24,7 +25,11 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </head>
 
-      <body>{children}</body>
+      <body>
+        {children}
+
+        <Toaster />
+      </body>
     </html>
   );
 }

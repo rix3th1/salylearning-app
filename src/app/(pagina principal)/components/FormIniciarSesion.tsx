@@ -1,8 +1,54 @@
+import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function FormIniciarSesion() {
+  const router = useRouter();
+
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    try {
+      const res = await signIn("salylearning-app-credentials", {
+        username: formData.username,
+        password: formData.password,
+        redirect: false,
+      });
+
+      if (!res?.ok) {
+        throw new Error("Credenciales incorrectas.");
+      }
+
+      const callbackUrl = new URL(res?.url || "").searchParams.get(
+        "callbackUrl"
+      );
+
+      router.push(callbackUrl || "/learning/teachers");
+      router.refresh();
+      toast.success("Bienvenido a SalyLearning!");
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h1 className="text-light text-center pt-3 pb-1">INICIAR SESIÓN</h1>
 
       <div className="form-group mx-sm-4 py-3">
@@ -13,6 +59,7 @@ export default function FormIniciarSesion() {
           placeholder="Ingrese su usuario"
           required
           autoComplete="username"
+          onChange={handleChange}
         />
       </div>
       <div className="form-group mx-sm-4 pb-4">
@@ -23,6 +70,7 @@ export default function FormIniciarSesion() {
           placeholder="Ingrese su contraseña"
           required
           autoComplete="current-password"
+          onChange={handleChange}
         />
       </div>
       <div className="form-group mx-sm-4 py-2">
