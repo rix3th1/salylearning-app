@@ -1,88 +1,142 @@
+"use client";
+
+import pkg from "@/../package.json";
+import { api } from "@/libs/fetchClient";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { toast } from "sonner";
+
+const formDataInitialState = {
+  nombre_completo: "",
+  email: "",
+  telefono: "",
+  mensaje: "",
+};
+
 export default function ContactForm() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState(formDataInitialState);
+
+  const router = useRouter();
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const res = await api("/contactos", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        return toast.error(
+          Array.isArray(data.message) ? data.message.join(", ") : data.message
+        );
+      }
+
+      toast.success(
+        `Gracias por contactarnos, ${data.nombre_completo}! Nos pondremos en contacto contigo pronto. Atentamente, el equipo de ${pkg.publisher}. 🚀`
+      );
+      setFormData(formDataInitialState);
+      router.push("/");
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {/* Name input*/}
       <div className="form-floating mb-3">
         <input
           className="form-control"
-          id="name"
+          style={{ color: "#000" }}
+          name="nombre_completo"
+          id="nombre_completo"
           type="text"
           placeholder="Ingrese su nombre"
-          data-sb-validations="required"
           autoComplete="name"
+          onChange={handleChange}
+          value={formData.nombre_completo}
+          required
+          autoFocus
         />
-        <label htmlFor="name">Nombre completo</label>
-        <div className="invalid-feedback" data-sb-feedback="name:required">
-          Ingrese un nombre.
-        </div>
+        <label htmlFor="nombre_completo">Nombre completo</label>
       </div>
       {/* Email address input*/}
       <div className="form-floating mb-3">
         <input
           className="form-control"
+          style={{ color: "#000" }}
+          name="email"
           id="email"
           type="email"
           placeholder="name@example.com"
-          data-sb-validations="required,email"
           autoComplete="email"
+          onChange={handleChange}
+          value={formData.email}
+          required
         />
         <label htmlFor="email">Correo electrónico</label>
-        <div className="invalid-feedback" data-sb-feedback="email:required">
-          Debe ingresar un correo electrónico.
-        </div>
-        <div className="invalid-feedback" data-sb-feedback="email:email">
-          Correo electrónico invalido.
-        </div>
       </div>
       {/* Phone number input*/}
       <div className="form-floating mb-3">
         <input
           className="form-control"
-          id="phone"
-          type="tel"
-          placeholder="(123) 456-7890"
-          data-sb-validations="required"
+          style={{ color: "#000" }}
+          name="telefono"
+          id="telefono"
+          type="number"
+          placeholder="3XX-XXX-XXXX"
           autoComplete="tel"
+          onChange={handleChange}
+          value={formData.telefono}
+          required
         />
-        <label htmlFor="phone">Teléfono</label>
-        <div className="invalid-feedback" data-sb-feedback="phone:required">
-          Numero telefónico no ingresado
-        </div>
+        <label htmlFor="telefono">Teléfono</label>
       </div>
       {/* Message input*/}
       <div className="form-floating mb-3">
         <textarea
           className="form-control"
-          id="message"
-          placeholder="Enter your message here..."
-          style={{ height: "10rem" }}
-          data-sb-validations="required"
+          name="mensaje"
+          id="mensaje"
+          placeholder="Ingrese su mensaje aquí..."
+          style={{ height: "10rem", color: "#000" }}
           defaultValue={""}
+          onChange={handleChange}
+          value={formData.mensaje}
+          required
+          spellCheck={false}
         />
-        <label htmlFor="message">Mensaje o comentario</label>
-        <div className="invalid-feedback" data-sb-feedback="message:required">
-          Se requiere un mensaje.
-        </div>
+        <label htmlFor="mensaje">Mensaje o comentario</label>
       </div>
-      <div className="d-none" id="submitSuccessMessage">
-        <div className="text-center mb-3">
-          <div className="fw-bolder">Envío exitoso</div>
-        </div>
-      </div>
-      {/* error al enviar el formulario*/}
-      <div className="d-none" id="submitErrorMessage">
-        <div className="text-center text-danger mb-3">
-          Ha ocurrido un error al enviar el mensaje
-        </div>
-      </div>
+
       {/* Submit Button*/}
       <div className="d-grid">
         <button
-          className="btn btn-primary btn-lg disabled"
-          id="submitButton"
           type="submit"
+          className="btn btn-primary btn-lg"
+          disabled={isLoading}
         >
-          ENVIAR
+          {isLoading ? "ENVIANDO..." : "ENVIAR"}
         </button>
       </div>
     </form>
