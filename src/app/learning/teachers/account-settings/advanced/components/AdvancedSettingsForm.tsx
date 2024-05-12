@@ -15,9 +15,7 @@ export default function AdvancedSettingsForm() {
       <input type="hidden" name="username" id="username" />
       {/* Cambio de contraseña */}
       <div className="form-group text-center pt-3">
-        <h3 className="all-tittles" style={{ textAlign: "center" }}>
-          Cambia tu contraseña
-        </h3>
+        <h3 style={{ textAlign: "center" }}>Cambia tu contraseña</h3>
       </div>
       <div className="form-group mx-sm-4 pt-3" style={{ position: "relative" }}>
         <label htmlFor="contrasenaActual">Cambiar contraseña</label>

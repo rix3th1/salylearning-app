@@ -12,7 +12,7 @@ export default function HelpPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-titles">
+          <h1>
             SALY LEARNING <small>Preguntas frecuentes</small>
           </h1>
         </div>

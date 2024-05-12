@@ -41,7 +41,7 @@ export default function HomePage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-titles">
+          <h1>
             SALY LEARNING <small>Inicio</small>
           </h1>
         </div>
@@ -55,7 +55,7 @@ export default function HomePage() {
                 <div className="tile-icon full-reset">
                   <MdMenuBook />
                 </div>
-                <div className="tile-name all-titles">
+                <div className="tile-name">
                   <Link href="/learning/students/books">Mis libros</Link>
                 </div>
                 <div className="tile-num full-reset">3</div>
@@ -64,7 +64,7 @@ export default function HomePage() {
                 <div className="tile-icon full-reset">
                   <MdBarChart />
                 </div>
-                <div className="tile-name all-titles">
+                <div className="tile-name">
                   <Link href="/learning/students/activities/pending">
                     ¡Enfréntate a los Retos!
                   </Link>
@@ -75,7 +75,7 @@ export default function HomePage() {
                 <div className="tile-icon full-reset">
                   <MdTrendingUp />
                 </div>
-                <div className="tile-name all-titles">
+                <div className="tile-name">
                   <Link href="/learning/students/achievements">Logros</Link>
                 </div>
                 <div className="tile-num full-reset">3</div>

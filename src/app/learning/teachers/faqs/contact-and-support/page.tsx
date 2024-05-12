@@ -12,7 +12,7 @@ export default function ContactAndSupportPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Comuníquese con nosotros</small>
           </h1>
         </div>

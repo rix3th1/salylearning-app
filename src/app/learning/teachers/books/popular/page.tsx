@@ -13,7 +13,7 @@ export default function PopularBooksPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Libros populares</small>
           </h1>
         </div>

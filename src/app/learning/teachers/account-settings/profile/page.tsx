@@ -11,7 +11,7 @@ export default function TeacherAccountSettingsPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Actualizar perfíl de usuario</small>
           </h1>
         </div>

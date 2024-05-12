@@ -13,7 +13,7 @@ export default function NotAchievedQuestionaries() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Cuestionarios no logrados</small>
           </h1>
         </div>
@@ -59,7 +59,7 @@ export default function NotAchievedQuestionaries() {
         </div>
       </div>
       <div className="container-fluid">
-        <h2 className="text-center all-tittles">Listado de no logrados</h2>
+        <h2 className="text-center">Listado de no logrados</h2>
 
         <div className="table-responsive">
           <table className="table table-hover">

@@ -10,7 +10,7 @@ export default function StudentsAccountPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-titles">
+          <h1>
             SALY LEARNING <small>Actualizar perfíl estudiante</small>
           </h1>
         </div>

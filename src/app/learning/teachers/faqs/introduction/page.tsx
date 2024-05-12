@@ -13,7 +13,7 @@ export default function IntroductionPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Introducción</small>
           </h1>
         </div>

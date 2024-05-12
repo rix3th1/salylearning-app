@@ -12,7 +12,7 @@ export default function PendingActivitiesPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-titles">
+          <h1>
             SALY LEARNING <small>Actividades hechas</small>
           </h1>
         </div>

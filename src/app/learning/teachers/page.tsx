@@ -20,7 +20,7 @@ export default function HomePage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Inicio</small>
           </h1>
         </div>
@@ -30,7 +30,7 @@ export default function HomePage() {
           <div className="tile-icon full-reset">
             <MdPeople />
           </div>
-          <div className="tile-name all-tittles">
+          <div className="tile-name">
             <Link href="/learning/teachers/reports">Grados</Link>
           </div>
           <div className="tile-num full-reset">3</div>
@@ -39,7 +39,7 @@ export default function HomePage() {
           <div className="tile-icon full-reset">
             <MdLibraryBooks />
           </div>
-          <div className="tile-name all-tittles">
+          <div className="tile-name">
             <Link href="/learning/teachers/books/new">Libros</Link>
           </div>
           <div className="tile-num full-reset">30</div>
@@ -48,7 +48,7 @@ export default function HomePage() {
           <div className="tile-icon full-reset">
             <MdBookmarkBorder />
           </div>
-          <div className="tile-name all-tittles">
+          <div className="tile-name">
             <Link href="/learning/teachers/books/popular">
               Géneros literarios
             </Link>
@@ -59,7 +59,7 @@ export default function HomePage() {
           <div className="tile-icon full-reset">
             <MdAssignmentInd />
           </div>
-          <div className="tile-name all-tittles">
+          <div className="tile-name">
             <Link href="/learning/teachers/questionaries/pending">
               Preguntas pendientes
             </Link>
@@ -70,7 +70,7 @@ export default function HomePage() {
           <div className="tile-icon full-reset">
             <MdOutlineRestore />
           </div>
-          <div className="tile-name all-tittles" style={{ width: "90%" }}>
+          <div className="tile-name" style={{ width: "90%" }}>
             <Link href="/learning/teachers/questionaries/not-achieved">
               Cuestionarios no logrados
             </Link>
@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="tile-icon full-reset">
             <MdCalendarMonth />
           </div>
-          <div className="tile-name all-tittles">
+          <div className="tile-name">
             <Link href="/learning/teachers/questionaries/completed">
               Cuestionarios completados
             </Link>
@@ -92,7 +92,7 @@ export default function HomePage() {
           <div className="tile-icon full-reset">
             <MdTrendingUp />
           </div>
-          <div className="tile-name all-tittles" style={{ width: "90%" }}>
+          <div className="tile-name" style={{ width: "90%" }}>
             <Link href="/learning/teachers/statistics">
               Reportes y Estadísticas
             </Link>
@@ -112,9 +112,7 @@ export default function HomePage() {
               >
                 <span aria-hidden="true">×</span>
               </button>
-              <h4 className="modal-title text-center all-tittles">
-                Ayuda del sistema
-              </h4>
+              <h4 className="modal-title text-center">Ayuda del sistema</h4>
             </div>
             <div className="modal-body">
               ¡Bienvenidos! En el menú, encontrarán una variedad emocionante de

@@ -11,7 +11,7 @@ export default function ReportsAndStatisticsPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Estadísticas generales</small>
           </h1>
         </div>

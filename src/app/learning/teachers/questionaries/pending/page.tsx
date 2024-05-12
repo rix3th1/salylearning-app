@@ -13,7 +13,7 @@ export default function PendingQuestionaries() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Cuestionarios incompletos</small>
           </h1>
         </div>
@@ -59,9 +59,7 @@ export default function PendingQuestionaries() {
         </div>
       </div>
       <div className="container-fluid">
-        <h2 className="text-center all-tittles">
-          Listado de cuestionarios pendientes
-        </h2>
+        <h2 className="text-center">Listado de cuestionarios pendientes</h2>
 
         <div className="table-responsive">
           <table className="table table-hover">

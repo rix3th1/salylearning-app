@@ -15,9 +15,6 @@ body {
 .media-hover:hover {
   background-color: #f5f5f5;
 }
-.all-tittles {
-  font-family: sans-serif;
-}
 .all-parrafos {
   font-size: 1.1rem;
   font-family: sans-serif, monospace;

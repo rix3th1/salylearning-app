@@ -13,7 +13,7 @@ export default function CompletedQuestionariesPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Cuestionarios completados</small>
           </h1>
         </div>
@@ -58,7 +58,7 @@ export default function CompletedQuestionariesPage() {
         </div>
       </div>
       <div className="container-fluid">
-        <h2 className="text-center all-tittles">Cuestionarios completos</h2>
+        <h2 className="text-center">Cuestionarios completos</h2>
 
         <div className="table-responsive">
           <table className="table table-hover">

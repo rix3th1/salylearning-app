@@ -11,7 +11,7 @@ export default function TeacherAccountSettingsPage() {
     <>
       <div className="container">
         <div className="page-header">
-          <h1 className="all-tittles">
+          <h1>
             SALY LEARNING <small>Configuraciones avanzadas de cuenta</small>
           </h1>
         </div>
@@ -49,7 +49,7 @@ export default function TeacherAccountSettingsPage() {
             <div className="col-md-6">
               <form>
                 <div className="form-group text-center pt-3">
-                  <h3 className="all-tittles" style={{ textAlign: "center" }}>
+                  <h3 style={{ textAlign: "center" }}>
                     Actualizar perfil de usuario
                   </h3>
                 </div>

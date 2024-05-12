@@ -14,7 +14,7 @@ export default function FooterLogged() {
       <div className="container-fluid">
         <div className="row">
           <article className="col-xs-12 col-sm-6">
-            <h4 className="all-tittles">Sobre nosotros</h4>
+            <h4>Sobre nosotros</h4>
             <p>
               Somos tu compañero en el viaje hacia la maestría en lectura. En
               SALY LEARNING, nos dedicamos a brindar experiencias educativas y
@@ -25,7 +25,7 @@ export default function FooterLogged() {
             </p>
           </article>
           <section className="col-xs-12 col-sm-6">
-            <h4 className="all-tittles">Equipo de trabajo:</h4>
+            <h4>Equipo de trabajo:</h4>
             <ul className="list-unstyled">
               {team.map((member, i) => (
                 <li key={i}>
@@ -45,7 +45,7 @@ export default function FooterLogged() {
           </section>
         </div>
       </div>
-      <summary className="footer-copyright full-reset all-tittles">
+      <summary className="footer-copyright full-reset">
         SALY&copy; Todos los derechos reservados {new Date().getFullYear()}
       </summary>
     </footer>

@@ -19,7 +19,7 @@ export default function InternalNav() {
           />
         </figure>
         <li style={{ color: "#fff", cursor: "default" }}>
-          <span className="all-tittles">Mi Perfil</span>
+          <span>Mi Perfil</span>
         </li>
         <PowerButton />
         <SearchBookButton />
