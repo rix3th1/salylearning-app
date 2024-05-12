@@ -26,8 +26,7 @@ export default function FormIniciarSesion() {
 
     try {
       const res = await signIn("salylearning-app-credentials", {
-        username: formData.username,
-        password: formData.password,
+        ...formData,
         redirect: false,
       });
 

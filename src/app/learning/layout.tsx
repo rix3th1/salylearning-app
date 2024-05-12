@@ -27,7 +27,6 @@ export default function LearningLayout({
       <Script src="/js/jquery-1.11.2.min.js" />
       <Script src="/js/bootstrap.min.js" />
       <Script src="/js/main.js" />
-      <Script src="/js/sweet-alert.min.js" />
     </>
   );
 }
