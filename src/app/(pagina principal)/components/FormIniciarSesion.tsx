@@ -3,14 +3,16 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
+const formDataInitialState = {
+  username: "",
+  password: "",
+};
+
 export default function FormIniciarSesion() {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  const [formData, setFormData] = useState(formDataInitialState);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -46,6 +48,7 @@ export default function FormIniciarSesion() {
       }
     } finally {
       setIsLoading(false);
+      setFormData(formDataInitialState);
     }
   };
 
@@ -62,6 +65,7 @@ export default function FormIniciarSesion() {
           required
           autoComplete="username"
           onChange={handleChange}
+          value={formData.username}
         />
       </div>
       <div className="form-group mx-sm-4 pb-4">
@@ -73,6 +77,7 @@ export default function FormIniciarSesion() {
           required
           autoComplete="current-password"
           onChange={handleChange}
+          value={formData.password}
         />
       </div>
       <div className="form-group mx-sm-4 py-2">
@@ -82,11 +87,6 @@ export default function FormIniciarSesion() {
           disabled={isLoading}
         >
           {isLoading ? "INGRESANDO..." : "INGRESAR"}
-        </button>
-      </div>
-      <div className="form-group mx-sm-4 text-end py-4">
-        <button type="button" className="olvide">
-          Olvidé mi contraseña?
         </button>
       </div>
     </form>

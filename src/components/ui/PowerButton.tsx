@@ -17,7 +17,7 @@ const showSignOutSwal = () => {
 export default function PowerButton() {
   return (
     <li
-      className="tooltips-general exit-system-button"
+      className="tooltips-general"
       title="Salir del sistema"
       onClick={showSignOutSwal}
     >

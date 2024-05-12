@@ -30,7 +30,7 @@ export default function SearchBookButton() {
 
   return (
     <li
-      className="tooltips-general search-book-button"
+      className="tooltips-general"
       title="Buscar libro"
       onClick={showSearchBookSwal}
     >

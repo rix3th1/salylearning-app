@@ -22,6 +22,18 @@ export default function ModalIniciarSesion({ modalInicioSesion }: IProps) {
           </span>
 
           <FormIniciarSesion />
+
+          <section className="mx-sm-4 text-end py-4">
+            <button
+              type="button"
+              className="olvide"
+              onClick={() => {
+                alert("Hola mundo");
+              }}
+            >
+              Olvidé mi contraseña?
+            </button>
+          </section>
         </div>
       </div>
     </div>
