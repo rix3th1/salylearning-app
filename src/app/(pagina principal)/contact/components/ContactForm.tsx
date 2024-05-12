@@ -1,6 +1,6 @@
 export default function ContactForm() {
   return (
-    <form id="contactForm" data-sb-form-api-token="API_TOKEN">
+    <form>
       {/* Name input*/}
       <div className="form-floating mb-3">
         <input

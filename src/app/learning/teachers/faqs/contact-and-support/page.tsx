@@ -68,7 +68,7 @@ export default function ContactAndSupportPage() {
           className="container-flat-form"
           style={{ backgroundColor: "#dee2e6" }}
         >
-          <form action="procesar_formulario.php" method="post">
+          <form>
             <label htmlFor="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required />
             <label htmlFor="correo">Correo Electrónico:</label>

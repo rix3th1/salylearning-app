@@ -1,5 +1,4 @@
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -86,11 +85,9 @@ export default function FormIniciarSesion() {
         </button>
       </div>
       <div className="form-group mx-sm-4 text-end py-4">
-        <span>
-          <Link href="#" className="olvide">
-            Olvidé mi contraseña?
-          </Link>
-        </span>
+        <button type="button" className="olvide">
+          Olvidé mi contraseña?
+        </button>
       </div>
     </form>
   );
