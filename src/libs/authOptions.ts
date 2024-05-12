@@ -30,7 +30,7 @@ const authOptions: NextAuthOptions = {
 
         const { username, password } = credentials;
 
-        const res = await api("auth/login", {
+        const res = await api("/auth/login", {
           method: "POST",
           body: JSON.stringify({ username, password }),
           headers: { "Content-Type": "application/json" },
