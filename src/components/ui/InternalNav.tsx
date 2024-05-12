@@ -1,10 +1,7 @@
-import {
-  MdOutlinePowerSettingsNew,
-  MdSearch,
-  MdHelpOutline,
-  MdMenu,
-} from "react-icons/md";
 import Image from "next/image";
+import { MdHelpOutline, MdMenu } from "react-icons/md";
+import PowerButton from "./PowerButton";
+import SearchBookButton from "./SearchBookButton";
 
 export default function InternalNav() {
   return (
@@ -24,18 +21,8 @@ export default function InternalNav() {
         <li style={{ color: "#fff", cursor: "default" }}>
           <span className="all-tittles">Mi Perfil</span>
         </li>
-        <li
-          className="tooltips-general exit-system-button"
-          title="Salir del sistema"
-        >
-          <MdOutlinePowerSettingsNew style={{ fontSize: 25, marginTop: 15 }} />
-        </li>
-        <li
-          className="tooltips-general search-book-button"
-          title="Buscar libro"
-        >
-          <MdSearch style={{ fontSize: 25, marginTop: 15 }} />
-        </li>
+        <PowerButton />
+        <SearchBookButton />
         <li className="tooltips-general btn-help" title="Ayuda">
           <MdHelpOutline style={{ fontSize: 25, marginTop: 15 }} />
         </li>
