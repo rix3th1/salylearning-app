@@ -1,75 +1,37 @@
-import { api } from "@/libs/fetchClient";
-import { FormEvent, useEffect, useState } from "react";
+import { registrarse, registrarseInitState } from "@/services/auth.service";
+import { obtenerGrados } from "@/services/grados.service";
+import { THandleChange, THandleSubmit } from "@/types";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-async function getData() {
-  const res = await api("/grados", { method: "GET" });
-
-  if (!res.ok) {
-    return toast.error(
-      "Ocurrió un error al obtener los grados escolares, por favor intente de nuevo."
-    );
-  }
-
-  return res.json();
-}
-
-const formDataInitialState = {
-  p_nombre: "",
-  s_nombre: "",
-  p_apellido: "",
-  s_apellido: "",
-  edad: "",
-  email: "",
-  password: "",
-  confirmar_password: "",
-  id_grado: "",
-  rol: "",
-};
-
 export default function FormRegistro() {
-  const [grades, setGrades] = useState([]);
+  const [grados, setGrados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState(formDataInitialState);
+  const [formData, setFormData] = useState(registrarseInitState);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
+  const handleChange = (e: THandleChange) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: THandleSubmit) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const res = await api("/auth/registrarse", {
-        method: "POST",
-        body: JSON.stringify({
-          ...formData,
-          edad: parseInt(formData.edad),
-          id_grado: parseInt(formData.id_grado),
-          username: formData.email.split("@")[0],
-        }),
-        headers: { "Content-Type": "application/json" },
-      });
+      const registro = await registrarse(formData);
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        return toast.error(
-          Array.isArray(data.message) ? data.message.join(", ") : data.message
-        );
-      }
-
-      toast.success(data.message);
-      setFormData(formDataInitialState);
+      toast.success(registro.message);
+      setFormData(registrarseInitState);
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+        toast.error(
+          Array.isArray(error.message)
+            ? error.message.join(", ")
+            : error.message
+        );
       }
     } finally {
       setIsLoading(false);
@@ -77,14 +39,18 @@ export default function FormRegistro() {
   };
 
   useEffect(() => {
-    getData()
+    obtenerGrados()
       .then((data) => {
-        setGrades(data);
+        setGrados(data);
       })
-      .catch(() => {
-        toast.error(
-          "Ocurrió un error al obtener los grados escolares, por favor intente de nuevo."
-        );
+      .catch((error) => {
+        if (error instanceof Error) {
+          toast.error(
+            Array.isArray(error.message)
+              ? error.message.join(", ")
+              : error.message
+          );
+        }
       });
   }, []);
 
@@ -161,7 +127,7 @@ export default function FormRegistro() {
             value={formData.id_grado}
           >
             <option value="">Seleccione su grado escolar</option>
-            {grades.map((grado: any) => (
+            {grados.map((grado: any) => (
               <option key={grado.id} value={grado.id}>
                 {grado.nom_grado}
               </option>
