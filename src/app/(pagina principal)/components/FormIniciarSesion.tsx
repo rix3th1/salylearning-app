@@ -1,3 +1,4 @@
+import { THandleChange, THandleSubmit } from "@/types";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -15,14 +16,14 @@ export default function FormIniciarSesion() {
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(formDataInitialState);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: THandleChange) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: THandleSubmit) => {
     e.preventDefault();
     setIsLoading(true);
 
