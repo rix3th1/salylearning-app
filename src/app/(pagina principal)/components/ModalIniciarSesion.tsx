@@ -1,3 +1,4 @@
+import ForgotPasswordButton from "./ForgotPasswordButton";
 import FormIniciarSesion from "./FormIniciarSesion";
 
 interface IProps {
@@ -24,15 +25,7 @@ export default function ModalIniciarSesion({ modalInicioSesion }: IProps) {
           <FormIniciarSesion />
 
           <section className="mx-sm-4 text-end py-4">
-            <button
-              type="button"
-              className="olvide"
-              onClick={() => {
-                alert("Hola mundo");
-              }}
-            >
-              Olvidé mi contraseña?
-            </button>
+            <ForgotPasswordButton />
           </section>
         </div>
       </div>
