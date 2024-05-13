@@ -1,5 +1,5 @@
 import { plus_jakarta_sans } from "@/app/fonts";
-import { api } from "@/libs/fetchClient";
+import { enviarEmailDeRecuperacion } from "@/services/recuperar-clave.service";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -21,29 +21,14 @@ export default function ForgotPasswordButton() {
         }
 
         try {
-          const res = await api(
-            "/recuperar-clave/enviar-email-de-recuperacion",
-            {
-              method: "POST",
-              body: JSON.stringify({ email }),
-              headers: { "Content-Type": "application/json" },
-            }
-          );
-
-          const data = await res.json();
-
-          if (!res.ok) {
-            return Swal.showValidationMessage(
-              Array.isArray(data.message)
-                ? data.message.join(", ")
-                : data.message
-            );
-          }
-
-          return data;
+          return await enviarEmailDeRecuperacion(email);
         } catch (error) {
           if (error instanceof Error) {
-            Swal.showValidationMessage(error.message);
+            Swal.showValidationMessage(
+              Array.isArray(error.message)
+                ? error.message.join(", ")
+                : error.message
+            );
           }
         }
       },
