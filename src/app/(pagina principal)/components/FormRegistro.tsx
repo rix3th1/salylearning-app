@@ -78,9 +78,15 @@ export default function FormRegistro() {
   };
 
   useEffect(() => {
-    getData().then((data) => {
-      setGrades(data);
-    });
+    getData()
+      .then((data) => {
+        setGrades(data);
+      })
+      .catch((error) => {
+        if (error instanceof Error) {
+          toast.error(error.message);
+        }
+      });
   }, []);
 
   return (
