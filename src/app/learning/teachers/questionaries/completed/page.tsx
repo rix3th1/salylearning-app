@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import calendarBookImage from "@/assets/calendar_book.png";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -11,13 +12,8 @@ export const metadata: Metadata = {
 export default function CompletedQuestionariesPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Cuestionarios completados</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Cuestionarios completos" />
+
       <div className="conteiner-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li className="active">

@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import checkListImage from "@/assets/checklist.png";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -11,13 +12,8 @@ export const metadata: Metadata = {
 export default function PopularBooksPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Libros populares</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Libros populares" />
+
       <div className="container-fluid" style={{ margin: "40px 0" }}>
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">

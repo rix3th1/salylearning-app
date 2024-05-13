@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import sectionImage from "@/assets/section.png";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -10,13 +11,8 @@ export const metadata: Metadata = {
 export default function ContactAndSupportPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Comuníquese con nosotros</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Contacto y Soporte" />
+
       <div className="container-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li role="presentation">

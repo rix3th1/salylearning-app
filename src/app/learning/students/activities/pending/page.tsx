@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -8,13 +9,7 @@ export const metadata: Metadata = {
 export default function PendingActivitiesPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Actividades pendientes</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Actividades por hacer" />
 
       <section className="container-fluid">
         <div

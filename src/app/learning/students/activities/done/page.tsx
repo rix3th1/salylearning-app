@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import terminasteImage from "@/assets/Terminaste.png";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -10,13 +11,7 @@ export const metadata: Metadata = {
 export default function PendingActivitiesPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Actividades hechas</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Actividades hechas" />
 
       <section className="container-fluid">
         <div

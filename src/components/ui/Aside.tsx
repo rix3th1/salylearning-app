@@ -1,4 +1,6 @@
 import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
+import authOptions from "@/libs/authOptions";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -22,7 +24,11 @@ import {
   MdTrendingUp,
 } from "react-icons/md";
 
-export default function Aside() {
+export default async function Aside() {
+  const session = await getServerSession(authOptions);
+  const isStudent = session?.user.rol === "ESTUDIANTE";
+  const isTeacher = session?.user.rol === "DOCENTE";
+
   return (
     <div
       className="navbar-lateral full-reset"
@@ -68,8 +74,9 @@ export default function Aside() {
         <div className="full-reset nav-lateral-list-menu">
           <ul className="list-unstyled">
             <li>
-              <Link href="/learning/teachers">
-                <MdHome style={{ fontSize: 15 }} /> &nbsp;&nbsp; Inicio
+              <Link href={`/learning/${isStudent ? "students" : "teachers"}`}>
+                <MdHome style={{ fontSize: 15 }} />
+                &nbsp;&nbsp; Inicio
               </Link>
             </li>
             <li>
@@ -82,191 +89,206 @@ export default function Aside() {
                 }}
               >
                 <span>
-                  <MdAssignment /> &nbsp;&nbsp; Libros
+                  <MdAssignment />
+                  &nbsp;&nbsp; Libros
                 </span>
                 <MdKeyboardArrowDown
                   style={{ fontSize: 20, margin: "0 5px" }}
                 />
               </div>
               <ul className="list-unstyled">
-                <li>
-                  <Link href="/learning/teachers/books/new">
-                    <MdBook />
-                    &nbsp;&nbsp; Nuevo libro
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/learning/teachers/books/popular">
-                    <MdBookmark />
-                    &nbsp;&nbsp; Populares
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/learning/students/books">
-                    <MdBook />
-                    &nbsp;&nbsp; Explorar libros
-                  </Link>
-                </li>
+                {isTeacher && (
+                  <>
+                    <li>
+                      <Link href="/learning/teachers/books/new">
+                        <MdBook />
+                        &nbsp;&nbsp; Nuevo libro
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/learning/teachers/books/popular">
+                        <MdBookmark />
+                        &nbsp;&nbsp; Populares
+                      </Link>
+                    </li>
+                  </>
+                )}
+                {isStudent && (
+                  <li>
+                    <Link href="/learning/students/books">
+                      <MdBook />
+                      &nbsp;&nbsp; Explorar libros
+                    </Link>
+                  </li>
+                )}
               </ul>
             </li>
-            <li>
-              <div
-                className="dropdown-menu-button"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span>
-                  <MdMarkAsUnread />
-                  &nbsp;&nbsp; Cuestionarios
-                </span>
-                <MdKeyboardArrowDown
-                  style={{ fontSize: 20, margin: "0 5px" }}
-                />
-              </div>
-              <ul className="list-unstyled">
+            {isTeacher && (
+              <>
                 <li>
-                  <Link href="/learning/teachers/questionaries/completed">
-                    <MdCheckCircle />
-                    &nbsp;&nbsp;Completados
-                  </Link>
+                  <div
+                    className="dropdown-menu-button"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>
+                      <MdMarkAsUnread />
+                      &nbsp;&nbsp; Cuestionarios
+                    </span>
+                    <MdKeyboardArrowDown
+                      style={{ fontSize: 20, margin: "0 5px" }}
+                    />
+                  </div>
+                  <ul className="list-unstyled">
+                    <li>
+                      <Link href="/learning/teachers/questionaries/completed">
+                        <MdCheckCircle />
+                        &nbsp;&nbsp;Completados
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/learning/teachers/questionaries/pending">
+                        <MdStarHalf />
+                        &nbsp;&nbsp;Pendientes
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/learning/teachers/questionaries/not-achieved">
+                        <MdLocationOff />
+                        &nbsp;&nbsp;No logrados
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
                 <li>
-                  <Link href="/learning/teachers/questionaries/pending">
-                    <MdStarHalf />
-                    &nbsp;&nbsp;Pendientes
-                  </Link>
+                  <div
+                    className="dropdown-menu-button"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>
+                      <MdTrendingUp />
+                      &nbsp;&nbsp; Reportes y estadísticas
+                    </span>
+                    <MdKeyboardArrowDown
+                      style={{ fontSize: 20, margin: "0 5px" }}
+                    />
+                  </div>
+                  <ul className="list-unstyled">
+                    <li>
+                      <Link href="/learning/teachers/reports">
+                        <MdTrendingUp />
+                        &nbsp;&nbsp;Reportes
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/learning/teachers/statistics">
+                        <MdBarChart />
+                        &nbsp;&nbsp;Estadísticas
+                      </Link>
+                    </li>
+                  </ul>
                 </li>
                 <li>
-                  <Link href="/learning/teachers/questionaries/not-achieved">
-                    <MdLocationOff />
-                    &nbsp;&nbsp;No logrados
+                  <div
+                    className="dropdown-menu-button"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>
+                      <MdAccountCircle />
+                      &nbsp;&nbsp; Configuración de cuenta
+                    </span>
+                    <MdKeyboardArrowDown
+                      style={{ fontSize: 20, margin: "0 5px" }}
+                    />
+                  </div>
+                  <ul className="list-unstyled">
+                    <li>
+                      <Link href="/learning/teachers/account-settings/profile">
+                        <MdPerson />
+                        &nbsp;&nbsp;Perfíl
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/learning/teachers/account-settings/advanced">
+                        <MdManageAccounts />
+                        &nbsp;&nbsp;Avanzadas
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <Link href="/learning/teachers/faqs">
+                    <MdHelpOutline />
+                    &nbsp;&nbsp; Preguntas frecuentes
                   </Link>
                 </li>
-              </ul>
-            </li>
-            <li>
-              <div
-                className="dropdown-menu-button"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span>
-                  <MdTrendingUp />
-                  &nbsp;&nbsp; Reportes y estadísticas
-                </span>
-                <MdKeyboardArrowDown
-                  style={{ fontSize: 20, margin: "0 5px" }}
-                />
-              </div>
-              <ul className="list-unstyled">
+              </>
+            )}
+            {isStudent && (
+              <>
                 <li>
-                  <Link href="/learning/teachers/reports">
+                  <div
+                    className="dropdown-menu-button"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>
+                      <MdLocalActivity />
+                      &nbsp;&nbsp; Actividades
+                    </span>
+                    <MdKeyboardArrowDown
+                      style={{ fontSize: 20, margin: "0 5px" }}
+                    />
+                  </div>
+                  <ul className="list-unstyled">
+                    <li>
+                      <Link href="/learning/students/activities/done">
+                        <MdCheckCircle />
+                        &nbsp;&nbsp;Hecho
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/learning/students/activities/pending">
+                        <MdStar />
+                        &nbsp;&nbsp;Por hacer
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <Link href="/learning/students/achievements">
                     <MdTrendingUp />
-                    &nbsp;&nbsp;Reportes
+                    &nbsp;&nbsp; Mi progreso
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/teachers/statistics">
-                    <MdBarChart />
-                    &nbsp;&nbsp;Estadísticas
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <div
-                className="dropdown-menu-button"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span>
-                  <MdLocalActivity />
-                  &nbsp;&nbsp; Actividades
-                </span>
-                <MdKeyboardArrowDown
-                  style={{ fontSize: 20, margin: "0 5px" }}
-                />
-              </div>
-              <ul className="list-unstyled">
-                <li>
-                  <Link href="/learning/students/activities/done">
-                    <MdCheckCircle />
-                    &nbsp;&nbsp;Hecho
+                  <Link href="/learning/students/account">
+                    <MdAccountCircle />
+                    &nbsp;&nbsp; Configuración
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/students/activities/pending">
-                    <MdStar />
-                    &nbsp;&nbsp;Por hacer
+                  <Link href="/learning/students/help">
+                    <MdHelpOutline />
+                    &nbsp;&nbsp; Ayuda
                   </Link>
                 </li>
-              </ul>
-            </li>
-            <li>
-              <Link href="/learning/students/achievements">
-                <MdTrendingUp />
-                &nbsp;&nbsp; Mi progreso
-              </Link>
-            </li>
-            <li>
-              <div
-                className="dropdown-menu-button"
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <span>
-                  <MdAccountCircle />
-                  &nbsp;&nbsp; Configuración de cuenta
-                </span>
-                <MdKeyboardArrowDown
-                  style={{ fontSize: 20, margin: "0 5px" }}
-                />
-              </div>
-              <ul className="list-unstyled">
-                <li>
-                  <Link href="/learning/teachers/account-settings/profile">
-                    <MdPerson />
-                    &nbsp;&nbsp;Perfíl
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/learning/teachers/account-settings/advanced">
-                    <MdManageAccounts />
-                    &nbsp;&nbsp;Avanzadas
-                  </Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link href="/learning/students/account">
-                <MdAccountCircle />
-                &nbsp;&nbsp; Configuración
-              </Link>
-            </li>
-            <li>
-              <Link href="/learning/teachers/faqs">
-                <MdHelpOutline />
-                &nbsp;&nbsp; Preguntas frecuentes
-              </Link>
-            </li>
-            <li>
-              <Link href="/learning/students/help">
-                <MdHelpOutline />
-                &nbsp;&nbsp; Ayuda
-              </Link>
-            </li>
+              </>
+            )}
           </ul>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import flatBookImage from "@/assets/flat-book.png";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -30,13 +31,7 @@ const images: ReactImageGalleryItem[] = [
 export default function NewBookPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Libros</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Libros" />
 
       <div className="container-fluid" style={{ margin: "50px 0" }}>
         <div className="row">

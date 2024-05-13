@@ -1,4 +1,4 @@
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -10,6 +10,7 @@ const formDataInitialState = {
 
 export default function FormIniciarSesion() {
   const router = useRouter();
+  const { data: session } = useSession();
 
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(formDataInitialState);
@@ -39,7 +40,12 @@ export default function FormIniciarSesion() {
         "callbackUrl"
       );
 
-      router.push(callbackUrl || "/learning/teachers");
+      router.push(
+        callbackUrl ||
+          `/learning/${
+            session?.user.rol === "DOCENTE" ? "teachers" : "students"
+          }`
+      );
       router.refresh();
       toast.success("Bienvenido a SalyLearning!");
     } catch (error) {

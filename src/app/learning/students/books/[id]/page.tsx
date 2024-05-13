@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MdFavorite } from "react-icons/md";
@@ -9,13 +10,7 @@ export const metadata: Metadata = {
 export default function ReadBookPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Inicio</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Leer libro" />
 
       <section id="contenido">
         <div className="container-fluid">

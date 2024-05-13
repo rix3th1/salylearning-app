@@ -10,21 +10,17 @@ import {
   MdThumbUp,
   MdTrendingUp,
 } from "react-icons/md";
+import PageHeader from "../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Inicio: Docentes | Saly Learning",
 };
 
-export default function HomePage() {
+export default async function HomePage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Inicio</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Inicio" />
+
       <section className="full-reset text-center" style={{ padding: "40px 0" }}>
         <article className="tile">
           <div className="tile-icon full-reset">

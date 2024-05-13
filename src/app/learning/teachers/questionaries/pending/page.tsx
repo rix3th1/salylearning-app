@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import clockImage from "@/assets/clock.png";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -11,13 +12,8 @@ export const metadata: Metadata = {
 export default function PendingQuestionaries() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Cuestionarios incompletos</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Cuestionarios pendientes" />
+
       <div className="conteiner-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li>

@@ -7,6 +7,7 @@ import rendimientoImage from "@/assets/rendimiento.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Preguntas Frecuentes: Docentes | Saly Learning",
@@ -15,13 +16,8 @@ export const metadata: Metadata = {
 export default function FaqsPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Preguntas frecuentes</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Preguntas frecuentes" />
+
       <div className="container-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li role="presentation">

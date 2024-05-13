@@ -1,4 +1,4 @@
-import type { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { api } from "./fetchClient";
 
@@ -43,9 +43,21 @@ const authOptions: NextAuthOptions = {
         const parsedResponse = await res.json();
         const jwt = parsedResponse.access_token;
 
+        const resUser = await api("/perfil", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        });
+
+        if (!resUser.ok) {
+          throw new Error("No se pudo obtener la información del usuario.");
+        }
+
+        const userProfile = await resUser.json();
+
         return {
-          id: "1",
-          ...credentials,
+          ...userProfile,
           jwt,
         };
       },
@@ -64,16 +76,16 @@ const authOptions: NextAuthOptions = {
   callbacks: {
     jwt({ token, user }) {
       if (user) {
-        return {
-          ...token,
-          jwt: (user as any).jwt,
-        };
+        const { jwt, ...result } = user as any;
+        token.user = result;
+        token.jwt = jwt;
       }
       return token;
     },
     session({ session, token }) {
       if (token) {
-        session.user = token.jwt as any;
+        session.user = token.user as User;
+        session.jwt = token.jwt as string;
       }
       return session;
     },

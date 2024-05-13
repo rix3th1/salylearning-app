@@ -939,3 +939,11 @@ canvas {
 .student {
   margin-top: 20px;
 }
+
+.simple-link {
+  color: #fff !important;
+}
+
+.simple-link:hover {
+  text-decoration: underline;
+}

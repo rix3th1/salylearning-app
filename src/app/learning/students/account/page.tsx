@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Configuración Cuenta: Estudiantes | Saly Learning",
@@ -8,13 +9,7 @@ export const metadata: Metadata = {
 export default function StudentsAccountPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Actualizar perfíl estudiante</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Actualizar perfíl estudiante" />
 
       <section className="container-fluid">
         <div className="row">
@@ -143,7 +138,7 @@ export default function StudentsAccountPage() {
       >
         <div className="avatar-modal-content">
           <span className="avatar-close">×</span>
-          <h5>Selecciona tu foto de perfil</h5>
+          <h5>Selecciona tu foto de perfíl</h5>
           <div id="avatar-options">
             <Image
               className="avatar-option"

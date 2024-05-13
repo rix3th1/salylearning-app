@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
+import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Reportes Grado: Docentes | Saly Learning",
@@ -11,13 +12,8 @@ export const metadata: Metadata = {
 export default function ReportsAndStatisticsPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Reportes de grado</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Reportes Grado" />
+
       <div className="container-fluid">
         <ul className="nav nav-tabs nav-justified">
           <li>

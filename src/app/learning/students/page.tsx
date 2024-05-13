@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { MdBarChart, MdMenuBook, MdTrendingUp } from "react-icons/md";
 import type { ReactImageGalleryItem } from "react-image-gallery";
+import PageHeader from "../components/PageHeader";
 import Carrousel from "../teachers/books/new/components/Carrousel";
 import Motivation from "./components/Motivation";
 
@@ -39,13 +40,7 @@ const images: ReactImageGalleryItem[] = [
 export default function HomePage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Inicio</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Inicio" />
 
       <section className="card-section text-center">
         <div className="container">

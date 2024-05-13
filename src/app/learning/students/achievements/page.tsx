@@ -3,6 +3,7 @@ import genioDelQuizLogro from "@/assets/geniodelquiz.png";
 import genioEmergenteLogro from "@/assets/genioemergente.png";
 import type { Metadata } from "next";
 import Image from "next/image";
+import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Logros: Estudiantes | Saly Learning",
@@ -11,13 +12,7 @@ export const metadata: Metadata = {
 export default function AchievementsPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Logros</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Logros" />
 
       <section className="container-fluid">
         <div className="container-fluid">

@@ -2,6 +2,7 @@ import calendarImage from "@/assets/calendar.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactImageGalleryItem } from "react-image-gallery";
+import PageHeader from "../../components/PageHeader";
 import Carrousel from "../../teachers/books/new/components/Carrousel";
 
 export const metadata: Metadata = {
@@ -38,13 +39,7 @@ const images: ReactImageGalleryItem[] = [
 export default function BooksPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Explorar libros</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Explorar libros" />
 
       <section className="container-fluid">
         <div

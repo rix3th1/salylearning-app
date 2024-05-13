@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import userImage from "@/assets/user04.png";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -10,13 +11,8 @@ export const metadata: Metadata = {
 export default function PoliciesAndTermsPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Políticas y términos</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Políticas y Términos" />
+
       <div className="container-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li role="presentation">

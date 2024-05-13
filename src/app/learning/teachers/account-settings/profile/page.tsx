@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,13 +10,7 @@ export const metadata: Metadata = {
 export default function TeacherAccountSettingsPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Actualizar perfíl de usuario</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Actualizar perfíl docente" />
 
       <ul className="nav nav-tabs nav-justified">
         <li className="active">

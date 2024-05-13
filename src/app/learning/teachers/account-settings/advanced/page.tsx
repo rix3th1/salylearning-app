@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Link from "next/link";
 import AdvancedSettingsForm from "./components/AdvancedSettingsForm";
@@ -9,13 +10,7 @@ export const metadata: Metadata = {
 export default function TeacherAccountSettingsPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Configuraciones avanzadas de cuenta</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Configuración avanzada de cuenta" />
 
       <ul className="nav nav-tabs nav-justified">
         <li>
@@ -50,7 +45,7 @@ export default function TeacherAccountSettingsPage() {
               <form>
                 <div className="form-group text-center pt-3">
                   <h3 style={{ textAlign: "center" }}>
-                    Actualizar perfil de usuario
+                    Actualizar perfíl de usuario
                   </h3>
                 </div>
                 <div className="form-group mx-sm-4 pt-3">
@@ -143,7 +138,7 @@ export default function TeacherAccountSettingsPage() {
                   className="btn btn-primary"
                   style={{ marginBottom: "40px" }}
                 >
-                  Actualizar perfil
+                  Actualizar perfíl
                 </button>
               </form>
             </div>

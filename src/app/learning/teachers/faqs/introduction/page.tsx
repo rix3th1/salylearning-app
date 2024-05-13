@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import guiaImage from "@/assets/guia.png";
 import preguntaImage from "@/assets/pregunta_niño.png";
 import type { Metadata } from "next";
@@ -11,13 +12,8 @@ export const metadata: Metadata = {
 export default function IntroductionPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Introducción</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Introducción" />
+
       <div className="container-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li role="presentation" className="active">

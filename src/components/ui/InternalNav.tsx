@@ -1,11 +1,20 @@
+import authOptions from "@/libs/authOptions";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
+import Link from "next/link";
 import { MdHelpOutline, MdMenu } from "react-icons/md";
 import PowerButton from "./PowerButton";
 import SearchBookButton from "./SearchBookButton";
 
-export default function InternalNav() {
+export default async function InternalNav() {
+  const session = await getServerSession(authOptions);
+  const isStudent = session?.user.rol === "ESTUDIANTE";
+
   return (
-    <nav className="navbar-user-top full-reset" style={{ position: "sticky" }}>
+    <nav
+      className="navbar-user-top full-reset"
+      style={{ position: "sticky", zIndex: 50 }}
+    >
       <ul className="list-unstyled full-reset">
         <figure>
           <Image
@@ -19,7 +28,16 @@ export default function InternalNav() {
           />
         </figure>
         <li style={{ color: "#fff", cursor: "default" }}>
-          <span>Mi Perfil</span>
+          <Link
+            href={`/learning/${
+              isStudent
+                ? "students/account"
+                : "teachers/account-settings/profile"
+            }`}
+            className="simple-link"
+          >
+            Mi Perfíl
+          </Link>
         </li>
         <PowerButton />
         <SearchBookButton />

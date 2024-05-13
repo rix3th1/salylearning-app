@@ -2,6 +2,7 @@ import ayudaImage from "@/assets/ayuda.png";
 import porqueImage from "@/assets/porque.png";
 import type { Metadata } from "next";
 import Image from "next/image";
+import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Ayuda: Estudiantes | Saly Learning",
@@ -10,13 +11,7 @@ export const metadata: Metadata = {
 export default function HelpPage() {
   return (
     <>
-      <div className="container">
-        <div className="page-header">
-          <h1>
-            SALY LEARNING <small>Preguntas frecuentes</small>
-          </h1>
-        </div>
-      </div>
+      <PageHeader title="Preguntas frecuentes" />
 
       <section className="container-fluid">
         <div
