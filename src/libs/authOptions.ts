@@ -1,6 +1,6 @@
+import { auth, obtenerPerfil } from "@/services/auth.service";
 import type { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { api } from "./fetchClient";
 
 const authOptions: NextAuthOptions = {
   debug: process.env.NODE_ENV === "development",
@@ -29,35 +29,11 @@ const authOptions: NextAuthOptions = {
         }
 
         const { username, password } = credentials;
-
-        const res = await api("/auth/login", {
-          method: "POST",
-          body: JSON.stringify({ username, password }),
-          headers: { "Content-Type": "application/json" },
-        });
-
-        if (!res.ok) {
-          throw new Error("Credenciales incorrectas.");
-        }
-
-        const parsedResponse = await res.json();
-        const jwt = parsedResponse.access_token;
-
-        const resUser = await api("/perfil", {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${jwt}`,
-          },
-        });
-
-        if (!resUser.ok) {
-          throw new Error("No se pudo obtener la información del usuario.");
-        }
-
-        const userProfile = await resUser.json();
+        const jwt = (await auth(username, password)).access_token;
+        const profile = await obtenerPerfil(jwt);
 
         return {
-          ...userProfile,
+          ...profile,
           jwt,
         };
       },
