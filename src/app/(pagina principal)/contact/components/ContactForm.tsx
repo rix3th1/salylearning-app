@@ -1,60 +1,44 @@
 "use client";
 
 import pkg from "@/../package.json";
-import { api } from "@/libs/fetchClient";
+import { crearContacto, contactoInitState } from "@/services/contactos.service";
+import { THandleChange, THandleSubmit } from "@/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
-const formDataInitialState = {
-  nombre_completo: "",
-  email: "",
-  telefono: "",
-  mensaje: "",
-};
-
 export default function ContactForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState(formDataInitialState);
+  const [formData, setFormData] = useState(contactoInitState);
 
   const router = useRouter();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: THandleChange) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: THandleSubmit) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const res = await api("/contactos", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: { "Content-Type": "application/json" },
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        return toast.error(
-          Array.isArray(data.message) ? data.message.join(", ") : data.message
-        );
-      }
+      const contacto = await crearContacto(formData);
 
       toast.success(
-        `Gracias por contactarnos, ${data.nombre_completo}! Nos pondremos en contacto contigo pronto. Atentamente, el equipo de ${pkg.publisher}. 🚀`
+        `Gracias por contactarnos, ${contacto.nombre_completo}! Nos pondremos en contacto contigo pronto. Atentamente, el equipo de ${pkg.publisher}. 🚀`
       );
-      setFormData(formDataInitialState);
+      setFormData(contactoInitState);
       router.push("/");
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+        toast.error(
+          Array.isArray(error.message)
+            ? error.message.join(", ")
+            : error.message
+        );
       }
     } finally {
       setIsLoading(false);
