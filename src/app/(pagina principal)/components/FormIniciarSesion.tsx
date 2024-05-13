@@ -67,7 +67,7 @@ export default function FormIniciarSesion() {
           name="username"
           type="text"
           className="form-control"
-          placeholder="Ingrese su usuario"
+          placeholder="Ingrese su nombre de usuario"
           required
           autoComplete="username"
           onChange={handleChange}
