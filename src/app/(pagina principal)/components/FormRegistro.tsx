@@ -65,7 +65,6 @@ export default function FormRegistro() {
         );
       }
 
-      console.log(data);
       toast.success(data.message);
       setFormData(formDataInitialState);
     } catch (error) {
@@ -82,10 +81,10 @@ export default function FormRegistro() {
       .then((data) => {
         setGrades(data);
       })
-      .catch((error) => {
-        if (error instanceof Error) {
-          toast.error(error.message);
-        }
+      .catch(() => {
+        toast.error(
+          "Ocurrió un error al obtener los grados escolares, por favor intente de nuevo."
+        );
       });
   }, []);
 
