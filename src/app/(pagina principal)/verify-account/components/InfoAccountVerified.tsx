@@ -1,6 +1,6 @@
 "use client";
 
-import { api } from "@/libs/fetchClient";
+import { verificarCuenta } from "@/services/auth.service";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
@@ -18,43 +18,6 @@ export default function InfoAccountVerified() {
   const [accountVerified, setAccountVerified] = useState(false);
 
   useEffect(() => {
-    if (!token) {
-      setIsLoading(false);
-      setAccountVerified(false);
-      return;
-    }
-
-    async function verifyAccount() {
-      try {
-        const res = await api(`/verificar-cuenta?token=${token}`, {
-          method: "GET",
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          return toast.error(
-            Array.isArray(data.message) ? data.message.join(", ") : data.message
-          );
-        }
-
-        toast.success(data.message);
-        setAccountVerified(data.verified);
-      } catch (error) {
-        if (error instanceof Error) {
-          toast.error(error.message);
-          setIsLoading(false);
-          setAccountVerified(false);
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    }
-
-    verifyAccount();
-  }, []);
-
-  useEffect(() => {
     document.title =
       isLoading && !accountVerified
         ? "Verificando cuenta... | Saly Learning"
@@ -62,6 +25,35 @@ export default function InfoAccountVerified() {
         ? "Cuenta verificada | Saly Learning"
         : "Error al verificar cuenta | Saly Learning";
   }, [isLoading, accountVerified]);
+
+  useEffect(() => {
+    if (!token) {
+      setIsLoading(false);
+      setAccountVerified(false);
+      return;
+    }
+
+    verificarCuenta(token)
+      .then((data) => {
+        toast.success(data.message);
+        setAccountVerified(data.verified);
+      })
+      .catch((error) => {
+        if (error instanceof Error) {
+          toast.error(
+            Array.isArray(error.message)
+              ? error.message.join(", ")
+              : error.message
+          );
+          setAccountVerified(false);
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <article className="text-center mb-5">
