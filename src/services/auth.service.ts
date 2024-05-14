@@ -13,18 +13,20 @@ export const registrarseInitState = {
   rol: "",
 };
 
-export async function auth(username: string, password: string) {
+export async function autenticar(username: string, password: string) {
   const res = await api("/auth/login", {
     method: "POST",
     body: JSON.stringify({ username, password }),
     headers: { "Content-Type": "application/json" },
   });
 
+  const data = await res.json();
+
   if (!res.ok) {
-    throw new Error("Credenciales incorrectas.");
+    throw new Error(data.message);
   }
 
-  return res.json();
+  return data;
 }
 
 export async function registrarse(formData: typeof registrarseInitState) {
