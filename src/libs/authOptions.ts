@@ -1,4 +1,4 @@
-import { auth, obtenerPerfil } from "@/services/auth.service";
+import { autenticar, obtenerPerfil } from "@/services/auth.service";
 import type { NextAuthOptions, User } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -29,7 +29,8 @@ const authOptions: NextAuthOptions = {
         }
 
         const { username, password } = credentials;
-        const jwt = (await auth(username, password)).access_token;
+        const login = await autenticar(username, password);
+        const jwt = login.access_token;
         const profile = await obtenerPerfil(jwt);
 
         return {
