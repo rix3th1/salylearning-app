@@ -27,11 +27,7 @@ export default function FormRegistro() {
       setFormData(registrarseInitState);
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(
-          Array.isArray(error.message)
-            ? error.message.join(", ")
-            : error.message
-        );
+        toast.error(error.message.replace(/,/g, ", "));
       }
     } finally {
       setIsLoading(false);
@@ -45,11 +41,7 @@ export default function FormRegistro() {
       })
       .catch((error) => {
         if (error instanceof Error) {
-          toast.error(
-            Array.isArray(error.message)
-              ? error.message.join(", ")
-              : error.message
-          );
+          toast.error(error.message.replace(/,/g, ", "));
         }
       });
   }, []);

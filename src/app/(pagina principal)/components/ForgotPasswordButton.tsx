@@ -24,11 +24,7 @@ export default function ForgotPasswordButton() {
           return await enviarEmailDeRecuperacion(email);
         } catch (error) {
           if (error instanceof Error) {
-            Swal.showValidationMessage(
-              Array.isArray(error.message)
-                ? error.message.join(", ")
-                : error.message
-            );
+            Swal.showValidationMessage(error.message.replace(/,/g, ", "));
           }
         }
       },

@@ -40,11 +40,7 @@ export default function InfoAccountVerified() {
       })
       .catch((error) => {
         if (error instanceof Error) {
-          toast.error(
-            Array.isArray(error.message)
-              ? error.message.join(", ")
-              : error.message
-          );
+          toast.error(error.message.replace(/,/g, ", "));
           setAccountVerified(false);
         }
       })
