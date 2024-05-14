@@ -37,6 +37,7 @@ export default function ForgotPasswordButton() {
         title: "¡Correo enviado!",
         text: result.value.message,
         icon: "success",
+        timer: 3000,
       });
     }
   };
