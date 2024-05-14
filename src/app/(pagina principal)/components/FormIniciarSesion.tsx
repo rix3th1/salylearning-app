@@ -34,7 +34,9 @@ export default function FormIniciarSesion() {
       });
 
       if (!res?.ok) {
-        throw new Error("Credenciales incorrectas.");
+        throw new Error(
+          res?.error || "Error al iniciar sesión. Intente de nuevo."
+        );
       }
 
       const callbackUrl = new URL(res?.url || "").searchParams.get(
@@ -51,7 +53,7 @@ export default function FormIniciarSesion() {
       toast.success("Bienvenido a SalyLearning!");
     } catch (error) {
       if (error instanceof Error) {
-        toast.error(error.message);
+        toast.error(error.message.replace(/,/g, ", "));
       }
     } finally {
       setIsLoading(false);
