@@ -3,7 +3,11 @@
 import { validarToken } from "@/services/recuperar-clave.service";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { MdSecurity, MdSentimentVeryDissatisfied } from "react-icons/md";
+import {
+  MdPassword,
+  MdSecurity,
+  MdSentimentVeryDissatisfied,
+} from "react-icons/md";
 import { toast } from "sonner";
 import ChangePswForm from "./ChangePswForm";
 
@@ -56,6 +60,8 @@ export default function ChangePswSection() {
         <div className="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3">
           {isLoading && !validReq ? (
             <MdSecurity />
+          ) : validReq ? (
+            <MdPassword />
           ) : (
             <MdSentimentVeryDissatisfied />
           )}
