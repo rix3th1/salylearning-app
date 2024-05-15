@@ -14,7 +14,7 @@ export default function PendingQuestionaries() {
     <>
       <PageHeader title="Cuestionarios pendientes" />
 
-      <div className="conteiner-fluid">
+      <div className="container-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li>
             <Link href="/learning/teachers/questionaries/completed">

@@ -14,7 +14,7 @@ export default function CompletedQuestionariesPage() {
     <>
       <PageHeader title="Cuestionarios completos" />
 
-      <div className="conteiner-fluid">
+      <div className="container-fluid">
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li className="active">
             <Link href="/learning/teachers/questionaries/completed">
@@ -33,6 +33,7 @@ export default function CompletedQuestionariesPage() {
           </li>
         </ul>
       </div>
+
       <div className="container-fluid" style={{ margin: "50px 0" }}>
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
