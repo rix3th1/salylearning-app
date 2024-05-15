@@ -1,7 +1,7 @@
-import { api } from "./api.service";
+import { fetchClient } from "./api.service";
 
 export async function obtenerGrados() {
-  const res = await api("/grados", { method: "GET" });
+  const res = await fetchClient("/grados", { method: "GET" });
 
   if (!res.ok) {
     throw new Error(

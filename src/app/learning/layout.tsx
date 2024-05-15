@@ -3,6 +3,7 @@ import Aside from "@/components/ui/Aside";
 import InternalNav from "@/components/ui/InternalNav";
 import type { Metadata } from "next";
 import Script from "next/script";
+import HelpModal from "./components/HelpModal";
 import "./css/bootstrap.min.css";
 import "./css/style.css";
 
@@ -20,6 +21,8 @@ export default function LearningLayout({
       <Aside />
       <div className="content-page-container full-reset custom-scroll-containers">
         <InternalNav />
+        <HelpModal />
+
         <main>{children}</main>
         <FooterLogged />
       </div>

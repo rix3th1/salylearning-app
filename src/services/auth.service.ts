@@ -1,4 +1,4 @@
-import { api } from "./api.service";
+import { fetchClient } from "./api.service";
 
 export const registrarseInitState = {
   p_nombre: "",
@@ -14,7 +14,7 @@ export const registrarseInitState = {
 };
 
 export async function autenticar(username: string, password: string) {
-  const res = await api("/auth/login", {
+  const res = await fetchClient("/auth/login", {
     method: "POST",
     body: JSON.stringify({ username, password }),
     headers: { "Content-Type": "application/json" },
@@ -30,7 +30,7 @@ export async function autenticar(username: string, password: string) {
 }
 
 export async function registrarse(formData: typeof registrarseInitState) {
-  const res = await api("/auth/registrarse", {
+  const res = await fetchClient("/auth/registrarse", {
     method: "POST",
     body: JSON.stringify({
       ...formData,
@@ -51,7 +51,7 @@ export async function registrarse(formData: typeof registrarseInitState) {
 }
 
 export async function obtenerPerfil(jwt: string) {
-  const res = await api("/perfil", {
+  const res = await fetchClient("/perfil", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${jwt}`,
@@ -66,7 +66,7 @@ export async function obtenerPerfil(jwt: string) {
 }
 
 export async function verificarCuenta(token: string) {
-  const res = await api(`/verificar-cuenta?token=${token}`, {
+  const res = await fetchClient(`/verificar-cuenta?token=${token}`, {
     method: "GET",
   });
 

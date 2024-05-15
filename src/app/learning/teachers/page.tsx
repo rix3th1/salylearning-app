@@ -1,3 +1,4 @@
+import { obtenerContadores } from "@/services/contadores.service";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -7,7 +8,6 @@ import {
   MdLibraryBooks,
   MdOutlineRestore,
   MdPeople,
-  MdThumbUp,
   MdTrendingUp,
 } from "react-icons/md";
 import PageHeader from "../components/PageHeader";
@@ -17,6 +17,8 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
+  const contadores = await obtenerContadores();
+
   return (
     <>
       <PageHeader title="Inicio" />
@@ -29,8 +31,9 @@ export default async function HomePage() {
           <div className="tile-name">
             <Link href="/learning/teachers/reports">Grados</Link>
           </div>
-          <div className="tile-num full-reset">3</div>
+          <div className="tile-num full-reset">{contadores[0]}</div>
         </article>
+
         <article className="tile">
           <div className="tile-icon full-reset">
             <MdLibraryBooks />
@@ -38,8 +41,9 @@ export default async function HomePage() {
           <div className="tile-name">
             <Link href="/learning/teachers/books/new">Libros</Link>
           </div>
-          <div className="tile-num full-reset">30</div>
+          <div className="tile-num full-reset">{contadores[1]}</div>
         </article>
+
         <article className="tile">
           <div className="tile-icon full-reset">
             <MdBookmarkBorder />
@@ -49,8 +53,9 @@ export default async function HomePage() {
               Géneros literarios
             </Link>
           </div>
-          <div className="tile-num full-reset">4</div>
+          <div className="tile-num full-reset">{contadores[2]}</div>
         </article>
+
         <article className="tile">
           <div className="tile-icon full-reset">
             <MdAssignmentInd />
@@ -60,8 +65,9 @@ export default async function HomePage() {
               Preguntas pendientes
             </Link>
           </div>
-          <div className="tile-num full-reset">17</div>
+          <div className="tile-num full-reset">{contadores[3]}</div>
         </article>
+
         <article className="tile">
           <div className="tile-icon full-reset">
             <MdOutlineRestore />
@@ -71,8 +77,9 @@ export default async function HomePage() {
               Cuestionarios no logrados
             </Link>
           </div>
-          <div className="tile-num full-reset">9</div>
+          <div className="tile-num full-reset">{contadores[4]}</div>
         </article>
+
         <article className="tile">
           <div className="tile-icon full-reset">
             <MdCalendarMonth />
@@ -82,8 +89,9 @@ export default async function HomePage() {
               Cuestionarios completados
             </Link>
           </div>
-          <div className="tile-num full-reset">7</div>
+          <div className="tile-num full-reset">{contadores[5]}</div>
         </article>
+
         <article className="tile">
           <div className="tile-icon full-reset">
             <MdTrendingUp />
@@ -96,40 +104,6 @@ export default async function HomePage() {
           <div className="tile-num full-reset">&nbsp;</div>
         </article>
       </section>
-      <div className="modal fade" tabIndex={-1} role="dialog" id="ModalHelp">
-        <div className="modal-dialog modal-lg">
-          <div className="modal-content" style={{ backgroundColor: "#f8f9fa" }}>
-            <div className="modal-header">
-              <button
-                type="button"
-                className="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">×</span>
-              </button>
-              <h4 className="modal-title text-center">Ayuda del sistema</h4>
-            </div>
-            <div className="modal-body">
-              ¡Bienvenidos! En el menú, encontrarán una variedad emocionante de
-              actividades diseñadas especialmente para ayudarlos a mejorar sus
-              habilidades de lectura. Desde cuentos interactivos hasta desafíos
-              divertidos, cada opción está aquí para hacer que su experiencia
-              sea educativa y entretenida. No duden en explorar y descubrir
-              nuevas aventuras literarias.
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-primary"
-                data-dismiss="modal"
-              >
-                <MdThumbUp /> &nbsp; De acuerdo
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   );
 }

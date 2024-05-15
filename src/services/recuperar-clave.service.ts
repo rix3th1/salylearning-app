@@ -1,4 +1,4 @@
-import { api } from "./api.service";
+import { fetchClient } from "./api.service";
 
 export const cambiarClaveInitState = {
   password: "",
@@ -6,11 +6,14 @@ export const cambiarClaveInitState = {
 };
 
 export async function enviarEmailDeRecuperacion(email: string) {
-  const res = await api("/recuperar-clave/enviar-email-de-recuperacion", {
-    method: "POST",
-    body: JSON.stringify({ email }),
-    headers: { "Content-Type": "application/json" },
-  });
+  const res = await fetchClient(
+    "/recuperar-clave/enviar-email-de-recuperacion",
+    {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 
   const data = await res.json();
 
@@ -22,9 +25,12 @@ export async function enviarEmailDeRecuperacion(email: string) {
 }
 
 export async function validarToken(token: string) {
-  const res = await api(`/recuperar-clave/validar-token?token=${token}`, {
-    method: "GET",
-  });
+  const res = await fetchClient(
+    `/recuperar-clave/validar-token?token=${token}`,
+    {
+      method: "GET",
+    }
+  );
 
   const data = await res.json();
 
@@ -39,7 +45,7 @@ export async function cambiarClave(
   formData: typeof cambiarClaveInitState,
   token: string
 ) {
-  const res = await api("/recuperar-clave/cambiar-clave", {
+  const res = await fetchClient("/recuperar-clave/cambiar-clave", {
     method: "PATCH",
     body: JSON.stringify(formData),
     headers: {

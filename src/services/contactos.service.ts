@@ -1,4 +1,4 @@
-import { api } from "./api.service";
+import { fetchClient } from "./api.service";
 
 export const contactoInitState = {
   nombre_completo: "",
@@ -8,7 +8,7 @@ export const contactoInitState = {
 };
 
 export async function crearContacto(formData: typeof contactoInitState) {
-  const res = await api("/contactos", {
+  const res = await fetchClient("/contactos", {
     method: "POST",
     body: JSON.stringify(formData),
     headers: { "Content-Type": "application/json" },
