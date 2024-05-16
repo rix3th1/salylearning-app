@@ -1,5 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import calendarBookImage from "@/assets/calendar_book.png";
+import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
   title: "Completados (Cuestionarios): Docentes | Saly Learning",
 };
 
-export default function CompletedQuestionariesPage() {
+export default async function CompletedQuestionariesPage() {
+  const cuestionarios = await obtenerCuestionariosPorEstado("COMPLETADO");
+
   return (
     <>
       <PageHeader title="Cuestionarios completos" />
@@ -54,6 +57,7 @@ export default function CompletedQuestionariesPage() {
           </div>
         </div>
       </div>
+
       <div className="container-fluid">
         <h2 className="text-center">Cuestionarios completos</h2>
 
@@ -71,14 +75,25 @@ export default function CompletedQuestionariesPage() {
               </tr>
             </thead>
             <tbody>
-              {Array.from({ length: 5 }, (_, i) => (
+              {cuestionarios.map((cuestionario: any, i: number) => (
                 <tr key={i} className="info">
                   <td>{i + 1}</td>
-                  <td>El principito</td>
-                  <td>Carlos</td>
-                  <td>3</td>
-                  <td>12/08/2021</td>
-                  <td>12/08/2021</td>
+                  <td>{cuestionario.preguntas.libros.nom_libro}</td>
+                  <td>
+                    {`${cuestionario.preguntas.libros.mis_libros[0].usuario.p_nombre} ${cuestionario.preguntas.libros.mis_libros[0].usuario.p_apellido}`}
+                  </td>
+                  <td>
+                    {
+                      cuestionario.preguntas.libros.mis_libros[0].usuario
+                        .grado_usuario.grados.nom_grado
+                    }
+                  </td>
+                  <td>
+                    {new Date(cuestionario.fecha_asignado).toLocaleString()}
+                  </td>
+                  <td>
+                    {new Date(cuestionario.fecha_entrega).toLocaleString()}
+                  </td>
                   <td>
                     <button className="btn btn-success">
                       <MdSchedule />
