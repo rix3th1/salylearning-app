@@ -1,5 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import calendarImage from "@/assets/calendar.png";
+import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
   title: "No logrados (Cuestionarios): Docentes | Saly Learning",
 };
 
-export default function NotAchievedQuestionaries() {
+export default async function NotAchievedQuestionaries() {
+  const cuestionarios = await obtenerCuestionariosPorEstado("PENDIENTE");
+
   return (
     <>
       <PageHeader title="Cuestionarios no logrados" />
@@ -33,6 +36,7 @@ export default function NotAchievedQuestionaries() {
           </li>
         </ul>
       </div>
+
       <div className="container-fluid" style={{ margin: "50px 0" }}>
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">
@@ -54,6 +58,7 @@ export default function NotAchievedQuestionaries() {
           </div>
         </div>
       </div>
+
       <div className="container-fluid">
         <h2 className="text-center">Listado de no logrados</h2>
 
@@ -72,16 +77,29 @@ export default function NotAchievedQuestionaries() {
               </tr>
             </thead>
             <tbody>
-              {Array.from({ length: 5 }, (_, i) => (
+              {cuestionarios.map((cuestionario: any, i: number) => (
                 <tr key={i} className="info">
                   <td>{i + 1}</td>
-                  <td>El principito</td>
-                  <td>Carlos</td>
-                  <td>3</td>
-                  <td>12/08/2021</td>
-                  <td>12/08/2021</td>
+                  <td>{cuestionario.preguntas.libros.nom_libro}</td>
                   <td>
-                    <span className="label label-danger">No logrado</span>
+                    {`${cuestionario.preguntas.libros.mis_libros[0].usuario.p_nombre} ${cuestionario.preguntas.libros.mis_libros[0].usuario.p_apellido}`}
+                  </td>
+                  <td>
+                    {
+                      cuestionario.preguntas.libros.mis_libros[0].usuario
+                        .grado_usuario.grados.nom_grado
+                    }
+                  </td>
+                  <td>
+                    {new Date(cuestionario.fecha_asignado).toLocaleString()}
+                  </td>
+                  <td>
+                    {new Date(cuestionario.fecha_entrega).toLocaleString()}
+                  </td>
+                  <td>
+                    <span className="label label-danger">
+                      {cuestionario.estado}
+                    </span>
                   </td>
                   <td>
                     <button className="btn btn-info">
