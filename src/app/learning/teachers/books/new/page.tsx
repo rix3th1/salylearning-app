@@ -2,9 +2,9 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import flatBookImage from "@/assets/flat-book.png";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MdSave, MdUpload } from "react-icons/md";
 import type { ReactImageGalleryItem } from "react-image-gallery";
 import Carrousel from "./components/Carrousel";
+import UploadBookButton from "./components/UploadBookButton";
 
 export const metadata: Metadata = {
   title: "Libros: Docentes | Saly Learning",
@@ -68,21 +68,7 @@ export default function NewBookPage() {
 
               {/* Botón para subir libros */}
               <section className="text-center" style={{ marginTop: "2rem" }}>
-                <input
-                  type="file"
-                  id="inputLibro"
-                  style={{ display: "none" }}
-                />
-                <button
-                  type="button"
-                  className="btn btn-success"
-                  style={{ marginRight: "15px" }}
-                >
-                  <MdUpload /> Subir Libro
-                </button>
-                <button type="submit" className="btn btn-primary">
-                  <MdSave /> Guardar
-                </button>
+                <UploadBookButton />
               </section>
             </div>
           </div>
