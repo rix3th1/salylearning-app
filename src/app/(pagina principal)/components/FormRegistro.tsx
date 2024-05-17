@@ -35,15 +35,21 @@ export default function FormRegistro() {
   };
 
   useEffect(() => {
-    obtenerGrados()
-      .then((data) => {
-        setGrados(data);
-      })
-      .catch((error) => {
-        if (error instanceof Error) {
-          toast.error(error.message.replace(/,/g, ", "));
-        }
-      });
+    toast.promise(
+      obtenerGrados()
+        .then((data) => {
+          setGrados(data);
+        })
+        .catch((error) => {
+          if (error instanceof Error) {
+            toast.error(error.message.replace(/,/g, ", "));
+          }
+        }),
+      {
+        loading: "Cargando...",
+        success: "Listo",
+      }
+    );
   }, []);
 
   return (
