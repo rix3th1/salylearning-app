@@ -1,6 +1,5 @@
 import pkg from "@/../package.json";
 import type { Metadata } from "next";
-import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -25,11 +24,7 @@ export default function RootLayout({
         <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
       </head>
 
-      <body>
-        {children}
-
-        <Toaster />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
