@@ -3,7 +3,7 @@ import { obtenerGrados } from "@/services/grados.service";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-const promises = [obtenerGenerosLiterarios, obtenerGrados];
+const promises = [obtenerGenerosLiterarios.client, obtenerGrados];
 const getData = () => Promise.all(promises.map((res) => res()));
 
 export default function FormNewBook() {

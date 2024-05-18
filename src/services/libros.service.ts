@@ -1,4 +1,4 @@
-import { fetchClient } from "./api.service";
+import { fetchClient, fetchServer } from "./api.service";
 
 export const crearLibroInitState = {
   nom_libro: "",
@@ -24,6 +24,41 @@ export async function crearLibro(formData: FormData) {
   if (!res.ok) {
     throw new Error(
       Array.isArray(data.message) ? data.message[0] : data.message
+    );
+  }
+
+  return data;
+}
+
+export async function obtenerLibros() {
+  const res = await fetchServer("/libros", {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error al obtener la información de los libros, por favor intente de nuevo."
+    );
+  }
+
+  return data;
+}
+
+export async function obtenerLibrosPorGeneroLiterario(
+  genero_literario: string
+) {
+  const res = await fetchServer(
+    `/libros/genero?genero_literario=${genero_literario}`,
+    { method: "GET" }
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error al obtener la información de los libros, por favor intente de nuevo."
     );
   }
 

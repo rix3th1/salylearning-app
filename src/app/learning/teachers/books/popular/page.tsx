@@ -67,11 +67,10 @@ export default function PopularBooksPage() {
             </div>
             <div className="media-body">
               <h4 className="media-heading">Matilda, de Roald Dahl</h4>
-              <div className="pull-left">
-                <strong>Roald Dahl</strong>
+              <div className="pull-left" style={{ fontWeight: "bold" }}>
+                Roald Dahl
                 <br />
-                <strong>publicación original: 1 de octubre de 1988</strong>
-                <br />
+                publicación original: 1 de octubre de 1988
               </div>
               <p className="text-center pull-right">
                 <Link

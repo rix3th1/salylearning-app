@@ -36,7 +36,7 @@ export default async function InternalNav() {
             }`}
             className="simple-link"
           >
-            {`${session?.user.rol}: ${session?.user.p_nombre}`}
+            Mi perfíl
           </Link>
         </li>
         <PowerButton />

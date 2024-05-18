@@ -81,9 +81,7 @@ export default function ContactAndSupportPage() {
             ¡Gracias por elegirnos! Estamos ansiosos por atenderte y
             proporcionarte la mejor experiencia posible.
           </p>
-          <p>
-            <i>Equipo de Soporte SALY LEARNING</i>
-          </p>
+          <p style={{ fontStyle: "italic" }}>Equipo de Soporte SALY LEARNING</p>
         </div>
       </div>
     </>
