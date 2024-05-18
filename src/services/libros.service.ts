@@ -46,6 +46,20 @@ export async function obtenerLibros() {
   return data;
 }
 
+export async function obtenerLibro(id: string) {
+  const res = await fetchServer(`/libros/${id}`, {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
+
 export async function obtenerLibrosPorGeneroLiterario(
   genero_literario: string
 ) {
