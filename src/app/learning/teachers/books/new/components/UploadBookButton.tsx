@@ -6,8 +6,11 @@ import { MdCancel, MdUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import FormNewBook from "./FormNewBook";
+import { useRouter } from "next/navigation";
 
 export default function UploadBookButton() {
+  const router = useRouter();
+
   const showSwalUploadBook = async () => {
     const result = await withReactContent(Swal).fire({
       customClass: plus_jakarta_sans.className,
@@ -42,6 +45,8 @@ export default function UploadBookButton() {
     });
 
     if (result.isConfirmed) {
+      router.refresh();
+
       Swal.fire({
         title: "Libro subido a la plataforma SalyLearning exitosamente!",
         width: 600,
