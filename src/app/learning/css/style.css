@@ -942,8 +942,10 @@ canvas {
 
 .simple-link {
   color: #fff !important;
+  text-decoration: underline;
 }
 
 .simple-link:hover {
-  text-decoration: underline;
+  color: rgb(184, 196, 215) !important;
+  transition: color 0.1s;
 }
