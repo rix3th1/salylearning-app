@@ -1,23 +1,30 @@
 import PageHeader from "@/app/learning/components/PageHeader";
+import { obtenerLibro } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MdFavorite } from "react-icons/md";
+
+interface IProps {
+  params: { id: string };
+}
 
 export const metadata: Metadata = {
   title: "Leer Libro: Estudiantes | Saly Learning",
 };
 
-export default function ReadBookPage() {
+export default async function ReadBookPage({ params }: IProps) {
+  const libro = await obtenerLibro(params.id);
+
   return (
     <>
       <PageHeader title="Leer libro" />
 
-      <section id="contenido">
+      <section>
         <div className="container-fluid">
           <div className="container-fluid">
             <div className="row">
               <div className="container-fluid">
-                <div id="contenido1" style={{ display: "none" }}>
+                <article>
                   <div
                     style={{
                       position: "relative",
@@ -34,7 +41,6 @@ export default function ReadBookPage() {
                     }}
                   >
                     <iframe
-                      loading="lazy"
                       style={{
                         position: "absolute",
                         width: "100%",
@@ -45,7 +51,7 @@ export default function ReadBookPage() {
                         padding: 0,
                         margin: 0,
                       }}
-                      src="https://www.canva.com/design/DAFyL7BxLac/uDlt9O3bX-8pazs00AGf-A/view?embed"
+                      src={libro.url_libro}
                       allowFullScreen
                     />
                   </div>
@@ -54,7 +60,7 @@ export default function ReadBookPage() {
                     <MdFavorite />
                     &nbsp;&nbsp; Favoritos
                   </Link>
-                </div>
+                </article>
               </div>
             </div>
           </div>
