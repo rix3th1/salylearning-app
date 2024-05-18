@@ -1,42 +1,31 @@
+import PageHeader from "@/app/learning/components/PageHeader";
+import Carrousel from "@/app/learning/teachers/books/new/components/Carrousel";
 import calendarImage from "@/assets/calendar.png";
+import { obtenerGenerosLiterarios } from "@/services/generos-literarios.service";
+import { obtenerLibrosPorGeneroLiterario } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import type { ReactImageGalleryItem } from "react-image-gallery";
-import PageHeader from "../../components/PageHeader";
-import Carrousel from "../../teachers/books/new/components/Carrousel";
 
 export const metadata: Metadata = {
   title: "Libros: Estudiantes | Saly Learning",
 };
 
-const images: ReactImageGalleryItem[] = [
-  {
-    original: "/img/matilda.jpg",
-    originalAlt: "Matilda",
-    description: "Libro de Matilda",
-    book_url: "/learning/students/books",
-  },
-  {
-    original: "/img/manolito gafotas.jpg",
-    originalAlt: "Manolito gafotas",
-    description: "Libro de manolito gafotas",
-    book_url: "/learning/students/books",
-  },
-  {
-    original: "/img/el mago de oz.jpg",
-    originalAlt: "El mago de Oz",
-    description: "Libro del mago de Oz",
-    book_url: "/learning/students/books",
-  },
-  {
-    original: "/img/el libro de la selva.jpg",
-    originalAlt: "El libro de la selva",
-    description: "Libro de la selva",
-    book_url: "/learning/students/books",
-  },
-];
+const mapDataCarrousel = async (genero_literario: string) => {
+  const libros = await obtenerLibrosPorGeneroLiterario(genero_literario);
+  return libros.map(
+    (libro: any): ReactImageGalleryItem => ({
+      original: libro.imagen_portada,
+      originalAlt: libro.nom_libro,
+      description: libro.nom_libro,
+      book_url: libro.url_libro,
+    })
+  );
+};
 
-export default function BooksPage() {
+export default async function BooksPage() {
+  const generosLiterarios = await obtenerGenerosLiterarios.server();
+
   return (
     <>
       <PageHeader title="Explorar libros" />
@@ -67,45 +56,24 @@ export default function BooksPage() {
           </div>
 
           <div className="row">
-            <div className="col-xs-12 col-sm-6 col-md-6 text-justify lead">
-              <div className="custom-tile">
-                <h3>Aventura</h3>
-                Sumérgete en emocionantes viajes llenos de acción y peligro con
-                nuestros libros de aventuras. Desde explorar islas misteriosas
-                hasta descubrir tesoros perdidos, cada página te llevará a un
-                mundo lleno de adrenalina y emoción.
-                {/*  */}
-                <div className="container-items">
-                  <Carrousel items={images.sort(() => Math.random())} />
+            {generosLiterarios.map(async (genero: any, i: number) => {
+              const images = await mapDataCarrousel(genero.nom_genero);
+
+              return (
+                <div
+                  key={i}
+                  className="col-xs-12 col-sm-6 col-md-6 text-justify lead"
+                >
+                  <div className="custom-tile">
+                    <h3>{genero.nom_genero}</h3>
+                    <p>{genero.descripcion}</p>
+                    <div className="container-items">
+                      <Carrousel items={images} />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 text-justify lead">
-              <div className="custom-tile">
-                <h3>Fantasía</h3>
-                Abre las puertas a la magia y la imaginación con nuestros libros
-                de fantasía. Con mundos mágicos habitados por criaturas
-                extraordinarias y héroes valientes, estos libros te
-                transportarán a universos donde los sueños se vuelven realidad y
-                la fantasía cobra vida.
-                <div className="container-items">
-                  <Carrousel items={images} />
-                </div>
-              </div>
-            </div>
-            <div className="col-xs-12 col-sm-6 col-md-6 text-justify lead">
-              <div className="custom-tile">
-                <h3>Historia</h3>
-                Viaja en el tiempo y descubre los secretos del pasado con
-                nuestros libros de historia. Desde épocas antiguas hasta eventos
-                históricos más recientes, cada libro te llevará a un viaje
-                fascinante a través de los acontecimientos que han moldeado
-                nuestro mundo.
-                <div className="container-items">
-                  <Carrousel items={images} />
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
