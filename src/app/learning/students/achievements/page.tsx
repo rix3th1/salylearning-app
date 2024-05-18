@@ -1,9 +1,9 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import faroDelSaberLogro from "@/assets/farodelsaber.png";
 import genioDelQuizLogro from "@/assets/geniodelquiz.png";
 import genioEmergenteLogro from "@/assets/genioemergente.png";
 import type { Metadata } from "next";
 import Image from "next/image";
-import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Logros: Estudiantes | Saly Learning",

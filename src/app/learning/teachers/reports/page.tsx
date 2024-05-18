@@ -1,9 +1,9 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import categoryImage from "@/assets/category.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
-import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Reportes Grado: Docentes | Saly Learning",

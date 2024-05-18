@@ -1,8 +1,8 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import ayudaImage from "@/assets/ayuda.png";
 import porqueImage from "@/assets/porque.png";
 import type { Metadata } from "next";
 import Image from "next/image";
-import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Ayuda: Estudiantes | Saly Learning",

@@ -1,7 +1,7 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
-import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Estadísticas Generales: Docentes | Saly Learning",

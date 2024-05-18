@@ -1,3 +1,4 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import ayudaImage from "@/assets/ayuda.png";
 import categoryImage from "@/assets/category.png";
 import misLibrosImage from "@/assets/mis-libros.png";
@@ -7,7 +8,6 @@ import rendimientoImage from "@/assets/rendimiento.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Preguntas Frecuentes: Docentes | Saly Learning",

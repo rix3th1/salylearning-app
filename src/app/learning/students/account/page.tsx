@@ -1,6 +1,6 @@
+import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Image from "next/image";
-import PageHeader from "../../components/PageHeader";
 
 export const metadata: Metadata = {
   title: "Configuración Cuenta: Estudiantes | Saly Learning",
