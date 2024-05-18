@@ -18,7 +18,7 @@ const mapDataCarrousel = async (genero_literario: string) => {
       original: libro.imagen_portada,
       originalAlt: libro.nom_libro,
       description: libro.nom_libro,
-      book_url: libro.url_libro,
+      book_url: `/learning/students/books/${libro.id}`,
     })
   );
 };
