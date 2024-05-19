@@ -8,6 +8,7 @@ interface IProps {
 export default function CustomBookItem({ item }: IProps) {
   return (
     <div className="image-gallery-image">
+      {/* eslint-disable @next/next/no-img-element */}
       <img
         src={item.original}
         alt={item.originalAlt || "Imagen del libro"}
