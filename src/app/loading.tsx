@@ -4,10 +4,9 @@ export default function LoadingPage() {
   return (
     <div className="loader-container">
       <div className="loader">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        {Array.from({ length: 4 }, (_, i) => (
+          <span key={i} />
+        ))}
       </div>
     </div>
   );
