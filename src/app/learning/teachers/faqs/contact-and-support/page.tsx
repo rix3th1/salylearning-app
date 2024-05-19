@@ -3,6 +3,7 @@ import sectionImage from "@/assets/section.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import ContactAndSupportForm from "./components/ContactAndSupportForm";
 
 export const metadata: Metadata = {
   title: "Contacto & Soporte: Docentes | Saly Learning",
@@ -64,19 +65,7 @@ export default function ContactAndSupportPage() {
           className="container-flat-form"
           style={{ backgroundColor: "#dee2e6" }}
         >
-          <form>
-            <label htmlFor="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required />
-            <label htmlFor="correo">Correo Electrónico:</label>
-            <input type="email" id="correo" name="correo" required />
-            <label htmlFor="asunto">Asunto:</label>
-            <input type="text" id="asunto" name="asunto" required />
-            <label htmlFor="mensaje">Mensaje:</label>
-            <textarea id="mensaje" name="mensaje" rows={4} required />
-            <button type="submit" className="btn btn-primary">
-              Enviar Mensaje
-            </button>
-          </form>
+          <ContactAndSupportForm />
           <p style={{ paddingTop: "3rem" }}>
             ¡Gracias por elegirnos! Estamos ansiosos por atenderte y
             proporcionarte la mejor experiencia posible.
