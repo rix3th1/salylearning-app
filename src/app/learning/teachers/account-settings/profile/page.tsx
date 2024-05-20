@@ -1,5 +1,7 @@
 import PageHeader from "@/app/learning/components/PageHeader";
+import authOptions from "@/libs/authOptions";
 import type { Metadata } from "next";
+import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -7,7 +9,13 @@ export const metadata: Metadata = {
   title: "Actualizar Perfíl: Docentes | Saly Learning",
 };
 
-export default function TeacherAccountSettingsPage() {
+export default async function TeacherAccountSettingsPage() {
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+  const name = `${user?.p_nombre} ${user?.p_apellido}`;
+  const rol = `${user?.rol[0]}${user?.rol.slice(1).toLowerCase()}`;
+  const grade = session?.user.grado_usuario.grados.nom_grado;
+
   return (
     <>
       <PageHeader title="Actualizar perfíl docente" />
@@ -58,10 +66,10 @@ export default function TeacherAccountSettingsPage() {
                     style={{ display: "none" }}
                   />
                   <h5 className="my-3" style={{ fontSize: "1.5rem" }}>
-                    Elizabeth Báthory
+                    {name}
                   </h5>
-                  <p className="text-muted mb-1">Docente</p>
-                  <p className="text-muted mb-4">Rol: Docente</p>
+                  <p className="text-muted mb-1">{rol}</p>
+                  <p className="text-muted mb-4">Rol: {rol}</p>
                   <div className="d-flex justify-content-center mb-2">
                     <input
                       type="file"
@@ -103,7 +111,9 @@ export default function TeacherAccountSettingsPage() {
                   <p className="mb-0">Nombres</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="text-muted mb-0">Elizabeth</p>
+                  <p className="text-muted mb-0">
+                    {`${user?.p_nombre} ${user?.s_nombre}`}
+                  </p>
                 </div>
               </div>
               <div className="report-content">
@@ -111,7 +121,7 @@ export default function TeacherAccountSettingsPage() {
                   <p className="mb-0">Apellidos</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="text-muted mb-0">Báthory</p>
+                  <p className="text-muted mb-0">{`${user?.p_apellido} ${user?.s_apellido}`}</p>
                 </div>
               </div>
               <div className="report-content">
@@ -119,7 +129,7 @@ export default function TeacherAccountSettingsPage() {
                   <p className="mb-0">Edad</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="text-muted mb-0">20</p>
+                  <p className="text-muted mb-0">{user?.edad}</p>
                 </div>
               </div>
               <div className="report-content">
@@ -127,15 +137,15 @@ export default function TeacherAccountSettingsPage() {
                   <p className="mb-0">Grado</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="text-muted mb-0">quinto</p>
+                  <p className="text-muted mb-0">{grade}</p>
                 </div>
               </div>
               <div className="report-content">
                 <div className="col-sm-3">
-                  <p className="mb-0">Correo electrónico</p>
+                  <p className="mb-0">Email</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="text-muted mb-0">Elizabeth123@gmail.com</p>
+                  <p className="text-muted mb-0">{user?.email}</p>
                 </div>
               </div>
             </div>
