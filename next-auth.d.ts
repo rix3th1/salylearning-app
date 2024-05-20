@@ -21,5 +21,6 @@ declare module "next-auth" {
     verificado: boolean;
     avatar_usuario?: any;
     foto_perfil?: any;
+    grado_usuario: any;
   }
 }
