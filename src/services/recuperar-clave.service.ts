@@ -1,6 +1,6 @@
 import { fetchClient } from "./api.service";
 
-export const cambiarClaveInitState = {
+export const cambiarClaveRecuperacionInitState = {
   password: "",
   confirmar_password: "",
 };
@@ -41,8 +41,8 @@ export async function validarToken(token: string) {
   return data;
 }
 
-export async function cambiarClave(
-  formData: typeof cambiarClaveInitState,
+export async function cambiarClaveRecuperacion(
+  formData: typeof cambiarClaveRecuperacionInitState,
   token: string
 ) {
   const res = await fetchClient("/recuperar-clave/cambiar-clave", {
