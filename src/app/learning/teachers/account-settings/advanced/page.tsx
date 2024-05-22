@@ -100,22 +100,6 @@ export default function TeacherAccountSettingsPage() {
                     name="cod_docente"
                   />
                 </div>
-                {/* <div className="form-group mx-sm-4 pt-3">
-                    <select
-                      className="form-control"
-                      id="gradoEscolar"
-                      name="gradoEscolar"
-                    >
-                      <option value="select_grado">
-                        Seleccione su grado escolar
-                      </option>
-                      <option value="primero">Primero</option>
-                      <option value="segundo">Segundo</option>
-                      <option value="tercero">Tercero</option>
-                      <option value="cuarto">Cuarto</option>
-                      <option value="quinto">Quinto</option>
-                    </select>
-                  </div> */}
                 <div className="form-group mx-sm-4 pt-3">
                   <label htmlFor="fechaNacimiento">Fecha de Nacimiento:</label>
                   <input
