@@ -1,5 +1,4 @@
 import authOptions from "@/libs/authOptions";
-import SessionProviderContext from "@/providers/SessionProvider";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
@@ -15,5 +14,5 @@ export default async function MainPageTemplate({
     );
   }
 
-  return <SessionProviderContext>{children}</SessionProviderContext>;
+  return children;
 }

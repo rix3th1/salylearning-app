@@ -1,3 +1,4 @@
+import SessionProviderContext from "@/providers/SessionProvider";
 import { Toaster } from "sonner";
 
 export default function RootTemplate({
@@ -6,9 +7,10 @@ export default function RootTemplate({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <SessionProviderContext>
       {children}
+
       <Toaster />
-    </>
+    </SessionProviderContext>
   );
 }
