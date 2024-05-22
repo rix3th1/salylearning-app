@@ -1,6 +1,6 @@
 import {
-  cambiarClave,
-  cambiarClaveInitState,
+  cambiarClaveRecuperacion,
+  cambiarClaveRecuperacionInitState,
 } from "@/services/recuperar-clave.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useRouter } from "next/navigation";
@@ -15,7 +15,7 @@ export default function ChangePswForm({
   access_token_cambiar_clave: tk,
 }: IProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState(cambiarClaveInitState);
+  const [formData, setFormData] = useState(cambiarClaveRecuperacionInitState);
 
   const router = useRouter();
 
@@ -31,10 +31,10 @@ export default function ChangePswForm({
     setIsLoading(true);
 
     try {
-      const claveCambiada = await cambiarClave(formData, tk);
+      const claveCambiada = await cambiarClaveRecuperacion(formData, tk);
 
       toast.success(claveCambiada.message);
-      setFormData(cambiarClaveInitState);
+      setFormData(cambiarClaveRecuperacionInitState);
       router.push("/");
     } catch (error) {
       if (error instanceof Error) {
