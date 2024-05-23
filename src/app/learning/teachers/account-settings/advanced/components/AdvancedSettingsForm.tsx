@@ -1,207 +1,106 @@
 "use client";
 
-import {
-  cambiarClave,
-  cambiarClaveInitState,
-} from "@/services/cambiar-clave.service";
-import { THandleChange, THandleSubmit } from "@/types";
-import { signOut, useSession } from "next-auth/react";
 import { useState } from "react";
-import { MdVisibility, MdVisibilityOff } from "react-icons/md";
-import Swal from "sweetalert2";
 
 export default function AdvancedSettingsForm() {
-  const { data: session } = useSession();
-
-  const [passwordsVisibility, setPasswordsVisibility] = useState({
-    password: false,
-    newPassword: false,
-    confirmPassword: false,
-  });
   const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState(cambiarClaveInitState);
-
-  const handleChange = (e: THandleChange) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: THandleSubmit) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const cambioClave = await cambiarClave(
-        formData,
-        session?.user.email || ""
-      );
-
-      await Swal.fire({
-        title: "¡Contraseña cambiada!",
-        text: cambioClave.message,
-        icon: "success",
-        timer: 3000,
-      });
-
-      setFormData(cambiarClaveInitState);
-      signOut();
-    } catch (error) {
-      if (error instanceof Error) {
-        Swal.fire({
-          title: "¡Error!",
-          text: error.message.replace(/,/g, ", "),
-          icon: "error",
-          timer: 3000,
-        });
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const [formData, setFormData] = useState();
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="hidden"
-        name="email"
-        id="email"
-        defaultValue={session?.user.email}
-      />
-      {/* Cambio de contraseña */}
+    <form>
       <div className="form-group text-center pt-3">
-        <h3 style={{ textAlign: "center" }}>Cambia tu contraseña</h3>
+        <h3 style={{ textAlign: "center" }}>Actualizar perfíl de usuario</h3>
       </div>
-      <div className="form-group mx-sm-4 pt-3" style={{ position: "relative" }}>
-        <label htmlFor="current_password">Cambiar contraseña</label>
+      <div className="form-group mx-sm-4 pt-3">
         <input
-          type={passwordsVisibility.password ? "text" : "password"}
+          type="text"
           className="form-control"
-          id="current_password"
-          name="current_password"
-          placeholder="Ingrese su Contraseña"
+          placeholder="Nombre de usuario"
+          name="username"
+          autoComplete="username"
           required
-          autoComplete="current-password"
-          value={formData.current_password}
-          onChange={handleChange}
         />
-
-        <span
-          style={{
-            position: "absolute",
-            top: "60%",
-            right: 10,
-            cursor: "pointer",
-          }}
-        >
-          {!passwordsVisibility.password ? (
-            <MdVisibility
-              onClick={() =>
-                setPasswordsVisibility({
-                  ...passwordsVisibility,
-                  password: !passwordsVisibility.password,
-                })
-              }
-            />
-          ) : (
-            <MdVisibilityOff
-              onClick={() =>
-                setPasswordsVisibility({
-                  ...passwordsVisibility,
-                  password: !passwordsVisibility.password,
-                })
-              }
-            />
-          )}
-        </span>
       </div>
-      <div className="form-group mx-sm-4 pt-3" style={{ position: "relative" }}>
-        <label htmlFor="password">Nueva Contraseña</label>
+      <div className="form-group mx-sm-4 pt-3">
         <input
-          type={passwordsVisibility.newPassword ? "text" : "password"}
+          type="text"
           className="form-control"
-          id="password"
-          name="password"
-          placeholder="Ingrese la nueva contraseña"
-          autoComplete="new-password"
-          value={formData.password}
-          onChange={handleChange}
+          placeholder="Primer nombre"
+          name="p_nombre"
+          required
         />
-
-        <span
-          style={{
-            position: "absolute",
-            top: "61%",
-            right: 10,
-            cursor: "pointer",
-          }}
-        >
-          {!passwordsVisibility.newPassword ? (
-            <MdVisibility
-              onClick={() =>
-                setPasswordsVisibility({
-                  ...passwordsVisibility,
-                  newPassword: !passwordsVisibility.newPassword,
-                })
-              }
-            />
-          ) : (
-            <MdVisibilityOff
-              onClick={() =>
-                setPasswordsVisibility({
-                  ...passwordsVisibility,
-                  newPassword: !passwordsVisibility.newPassword,
-                })
-              }
-            />
-          )}
-        </span>
       </div>
-      <div className="form-group mx-sm-4 pt-3" style={{ position: "relative" }}>
-        <label htmlFor="confirmar_password">Confirmar Contraseña</label>
+      <div className="form-group mx-sm-4 pt-3">
         <input
-          type={passwordsVisibility.confirmPassword ? "text" : "password"}
+          type="text"
           className="form-control"
-          id="confirmar_password"
-          name="confirmar_password"
-          placeholder="Confirme la nueva contraseña"
-          autoComplete="new-password"
-          value={formData.confirmar_password}
-          onChange={handleChange}
+          placeholder="Segundo nombre"
+          name="s_nombre"
+          required
         />
-
-        <span
-          style={{
-            position: "absolute",
-            top: "60%",
-            right: 10,
-            cursor: "pointer",
-          }}
-        >
-          {!passwordsVisibility.confirmPassword ? (
-            <MdVisibility
-              onClick={() =>
-                setPasswordsVisibility({
-                  ...passwordsVisibility,
-                  confirmPassword: !passwordsVisibility.confirmPassword,
-                })
-              }
-            />
-          ) : (
-            <MdVisibilityOff
-              onClick={() =>
-                setPasswordsVisibility({
-                  ...passwordsVisibility,
-                  confirmPassword: !passwordsVisibility.confirmPassword,
-                })
-              }
-            />
-          )}
-        </span>
       </div>
-      <button type="submit" className="btn btn-primary" disabled={isLoading}>
-        {isLoading ? "Enviando..." : "Enviar"}
+      <div className="form-group mx-sm-4 pt-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Primer apellido"
+          name="p_apellido"
+          required
+        />
+      </div>
+      <div className="form-group mx-sm-4 pt-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Segundo apellido"
+          name="s_apellido"
+          required
+        />
+      </div>
+      <div className="form-group mx-sm-4 pt-3">
+        <input
+          type="email"
+          className="form-control"
+          placeholder="Email"
+          name="email"
+          autoComplete="email"
+          required
+        />
+      </div>
+      <div className="form-group mx-sm-4 pt-3">
+        <input
+          type="number"
+          className="form-control"
+          placeholder="Cod. docente"
+          name="cod_docente"
+          required
+        />
+      </div>
+      <div className="form-group mx-sm-4 pt-3">
+        <label htmlFor="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input
+          type="date"
+          className="form-control"
+          id="fecha_nacimiento"
+          name="fecha_nacimiento"
+          required
+        />
+      </div>
+      <div className="form-group mx-sm-4 pt-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Ciudad"
+          name="ciudad"
+          required
+        />
+      </div>
+      <button
+        type="submit"
+        className="btn btn-primary"
+        style={{ marginBottom: "40px" }}
+      >
+        Actualizar perfíl
       </button>
     </form>
   );
