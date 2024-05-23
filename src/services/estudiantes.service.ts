@@ -13,3 +13,19 @@ export async function obtenerEstudiante(id_usuario: string) {
 
   return data;
 }
+
+export const perfilEstudianteInitState = {
+  p_nombre: "",
+  s_nombre: "",
+  p_apellido: "",
+  s_apellido: "",
+  edad: "",
+  id_grado: "",
+  ciudad: "",
+  apodo: "",
+};
+
+export async function actualizarPerfilEstudiante(
+  id_usuario: string,
+  formData: typeof perfilEstudianteInitState
+) {}
