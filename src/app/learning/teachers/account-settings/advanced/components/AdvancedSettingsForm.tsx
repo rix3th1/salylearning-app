@@ -1,11 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
 export default function AdvancedSettingsForm() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [formData, setFormData] = useState();
-
   return (
     <form>
       <div className="form-group text-center pt-3">
