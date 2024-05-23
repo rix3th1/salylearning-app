@@ -4,6 +4,7 @@ import { obtenerEstudiante } from "@/services/estudiantes.service";
 import type { Metadata } from "next";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
+import FormAccount from "./FormAccount";
 
 export const metadata: Metadata = {
   title: "Configuración Cuenta: Estudiantes | Saly Learning",
@@ -12,7 +13,6 @@ export const metadata: Metadata = {
 export default async function StudentsAccountPage() {
   const session = await getServerSession(authOptions);
   const user = session?.user;
-  const grade = session?.user.grado_usuario.grados.nom_grado;
   const estudiante = await obtenerEstudiante(`${user?.userId}`);
 
   return (
@@ -70,75 +70,7 @@ export default async function StudentsAccountPage() {
 
             <div className="col-md-9">
               <h4 className="mr-3">Datos del Alumno</h4>
-              <div>
-                <hr />
-                <div className="form-group">
-                  <label htmlFor="nombre">Nombre:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="nombre"
-                    placeholder="Nombre del alumno"
-                    readOnly
-                    defaultValue={`${user?.p_nombre} ${user?.p_apellido}`}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="apellidos">Apellidos:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="apellidos"
-                    placeholder="Apellidos del alumno"
-                    readOnly
-                    defaultValue={`${user?.s_nombre} ${user?.s_apellido}`}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="edad">Edad:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="edad"
-                    placeholder="Edad del alumno"
-                    readOnly
-                    defaultValue={user?.edad}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="grado">Grado:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="grado"
-                    placeholder="Grado del alumno"
-                    readOnly
-                    defaultValue={grade}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="ciudad">Ciudad:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="ciudad"
-                    placeholder="Ciudad de residencia"
-                    readOnly
-                    defaultValue={user?.ciudad}
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="apodo">Apodo:</label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="apodo"
-                    placeholder="Apodo del alumno"
-                    readOnly
-                    defaultValue={estudiante.apodo}
-                  />
-                </div>
-              </div>
+              <FormAccount user={user} estudiante={estudiante} />
             </div>
           </div>
         </div>
