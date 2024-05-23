@@ -45,6 +45,8 @@ export default function FormAccount({ user, estudiante }: IProps) {
         success: "Listo",
       }
     );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
