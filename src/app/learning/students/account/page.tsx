@@ -76,7 +76,6 @@ export default async function StudentsAccountPage() {
         </div>
       </section>
 
-      {/*modal selección avatar*/}
       <div
         id="avatarModal"
         className="avatar-modal"
