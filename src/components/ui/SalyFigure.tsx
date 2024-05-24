@@ -14,19 +14,41 @@ interface SalyFigureProps {
   width: string;
 }
 
-export default function SalyFigure() {
+interface IProps {
+  canChange: boolean;
+}
+
+export default function SalyFigure({ canChange }: IProps) {
   const pathname = usePathname();
-  const image: SalyFigureProps = pathname.includes("/books")
-    ? { src: SALYLEYENDO, alt: "SALY LEYENDO", width: "55%" }
-    : pathname.includes("/activities") || pathname.includes("/questionaries")
-    ? { src: SALYQUIZZ, alt: "SALY QUIZZ", width: "55%" }
-    : pathname.includes("/help") || pathname.includes("/faqs")
-    ? { src: SALYNOENTENDERNAH, alt: "SALY NO ENTENDER NAH", width: "55%" }
-    : pathname.includes("/achievements") ||
+
+  let image: SalyFigureProps = {
+    src: SALYCAPIBARA,
+    alt: "SALYLEARNING CAPIBARA",
+    width: "55%",
+  };
+
+  if (canChange) {
+    if (pathname.includes("/books")) {
+      image = { src: SALYLEYENDO, alt: "SALY LEYENDO", width: "55%" };
+    } else if (
+      pathname.includes("/activities") ||
+      pathname.includes("/questionaries")
+    ) {
+      image = { src: SALYQUIZZ, alt: "SALY QUIZZ", width: "55%" };
+    } else if (pathname.includes("/help") || pathname.includes("/faqs")) {
+      image = {
+        src: SALYNOENTENDERNAH,
+        alt: "SALY NO ENTENDER NAH",
+        width: "55%",
+      };
+    } else if (
+      pathname.includes("/achievements") ||
       pathname.includes("/reports") ||
       pathname.includes("/statistics")
-    ? { src: SALYSORPRENDIDA, alt: "SALY SORPRENDIDA", width: "55%" }
-    : { src: SALYCAPIBARA, alt: "SALYLEARNING CAPIBARA", width: "55%" };
+    ) {
+      image = { src: SALYSORPRENDIDA, alt: "SALY SORPRENDIDA", width: "55%" };
+    }
+  }
 
   return (
     <figure>
