@@ -1,4 +1,4 @@
-import { fetchClient } from "./api.service";
+import { fetchClient, fetchServer } from "./api.service";
 
 export const registrarseInitState = {
   p_nombre: "",
@@ -53,7 +53,7 @@ export async function registrarse(formData: typeof registrarseInitState) {
 }
 
 export async function obtenerPerfil(jwt: string) {
-  const res = await fetchClient("/perfil", {
+  const res = await fetchServer("/perfil", {
     method: "GET",
     headers: {
       Authorization: `Bearer ${jwt}`,
