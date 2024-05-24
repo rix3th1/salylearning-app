@@ -21,7 +21,12 @@ export default function RootLayout({
   return (
     <html lang="es" suppressHydrationWarning>
       <head>
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+          type="image/x-icon"
+          sizes="32x32"
+        />
       </head>
 
       <body>{children}</body>
