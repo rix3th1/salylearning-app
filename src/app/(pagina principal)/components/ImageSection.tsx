@@ -1,4 +1,4 @@
-import SALYCAPIBARA from "@/assets/saly/SALYCAPIBARA.png";
+import SALYCAPIBARA from "@/assets/saly/SALY CAPIBARA.png";
 import Image from "next/image";
 import Dots from "./svgs/Dots";
 

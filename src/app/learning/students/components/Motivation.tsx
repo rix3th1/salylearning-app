@@ -1,6 +1,6 @@
 "use client";
 
-import SALYCAPIBARA from "@/assets/saly/SALYCAPIBARA.png";
+import SALYCAPIBARA from "@/assets/saly/SALY CAPIBARA.png";
 import Image from "next/image";
 import { MdPlayCircle } from "react-icons/md";
 
