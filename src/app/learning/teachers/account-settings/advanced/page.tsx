@@ -1,4 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
+import { obtenerDocente } from "@/services/docentes.service";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
 import Link from "next/link";
 import AdvancedSettingsForm from "./components/AdvancedSettingsForm";
@@ -8,7 +10,10 @@ export const metadata: Metadata = {
   title: "Configuración Avanzada: Docentes | Saly Learning",
 };
 
-export default function TeacherAccountSettingsPage() {
+export default async function TeacherAccountSettingsPage() {
+  const user = await obtenerPerfilUsuario();
+  const docente = await obtenerDocente(user.id);
+
   return (
     <>
       <PageHeader title="Configuración avanzada de cuenta" />
@@ -43,13 +48,12 @@ export default function TeacherAccountSettingsPage() {
           >
             {/* Columna izquierda */}
             <div className="col-md-6">
-              <AdvancedSettingsForm />
+              <AdvancedSettingsForm user={user} teacher={docente} />
             </div>
-
             {/* Columna derecha */}
             <div className="col-md-6">
-              <ChangePasswordForm />
-            </div>
+              <ChangePasswordForm email={user.email} />
+            </div>{" "}
           </div>
         </div>
       </div>
