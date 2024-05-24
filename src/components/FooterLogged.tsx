@@ -35,10 +35,6 @@ export default function FooterLogged() {
                   <FaXTwitter />
                   &nbsp;
                   <FaInstagram />
-                  &nbsp;
-                  <FaLinkedin />
-                  &nbsp;
-                  <FaGithub />
                 </li>
               ))}
             </ul>
