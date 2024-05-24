@@ -1,8 +1,7 @@
 import PageHeader from "@/app/learning/components/PageHeader";
-import authOptions from "@/libs/authOptions";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 import FormAccount from "./FormAccount";
 
@@ -11,9 +10,8 @@ export const metadata: Metadata = {
 };
 
 export default async function StudentsAccountPage() {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
-  const estudiante = await obtenerEstudiante(`${user?.userId}`);
+  const user = await obtenerPerfilUsuario();
+  const estudiante = await obtenerEstudiante(user.id);
 
   return (
     <>
@@ -70,7 +68,9 @@ export default async function StudentsAccountPage() {
 
             <div className="col-md-9">
               <h4 className="mr-3">Datos del Alumno</h4>
-              <FormAccount user={user} estudiante={estudiante} />
+              <hr />
+
+              <FormAccount user={user} student={estudiante} />
             </div>
           </div>
         </div>
