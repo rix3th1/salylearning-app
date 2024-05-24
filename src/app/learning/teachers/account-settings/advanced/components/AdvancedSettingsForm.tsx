@@ -54,7 +54,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
         title: "¡Usuario actualizado!",
         text: usuario.message,
         icon: "success",
-        timer: 3000,
+        timer: 1500,
       });
 
       const docente = await actualizarDocente(teacher.id, { cod_docente });
@@ -63,7 +63,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
         title: "¡Perfíl docente actualizado!",
         text: docente.message,
         icon: "success",
-        timer: 3000,
+        timer: 1500,
       });
 
       router.refresh();

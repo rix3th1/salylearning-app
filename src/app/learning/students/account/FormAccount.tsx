@@ -65,7 +65,7 @@ export default function FormAccount({ user, student }: IProps) {
         title: "¡Usuario actualizado!",
         text: usuario.message,
         icon: "success",
-        timer: 3000,
+        timer: 1500,
       });
 
       const gradoUsuario = await actualizarGradoUsuario(
@@ -77,7 +77,7 @@ export default function FormAccount({ user, student }: IProps) {
         title: "¡Grado actualizado!",
         text: gradoUsuario.message,
         icon: "success",
-        timer: 3000,
+        timer: 1500,
       });
 
       const estudiante = await actualizarEstudiante(student.id, {
@@ -89,7 +89,7 @@ export default function FormAccount({ user, student }: IProps) {
         title: "¡Perfíl estudiante actualizado!",
         text: estudiante.message,
         icon: "success",
-        timer: 3000,
+        timer: 1500,
       });
 
       router.refresh();
