@@ -11,3 +11,23 @@ export async function obtenerGrados() {
 
   return res.json();
 }
+
+export const actualizarGradoUsuarioInitState = {
+  id_grado: "",
+};
+
+export async function actualizarGradoUsuario(id: string, id_grado: string) {
+  const res = await fetchClient(`/grado-usuario/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({ id_grado }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
