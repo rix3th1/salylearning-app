@@ -1,12 +1,5 @@
-import {
-  FaCheck,
-  FaFacebook,
-  FaXTwitter,
-  FaInstagram,
-  FaGithub,
-  FaLinkedin,
-} from "react-icons/fa6";
 import team from "@/meta/team.json";
+import { FaCheck, FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
 
 export default function FooterLogged() {
   return (
