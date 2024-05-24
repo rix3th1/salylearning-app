@@ -1,4 +1,4 @@
-import { fetchServer } from "./api.service";
+import { fetchClient, fetchServer } from "./api.service";
 
 export async function obtenerEstudiante(id_usuario: string) {
   const res = await fetchServer(`/estudiantes/usuario/${id_usuario}`, {
@@ -14,18 +14,29 @@ export async function obtenerEstudiante(id_usuario: string) {
   return data;
 }
 
-export const perfilEstudianteInitState = {
-  p_nombre: "",
-  s_nombre: "",
-  p_apellido: "",
-  s_apellido: "",
-  edad: "",
-  id_grado: "",
-  ciudad: "",
+export const actualizarEstudianteInitState = {
+  cod_estudiante: "",
   apodo: "",
 };
 
-export async function actualizarPerfilEstudiante(
-  id_usuario: string,
-  formData: typeof perfilEstudianteInitState
-) {}
+export async function actualizarEstudiante(
+  id: string,
+  formData: typeof actualizarEstudianteInitState
+) {
+  const res = await fetchClient(`/estudiantes/${id}`, {
+    method: "PATCH",
+    body: JSON.stringify({
+      ...formData,
+      apodo: formData.apodo || null,
+    }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
