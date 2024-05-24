@@ -5,14 +5,16 @@ import {
   cambiarClaveInitState,
 } from "@/services/cambiar-clave.service";
 import { THandleChange, THandleSubmit } from "@/types";
-import { signOut, useSession } from "next-auth/react";
+import { signOut } from "next-auth/react";
 import { useState } from "react";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Swal from "sweetalert2";
 
-export default function ChangePasswordForm() {
-  const { data: session } = useSession();
+interface IProps {
+  email: string;
+}
 
+export default function ChangePasswordForm({ email }: IProps) {
   const [passwordsVisibility, setPasswordsVisibility] = useState({
     password: false,
     newPassword: false,
@@ -33,10 +35,7 @@ export default function ChangePasswordForm() {
     setIsLoading(true);
 
     try {
-      const cambioClave = await cambiarClave(
-        formData,
-        session?.user.email || ""
-      );
+      const cambioClave = await cambiarClave(formData, email);
 
       await Swal.fire({
         title: "¡Contraseña cambiada!",
@@ -63,12 +62,7 @@ export default function ChangePasswordForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="hidden"
-        name="email"
-        id="email"
-        defaultValue={session?.user.email}
-      />
+      <input type="hidden" name="email" id="email" defaultValue={email} />
       {/* Cambio de contraseña */}
       <div className="form-group text-center pt-3">
         <h3 style={{ textAlign: "center" }}>Cambia tu contraseña</h3>
@@ -85,7 +79,6 @@ export default function ChangePasswordForm() {
           autoComplete="current-password"
           value={formData.current_password}
           onChange={handleChange}
-          autoFocus
         />
 
         <span
