@@ -1,7 +1,5 @@
-import SALYCAPIBARA from "@/assets/SALYCAPIBARA.png";
 import authOptions from "@/libs/authOptions";
 import { getServerSession } from "next-auth";
-import Image from "next/image";
 import Link from "next/link";
 import {
   MdAccountCircle,
@@ -23,6 +21,7 @@ import {
   MdStarHalf,
   MdTrendingUp,
 } from "react-icons/md";
+import SalyFigure from "./SalyFigure";
 
 export default async function Aside() {
   const session = await getServerSession(authOptions);
@@ -56,20 +55,7 @@ export default async function Aside() {
             color: "#fff",
           }}
         >
-          <figure>
-            <Image
-              className="img-responsive center-box"
-              quality={100}
-              src={SALYCAPIBARA}
-              alt="SALYLEARNING CAPIBARA"
-              width={280}
-              height={300}
-              style={{
-                width: "55%",
-              }}
-              priority
-            />
-          </figure>
+          <SalyFigure />
         </div>
         <div className="full-reset nav-lateral-list-menu">
           <ul className="list-unstyled">
