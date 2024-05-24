@@ -1,7 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
-import authOptions from "@/libs/authOptions";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
-import { getServerSession } from "next-auth";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,11 +9,10 @@ export const metadata: Metadata = {
 };
 
 export default async function TeacherAccountSettingsPage() {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
+  const user = await obtenerPerfilUsuario();
   const name = `${user?.p_nombre} ${user?.p_apellido}`;
   const rol = `${user?.rol[0]}${user?.rol.slice(1).toLowerCase()}`;
-  const grade = session?.user.grado_usuario.grados.nom_grado;
+  const grade = user.grado_usuario.grados.nom_grado;
 
   return (
     <>
@@ -112,7 +110,7 @@ export default async function TeacherAccountSettingsPage() {
                 </div>
                 <div className="col-sm-9">
                   <p className="text-muted mb-0">
-                    {`${user?.p_nombre} ${user?.s_nombre}`}
+                    {user?.p_nombre} {user?.s_nombre}
                   </p>
                 </div>
               </div>
@@ -121,7 +119,9 @@ export default async function TeacherAccountSettingsPage() {
                   <p className="mb-0">Apellidos</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="text-muted mb-0">{`${user?.p_apellido} ${user?.s_apellido}`}</p>
+                  <p className="text-muted mb-0">
+                    {user?.p_apellido} {user?.s_apellido}
+                  </p>
                 </div>
               </div>
               <div className="report-content">
@@ -129,7 +129,9 @@ export default async function TeacherAccountSettingsPage() {
                   <p className="mb-0">Edad</p>
                 </div>
                 <div className="col-sm-9">
-                  <p className="text-muted mb-0">{user?.edad}</p>
+                  <p className="text-muted mb-0">
+                    {user?.edad > 0 ? user?.edad : "No establecida"}
+                  </p>
                 </div>
               </div>
               <div className="report-content">
