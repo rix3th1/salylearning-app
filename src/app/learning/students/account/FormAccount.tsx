@@ -1,22 +1,49 @@
 "use client";
 
-import { perfilEstudianteInitState } from "@/services/estudiantes.service";
-import { obtenerGrados } from "@/services/grados.service";
-import { THandleChange } from "@/types";
-import { User } from "next-auth";
+import {
+  actualizarEstudiante,
+  actualizarEstudianteInitState,
+} from "@/services/estudiantes.service";
+import {
+  actualizarGradoUsuario,
+  actualizarGradoUsuarioInitState,
+  obtenerGrados,
+} from "@/services/grados.service";
+import {
+  actualizarUsuario,
+  actualizarUsuarioInitState,
+} from "@/services/usuarios.service";
+import { THandleChange, THandleSubmit } from "@/types";
+import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import Swal from "sweetalert2";
 
 interface IProps {
-  user?: User;
-  estudiante: any;
+  user: any;
+  student: any;
 }
 
-export default function FormAccount({ user, estudiante }: IProps) {
-  const gradoSelected = user?.grado_usuario.grados.id;
+export default function FormAccount({ user, student }: IProps) {
+  const gradoSelected = user?.grado_usuario.id_grado;
 
   const [grados, setGrados] = useState([]);
-  const [formData, setFormData] = useState(perfilEstudianteInitState);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    ...actualizarUsuarioInitState,
+    ...actualizarEstudianteInitState,
+    ...actualizarGradoUsuarioInitState,
+    p_nombre: user?.p_nombre,
+    s_nombre: user?.s_nombre || "",
+    p_apellido: user?.p_apellido,
+    s_apellido: user?.s_apellido || "",
+    edad: `${user?.edad || ""}`,
+    id_grado: gradoSelected,
+    cod_estudiante: student.cod_estudiante || "",
+    apodo: student.apodo || "",
+  });
+
+  const router = useRouter();
 
   const handleChange = (e: THandleChange) => {
     setFormData({
@@ -25,7 +52,63 @@ export default function FormAccount({ user, estudiante }: IProps) {
     });
   };
 
+  const handleSubmit = async (e: THandleSubmit) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const { cod_estudiante, apodo, id_grado, ...data } = formData;
+
+      const usuario = await actualizarUsuario(user.id, data);
+
+      await Swal.fire({
+        title: "¡Usuario actualizado!",
+        text: usuario.message,
+        icon: "success",
+        timer: 3000,
+      });
+
+      const gradoUsuario = await actualizarGradoUsuario(
+        user?.grado_usuario.id,
+        id_grado
+      );
+
+      await Swal.fire({
+        title: "¡Grado actualizado!",
+        text: gradoUsuario.message,
+        icon: "success",
+        timer: 3000,
+      });
+
+      const estudiante = await actualizarEstudiante(student.id, {
+        cod_estudiante,
+        apodo,
+      });
+
+      Swal.fire({
+        title: "¡Perfíl estudiante actualizado!",
+        text: estudiante.message,
+        icon: "success",
+        timer: 3000,
+      });
+
+      router.refresh();
+    } catch (error) {
+      if (error instanceof Error) {
+        Swal.fire({
+          title: "¡Error!",
+          text: error.message.replace(/,/g, ", "),
+          icon: "error",
+          timer: 3000,
+        });
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
+    setIsLoading(true);
     toast.promise(
       obtenerGrados()
         .then((data) => {
@@ -39,7 +122,8 @@ export default function FormAccount({ user, estudiante }: IProps) {
           if (error instanceof Error) {
             toast.error(error.message.replace(/,/g, ", "));
           }
-        }),
+        })
+        .finally(() => setIsLoading(false)),
       {
         loading: "Cargando...",
         success: "Listo",
@@ -50,8 +134,7 @@ export default function FormAccount({ user, estudiante }: IProps) {
   }, []);
 
   return (
-    <div>
-      <hr />
+    <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="p_nombre">Primer Nombre:</label>
         <input
@@ -60,9 +143,11 @@ export default function FormAccount({ user, estudiante }: IProps) {
           id="p_nombre"
           name="p_nombre"
           placeholder="Primer nombre del alumno"
-          defaultValue={user?.p_nombre}
+          value={formData.p_nombre}
+          onChange={handleChange}
           autoFocus
           required
+          disabled={isLoading}
         />
       </div>
       <div className="form-group">
@@ -73,8 +158,9 @@ export default function FormAccount({ user, estudiante }: IProps) {
           id="s_nombre"
           name="s_nombre"
           placeholder="Segundo nombre del alumno"
-          defaultValue={user?.s_nombre}
-          required
+          value={formData.s_nombre}
+          onChange={handleChange}
+          disabled={isLoading}
         />
       </div>
       <div className="form-group">
@@ -85,8 +171,10 @@ export default function FormAccount({ user, estudiante }: IProps) {
           id="p_apellido"
           name="p_apellido"
           placeholder="Primer apellido del alumno"
-          defaultValue={user?.p_apellido}
+          value={formData.p_apellido}
+          onChange={handleChange}
           required
+          disabled={isLoading}
         />
       </div>
       <div className="form-group">
@@ -97,8 +185,9 @@ export default function FormAccount({ user, estudiante }: IProps) {
           id="s_apellido"
           name="s_apellido"
           placeholder="Segundo apellido del alumno"
-          defaultValue={user?.s_apellido}
-          required
+          value={formData.s_apellido}
+          onChange={handleChange}
+          disabled={isLoading}
         />
       </div>
       <div className="form-group">
@@ -107,19 +196,24 @@ export default function FormAccount({ user, estudiante }: IProps) {
           type="text"
           className="form-control"
           id="edad"
+          name="edad"
           placeholder="Edad del alumno"
-          defaultValue={user?.edad}
+          value={formData.edad}
+          onChange={handleChange}
+          disabled={isLoading}
           required
         />
       </div>
 
       <div className="form-group">
-        <label htmlFor="grado">Grado:</label>
+        <label htmlFor="id_grado">Grado:</label>
         <select
           name="id_grado"
+          id="id_grado"
           className="form-control"
           required
           onChange={handleChange}
+          disabled={isLoading}
           value={formData.id_grado}
         >
           <option value="" disabled>
@@ -133,14 +227,19 @@ export default function FormAccount({ user, estudiante }: IProps) {
         </select>
       </div>
       <div className="form-group">
-        <label htmlFor="ciudad">Ciudad:</label>
+        <label htmlFor="cod_estudiante">Código Estudiante:</label>
         <input
           type="text"
           className="form-control"
-          id="ciudad"
-          placeholder="Ciudad de residencia"
-          defaultValue={user?.ciudad}
+          id="cod_estudiante"
+          name="cod_estudiante"
+          placeholder="Cod. Estudiante"
           required
+          value={formData.cod_estudiante}
+          disabled={isLoading}
+          minLength={10}
+          maxLength={10}
+          onChange={handleChange}
         />
       </div>
       <div className="form-group">
@@ -149,11 +248,17 @@ export default function FormAccount({ user, estudiante }: IProps) {
           type="text"
           className="form-control"
           id="apodo"
+          name="apodo"
           placeholder="Apodo del alumno"
-          defaultValue={estudiante.apodo}
-          required
+          value={formData.apodo}
+          disabled={isLoading}
+          onChange={handleChange}
         />
       </div>
-    </div>
+
+      <button type="submit" className="btn btn-primary" disabled={isLoading}>
+        {isLoading ? "Actualizando..." : "Actualizar"}
+      </button>
+    </form>
   );
 }
