@@ -154,6 +154,7 @@ export default function FormNewBook() {
         name="imagen_portada"
         className="swal2-file"
         placeholder="Portada del libro"
+        accept="image/png, image/jpeg"
         required
       />
     </form>
