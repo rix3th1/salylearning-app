@@ -53,7 +53,7 @@ export default function FormRegistro({ modalRegistro }: IProps) {
           }
         }),
       {
-        loading: "Cargando...",
+        loading: "Cargando grados...",
         success: "Listo",
       }
     );
