@@ -1,12 +1,12 @@
 import { plus_jakarta_sans } from "@/app/fonts";
-import { crearFotoPerfil } from "@/services/foto-perfil.service";
+import { actualizarFotoPerfil } from "@/services/foto-perfil.service";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MdCancel, MdCloudUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 export const showSwalUploadProfilePhoto = async (
-  userId: string,
+  foto_perfil_id: string,
   router: AppRouterInstance
 ) => {
   const result = await withReactContent(Swal).fire({
@@ -36,11 +36,10 @@ export const showSwalUploadProfilePhoto = async (
     showLoaderOnConfirm: true,
     preConfirm: async (foto: File) => {
       const formData = new FormData();
-      formData.append("id_usuario", userId);
       formData.append("foto", foto);
 
       try {
-        return await crearFotoPerfil(formData);
+        return await actualizarFotoPerfil(foto_perfil_id, formData);
       } catch (error) {
         if (error instanceof Error) {
           Swal.showValidationMessage(error.message.replace(/,/g, ", "));
