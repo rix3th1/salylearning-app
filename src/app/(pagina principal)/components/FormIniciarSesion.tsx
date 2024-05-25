@@ -4,12 +4,16 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
+interface IProps {
+  modalInicioSesion: React.RefObject<HTMLDivElement>;
+}
+
 const formDataInitialState = {
   username: "",
   password: "",
 };
 
-export default function FormIniciarSesion() {
+export default function FormIniciarSesion({ modalInicioSesion }: IProps) {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -42,6 +46,10 @@ export default function FormIniciarSesion() {
       const callbackUrl = new URL(res?.url || "").searchParams.get(
         "callbackUrl"
       );
+
+      if (modalInicioSesion.current) {
+        modalInicioSesion.current.style.display = "none";
+      }
 
       router.push(
         callbackUrl ||

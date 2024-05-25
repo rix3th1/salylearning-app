@@ -4,7 +4,11 @@ import { THandleChange, THandleSubmit } from "@/types";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-export default function FormRegistro() {
+interface IProps {
+  modalRegistro: React.RefObject<HTMLDivElement>;
+}
+
+export default function FormRegistro({ modalRegistro }: IProps) {
   const [grados, setGrados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(registrarseInitState);
@@ -25,6 +29,9 @@ export default function FormRegistro() {
 
       toast.success(registro.message);
       setFormData(registrarseInitState);
+      if (modalRegistro.current) {
+        modalRegistro.current.style.display = "none";
+      }
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message.replace(/,/g, ", "));

@@ -3,7 +3,17 @@ import { enviarEmailDeRecuperacion } from "@/services/recuperar-clave.service";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-const showSwalForSendEmail = async () => {
+interface IProps {
+  modalInicioSesion: React.RefObject<HTMLDivElement>;
+}
+
+const showSwalForSendEmail = async (
+  modalInicioSesion: IProps["modalInicioSesion"]
+) => {
+  if (modalInicioSesion.current) {
+    modalInicioSesion.current.style.display = "none";
+  }
+
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
     title: "¿Olvidaste tu contraseña?",
@@ -41,9 +51,13 @@ const showSwalForSendEmail = async () => {
   }
 };
 
-export default function ForgotPasswordButton() {
+export default function ForgotPasswordButton({ modalInicioSesion }: IProps) {
   return (
-    <button type="button" className="olvide" onClick={showSwalForSendEmail}>
+    <button
+      type="button"
+      className="olvide"
+      onClick={() => showSwalForSendEmail(modalInicioSesion)}
+    >
       Olvidé mi contraseña?
     </button>
   );

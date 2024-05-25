@@ -22,10 +22,10 @@ export default function ModalIniciarSesion({ modalInicioSesion }: IProps) {
             ×
           </span>
 
-          <FormIniciarSesion />
+          <FormIniciarSesion modalInicioSesion={modalInicioSesion} />
 
           <section className="mx-sm-4 text-end py-4">
-            <ForgotPasswordButton />
+            <ForgotPasswordButton modalInicioSesion={modalInicioSesion} />
           </section>
         </div>
       </div>

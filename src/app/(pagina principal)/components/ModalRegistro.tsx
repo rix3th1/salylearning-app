@@ -21,7 +21,7 @@ export default function ModalRegistro({ modalRegistro }: IProps) {
             ×
           </span>
 
-          <FormRegistro />
+          <FormRegistro modalRegistro={modalRegistro} />
         </div>
       </div>
     </div>

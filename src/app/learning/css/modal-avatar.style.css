@@ -49,3 +49,7 @@
 .avatar-option:hover {
   border: 2px solid blue;
 }
+
+.selected {
+  border: 2px solid #007bff;
+}
