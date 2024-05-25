@@ -22,7 +22,9 @@ export default function ModalAvatar({ avatarModal, userType }: IProps) {
         >
           ×
         </span>
-        <h5 style={{ marginBottom: "1.5rem" }}>Selecciona tu foto de perfíl</h5>
+        <h3 style={{ marginBottom: "1.5rem" }}>
+          Por favor, selecciona tu foto de perfíl:
+        </h3>
         <div id="avatar-options">
           {avatars[userType].map(({ src, alt }, i) => (
             <Image
