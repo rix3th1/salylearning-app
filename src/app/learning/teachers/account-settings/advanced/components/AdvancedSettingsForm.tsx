@@ -1,5 +1,6 @@
 "use client";
 
+import { plus_jakarta_sans } from "@/app/fonts";
 import {
   actualizarDocente,
   actualizarDocenteInitState,
@@ -51,6 +52,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       const usuario = await actualizarUsuario(user.id, data);
 
       await Swal.fire({
+        customClass: plus_jakarta_sans.className,
         title: "¡Usuario actualizado!",
         text: usuario.message,
         icon: "success",
@@ -60,6 +62,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       const docente = await actualizarDocente(teacher.id, { cod_docente });
 
       Swal.fire({
+        customClass: plus_jakarta_sans.className,
         title: "¡Perfíl docente actualizado!",
         text: docente.message,
         icon: "success",
@@ -71,6 +74,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({
+          customClass: plus_jakarta_sans.className,
           title: "¡Error!",
           text: error.message.replace(/,/g, ", "),
           icon: "error",

@@ -1,5 +1,6 @@
 "use client";
 
+import { plus_jakarta_sans } from "@/app/fonts";
 import {
   cambiarClave,
   cambiarClaveInitState,
@@ -38,6 +39,7 @@ export default function ChangePasswordForm({ email }: IProps) {
       const cambioClave = await cambiarClave(formData, email);
 
       await Swal.fire({
+        customClass: plus_jakarta_sans.className,
         title: "¡Contraseña cambiada!",
         text: cambioClave.message,
         icon: "success",
@@ -49,6 +51,7 @@ export default function ChangePasswordForm({ email }: IProps) {
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({
+          customClass: plus_jakarta_sans.className,
           title: "¡Error!",
           text: error.message.replace(/,/g, ", "),
           icon: "error",

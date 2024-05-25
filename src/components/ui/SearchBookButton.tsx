@@ -1,5 +1,6 @@
 "use client";
 
+import { plus_jakarta_sans } from "@/app/fonts";
 import { useState } from "react";
 import { MdSearch } from "react-icons/md";
 import Swal from "sweetalert2";
@@ -10,6 +11,7 @@ export default function SearchBookButton() {
 
   const showSearchBookSwal = () => {
     withReactContent(Swal).fire({
+      customClass: plus_jakarta_sans.className,
       title: "¿Qué libro estás buscando?",
       text: "Por favor escribe el nombre del libro",
       input: "text",

@@ -1,5 +1,6 @@
 "use client";
 
+import { plus_jakarta_sans } from "@/app/fonts";
 import {
   actualizarEstudiante,
   actualizarEstudianteInitState,
@@ -62,6 +63,7 @@ export default function FormAccount({ user, student }: IProps) {
       const usuario = await actualizarUsuario(user.id, data);
 
       await Swal.fire({
+        customClass: plus_jakarta_sans.className,
         title: "¡Usuario actualizado!",
         text: usuario.message,
         icon: "success",
@@ -74,6 +76,7 @@ export default function FormAccount({ user, student }: IProps) {
       );
 
       await Swal.fire({
+        customClass: plus_jakarta_sans.className,
         title: "¡Grado actualizado!",
         text: gradoUsuario.message,
         icon: "success",
@@ -86,6 +89,7 @@ export default function FormAccount({ user, student }: IProps) {
       });
 
       Swal.fire({
+        customClass: plus_jakarta_sans.className,
         title: "¡Perfíl estudiante actualizado!",
         text: estudiante.message,
         icon: "success",
@@ -96,6 +100,7 @@ export default function FormAccount({ user, student }: IProps) {
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({
+          customClass: plus_jakarta_sans.className,
           title: "¡Error!",
           text: error.message.replace(/,/g, ", "),
           icon: "error",

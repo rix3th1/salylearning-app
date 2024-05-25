@@ -46,6 +46,7 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
     router.refresh();
 
     Swal.fire({
+      customClass: plus_jakarta_sans.className,
       title: "Libro subido a la plataforma SalyLearning exitosamente!",
       width: 600,
       padding: "3em",
