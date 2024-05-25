@@ -4,6 +4,7 @@ import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import FormAccount from "./components/FormAccount";
+import ProfileButtons from "./components/ProfileButtons";
 
 export const metadata: Metadata = {
   title: "Configuración Cuenta: Estudiantes | Saly Learning",
@@ -46,24 +47,7 @@ export default async function StudentsAccountPage() {
                 style={{ display: "none" }}
                 accept="image/*"
               />
-              <div className="profile-buttons">
-                <button
-                  type="button"
-                  className="btn btn-primary mr-2"
-                  id="uploadButton"
-                  style={{ margin: "1rem .2rem" }}
-                >
-                  Subir foto
-                </button>
-                <button
-                  type="button"
-                  className="btn btn-outline-primary"
-                  id="open-avatar-modal"
-                  style={{ margin: "0 .2rem" }}
-                >
-                  Elegir Avatar
-                </button>
-              </div>
+              <ProfileButtons />
             </div>
 
             <div className="col-md-9">
@@ -75,83 +59,6 @@ export default async function StudentsAccountPage() {
           </div>
         </div>
       </section>
-
-      <div
-        id="avatarModal"
-        className="avatar-modal"
-        style={{ display: "none" }}
-      >
-        <div className="avatar-modal-content">
-          <span className="avatar-close">×</span>
-          <h5>Selecciona tu foto de perfíl</h5>
-          <div id="avatar-options">
-            <Image
-              className="avatar-option"
-              src="/img/user01.png"
-              alt="avatar1"
-              width={100}
-              height={100}
-              quality={75}
-            />
-            <Image
-              className="avatar-option"
-              src="/img/user02.png"
-              alt="avatar2"
-              width={100}
-              height={100}
-              quality={75}
-            />
-            <Image
-              className="avatar-option"
-              src="/img/user03.png"
-              alt="avatar3"
-              width={100}
-              height={100}
-              quality={75}
-            />
-          </div>
-          <div id="avatar-options">
-            <Image
-              className="avatar-option"
-              src="/img/user04.png"
-              alt="avatar4"
-              width={100}
-              height={100}
-              quality={75}
-            />
-            <Image
-              className="avatar-option"
-              src="/img/user05.png"
-              alt="avatar5"
-              width={100}
-              height={100}
-              quality={75}
-            />
-            <Image
-              className="avatar-option"
-              src="/img/user.png"
-              alt="avatar6"
-              width={100}
-              height={100}
-              quality={75}
-            />
-          </div>
-          <button
-            id="accept-avatar"
-            className="btn btn-outline-primary"
-            style={{ margin: "0 .5rem", marginTop: "1rem" }}
-          >
-            Aceptar
-          </button>
-          <button
-            id="cancel-avatar"
-            className="btn btn-outline-primary"
-            style={{ margin: "0 .5rem", marginTop: "1rem" }}
-          >
-            Cancelar
-          </button>
-        </div>
-      </div>
     </>
   );
 }
