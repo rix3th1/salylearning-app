@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 
 export default async function StudentsAccountPage() {
   const user = await obtenerPerfilUsuario();
+  const foto_perfil_id = user.foto_perfil?.id;
+  const avatar_id = user.avatar_usuario.id;
   const estudiante = await obtenerEstudiante(user.id);
 
   return (
@@ -36,7 +38,7 @@ export default async function StudentsAccountPage() {
                 quality={100}
                 src={
                   (user.foto_perfil && user.foto_perfil.foto) ||
-                  "/img/user01.png"
+                  "/img/avatars/default.png"
                 }
                 alt="avatar"
                 className="rounded-circle img-fluid"
@@ -44,7 +46,10 @@ export default async function StudentsAccountPage() {
                 priority
               />
 
-              <ProfileButtons userId={user.id} />
+              <ProfileButtons
+                avatar_id={avatar_id}
+                foto_perfil_id={foto_perfil_id}
+              />
             </div>
 
             <div className="col-md-9">
