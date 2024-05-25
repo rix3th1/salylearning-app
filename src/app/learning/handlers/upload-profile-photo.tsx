@@ -43,7 +43,6 @@ export const showSwalUploadProfilePhoto = async (
         return await crearFotoPerfil(formData);
       } catch (error) {
         if (error instanceof Error) {
-          console.log(error);
           Swal.showValidationMessage(error.message.replace(/,/g, ", "));
         }
       }
