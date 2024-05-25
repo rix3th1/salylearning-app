@@ -1,6 +1,6 @@
 "use client";
 
-import AvatarModal from "@/app/learning/components/AvatarModal";
+import ModalAvatar from "@/app/learning/components/ModalAvatar";
 import { showSwalUploadProfilePhoto } from "@/app/learning/handlers/upload-profile-photo";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
@@ -36,7 +36,7 @@ export default function ProfileButtons({ userId }: IProps) {
       </button>
 
       {/* Avatar modal */}
-      <AvatarModal avatarModal={avatarModal} />
+      <ModalAvatar avatarModal={avatarModal} />
     </div>
   );
 }

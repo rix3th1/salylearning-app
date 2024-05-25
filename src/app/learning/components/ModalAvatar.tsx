@@ -1,11 +1,11 @@
 import Image from "next/image";
-import "../css/avatarModal.css";
+import "../css/modal-avatar.style.css";
 
 interface IProps {
   avatarModal: React.RefObject<HTMLDivElement>;
 }
 
-export default function AvatarModal({ avatarModal }: IProps) {
+export default function ModalAvatar({ avatarModal }: IProps) {
   return (
     <div className="avatar-modal" ref={avatarModal}>
       <div className="avatar-modal-content">

@@ -1,6 +1,6 @@
 import { MdThumbUp } from "react-icons/md";
 
-export default function HelpModal() {
+export default function ModalHelp() {
   return (
     <div className="modal fade" tabIndex={-1} role="dialog" id="ModalHelp">
       <div className="modal-dialog modal-lg">
