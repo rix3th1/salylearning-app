@@ -6,10 +6,11 @@ import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 export interface IProps {
-  userId: string;
+  foto_perfil_id: string;
+  avatar_id: string;
 }
 
-export default function ProfileButtons({ userId }: IProps) {
+export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
   const avatarModal = useRef<HTMLDivElement>(null);
 
   const router = useRouter();
@@ -20,7 +21,7 @@ export default function ProfileButtons({ userId }: IProps) {
         type="submit"
         className="btn btn-primary"
         style={{ marginRight: "15px" }}
-        onClick={() => showSwalUploadProfilePhoto(userId, router)}
+        onClick={() => showSwalUploadProfilePhoto(foto_perfil_id, router)}
       >
         Subir foto
       </button>
@@ -36,7 +37,11 @@ export default function ProfileButtons({ userId }: IProps) {
       </button>
 
       {/* Avatar modal */}
-      <ModalAvatar avatarModal={avatarModal} userType="DOCENTE" />
+      <ModalAvatar
+        avatar_id={avatar_id}
+        avatarModal={avatarModal}
+        userType="DOCENTE"
+      />
     </div>
   );
 }
