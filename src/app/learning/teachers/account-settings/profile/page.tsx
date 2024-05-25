@@ -51,7 +51,10 @@ export default async function TeacherAccountSettingsPage() {
                 <div className="card-body text-center">
                   <Image
                     id="avatar"
-                    src="/img/user01.png"
+                    src={
+                      (user.foto_perfil && user.foto_perfil.foto) ||
+                      "/img/user01.png"
+                    }
                     alt="avatar"
                     className="rounded-circle img-fluid"
                     width={150}
@@ -59,18 +62,13 @@ export default async function TeacherAccountSettingsPage() {
                     quality={100}
                     priority
                   />
-                  <input
-                    type="file"
-                    id="uploadImage"
-                    style={{ display: "none" }}
-                  />
                   <h5 className="my-3" style={{ fontSize: "1.5rem" }}>
                     {name}
                   </h5>
                   <p className="text-muted mb-1">{rol}</p>
                   <p className="text-muted mb-4">Rol: {rol}</p>
 
-                  <ProfileButtons />
+                  <ProfileButtons userId={user.id} />
                 </div>
               </div>
             </div>

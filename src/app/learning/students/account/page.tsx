@@ -34,20 +34,17 @@ export default async function StudentsAccountPage() {
                 width={150}
                 height={150}
                 quality={100}
-                id="avatar"
-                src="/img/user01.png"
+                src={
+                  (user.foto_perfil && user.foto_perfil.foto) ||
+                  "/img/user01.png"
+                }
                 alt="avatar"
                 className="rounded-circle img-fluid"
                 style={{ marginBottom: "1rem" }}
                 priority
               />
-              <input
-                type="file"
-                id="uploadImage"
-                style={{ display: "none" }}
-                accept="image/*"
-              />
-              <ProfileButtons />
+
+              <ProfileButtons userId={user.id} />
             </div>
 
             <div className="col-md-9">
