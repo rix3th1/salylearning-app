@@ -1,5 +1,5 @@
 {
-  "estudiantes": [
+  "ESTUDIANTE": [
     {
       "src": "/img/avatars/estudiantes/astronauta.png",
       "alt": "avatar1"
@@ -41,7 +41,7 @@
       "alt": "avatar10"
     }
   ],
-  "docentes": [
+  "DOCENTE": [
     {
       "src": "/img/avatars/docentes/user01.png",
       "alt": "avatar1"
@@ -66,5 +66,6 @@
       "src": "/img/avatars/docentes/user06.png",
       "alt": "avatar6"
     }
-  ]
+  ],
+  "ADMIN": []
 }

@@ -1,12 +1,14 @@
+import { User } from "next-auth";
 import Image from "next/image";
 import "../css/modal-avatar.style.css";
 import avatars from "../meta/avatars.json";
 
 interface IProps {
   avatarModal: React.RefObject<HTMLDivElement>;
+  userType: User["rol"];
 }
 
-export default function ModalAvatar({ avatarModal }: IProps) {
+export default function ModalAvatar({ avatarModal, userType }: IProps) {
   return (
     <div className="avatar-modal" ref={avatarModal}>
       <div className="avatar-modal-content">
@@ -22,7 +24,7 @@ export default function ModalAvatar({ avatarModal }: IProps) {
         </span>
         <h5 style={{ marginBottom: "1.5rem" }}>Selecciona tu foto de perfíl</h5>
         <div id="avatar-options">
-          {avatars.estudiantes.map(({ src, alt }, i) => (
+          {avatars[userType].map(({ src, alt }, i) => (
             <Image
               key={i}
               className="avatar-option"

@@ -36,7 +36,7 @@ export default function ProfileButtons({ userId }: IProps) {
       </button>
 
       {/* Avatar modal */}
-      <ModalAvatar avatarModal={avatarModal} />
+      <ModalAvatar avatarModal={avatarModal} userType="DOCENTE" />
     </div>
   );
 }
