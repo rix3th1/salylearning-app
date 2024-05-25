@@ -1,5 +1,7 @@
 import { User } from "next-auth";
 import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
 import "../css/modal-avatar.style.css";
 import avatars from "../meta/avatars.json";
 
@@ -9,6 +11,28 @@ interface IProps {
 }
 
 export default function ModalAvatar({ avatarModal, userType }: IProps) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectedAvatar, setSelectedAvatar] = useState<string | null>(null);
+
+  const handleAvatarClick = (avatar: string) => {
+    setSelectedAvatar(avatar);
+  };
+
+  const handleAcceptClick = async () => {
+    setIsLoading(true);
+
+    try {
+      if (!selectedAvatar) {
+        return toast.error("Por favor, selecciona un avatar.");
+      }
+
+      console.log(`Avatar seleccionado: ${selectedAvatar}`);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="avatar-modal" ref={avatarModal}>
       <div className="avatar-modal-content">
@@ -29,12 +53,15 @@ export default function ModalAvatar({ avatarModal, userType }: IProps) {
           {avatars[userType].map(({ src, alt }, i) => (
             <Image
               key={i}
-              className="avatar-option"
-              src={src}
+              className={`avatar-option${
+                selectedAvatar === src ? " selected" : ""
+              }`}
+              src={`/img/avatars/${userType}/${src}`}
               alt={alt}
               width={100}
               height={100}
               quality={75}
+              onClick={() => handleAvatarClick(src)}
             />
           ))}
         </div>
@@ -43,8 +70,10 @@ export default function ModalAvatar({ avatarModal, userType }: IProps) {
             type="submit"
             className="btn btn-outline-primary"
             style={{ margin: "0 .5rem", marginTop: "1rem" }}
+            onClick={handleAcceptClick}
+            disabled={isLoading}
           >
-            Aceptar
+            {isLoading ? "Cargando..." : "Aceptar"}
           </button>
           <button
             className="btn btn-outline-primary"
@@ -54,6 +83,7 @@ export default function ModalAvatar({ avatarModal, userType }: IProps) {
                 avatarModal.current.style.display = "none";
               }
             }}
+            disabled={isLoading}
           >
             Cancelar
           </button>

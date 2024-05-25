@@ -1,69 +1,69 @@
 {
   "ESTUDIANTE": [
     {
-      "src": "/img/avatars/estudiantes/astronauta.png",
+      "src": "astronauta.png",
       "alt": "avatar1"
     },
     {
-      "src": "/img/avatars/estudiantes/cocodrilo_1.png",
+      "src": "cocodrilo_1.png",
       "alt": "avatar2"
     },
     {
-      "src": "/img/avatars/estudiantes/cocodrilo_2.png",
+      "src": "cocodrilo_2.png",
       "alt": "avatar3"
     },
     {
-      "src": "/img/avatars/estudiantes/conejo_1.png",
+      "src": "conejo_1.png",
       "alt": "avatar4"
     },
     {
-      "src": "/img/avatars/estudiantes/conejo_2.png",
+      "src": "conejo_2.png",
       "alt": "avatar5"
     },
     {
-      "src": "/img/avatars/estudiantes/lobo_niño.png",
+      "src": "lobo_niño.png",
       "alt": "avatar6"
     },
     {
-      "src": "/img/avatars/estudiantes/manzana.png",
+      "src": "manzana.png",
       "alt": "avatar7"
     },
     {
-      "src": "/img/avatars/estudiantes/mazorca.png",
+      "src": "mazorca.png",
       "alt": "avatar8"
     },
     {
-      "src": "/img/avatars/estudiantes/saly_bruja.png",
+      "src": "saly_bruja.png",
       "alt": "avatar9"
     },
     {
-      "src": "/img/avatars/estudiantes/saly_vaquera.png",
+      "src": "saly_vaquera.png",
       "alt": "avatar10"
     }
   ],
   "DOCENTE": [
     {
-      "src": "/img/avatars/docentes/user01.png",
+      "src": "user01.png",
       "alt": "avatar1"
     },
     {
-      "src": "/img/avatars/docentes/user02.png",
+      "src": "user02.png",
       "alt": "avatar2"
     },
     {
-      "src": "/img/avatars/docentes/user03.png",
+      "src": "user03.png",
       "alt": "avatar3"
     },
     {
-      "src": "/img/avatars/docentes/user04.png",
+      "src": "user04.png",
       "alt": "avatar4"
     },
     {
-      "src": "/img/avatars/docentes/user05.png",
+      "src": "user05.png",
       "alt": "avatar5"
     },
     {
-      "src": "/img/avatars/docentes/user06.png",
+      "src": "user06.png",
       "alt": "avatar6"
     }
   ],
