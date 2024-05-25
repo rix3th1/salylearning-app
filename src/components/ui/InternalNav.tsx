@@ -1,5 +1,4 @@
-import authOptions from "@/libs/authOptions";
-import { getServerSession } from "next-auth";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import Image from "next/image";
 import Link from "next/link";
 import { MdHelpOutline, MdMenu } from "react-icons/md";
@@ -7,8 +6,8 @@ import PowerButton from "./PowerButton";
 import SearchBookButton from "./SearchBookButton";
 
 export default async function InternalNav() {
-  const session = await getServerSession(authOptions);
-  const isStudent = session?.user.rol === "ESTUDIANTE";
+  const user = await obtenerPerfilUsuario();
+  const isStudent = user?.rol === "ESTUDIANTE";
 
   return (
     <nav
@@ -18,7 +17,9 @@ export default async function InternalNav() {
       <ul className="list-unstyled full-reset">
         <figure>
           <Image
-            src="/img/user.png"
+            src={
+              (user?.foto_perfil && user.foto_perfil.foto) || "/img/user01.png"
+            }
             alt="Imagen usuario"
             className="img-responsive img-circle center-box"
             width={100}
