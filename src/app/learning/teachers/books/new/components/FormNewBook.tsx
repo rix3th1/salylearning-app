@@ -23,7 +23,7 @@ export default function FormNewBook() {
           }
         }),
       {
-        loading: "Cargando...",
+        loading: "Cargando grados...",
         success: "Listo",
       }
     );

@@ -130,7 +130,7 @@ export default function FormAccount({ user, student }: IProps) {
         })
         .finally(() => setIsLoading(false)),
       {
-        loading: "Cargando...",
+        loading: "Cargando grados...",
         success: "Listo",
       }
     );
