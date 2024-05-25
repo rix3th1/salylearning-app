@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 
 export default async function TeacherAccountSettingsPage() {
   const user = await obtenerPerfilUsuario();
+  const foto_perfil_id = user.foto_perfil?.id;
+  const avatar_id = user.avatar_usuario.id;
   const name = `${user?.p_nombre} ${user?.p_apellido}`;
   const rol = `${user?.rol[0]}${user?.rol.slice(1).toLowerCase()}`;
   const grade = user.grado_usuario.grados.nom_grado;
@@ -53,7 +55,7 @@ export default async function TeacherAccountSettingsPage() {
                     id="avatar"
                     src={
                       (user.foto_perfil && user.foto_perfil.foto) ||
-                      "/img/user01.png"
+                      "/img/avatars/default.png"
                     }
                     alt="avatar"
                     className="rounded-circle img-fluid"
@@ -68,7 +70,10 @@ export default async function TeacherAccountSettingsPage() {
                   <p className="text-muted mb-1">{rol}</p>
                   <p className="text-muted mb-4">Rol: {rol}</p>
 
-                  <ProfileButtons userId={user.id} />
+                  <ProfileButtons
+                    avatar_id={avatar_id}
+                    foto_perfil_id={foto_perfil_id}
+                  />
                 </div>
               </div>
             </div>
