@@ -3,7 +3,7 @@ import { obtenerEstudiante } from "@/services/estudiantes.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import FormAccount from "./FormAccount";
+import FormAccount from "./components/FormAccount";
 
 export const metadata: Metadata = {
   title: "Configuración Cuenta: Estudiantes | Saly Learning",
