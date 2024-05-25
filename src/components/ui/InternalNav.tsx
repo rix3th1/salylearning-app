@@ -18,7 +18,8 @@ export default async function InternalNav() {
         <figure>
           <Image
             src={
-              (user?.foto_perfil && user.foto_perfil.foto) || "/img/user01.png"
+              (user?.foto_perfil && user.foto_perfil.foto) ||
+              "/img/avatars/default.png"
             }
             alt="Imagen usuario"
             className="img-responsive img-circle center-box"
