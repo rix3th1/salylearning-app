@@ -1,14 +1,26 @@
 "use client";
 
 import AvatarModal from "@/app/learning/components/AvatarModal";
+import { showSwalUploadProfilePhoto } from "@/app/learning/handlers/upload-profile-photo";
+import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
-export default function ProfileButtons() {
+export interface IProps {
+  userId: string;
+}
+
+export default function ProfileButtons({ userId }: IProps) {
   const avatarModal = useRef<HTMLDivElement>(null);
+
+  const router = useRouter();
 
   return (
     <div className="profile-buttons">
-      <button className="btn btn-primary mr-2" style={{ margin: "1rem .2rem" }}>
+      <button
+        className="btn btn-primary mr-2"
+        style={{ margin: "1rem .2rem" }}
+        onClick={() => showSwalUploadProfilePhoto(userId, router)}
+      >
         Subir foto
       </button>
       <button
