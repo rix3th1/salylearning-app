@@ -10,14 +10,15 @@ declare module "next-auth" {
     id: number;
     username: string;
     p_nombre: string;
-    s_nombre: string;
+    s_nombre?: string;
     p_apellido: string;
-    s_apellido: string;
-    edad: number;
+    s_apellido?: string;
+    edad?: number;
     fecha_nacimiento?: string;
     ciudad?: string;
     email: string;
     rol: "ESTUDIANTE" | "DOCENTE" | "ADMIN";
+    use_avatar: boolean;
     verificado: boolean;
     avatar_usuario?: any;
     foto_perfil?: any;

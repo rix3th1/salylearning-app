@@ -38,7 +38,7 @@ export default function FormAccount({ user, student }: IProps) {
     s_nombre: user?.s_nombre || "",
     p_apellido: user?.p_apellido,
     s_apellido: user?.s_apellido || "",
-    edad: `${user?.edad || ""}`,
+    edad: user?.edad || null,
     id_grado: gradoSelected,
     cod_estudiante: student.cod_estudiante || "",
     apodo: student.apodo || "",

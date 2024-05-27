@@ -40,6 +40,9 @@ export default function ModalAvatar({
         id_avatar: `${idAvatarSelected}`,
       });
 
+      if (avatarModal.current) {
+        avatarModal.current.style.display = "none";
+      }
       toast.success("Avatar actualizado correctamente!");
       router.refresh();
     } catch (error) {
@@ -67,6 +70,8 @@ export default function ModalAvatar({
         success: "Listo",
       }
     );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
