@@ -1,3 +1,4 @@
+import { defaultAvatarRoute } from "@/app/constants";
 import PageHeader from "@/app/learning/components/PageHeader";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
@@ -37,8 +38,9 @@ export default async function StudentsAccountPage() {
                 height={150}
                 quality={100}
                 src={
-                  (user.foto_perfil && user.foto_perfil.foto) ||
-                  "/img/avatars/default.png"
+                  (user.use_avatar
+                    ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
+                    : user.foto_perfil.foto) || defaultAvatarRoute
                 }
                 alt="avatar"
                 className="rounded-circle img-fluid"

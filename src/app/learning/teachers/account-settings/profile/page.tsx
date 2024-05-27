@@ -1,3 +1,4 @@
+import { defaultAvatarRoute } from "@/app/constants";
 import PageHeader from "@/app/learning/components/PageHeader";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
@@ -54,8 +55,9 @@ export default async function TeacherAccountSettingsPage() {
                   <Image
                     id="avatar"
                     src={
-                      (user.foto_perfil && user.foto_perfil.foto) ||
-                      "/img/avatars/default.png"
+                      (user.use_avatar
+                        ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
+                        : user.foto_perfil.foto) || defaultAvatarRoute
                     }
                     alt="avatar"
                     className="rounded-circle img-fluid"
