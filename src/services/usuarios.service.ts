@@ -13,7 +13,7 @@ export async function actualizarUsuario(id_usuario: string, formData: any) {
     method: "PATCH",
     body: JSON.stringify({
       ...formData,
-      edad: parseInt(formData.edad || "0"),
+      edad: parseInt(formData.edad) || null,
       s_nombre: formData.s_nombre || null,
       s_apellido: formData.s_apellido || null,
       ciudad: formData.ciudad || null,
