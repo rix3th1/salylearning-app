@@ -27,6 +27,8 @@ export default function FormNewBook() {
         success: "Listo",
       }
     );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
