@@ -57,6 +57,8 @@ export default function FormRegistro({ modalRegistro }: IProps) {
         success: "Listo",
       }
     );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
