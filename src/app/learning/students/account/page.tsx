@@ -17,6 +17,11 @@ export default async function StudentsAccountPage() {
   const avatar_id = user.avatar_usuario.id;
   const estudiante = await obtenerEstudiante(user.id);
 
+  const profileImage =
+    (user.use_avatar && user.avatar_usuario.avatar.nom_avatar
+      ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
+      : user.foto_perfil.foto) || defaultAvatarRoute;
+
   return (
     <>
       <PageHeader title="Actualizar perfíl estudiante" />
@@ -37,11 +42,7 @@ export default async function StudentsAccountPage() {
                 width={150}
                 height={150}
                 quality={100}
-                src={
-                  (user.use_avatar
-                    ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
-                    : user.foto_perfil.foto) || defaultAvatarRoute
-                }
+                src={profileImage}
                 alt="avatar"
                 className="rounded-circle img-fluid"
                 style={{ marginBottom: "1rem" }}

@@ -9,6 +9,10 @@ import SearchBookButton from "./SearchBookButton";
 export default async function InternalNav() {
   const user = await obtenerPerfilUsuario();
   const isStudent = user?.rol === "ESTUDIANTE";
+  const profileImage =
+    (user.use_avatar && user.avatar_usuario.avatar.nom_avatar
+      ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
+      : user.foto_perfil.foto) || defaultAvatarRoute;
 
   return (
     <nav
@@ -18,11 +22,7 @@ export default async function InternalNav() {
       <ul className="list-unstyled full-reset">
         <figure>
           <Image
-            src={
-              (user.use_avatar
-                ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
-                : user.foto_perfil.foto) || defaultAvatarRoute
-            }
+            src={profileImage}
             alt="Imagen usuario"
             className="img-responsive img-circle center-box"
             width={100}
