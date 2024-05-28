@@ -1,7 +1,7 @@
-import { defaultAvatarRoute } from "@/app/constants";
 import PageHeader from "@/app/learning/components/PageHeader";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
+import { profileImage } from "@/utils/getProfileImage";
 import type { Metadata } from "next";
 import Image from "next/image";
 import FormAccount from "./components/FormAccount";
@@ -16,11 +16,6 @@ export default async function StudentsAccountPage() {
   const foto_perfil_id = user.foto_perfil?.id;
   const avatar_id = user.avatar_usuario.id;
   const estudiante = await obtenerEstudiante(user.id);
-
-  const profileImage =
-    (user.use_avatar && user.avatar_usuario.avatar.nom_avatar
-      ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
-      : user.foto_perfil.foto) || defaultAvatarRoute;
 
   return (
     <>
@@ -42,7 +37,7 @@ export default async function StudentsAccountPage() {
                 width={150}
                 height={150}
                 quality={100}
-                src={profileImage}
+                src={profileImage(user)}
                 alt="avatar"
                 className="rounded-circle img-fluid"
                 style={{ marginBottom: "1rem" }}

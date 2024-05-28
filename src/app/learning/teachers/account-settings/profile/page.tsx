@@ -1,6 +1,6 @@
-import { defaultAvatarRoute } from "@/app/constants";
 import PageHeader from "@/app/learning/components/PageHeader";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
+import { profileImage } from "@/utils/getProfileImage";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -17,10 +17,6 @@ export default async function TeacherAccountSettingsPage() {
   const name = `${user?.p_nombre} ${user?.p_apellido}`;
   const rol = `${user?.rol[0]}${user?.rol.slice(1).toLowerCase()}`;
   const grade = user.grado_usuario.grados.nom_grado;
-  const profileImage =
-    (user.use_avatar && user.avatar_usuario.avatar.nom_avatar
-      ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
-      : user.foto_perfil.foto) || defaultAvatarRoute;
 
   return (
     <>
@@ -58,7 +54,7 @@ export default async function TeacherAccountSettingsPage() {
                 <div className="card-body text-center">
                   <Image
                     id="avatar"
-                    src={profileImage}
+                    src={profileImage(user)}
                     alt="avatar"
                     className="rounded-circle img-fluid"
                     width={150}

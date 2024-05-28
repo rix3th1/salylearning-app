@@ -1,5 +1,5 @@
-import { defaultAvatarRoute } from "@/app/constants";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
+import { profileImage } from "@/utils/getProfileImage";
 import Image from "next/image";
 import Link from "next/link";
 import { MdHelpOutline, MdMenu } from "react-icons/md";
@@ -9,10 +9,6 @@ import SearchBookButton from "./SearchBookButton";
 export default async function InternalNav() {
   const user = await obtenerPerfilUsuario();
   const isStudent = user?.rol === "ESTUDIANTE";
-  const profileImage =
-    (user.use_avatar && user.avatar_usuario.avatar.nom_avatar
-      ? `/img/avatars/${user.rol}/${user.avatar_usuario.avatar.nom_avatar}`
-      : user.foto_perfil.foto) || defaultAvatarRoute;
 
   return (
     <nav
@@ -22,7 +18,7 @@ export default async function InternalNav() {
       <ul className="list-unstyled full-reset">
         <figure>
           <Image
-            src={profileImage}
+            src={profileImage(user)}
             alt="Imagen usuario"
             className="img-responsive img-circle center-box"
             width={100}
