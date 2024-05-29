@@ -1,7 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Link from "next/link";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Estadísticas Generales: Docentes | Saly Learning",
@@ -58,9 +57,6 @@ export default function ReportsAndStatisticsPage() {
           </div>
         </div>
       </div>
-
-      <Script src="/js/grafica.js" />
-      <Script src="https://cdn.jsdelivr.net/npm/chart.js" />
     </>
   );
 }

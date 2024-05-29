@@ -3,7 +3,6 @@ import categoryImage from "@/assets/category.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Reportes Grado: Docentes | Saly Learning",
@@ -180,9 +179,6 @@ export default function ReportsAndStatisticsPage() {
           </div>
         </div>
       </div>
-
-      <Script src="/js/grafica.js" />
-      <Script src="https://cdn.jsdelivr.net/npm/chart.js" />
     </>
   );
 }
