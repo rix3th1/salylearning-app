@@ -94,8 +94,8 @@ export default function ModalAvatar({
           {avatars.map((avatar: any, i) => (
             <Image
               key={i}
-              className={`avatar-option${
-                idAvatarSelected === avatar.id ? " selected" : ""
+              className={`avatar-option ${
+                idAvatarSelected === avatar.id ? "selected" : ""
               }`}
               src={`/img/avatars/${userType}/${avatar.nom_avatar}`}
               alt={avatar.descripcion}
