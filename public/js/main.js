@@ -1,16 +1,14 @@
 const mobileMenu = $(".navbar-lateral");
 
-const closeMobileMenu = () => {
+$(".mobile-menu-button").on("click", () => {
   if (mobileMenu.css("display") === "none") {
     mobileMenu.fadeIn(300);
   } else {
     mobileMenu.fadeOut(300);
   }
-};
+});
 
-$(".mobile-menu-button").on("click", closeMobileMenu);
-
-$(".saly-link").on("click", closeMobileMenu);
+$(".saly-link").on("click", () => mobileMenu.css("display", "none"));
 
 $(".dropdown-menu-button").on("click", function () {
   const dropMenu = $(this).next("ul");
