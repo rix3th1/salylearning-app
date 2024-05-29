@@ -54,7 +54,10 @@ export default async function Aside() {
         <div className="full-reset nav-lateral-list-menu">
           <ul className="list-unstyled">
             <li>
-              <Link href={`/learning/${isStudent ? "students" : "teachers"}`}>
+              <Link
+                className="saly-link"
+                href={`/learning/${isStudent ? "students" : "teachers"}`}
+              >
                 <MdHome style={{ fontSize: 15 }} />
                 &nbsp;&nbsp; Inicio
               </Link>
@@ -80,13 +83,19 @@ export default async function Aside() {
                 {isTeacher && (
                   <>
                     <li>
-                      <Link href="/learning/teachers/books/new">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/books/new"
+                      >
                         <MdBook />
                         &nbsp;&nbsp; Nuevo libro
                       </Link>
                     </li>
                     <li>
-                      <Link href="/learning/teachers/books/popular">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/books/popular"
+                      >
                         <MdBookmark />
                         &nbsp;&nbsp; Populares
                       </Link>
@@ -95,7 +104,7 @@ export default async function Aside() {
                 )}
                 {isStudent && (
                   <li>
-                    <Link href="/learning/students/books">
+                    <Link className="saly-link" href="/learning/students/books">
                       <MdBook />
                       &nbsp;&nbsp; Explorar libros
                     </Link>
@@ -124,19 +133,28 @@ export default async function Aside() {
                   </div>
                   <ul className="list-unstyled">
                     <li>
-                      <Link href="/learning/teachers/questionaries/completed">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/questionaries/completed"
+                      >
                         <MdCheckCircle />
                         &nbsp;&nbsp;Completados
                       </Link>
                     </li>
                     <li>
-                      <Link href="/learning/teachers/questionaries/pending">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/questionaries/pending"
+                      >
                         <MdStarHalf />
                         &nbsp;&nbsp;Pendientes
                       </Link>
                     </li>
                     <li>
-                      <Link href="/learning/teachers/questionaries/not-achieved">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/questionaries/not-achieved"
+                      >
                         <MdLocationOff />
                         &nbsp;&nbsp;No logrados
                       </Link>
@@ -162,13 +180,19 @@ export default async function Aside() {
                   </div>
                   <ul className="list-unstyled">
                     <li>
-                      <Link href="/learning/teachers/reports">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/reports"
+                      >
                         <MdTrendingUp />
                         &nbsp;&nbsp;Reportes
                       </Link>
                     </li>
                     <li>
-                      <Link href="/learning/teachers/statistics">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/statistics"
+                      >
                         <MdBarChart />
                         &nbsp;&nbsp;Estadísticas
                       </Link>
@@ -194,13 +218,19 @@ export default async function Aside() {
                   </div>
                   <ul className="list-unstyled">
                     <li>
-                      <Link href="/learning/teachers/account-settings/profile">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/account-settings/profile"
+                      >
                         <MdPerson />
                         &nbsp;&nbsp;Perfíl
                       </Link>
                     </li>
                     <li>
-                      <Link href="/learning/teachers/account-settings/advanced">
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/account-settings/advanced"
+                      >
                         <MdManageAccounts />
                         &nbsp;&nbsp;Avanzadas
                       </Link>
@@ -208,7 +238,7 @@ export default async function Aside() {
                   </ul>
                 </li>
                 <li>
-                  <Link href="/learning/teachers/faqs">
+                  <Link className="saly-link" href="/learning/teachers/faqs">
                     <MdHelpOutline />
                     &nbsp;&nbsp; Preguntas frecuentes
                   </Link>
@@ -236,13 +266,19 @@ export default async function Aside() {
                   </div>
                   <ul className="list-unstyled">
                     <li>
-                      <Link href="/learning/students/activities/done">
+                      <Link
+                        className="saly-link"
+                        href="/learning/students/activities/done"
+                      >
                         <MdCheckCircle />
                         &nbsp;&nbsp;Hecho
                       </Link>
                     </li>
                     <li>
-                      <Link href="/learning/students/activities/pending">
+                      <Link
+                        className="saly-link"
+                        href="/learning/students/activities/pending"
+                      >
                         <MdStar />
                         &nbsp;&nbsp;Por hacer
                       </Link>
@@ -250,19 +286,22 @@ export default async function Aside() {
                   </ul>
                 </li>
                 <li>
-                  <Link href="/learning/students/achievements">
+                  <Link
+                    className="saly-link"
+                    href="/learning/students/achievements"
+                  >
                     <MdTrendingUp />
                     &nbsp;&nbsp; Mi progreso
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/students/account">
+                  <Link className="saly-link" href="/learning/students/account">
                     <MdAccountCircle />
                     &nbsp;&nbsp; Configuración
                   </Link>
                 </li>
                 <li>
-                  <Link href="/learning/students/help">
+                  <Link className="saly-link" href="/learning/students/help">
                     <MdHelpOutline />
                     &nbsp;&nbsp; Ayuda
                   </Link>

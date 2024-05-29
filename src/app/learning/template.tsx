@@ -1,4 +1,5 @@
 import FooterLogged from "@/components/FooterLogged";
+import Aside from "@/components/ui/Aside";
 import InternalNav from "@/components/ui/InternalNav";
 import ProgressProvider from "@/providers/ProgressProvider";
 
@@ -8,12 +9,15 @@ export default function LearningTemplate({
   children: React.ReactNode;
 }) {
   return (
-    <ProgressProvider>
-      <main className="content-page-container full-reset">
-        <InternalNav />
-        <section>{children}</section>
-        <FooterLogged />
-      </main>
-    </ProgressProvider>
+    <>
+      <Aside />
+      <ProgressProvider>
+        <main className="content-page-container full-reset">
+          <InternalNav />
+          <section>{children}</section>
+          <FooterLogged />
+        </main>
+      </ProgressProvider>
+    </>
   );
 }

@@ -1,4 +1,3 @@
-import Aside from "@/components/ui/Aside";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./css/bootstrap.min.css";
@@ -15,7 +14,6 @@ export default function LearningLayout({
 }>) {
   return (
     <>
-      <Aside />
       {children}
       <Script defer src="/js/jquery-1.11.2.min.js" />
       <Script src="/js/bootstrap.min.js" />
