@@ -1,12 +1,18 @@
 import { fetchServer } from "./api.service";
 
+export enum EstadoCuestionario {
+  COMPLETADO = "COMPLETADO",
+  PENDIENTE = "PENDIENTE",
+  NO_LOGRADO = "NO_LOGRADO",
+}
+
 const urls: string[] = [
   "/grados/contar",
   "/libros/contar",
   "/generos-literarios/contar",
-  "/cuestionarios/contar-pendientes",
-  "/cuestionarios/contar-no-logrados",
-  "/cuestionarios/contar-completados",
+  ...Object.values(EstadoCuestionario).map(
+    (e) => `/cuestionarios/contar/estado?estado_cuestionario=${e}`
+  ),
 ];
 
 export async function obtenerContadoresParaDocentes() {
