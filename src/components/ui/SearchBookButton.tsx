@@ -1,5 +1,3 @@
-"use client";
-
 import { plus_jakarta_sans } from "@/app/fonts";
 import { useState } from "react";
 import { MdSearch } from "react-icons/md";

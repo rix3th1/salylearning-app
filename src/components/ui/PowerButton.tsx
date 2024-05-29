@@ -1,5 +1,3 @@
-"use client";
-
 import { plus_jakarta_sans } from "@/app/fonts";
 import { signOut } from "next-auth/react";
 import { MdOutlinePowerSettingsNew } from "react-icons/md";

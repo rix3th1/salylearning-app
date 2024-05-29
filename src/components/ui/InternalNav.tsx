@@ -2,10 +2,8 @@ import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import { profileImage } from "@/utils/getProfileImage";
 import Image from "next/image";
 import Link from "next/link";
-import HelpButton from "./HelpButton";
 import MenuButton from "./MenuButton";
-import PowerButton from "./PowerButton";
-import SearchBookButton from "./SearchBookButton";
+import NavInteractionButtons from "./NavInteractionButtons";
 
 export default async function InternalNav() {
   const user = await obtenerPerfilUsuario();
@@ -40,9 +38,7 @@ export default async function InternalNav() {
             Mi perfíl
           </Link>
         </li>
-        <PowerButton />
-        <SearchBookButton />
-        <HelpButton />
+        <NavInteractionButtons />
         <MenuButton />
       </ul>
     </nav>
