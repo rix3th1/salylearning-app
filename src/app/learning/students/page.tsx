@@ -1,3 +1,4 @@
+import { obtenerContadoresParaEstudiantes } from "@/services/contadores.service";
 import { obtenerLibros } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -25,6 +26,7 @@ const mapDataCarrousel = async () => {
 
 export default async function HomePage() {
   const images = await mapDataCarrousel();
+  const contadores = await obtenerContadoresParaEstudiantes();
 
   return (
     <>
@@ -41,7 +43,7 @@ export default async function HomePage() {
                 <div className="tile-name">
                   <Link href="/learning/students/books">Mis libros</Link>
                 </div>
-                <div className="tile-num full-reset">3</div>
+                <div className="tile-num full-reset">{contadores[0]}</div>
               </article>
               <article className="tile">
                 <div className="tile-icon full-reset">
@@ -52,7 +54,9 @@ export default async function HomePage() {
                     ¡Enfréntate a los Retos!
                   </Link>
                 </div>
-                <div className="tile-num full-reset">3</div>
+                <div className="tile-num full-reset">
+                  {contadores[1] - contadores[1]}
+                </div>
               </article>
               <article className="tile">
                 <div className="tile-icon full-reset">
