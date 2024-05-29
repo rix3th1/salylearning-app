@@ -1,4 +1,4 @@
-import { obtenerContadores } from "@/services/contadores.service";
+import { obtenerContadoresParaDocentes } from "@/services/contadores.service";
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const contadores = await obtenerContadores();
+  const contadores = await obtenerContadoresParaDocentes();
 
   return (
     <>

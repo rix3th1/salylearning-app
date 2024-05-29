@@ -9,7 +9,7 @@ const urls: string[] = [
   "/cuestionarios/contar-completados",
 ];
 
-export async function obtenerContadores() {
+export async function obtenerContadoresParaDocentes() {
   const promises = urls.map((url) => fetchServer(url, { method: "GET" }));
 
   const responses = await Promise.all(promises);
