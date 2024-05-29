@@ -33,6 +33,8 @@ export default function SearchBookButton() {
   return (
     <li
       className="tooltips-general"
+      data-toggle="tooltip"
+      data-placement="bottom"
       title="Buscar libro"
       onClick={showSearchBookSwal}
     >

@@ -36,7 +36,7 @@ export default async function Aside() {
       }}
     >
       <div className="visible-xs font-movile-menu mobile-menu-button"></div>
-      <div className="full-reset container-menu-movile custom-scroll-containers">
+      <div className="full-reset container-menu-movile">
         <div className="logo full-reset">
           <MdClose
             className="visible-xs pull-left mobile-menu-button"

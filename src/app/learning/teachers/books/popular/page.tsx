@@ -50,20 +50,14 @@ export default function PopularBooksPage() {
         {Array.from({ length: 10 }, (_, i) => (
           <div key={i} className="media media-hover" data-tiempo="semana">
             <div className="media-left media-middle">
-              <span
-                className="tooltips-general"
-                data-placement="right"
-                title="Más información del libro"
-              >
-                <Image
-                  className="media-object"
-                  src="/img/matilda.jpg"
-                  alt="Libro"
-                  width={60}
-                  height={60}
-                  quality={75}
-                />
-              </span>
+              <Image
+                className="media-object"
+                src="/img/matilda.jpg"
+                alt="Libro"
+                width={60}
+                height={60}
+                quality={75}
+              />
             </div>
             <div className="media-body">
               <h4 className="media-heading">Matilda, de Roald Dahl</h4>

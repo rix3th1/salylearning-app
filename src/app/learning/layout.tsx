@@ -3,7 +3,6 @@ import Aside from "@/components/ui/Aside";
 import InternalNav from "@/components/ui/InternalNav";
 import type { Metadata } from "next";
 import Script from "next/script";
-import ModalHelp from "./components/ModalHelp";
 import "./css/bootstrap.min.css";
 import "./css/style.css";
 
@@ -19,15 +18,14 @@ export default function LearningLayout({
   return (
     <>
       <Aside />
-      <div className="content-page-container full-reset custom-scroll-containers">
+      <div className="content-page-container full-reset">
         <InternalNav />
-        <ModalHelp />
 
         <main>{children}</main>
         <FooterLogged />
       </div>
 
-      <Script src="/js/jquery-1.11.2.min.js" />
+      <Script defer src="/js/jquery-1.11.2.min.js" />
       <Script src="/js/bootstrap.min.js" />
       <Script src="/js/main.js" />
     </>

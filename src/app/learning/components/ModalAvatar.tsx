@@ -90,7 +90,8 @@ export default function ModalAvatar({
         <h3 style={{ marginBottom: "1.5rem" }}>
           Por favor, selecciona tu foto de perfíl:
         </h3>
-        <div id="avatar-options">
+
+        <div>
           {avatars.map((avatar: any, i) => (
             <Image
               key={i}

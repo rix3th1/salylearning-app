@@ -24,6 +24,8 @@ export default function PowerButton() {
   return (
     <li
       className="tooltips-general"
+      data-toggle="tooltip"
+      data-placement="bottom"
       title="Salir del sistema"
       onClick={showSignOutSwal}
     >
