@@ -1,7 +1,7 @@
 "use client";
 
 import pkg from "@/../package.json";
-import { crearContacto, contactoInitState } from "@/services/contactos.service";
+import { contactoInitState, crearContacto } from "@/services/contactos.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -100,7 +100,6 @@ export default function ContactForm() {
           id="mensaje"
           placeholder="Ingrese su mensaje aquí..."
           style={{ height: "10rem", color: "#000" }}
-          defaultValue={""}
           onChange={handleChange}
           value={formData.mensaje}
           required
