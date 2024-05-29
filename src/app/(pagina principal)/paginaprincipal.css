@@ -12120,12 +12120,12 @@ html {
   text-decoration-line: none;
   background: none;
   border: none;
+  text-decoration: underline;
 }
 
 .olvide:hover {
   cursor: pointer;
   color: #48e;
-  text-decoration: underline;
 }
 
 /* Alineación del texto del título */
