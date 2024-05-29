@@ -1,7 +1,7 @@
 import { registrarse, registrarseInitState } from "@/services/auth.service";
 import { obtenerGrados } from "@/services/grados.service";
 import { THandleChange, THandleSubmit } from "@/types";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 interface IProps {
@@ -16,6 +16,7 @@ export default function FormRegistro({
   const [grados, setGrados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(registrarseInitState);
+  const inputFcs = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: THandleChange) => {
     setFormData({
@@ -46,6 +47,8 @@ export default function FormRegistro({
   useEffect(() => {
     if (!isModalRegistroOpen || grados.length > 0) return;
 
+    inputFcs.current?.focus();
+
     toast.promise(
       obtenerGrados()
         .then((data) => {
@@ -72,6 +75,7 @@ export default function FormRegistro({
       <div className="row">
         <div className="form-group col-md-6 py-3">
           <input
+            ref={inputFcs}
             name="p_nombre"
             type="text"
             className="form-control"

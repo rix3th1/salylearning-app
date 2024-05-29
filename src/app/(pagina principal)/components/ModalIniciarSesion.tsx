@@ -29,6 +29,7 @@ export default function ModalIniciarSesion({
 
           <FormIniciarSesion
             setIsModalIniciarSesionOpen={setIsModalIniciarSesionOpen}
+            isModalIniciarSesionOpen={isModalIniciarSesionOpen}
           />
 
           <section className="mx-sm-4 text-end py-4">

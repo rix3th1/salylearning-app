@@ -1,11 +1,12 @@
 import { THandleChange, THandleSubmit } from "@/types";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
 interface IProps {
   setIsModalIniciarSesionOpen: (value: boolean) => void;
+  isModalIniciarSesionOpen: boolean;
 }
 
 const formDataInitialState = {
@@ -15,12 +16,14 @@ const formDataInitialState = {
 
 export default function FormIniciarSesion({
   setIsModalIniciarSesionOpen,
+  isModalIniciarSesionOpen,
 }: IProps) {
   const router = useRouter();
   const { data: session } = useSession();
 
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(formDataInitialState);
+  const inputFcs = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: THandleChange) => {
     setFormData({
@@ -68,12 +71,17 @@ export default function FormIniciarSesion({
     }
   };
 
+  useEffect(() => {
+    inputFcs.current?.focus();
+  }, [isModalIniciarSesionOpen]);
+
   return (
     <form onSubmit={handleSubmit}>
       <h1 className="text-light text-center pt-3 pb-1">INICIAR SESIÓN</h1>
 
       <div className="form-group mx-sm-4 py-3">
         <input
+          ref={inputFcs}
           name="username"
           type="text"
           className="form-control"
