@@ -18,7 +18,6 @@ export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
   return (
     <div className="d-flex justify-content-center mb-2">
       <button
-        type="submit"
         className="btn btn-primary"
         style={{ marginRight: "15px" }}
         onClick={() => showSwalUploadProfilePhoto(foto_perfil_id, router)}

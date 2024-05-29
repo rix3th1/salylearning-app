@@ -2,8 +2,8 @@ import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import { profileImage } from "@/utils/getProfileImage";
 import Image from "next/image";
 import Link from "next/link";
-import { MdMenu } from "react-icons/md";
 import HelpButton from "./HelpButton";
+import MenuButton from "./MenuButton";
 import PowerButton from "./PowerButton";
 import SearchBookButton from "./SearchBookButton";
 
@@ -43,9 +43,7 @@ export default async function InternalNav() {
         <PowerButton />
         <SearchBookButton />
         <HelpButton />
-        <li className="mobile-menu-button visible-xs" style={{ float: "left" }}>
-          <MdMenu style={{ fontSize: 25, marginTop: 15 }} />
-        </li>
+        <MenuButton />
       </ul>
     </nav>
   );

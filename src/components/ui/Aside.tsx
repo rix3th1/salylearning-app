@@ -8,7 +8,6 @@ import {
   MdBook,
   MdBookmark,
   MdCheckCircle,
-  MdClose,
   MdHelpOutline,
   MdHome,
   MdKeyboardArrowDown,
@@ -21,6 +20,7 @@ import {
   MdStarHalf,
   MdTrendingUp,
 } from "react-icons/md";
+import CloseButton from "./CloseButton";
 import SalyFigure from "./SalyFigure";
 
 export default async function Aside() {
@@ -35,16 +35,10 @@ export default async function Aside() {
         position: "fixed",
       }}
     >
-      <div className="visible-xs font-movile-menu mobile-menu-button"></div>
+      <span className="visible-xs font-movile-menu"></span>
       <div className="full-reset container-menu-movile">
         <div className="logo full-reset">
-          <MdClose
-            className="visible-xs pull-left mobile-menu-button"
-            style={{
-              cursor: "pointer",
-              margin: "17px 26px",
-            }}
-          />
+          <CloseButton />
           SALY LEARNING
         </div>
         <div
