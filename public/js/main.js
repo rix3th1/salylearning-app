@@ -1,5 +1,6 @@
 $(".mobile-menu-button").on("click", function () {
   var mobileMenu = $(".navbar-lateral");
+  console.log(mobileMenu);
   if (mobileMenu.css("display") == "none") {
     mobileMenu.fadeIn(300);
   } else {
