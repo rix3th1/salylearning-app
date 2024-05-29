@@ -1,6 +1,4 @@
-import FooterLogged from "@/components/FooterLogged";
 import Aside from "@/components/ui/Aside";
-import InternalNav from "@/components/ui/InternalNav";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./css/bootstrap.min.css";
@@ -18,13 +16,7 @@ export default function LearningLayout({
   return (
     <>
       <Aside />
-      <div className="content-page-container full-reset">
-        <InternalNav />
-
-        <main>{children}</main>
-        <FooterLogged />
-      </div>
-
+      {children}
       <Script defer src="/js/jquery-1.11.2.min.js" />
       <Script src="/js/bootstrap.min.js" />
       <Script src="/js/main.js" />

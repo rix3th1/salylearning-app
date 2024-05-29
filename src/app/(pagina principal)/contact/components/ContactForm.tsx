@@ -3,7 +3,7 @@
 import pkg from "@/../package.json";
 import { contactoInitState, crearContacto } from "@/services/contactos.service";
 import { THandleChange, THandleSubmit } from "@/types";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { toast } from "sonner";
 

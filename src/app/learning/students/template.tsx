@@ -1,9 +1,9 @@
 import "../css/students.style.css";
 
-export default function StudentsLayout({
+export default function StudentsTemplate({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return <>{children}</>;
 }

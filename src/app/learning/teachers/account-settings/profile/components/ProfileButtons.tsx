@@ -2,7 +2,7 @@
 
 import ModalAvatar from "@/app/learning/components/ModalAvatar";
 import { showSwalUploadProfilePhoto } from "@/app/learning/handlers/upload-profile-photo";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 
 export interface IProps {

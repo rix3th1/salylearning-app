@@ -3,7 +3,7 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { crearLibro } from "@/services/libros.service";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { MdCancel, MdUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";

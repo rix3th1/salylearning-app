@@ -15,7 +15,7 @@ import {
   actualizarUsuarioInitState,
 } from "@/services/usuarios.service";
 import { THandleChange, THandleSubmit } from "@/types";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import Swal from "sweetalert2";

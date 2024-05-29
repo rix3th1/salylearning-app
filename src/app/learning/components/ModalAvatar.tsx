@@ -2,7 +2,7 @@ import { actualizarAvatarUsuario } from "@/services/avatar-usuario.service";
 import { obtenerAvatars } from "@/services/avatars.service";
 import { User } from "next-auth";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import "../css/modal-avatar.style.css";

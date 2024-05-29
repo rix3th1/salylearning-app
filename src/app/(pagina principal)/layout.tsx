@@ -1,6 +1,3 @@
-import { plus_jakarta_sans } from "@/app/fonts";
-import Footer from "@/components/ui/Footer";
-import Nav from "@/components/ui/Nav";
 import type { Metadata } from "next";
 import Script from "next/script";
 import "./paginaprincipal.css";
@@ -16,12 +13,7 @@ export default function MainPageLayout({
 }>) {
   return (
     <>
-      <main className={plus_jakarta_sans.className}>
-        <Nav />
-        <section>{children}</section>
-        <Footer />
-      </main>
-
+      {children}
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
     </>
   );

@@ -1,6 +1,6 @@
 import { THandleChange, THandleSubmit } from "@/types";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 

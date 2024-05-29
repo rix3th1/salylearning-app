@@ -3,7 +3,7 @@ import {
   cambiarClaveRecuperacionInitState,
 } from "@/services/recuperar-clave.service";
 import { THandleChange, THandleSubmit } from "@/types";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { toast } from "sonner";
 
