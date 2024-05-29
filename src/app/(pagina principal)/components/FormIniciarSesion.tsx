@@ -1,6 +1,5 @@
 import { THandleChange, THandleSubmit } from "@/types";
 import { signIn, useSession } from "next-auth/react";
-import { useRouter } from "next-nprogress-bar";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -18,7 +17,6 @@ export default function FormIniciarSesion({
   setIsModalIniciarSesionOpen,
   isModalIniciarSesionOpen,
 }: IProps) {
-  const router = useRouter();
   const { data: session } = useSession();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -53,14 +51,13 @@ export default function FormIniciarSesion({
       );
 
       setIsModalIniciarSesionOpen(false);
-      router.push(
-        callbackUrl ||
-          `/learning/${
-            session?.user.rol === "DOCENTE" ? "teachers" : "students"
-          }`
-      );
-      router.refresh();
+
       toast.success("Bienvenido a SalyLearning!");
+      window.location.href =
+        callbackUrl ||
+        `/learning/${
+          session?.user.rol === "DOCENTE" ? "teachers" : "students"
+        }`;
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message.replace(/,/g, ", "));
