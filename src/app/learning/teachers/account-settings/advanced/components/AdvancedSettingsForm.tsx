@@ -103,6 +103,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           value={formData.username}
           onChange={handleChange}
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group mx-sm-4 pt-3">

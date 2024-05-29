@@ -84,7 +84,7 @@ export default function FormIniciarSesion({
           ref={inputFcs}
           name="username"
           type="text"
-          className="form-control"
+          className="form-control text-lowercase"
           placeholder="Ingrese su nombre de usuario"
           required
           autoComplete="username"
