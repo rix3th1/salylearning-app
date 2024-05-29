@@ -5,10 +5,14 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 interface IProps {
-  modalRegistro: React.RefObject<HTMLDivElement>;
+  setIsModalRegistroOpen: (value: boolean) => void;
+  isModalRegistroOpen: boolean;
 }
 
-export default function FormRegistro({ modalRegistro }: IProps) {
+export default function FormRegistro({
+  isModalRegistroOpen,
+  setIsModalRegistroOpen,
+}: IProps) {
   const [grados, setGrados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState(registrarseInitState);
@@ -29,9 +33,7 @@ export default function FormRegistro({ modalRegistro }: IProps) {
 
       toast.success(registro.message);
       setFormData(registrarseInitState);
-      if (modalRegistro.current) {
-        modalRegistro.current.style.display = "none";
-      }
+      setIsModalRegistroOpen(false);
     } catch (error) {
       if (error instanceof Error) {
         toast.error(error.message.replace(/,/g, ", "));
@@ -42,6 +44,8 @@ export default function FormRegistro({ modalRegistro }: IProps) {
   };
 
   useEffect(() => {
+    if (!isModalRegistroOpen || grados.length > 0) return;
+
     toast.promise(
       obtenerGrados()
         .then((data) => {
@@ -59,7 +63,7 @@ export default function FormRegistro({ modalRegistro }: IProps) {
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isModalRegistroOpen]);
 
   return (
     <form onSubmit={handleSubmit}>

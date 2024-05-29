@@ -1,14 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import HeaderContent from "./HeaderContent";
 import ImageSection from "./ImageSection";
 import ModalIniciarSesion from "./ModalIniciarSesion";
 import ModalRegistro from "./ModalRegistro";
 
 export default function IndexHeader() {
-  const modalInicioSesion = useRef<HTMLDivElement>(null);
-  const modalRegistro = useRef<HTMLDivElement>(null);
+  const [isModalIniciarSesionOpen, setIsModalIniciarSesionOpen] =
+    useState(false);
+  const [isModalRegistroOpen, setIsModalRegistroOpen] = useState(false);
 
   return (
     <header className="py-5">
@@ -26,16 +27,22 @@ export default function IndexHeader() {
               </h1>
               {/* Contenido del texto del encabezado */}
               <HeaderContent
-                modalInicioSesion={modalInicioSesion}
-                modalRegistro={modalRegistro}
+                setIsModalInicioSesionOpen={setIsModalIniciarSesionOpen}
+                setIsModalRegistroOpen={setIsModalRegistroOpen}
               />
             </article>
 
             {/* Modal de inicio de sesión */}
-            <ModalIniciarSesion modalInicioSesion={modalInicioSesion} />
+            <ModalIniciarSesion
+              isModalIniciarSesionOpen={isModalIniciarSesionOpen}
+              setIsModalIniciarSesionOpen={setIsModalIniciarSesionOpen}
+            />
 
             {/* Modal de registro usuarios*/}
-            <ModalRegistro modalRegistro={modalRegistro} />
+            <ModalRegistro
+              isModalRegistroOpen={isModalRegistroOpen}
+              setIsModalRegistroOpen={setIsModalRegistroOpen}
+            />
 
             <ImageSection />
           </section>

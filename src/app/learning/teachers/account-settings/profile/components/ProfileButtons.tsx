@@ -3,7 +3,7 @@
 import ModalAvatar from "@/app/learning/components/ModalAvatar";
 import { showSwalUploadProfilePhoto } from "@/app/learning/handlers/upload-profile-photo";
 import { useRouter } from "next/navigation";
-import { useRef } from "react";
+import { useState } from "react";
 
 export interface IProps {
   foto_perfil_id: string;
@@ -11,7 +11,7 @@ export interface IProps {
 }
 
 export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
-  const avatarModal = useRef<HTMLDivElement>(null);
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
 
   const router = useRouter();
 
@@ -27,9 +27,7 @@ export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
       <button
         className="btn btn-outline-primary"
         onClick={() => {
-          if (avatarModal.current) {
-            avatarModal.current.style.display = "block";
-          }
+          setIsAvatarModalOpen(true);
         }}
       >
         Elegir avatar
@@ -38,7 +36,8 @@ export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
       {/* Avatar modal */}
       <ModalAvatar
         avatar_id={avatar_id}
-        avatarModal={avatarModal}
+        isAvatarModalOpen={isAvatarModalOpen}
+        setIsAvatarModalOpen={setIsAvatarModalOpen}
         userType="DOCENTE"
       />
     </div>

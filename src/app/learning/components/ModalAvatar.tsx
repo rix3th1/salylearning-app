@@ -8,13 +8,15 @@ import { toast } from "sonner";
 import "../css/modal-avatar.style.css";
 
 interface IProps {
-  avatarModal: React.RefObject<HTMLDivElement>;
+  setIsAvatarModalOpen: (value: boolean) => void;
+  isAvatarModalOpen: boolean;
   userType: User["rol"];
   avatar_id: string;
 }
 
 export default function ModalAvatar({
-  avatarModal,
+  isAvatarModalOpen,
+  setIsAvatarModalOpen,
   userType,
   avatar_id,
 }: IProps) {
@@ -40,9 +42,7 @@ export default function ModalAvatar({
         id_avatar: `${idAvatarSelected}`,
       });
 
-      if (avatarModal.current) {
-        avatarModal.current.style.display = "none";
-      }
+      setIsAvatarModalOpen(false);
       toast.success("Avatar actualizado correctamente!");
       router.refresh();
     } catch (error) {
@@ -55,6 +55,8 @@ export default function ModalAvatar({
   };
 
   useEffect(() => {
+    if (!isAvatarModalOpen || avatars.length > 0) return;
+
     toast.promise(
       obtenerAvatars(userType)
         .then((data) => {
@@ -72,17 +74,18 @@ export default function ModalAvatar({
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isAvatarModalOpen]);
 
   return (
-    <div className="avatar-modal" ref={avatarModal}>
+    <div
+      className="avatar-modal"
+      style={{ display: isAvatarModalOpen ? "block" : "none" }}
+    >
       <div className="avatar-modal-content">
         <span
           className="avatar-close"
           onClick={() => {
-            if (avatarModal.current) {
-              avatarModal.current.style.display = "none";
-            }
+            setIsAvatarModalOpen(false);
           }}
         >
           ×
@@ -92,20 +95,24 @@ export default function ModalAvatar({
         </h3>
 
         <div>
-          {avatars.map((avatar: any, i) => (
-            <Image
-              key={i}
-              className={`avatar-option ${
-                idAvatarSelected === avatar.id ? "selected" : ""
-              }`}
-              src={`/img/avatars/${userType}/${avatar.nom_avatar}`}
-              alt={avatar.descripcion}
-              width={100}
-              height={100}
-              quality={75}
-              onClick={() => handleAvatarClick(avatar.id)}
-            />
-          ))}
+          {avatars.length > 0 ? (
+            avatars.map((avatar: any, i) => (
+              <Image
+                key={i}
+                className={`avatar-option ${
+                  idAvatarSelected === avatar.id ? "selected" : ""
+                }`}
+                src={`/img/avatars/${userType}/${avatar.nom_avatar}`}
+                alt={avatar.descripcion}
+                width={100}
+                height={100}
+                quality={75}
+                onClick={() => handleAvatarClick(avatar.id)}
+              />
+            ))
+          ) : (
+            <p>Cargando...</p>
+          )}
         </div>
         <section style={{ margin: "0.5rem" }}>
           <button
@@ -113,7 +120,7 @@ export default function ModalAvatar({
             className="btn btn-outline-primary"
             style={{ margin: "0 .5rem", marginTop: "1rem" }}
             onClick={handleAcceptClick}
-            disabled={isLoading}
+            disabled={isLoading || avatars.length === 0}
           >
             {isLoading ? "Cargando..." : "Aceptar"}
           </button>
@@ -121,11 +128,9 @@ export default function ModalAvatar({
             className="btn btn-outline-primary"
             style={{ margin: "0 .5rem", marginTop: "1rem" }}
             onClick={() => {
-              if (avatarModal.current) {
-                avatarModal.current.style.display = "none";
-              }
+              setIsAvatarModalOpen(false);
             }}
-            disabled={isLoading}
+            disabled={isLoading || avatars.length === 0}
           >
             Cancelar
           </button>

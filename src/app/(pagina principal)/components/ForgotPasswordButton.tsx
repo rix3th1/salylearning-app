@@ -4,15 +4,13 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 interface IProps {
-  modalInicioSesion: React.RefObject<HTMLDivElement>;
+  setIsModalIniciarSesionOpen: (value: boolean) => void;
 }
 
 const showSwalForSendEmail = async (
-  modalInicioSesion: IProps["modalInicioSesion"]
+  setIsModalIniciarSesionOpen: IProps["setIsModalIniciarSesionOpen"]
 ) => {
-  if (modalInicioSesion.current) {
-    modalInicioSesion.current.style.display = "none";
-  }
+  setIsModalIniciarSesionOpen(false);
 
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
@@ -51,12 +49,14 @@ const showSwalForSendEmail = async (
   }
 };
 
-export default function ForgotPasswordButton({ modalInicioSesion }: IProps) {
+export default function ForgotPasswordButton({
+  setIsModalIniciarSesionOpen,
+}: IProps) {
   return (
     <button
       type="button"
       className="olvide"
-      onClick={() => showSwalForSendEmail(modalInicioSesion)}
+      onClick={() => showSwalForSendEmail(setIsModalIniciarSesionOpen)}
     >
       Olvidé mi contraseña?
     </button>

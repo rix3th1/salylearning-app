@@ -5,7 +5,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 interface IProps {
-  modalInicioSesion: React.RefObject<HTMLDivElement>;
+  setIsModalIniciarSesionOpen: (value: boolean) => void;
 }
 
 const formDataInitialState = {
@@ -13,7 +13,9 @@ const formDataInitialState = {
   password: "",
 };
 
-export default function FormIniciarSesion({ modalInicioSesion }: IProps) {
+export default function FormIniciarSesion({
+  setIsModalIniciarSesionOpen,
+}: IProps) {
   const router = useRouter();
   const { data: session } = useSession();
 
@@ -47,10 +49,7 @@ export default function FormIniciarSesion({ modalInicioSesion }: IProps) {
         "callbackUrl"
       );
 
-      if (modalInicioSesion.current) {
-        modalInicioSesion.current.style.display = "none";
-      }
-
+      setIsModalIniciarSesionOpen(false);
       router.push(
         callbackUrl ||
           `/learning/${

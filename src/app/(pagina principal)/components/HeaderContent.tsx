@@ -1,19 +1,17 @@
 interface IProps {
-  modalInicioSesion: React.RefObject<HTMLDivElement>;
-  modalRegistro: React.RefObject<HTMLDivElement>;
+  setIsModalInicioSesionOpen: (value: boolean) => void;
+  setIsModalRegistroOpen: (value: boolean) => void;
 }
 
 export default function HeaderContent({
-  modalInicioSesion,
-  modalRegistro,
+  setIsModalInicioSesionOpen,
+  setIsModalRegistroOpen,
 }: IProps) {
   return (
     <section className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
       <button
         onClick={() => {
-          if (modalInicioSesion.current) {
-            modalInicioSesion.current.style.display = "block";
-          }
+          setIsModalInicioSesionOpen(true);
         }}
         className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
       >
@@ -21,9 +19,7 @@ export default function HeaderContent({
       </button>
       <button
         onClick={() => {
-          if (modalRegistro.current) {
-            modalRegistro.current.style.display = "block";
-          }
+          setIsModalRegistroOpen(true);
         }}
         className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
       >
