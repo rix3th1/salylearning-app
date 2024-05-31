@@ -1,6 +1,6 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { enviarEmailDeRecuperacion } from "@/services/recuperar-clave.service";
-import { MdCancel, MdSend } from "react-icons/md";
+import { MdCancel, MdHelpOutline, MdSend } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -67,7 +67,8 @@ export default function ForgotPasswordButton({
       className="olvide"
       onClick={() => showSwalForSendEmail(setIsModalIniciarSesionOpen)}
     >
-      Olvidé mi contraseña?
+      <MdHelpOutline style={{ position: "relative", bottom: 3 }} /> Olvidé mi
+      contraseña?
     </button>
   );
 }

@@ -1,6 +1,7 @@
 import { THandleChange, THandleSubmit } from "@/types";
 import { signIn, useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
+import { MdLogin } from "react-icons/md";
 import { toast } from "sonner";
 
 interface IProps {
@@ -107,6 +108,9 @@ export default function FormIniciarSesion({
           className="btn w-100 ingresar"
           disabled={isLoading}
         >
+          <MdLogin
+            style={{ position: "relative", bottom: 1, fontSize: "24px" }}
+          />{" "}
           {isLoading ? "INGRESANDO..." : "INGRESAR"}
         </button>
       </div>

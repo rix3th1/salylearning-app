@@ -1,10 +1,9 @@
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import { profileImage } from "@/utils/getProfileImage";
 import Image from "next/image";
-import Link from "next/link";
 import MenuButton from "./MenuButton";
+import MyProfileButton from "./MyProfileButton";
 import NavInteractionButtons from "./NavInteractionButtons";
-import { MdAccountCircle } from "react-icons/md";
 
 export default async function InternalNav() {
   const user = await obtenerPerfilUsuario();
@@ -28,26 +27,11 @@ export default async function InternalNav() {
           />
         </figure>
 
-        <li
-          className="tooltips-general"
-          data-toggle="tooltip"
-          data-placement="bottom"
-          title="Mi perfíl"
-        >
-          <Link
-            href={`/learning/${
-              isStudent
-                ? "students/account"
-                : "teachers/account-settings/profile"
-            }`}
-            className="simple-link"
-          >
-            <MdAccountCircle
-              style={{ fontSize: 25, marginTop: 15, marginRight: 15 }}
-            />
-          </Link>
-        </li>
-
+        <MyProfileButton
+          href={`/learning/${
+            isStudent ? "students/account" : "teachers/account-settings/profile"
+          }`}
+        />
         <NavInteractionButtons />
         <MenuButton />
       </ul>

@@ -2,6 +2,7 @@ import { registrarse, registrarseInitState } from "@/services/auth.service";
 import { obtenerGrados } from "@/services/grados.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useEffect, useRef, useState } from "react";
+import { MdOutlineArrowCircleRight } from "react-icons/md";
 import { toast } from "sonner";
 
 interface IProps {
@@ -209,6 +210,9 @@ export default function FormRegistro({
             className="btn w-100 ingresar"
             disabled={isLoading}
           >
+            <MdOutlineArrowCircleRight
+              style={{ position: "relative", bottom: 2, fontSize: "24px" }}
+            />{" "}
             {isLoading ? "REGISTRÁNDOME..." : "REGISTRARME"}
           </button>
         </div>
