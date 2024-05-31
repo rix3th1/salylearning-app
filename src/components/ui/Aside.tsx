@@ -51,8 +51,17 @@ export default async function Aside() {
         >
           <SalyFigure canChange={session?.user.rol === "ESTUDIANTE"} />
         </div>
-        <div className="full-reset nav-lateral-list-menu">
-          <ul className="list-unstyled">
+        <div
+          className="full-reset nav-lateral-list-menu"
+          style={{ height: "100%" }}
+        >
+          <ul
+            className="list-unstyled"
+            style={{
+              overflowY: "auto",
+              maxHeight: "40vh",
+            }}
+          >
             <li>
               <Link
                 className="saly-link"
