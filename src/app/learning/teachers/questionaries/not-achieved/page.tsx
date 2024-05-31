@@ -4,7 +4,12 @@ import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service"
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MdDescription } from "react-icons/md";
+import {
+  MdCancel,
+  MdCheckCircle,
+  MdDescription,
+  MdPending,
+} from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "No logrados (Cuestionarios): Docentes | Saly Learning",
@@ -21,17 +26,17 @@ export default async function NotAchievedQuestionaries() {
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li>
             <Link href="/learning/teachers/questionaries/completed">
-              Completos
+              <MdCheckCircle /> Completos
             </Link>
           </li>
           <li>
             <Link href="/learning/teachers/questionaries/pending">
-              Incompletos
+              <MdPending /> Incompletos
             </Link>
           </li>
           <li className="active">
             <Link href="/learning/teachers/questionaries/not-achieved">
-              No logrados
+              <MdCancel /> No logrados
             </Link>
           </li>
         </ul>

@@ -10,6 +10,7 @@ import { actualizarUsuario } from "@/services/usuarios.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
+import { MdSave } from "react-icons/md";
 import Swal from "sweetalert2";
 
 interface IProps {
@@ -208,7 +209,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
         style={{ marginBottom: "40px" }}
         disabled={isLoading}
       >
-        {isLoading ? "Guardando..." : "Guardar cambios"}
+        <MdSave /> {isLoading ? "Guardando..." : "Guardar cambios"}
       </button>
     </form>
   );

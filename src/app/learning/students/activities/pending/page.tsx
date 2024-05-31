@@ -1,6 +1,7 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MdCheck, MdCheckCircle, MdPending } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Pendientes (Actividades): Estudiantes | Saly Learning",
@@ -22,7 +23,7 @@ export default function PendingActivitiesPage() {
                 className="nav-link"
                 href="/learning/students/activities/pending"
               >
-                Por hacer
+                <MdPending /> Por hacer
               </Link>
             </li>
             <li className="nav-item">
@@ -30,7 +31,7 @@ export default function PendingActivitiesPage() {
                 className="nav-link"
                 href="/learning/students/activities/done"
               >
-                Hecho
+                <MdCheckCircle /> Hecho
               </Link>
             </li>
           </ul>
@@ -86,7 +87,9 @@ export default function PendingActivitiesPage() {
                       />
                       <label htmlFor="pregunta1-opcion4">Harry Potter</label>
                     </p>
-                    <button className="btn btn-default">Enviar</button>
+                    <button className="btn btn-default">
+                      <MdCheck /> Enviar
+                    </button>
                   </div>
                 </div>
                 <div className="col-md-4">
@@ -129,7 +132,9 @@ export default function PendingActivitiesPage() {
                       />
                       <label htmlFor="pregunta2-opcion4">Un gato</label>
                     </p>
-                    <button className="btn btn-default">Enviar</button>
+                    <button className="btn btn-default">
+                      <MdCheck /> Enviar
+                    </button>
                   </div>
                 </div>
                 <div className="col-md-4">
@@ -172,7 +177,9 @@ export default function PendingActivitiesPage() {
                       />
                       <label htmlFor="pregunta3-opcion4">Mowgli</label>
                     </p>
-                    <button className="btn btn-default">Enviar</button>
+                    <button className="btn btn-default">
+                      <MdCheck /> Enviar
+                    </button>
                   </div>
                 </div>
               </div>

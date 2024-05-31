@@ -4,6 +4,7 @@ import { profileImage } from "@/utils/getProfileImage";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { MdAccountCircle, MdTune, MdVerifiedUser } from "react-icons/md";
 import ProfileButtons from "./components/ProfileButtons";
 
 export const metadata: Metadata = {
@@ -24,11 +25,13 @@ export default async function TeacherAccountSettingsPage() {
 
       <ul className="nav nav-tabs nav-justified">
         <li className="active">
-          <Link href="/learning/teachers/account-settings/profile">Perfil</Link>
+          <Link href="/learning/teachers/account-settings/profile">
+            <MdAccountCircle /> Perfil
+          </Link>
         </li>
         <li>
           <Link href="/learning/teachers/account-settings/advanced">
-            Otras opciones
+            <MdTune /> Otras opciones
           </Link>
         </li>
       </ul>
@@ -66,7 +69,9 @@ export default async function TeacherAccountSettingsPage() {
                     {name}
                   </h5>
                   <p className="text-muted mb-1">{rol}</p>
-                  <p className="text-muted mb-4">Rol: {rol}</p>
+                  <p className="text-muted mb-4">
+                    <MdVerifiedUser /> Rol: {rol}
+                  </p>
 
                   <ProfileButtons
                     avatar_id={avatar_id}

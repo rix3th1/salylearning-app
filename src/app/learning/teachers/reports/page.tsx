@@ -3,6 +3,7 @@ import categoryImage from "@/assets/category.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { MdBarChart, MdTrendingUp } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Reportes Grado: Docentes | Saly Learning",
@@ -17,11 +18,13 @@ export default function ReportsAndStatisticsPage() {
         <ul className="nav nav-tabs nav-justified">
           <li>
             <Link href="/learning/teachers/statistics">
-              Estadísticas general
+              <MdBarChart /> Estadísticas general
             </Link>
           </li>
           <li className="active">
-            <Link href="/learning/teachers/reports">Reporte Grado</Link>
+            <Link href="/learning/teachers/reports">
+              <MdTrendingUp /> Reporte Grado
+            </Link>
           </li>
         </ul>
       </div>

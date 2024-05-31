@@ -5,6 +5,7 @@ import { obtenerGenerosLiterarios } from "@/services/generos-literarios.service"
 import { obtenerLibrosPorGeneroLiterario } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Image from "next/image";
+import { MdWarning } from "react-icons/md";
 import type { ReactImageGalleryItem } from "react-image-gallery";
 
 export const metadata: Metadata = {
@@ -57,7 +58,7 @@ export default async function BooksPage() {
 
           <div className="row">
             {generosLiterarios.map(async (genero: any, i: number) => {
-              const images = await mapDataCarrousel(genero.nom_genero);
+              const images: [] = await mapDataCarrousel(genero.nom_genero);
 
               return (
                 <div
@@ -68,7 +69,22 @@ export default async function BooksPage() {
                     <h3>{genero.nom_genero}</h3>
                     <p>{genero.descripcion}</p>
                     <div className="container-items">
-                      <Carrousel items={images} />
+                      {images.length > 0 ? (
+                        <Carrousel items={images} />
+                      ) : (
+                        <article
+                          className="tile"
+                          style={{ margin: "2rem 0", padding: "0.5rem" }}
+                        >
+                          <div className="text-center">
+                            <MdWarning />
+                          </div>
+                          <span style={{ fontSize: "15px" }}>
+                            Aún no hay libros disponibles para este género
+                            literario.
+                          </span>
+                        </article>
+                      )}
                     </div>
                   </div>
                 </div>

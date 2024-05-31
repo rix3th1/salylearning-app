@@ -2,9 +2,9 @@
 
 import { plus_jakarta_sans } from "@/app/fonts";
 import { crearLibro } from "@/services/libros.service";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { useRouter } from "next-nprogress-bar";
-import { MdCancel, MdUpload } from "react-icons/md";
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { MdCancel, MdDoneOutline, MdUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import FormNewBook from "./FormNewBook";
@@ -45,7 +45,7 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
   if (result.isConfirmed) {
     router.refresh();
 
-    Swal.fire({
+    withReactContent(Swal).fire({
       customClass: plus_jakarta_sans.className,
       title: "Libro subido a la plataforma SalyLearning exitosamente!",
       width: 600,
@@ -58,6 +58,11 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
         left bottom
         no-repeat
       `,
+      confirmButtonText: (
+        <>
+          <MdDoneOutline /> Aceptar
+        </>
+      ),
     });
   }
 };

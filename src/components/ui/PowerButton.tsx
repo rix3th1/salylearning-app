@@ -1,15 +1,24 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { signOut } from "next-auth/react";
-import { MdOutlinePowerSettingsNew } from "react-icons/md";
+import { MdCancel, MdLogout, MdOutlinePowerSettingsNew } from "react-icons/md";
 import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 const showSignOutSwal = async () => {
-  const result = await Swal.fire({
+  const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
     title: "¿Estás seguro de que quieres salir?",
     showCancelButton: true,
-    confirmButtonText: "Sí, salir",
-    cancelButtonText: "Cancelar",
+    confirmButtonText: (
+      <>
+        <MdLogout /> Si, salir
+      </>
+    ),
+    cancelButtonText: (
+      <>
+        <MdCancel /> Cancelar
+      </>
+    ),
     icon: "question",
   });
 

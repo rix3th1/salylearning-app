@@ -3,6 +3,7 @@ import terminasteImage from "@/assets/Terminaste.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { MdCheckCircle, MdPending } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Hechas (Actividades): Estudiantes | Saly Learning",
@@ -24,7 +25,7 @@ export default function PendingActivitiesPage() {
                 className="nav-link"
                 href="/learning/students/activities/pending"
               >
-                Por hacer
+                <MdPending /> Por hacer
               </Link>
             </li>
             <li className="nav-item active">
@@ -32,7 +33,7 @@ export default function PendingActivitiesPage() {
                 className="nav-link"
                 href="/learning/students/activities/done"
               >
-                Hecho
+                <MdCheckCircle /> Hecho
               </Link>
             </li>
           </ul>

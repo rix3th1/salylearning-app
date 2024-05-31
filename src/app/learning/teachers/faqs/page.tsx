@@ -8,6 +8,12 @@ import rendimientoImage from "@/assets/rendimiento.png";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  MdGavel,
+  MdHandshake,
+  MdLocalLibrary,
+  MdQuestionAnswer,
+} from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Preguntas Frecuentes: Docentes | Saly Learning",
@@ -22,20 +28,22 @@ export default function FaqsPage() {
         <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
           <li role="presentation">
             <Link href="/learning/teachers/faqs/introduction">
-              Introducción
+              <MdLocalLibrary /> Introducción
             </Link>
           </li>
           <li role="presentation" className="active">
-            <Link href="/learning/teachers/faqs">Preguntas frecuentes</Link>
+            <Link href="/learning/teachers/faqs">
+              <MdQuestionAnswer /> Preguntas frecuentes
+            </Link>
           </li>
           <li role="presentation">
             <Link href="/learning/teachers/faqs/contact-and-support">
-              Información de Contacto y Soporte
+              <MdHandshake /> Información de Contacto y Soporte
             </Link>
           </li>
           <li role="presentation">
             <Link href="/learning/teachers/faqs/policies-and-terms">
-              Políticas y Términos
+              <MdGavel /> Políticas y Términos
             </Link>
           </li>
         </ul>

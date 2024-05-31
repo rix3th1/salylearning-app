@@ -8,7 +8,7 @@ import {
 import { THandleChange, THandleSubmit } from "@/types";
 import { signOut } from "next-auth/react";
 import { useState } from "react";
-import { MdVisibility, MdVisibilityOff } from "react-icons/md";
+import { MdUpdate, MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Swal from "sweetalert2";
 
 interface IProps {
@@ -198,7 +198,7 @@ export default function ChangePasswordForm({ email }: IProps) {
         </span>
       </div>
       <button type="submit" className="btn btn-primary" disabled={isLoading}>
-        {isLoading ? "Enviando..." : "Enviar"}
+        <MdUpdate /> {isLoading ? "Enviando..." : "Enviar"}
       </button>
     </form>
   );

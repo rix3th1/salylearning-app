@@ -4,6 +4,7 @@ import ModalAvatar from "@/app/learning/components/ModalAvatar";
 import { showSwalUploadProfilePhoto } from "@/app/learning/handlers/upload-profile-photo";
 import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
+import { MdPhotoAlbum, MdUpload } from "react-icons/md";
 
 export interface IProps {
   foto_perfil_id: string;
@@ -22,7 +23,7 @@ export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
         style={{ marginRight: "15px" }}
         onClick={() => showSwalUploadProfilePhoto(foto_perfil_id, router)}
       >
-        Subir foto
+        <MdUpload /> Subir foto
       </button>
       <button
         className="btn btn-outline-primary"
@@ -30,7 +31,7 @@ export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
           setIsAvatarModalOpen(true);
         }}
       >
-        Elegir avatar
+        <MdPhotoAlbum /> Elegir avatar
       </button>
 
       {/* Avatar modal */}

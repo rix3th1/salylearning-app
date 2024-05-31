@@ -1,5 +1,6 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { enviarEmailDeRecuperacion } from "@/services/recuperar-clave.service";
+import { MdCancel, MdSend } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -19,8 +20,16 @@ const showSwalForSendEmail = async (
     input: "email",
     inputPlaceholder: "Escribe aquí tu correo electrónico",
     showCancelButton: true,
-    confirmButtonText: "Enviar",
-    cancelButtonText: "Cancelar",
+    confirmButtonText: (
+      <>
+        <MdSend /> Enviar
+      </>
+    ),
+    cancelButtonText: (
+      <>
+        <MdCancel /> Cancelar
+      </>
+    ),
     showLoaderOnConfirm: true,
     preConfirm: async (email) => {
       if (!email) {

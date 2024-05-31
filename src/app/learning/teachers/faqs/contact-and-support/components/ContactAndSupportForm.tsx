@@ -6,6 +6,7 @@ import {
 } from "@/services/contactos.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useState } from "react";
+import { MdMessage } from "react-icons/md";
 import { toast } from "sonner";
 
 export default function ContactAndSupportForm() {
@@ -79,7 +80,7 @@ export default function ContactAndSupportForm() {
         value={formData.mensaje}
       />
       <button type="submit" className="btn btn-primary" disabled={isLoading}>
-        {isLoading ? "Enviando Mensaje..." : "Enviar Mensaje"}
+        <MdMessage /> {isLoading ? "Enviando Mensaje..." : "Enviar Mensaje"}
       </button>
     </form>
   );

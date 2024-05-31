@@ -1,6 +1,7 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { MdBarChart, MdTrendingUp } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Estadísticas Generales: Docentes | Saly Learning",
@@ -15,11 +16,13 @@ export default function ReportsAndStatisticsPage() {
         <ul className="nav nav-tabs nav-justified">
           <li className="active">
             <Link href="/learning/teachers/statistics">
-              Estadísticas general
+              <MdBarChart /> Estadísticas general
             </Link>
           </li>
           <li>
-            <Link href="/learning/teachers/reports">Reporte Grado</Link>
+            <Link href="/learning/teachers/reports">
+              <MdTrendingUp /> Reporte Grado
+            </Link>
           </li>
         </ul>
       </div>

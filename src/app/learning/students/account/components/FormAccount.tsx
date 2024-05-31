@@ -17,6 +17,7 @@ import {
 import { THandleChange, THandleSubmit } from "@/types";
 import { useRouter } from "next-nprogress-bar";
 import { useEffect, useState } from "react";
+import { MdUpdate } from "react-icons/md";
 import { toast } from "sonner";
 import Swal from "sweetalert2";
 
@@ -262,7 +263,7 @@ export default function FormAccount({ user, student }: IProps) {
       </div>
 
       <button type="submit" className="btn btn-primary" disabled={isLoading}>
-        {isLoading ? "Actualizando..." : "Actualizar"}
+        <MdUpdate /> {isLoading ? "Actualizando..." : "Actualizar"}
       </button>
     </form>
   );

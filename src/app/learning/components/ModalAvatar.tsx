@@ -1,9 +1,10 @@
 import { actualizarAvatarUsuario } from "@/services/avatar-usuario.service";
 import { obtenerAvatars } from "@/services/avatars.service";
 import { User } from "next-auth";
-import Image from "next/image";
 import { useRouter } from "next-nprogress-bar";
+import Image from "next/image";
 import { useEffect, useState } from "react";
+import { MdCancel, MdCheck } from "react-icons/md";
 import { toast } from "sonner";
 import "../css/modal-avatar.style.css";
 
@@ -122,7 +123,7 @@ export default function ModalAvatar({
             onClick={handleAcceptClick}
             disabled={isLoading || avatars.length === 0}
           >
-            {isLoading ? "Cargando..." : "Aceptar"}
+            <MdCheck /> {isLoading ? "Cargando..." : "Aceptar"}
           </button>
           <button
             className="btn btn-outline-primary"
@@ -132,7 +133,7 @@ export default function ModalAvatar({
             }}
             disabled={isLoading || avatars.length === 0}
           >
-            Cancelar
+            <MdCancel /> Cancelar
           </button>
         </section>
       </div>

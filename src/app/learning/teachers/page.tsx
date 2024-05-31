@@ -31,7 +31,13 @@ export default async function HomePage() {
           <div className="tile-name">
             <Link href="/learning/teachers/reports">Grados</Link>
           </div>
-          <div className="tile-num full-reset">{contadores[0]}</div>
+          <div className="tile-num full-reset">
+            {contadores[0] ? (
+              contadores[0]
+            ) : (
+              <span style={{ fontSize: "18px" }}>Ninguno.</span>
+            )}
+          </div>
         </article>
 
         <article className="tile">
@@ -41,7 +47,13 @@ export default async function HomePage() {
           <div className="tile-name">
             <Link href="/learning/teachers/books/new">Libros</Link>
           </div>
-          <div className="tile-num full-reset">{contadores[1]}</div>
+          <div className="tile-num full-reset">
+            {contadores[1] > 0 ? (
+              contadores[1]
+            ) : (
+              <span style={{ fontSize: "18px" }}>No hay libros.</span>
+            )}
+          </div>
         </article>
 
         <article className="tile">
@@ -53,7 +65,13 @@ export default async function HomePage() {
               Géneros literarios
             </Link>
           </div>
-          <div className="tile-num full-reset">{contadores[2]}</div>
+          <div className="tile-num full-reset">
+            {contadores[2] ? (
+              contadores[2]
+            ) : (
+              <span style={{ fontSize: "18px" }}>Ninguno.</span>
+            )}
+          </div>
         </article>
 
         <article className="tile">

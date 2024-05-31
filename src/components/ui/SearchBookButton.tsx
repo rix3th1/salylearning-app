@@ -1,6 +1,6 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { useState } from "react";
-import { MdSearch } from "react-icons/md";
+import { MdCancel, MdSearch } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -15,8 +15,16 @@ export default function SearchBookButton() {
       input: "text",
       inputValue,
       showCancelButton: true,
-      confirmButtonText: "Buscar",
-      cancelButtonText: "Cancelar",
+      confirmButtonText: (
+        <>
+          <MdSearch /> Buscar libro
+        </>
+      ),
+      cancelButtonText: (
+        <>
+          <MdCancel /> Cancelar
+        </>
+      ),
       inputPlaceholder: "Escribe aquí el nombre de libro",
       preConfirm: (inputValue) => {
         if (!inputValue) {
