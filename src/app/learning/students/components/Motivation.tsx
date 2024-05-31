@@ -2,15 +2,29 @@
 
 import SALYCAPIBARA from "@/assets/saly/SALY CAPIBARA.png";
 import Image from "next/image";
-import { MdPlayCircle } from "react-icons/md";
-
-const txt =
-  "¡Hola niños! ¿Están listos para comenzar una aventura emocionante en el mundo de la lectura? ¡Los libros están esperando por ustedes! ¡Vamos a explorar juntos historias increíbles, resolver misterios y descubrir nuevos mundos! ¡No esperen más, comencemos ahora!";
+import { useEffect, useRef, useState } from "react";
+import { MdPauseCircle, MdPlayCircle } from "react-icons/md";
 
 export default function Motivation() {
+  const audioPlayer = useRef<HTMLAudioElement>(null);
+  const [play, setPlay] = useState(false);
+
+  useEffect(() => {
+    if (play) {
+      audioPlayer.current?.play();
+    } else {
+      audioPlayer.current?.pause();
+    }
+  }, [play]);
+
   return (
     <>
-      <p>{txt}</p>
+      <p>
+        ¡Hola niños! ¿Están listos para comenzar una aventura emocionante en el
+        mundo de la lectura? ¡Los libros están esperando por ustedes! ¡Vamos a
+        explorar juntos historias increíbles, resolver misterios y descubrir
+        nuevos mundos! ¡No esperen más, comencemos ahora!
+      </p>
 
       <div>
         <Image
@@ -23,23 +37,13 @@ export default function Motivation() {
           style={{ width: "auto" }}
           priority
         />
+        <audio autoPlay src="/audio/welcome.mp3" ref={audioPlayer} />
         <div
           onClick={() => {
-            const speech = new SpeechSynthesisUtterance(txt);
-            speech.lang = "es-US";
-            const voices = window.speechSynthesis.getVoices();
-            const latamVoice = voices.find((voice) => {
-              if (voice.lang === "es-US") return voice;
-            });
-            if (!latamVoice) {
-              return console.error("Latam voice not found");
-            }
-
-            speech.voice = latamVoice;
-            window.speechSynthesis.speak(speech);
+            setPlay(!play);
           }}
         >
-          <MdPlayCircle />
+          {play ? <MdPauseCircle /> : <MdPlayCircle />}
         </div>
       </div>
     </>
