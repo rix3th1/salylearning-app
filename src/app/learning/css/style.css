@@ -452,14 +452,13 @@ input.material-control:focus ~ .highlight {
 .tile-num {
   background-color: #adb5bd;
   font-size: 40px;
-  z-index: -90;
 }
 .tile-name {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -80;
+  z-index: 5;
   padding: 0 10px;
   border-radius: 15px;
   background-color: #fff;

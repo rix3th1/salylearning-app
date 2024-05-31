@@ -12,7 +12,7 @@ export default async function InternalNav() {
   return (
     <nav
       className="navbar-user-top full-reset"
-      style={{ position: "sticky", zIndex: 1 }}
+      style={{ position: "sticky", zIndex: 7 }}
     >
       <ul className="list-unstyled full-reset">
         <figure>
