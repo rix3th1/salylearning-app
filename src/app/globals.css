@@ -28,8 +28,3 @@ input[type="number"] {
 .rounded-circle {
   border-radius: 50%;
 }
-
-body.swal2-shown > [aria-hidden="true"] {
-  transition: 0.5s filter;
-  filter: blur(2px);
-}
