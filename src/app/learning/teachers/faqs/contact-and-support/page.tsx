@@ -2,13 +2,7 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import sectionImage from "@/assets/section.png";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import {
-  MdGavel,
-  MdHandshake,
-  MdLocalLibrary,
-  MdQuestionAnswer,
-} from "react-icons/md";
+import FaqsTabs from "../components/FaqsTabs";
 import ContactAndSupportForm from "./components/ContactAndSupportForm";
 
 export const metadata: Metadata = {
@@ -20,30 +14,8 @@ export default function ContactAndSupportPage() {
     <>
       <PageHeader title="Contacto y Soporte" />
 
-      <div className="container-fluid">
-        <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
-          <li role="presentation">
-            <Link href="/learning/teachers/faqs/introduction">
-              <MdLocalLibrary /> Introducción
-            </Link>
-          </li>
-          <li role="presentation">
-            <Link href="/learning/teachers/faqs">
-              <MdQuestionAnswer /> Preguntas frecuentes
-            </Link>
-          </li>
-          <li role="presentation" className="active">
-            <Link href="/learning/teachers/faqs/contact-and-support">
-              <MdHandshake /> Información de Contacto y Soporte
-            </Link>
-          </li>
-          <li role="presentation">
-            <Link href="/learning/teachers/faqs/policies-and-terms">
-              <MdGavel /> Políticas y Términos
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <FaqsTabs />
+
       <div className="container-fluid" style={{ margin: "50px 0" }}>
         <div className="row">
           <div className="col-xs-12 col-sm-4 col-md-3">

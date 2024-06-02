@@ -32,7 +32,7 @@ export default async function InternalNav() {
             isStudent ? "students/account" : "teachers/account-settings/profile"
           }`}
         />
-        <NavInteractionButtons />
+        <NavInteractionButtons isStudent={isStudent} />
         <MenuButton />
       </ul>
     </nav>

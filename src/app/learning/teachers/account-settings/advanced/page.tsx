@@ -2,8 +2,7 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import { obtenerDocente } from "@/services/docentes.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { MdAccountCircle, MdTune } from "react-icons/md";
+import AccountSettingsTabs from "../components/AccountSettingsTabs";
 import AdvancedSettingsForm from "./components/AdvancedSettingsForm";
 import ChangePasswordForm from "./components/ChangePasswordForm";
 
@@ -19,18 +18,7 @@ export default async function TeacherAccountSettingsPage() {
     <>
       <PageHeader title="Configuración avanzada de cuenta" />
 
-      <ul className="nav nav-tabs nav-justified">
-        <li>
-          <Link href="/learning/teachers/account-settings/profile">
-            <MdAccountCircle /> Perfil
-          </Link>
-        </li>
-        <li className="active">
-          <Link href="/learning/teachers/account-settings/advanced">
-            <MdTune /> Otras opciones
-          </Link>
-        </li>
-      </ul>
+      <AccountSettingsTabs />
 
       <div style={{ backgroundColor: "#adb5bd", padding: 20 }}>
         <div

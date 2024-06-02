@@ -4,12 +4,20 @@ import HelpButton from "./HelpButton";
 import PowerButton from "./PowerButton";
 import SearchBookButton from "./SearchBookButton";
 
-export default function NavInteractionButtons() {
+interface IProps {
+  isStudent: boolean;
+}
+
+export default function NavInteractionButtons({ isStudent }: IProps) {
   return (
     <>
       <PowerButton />
-      <SearchBookButton />
-      <HelpButton />
+      {isStudent && (
+        <>
+          <SearchBookButton />
+          <HelpButton />
+        </>
+      )}
     </>
   );
 }

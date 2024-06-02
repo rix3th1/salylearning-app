@@ -3,8 +3,8 @@ import clockImage from "@/assets/clock.png";
 import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { MdCancel, MdCheckCircle, MdPending, MdSchedule } from "react-icons/md";
+import { MdSchedule } from "react-icons/md";
+import QuestionariesTabs from "../components/QuestionariesTabs";
 
 export const metadata: Metadata = {
   title: "Pendientes (Cuestionarios): Docentes | Saly Learning",
@@ -17,25 +17,7 @@ export default async function PendingQuestionaries() {
     <>
       <PageHeader title="Cuestionarios pendientes" />
 
-      <div className="container-fluid">
-        <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
-          <li>
-            <Link href="/learning/teachers/questionaries/completed">
-              <MdCheckCircle /> Completos
-            </Link>
-          </li>
-          <li className="active">
-            <Link href="/learning/teachers/questionaries/pending">
-              <MdPending /> Incompletos
-            </Link>
-          </li>
-          <li>
-            <Link href="/learning/teachers/questionaries/not-achieved">
-              <MdCancel /> No logrados
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <QuestionariesTabs />
 
       <div className="container-fluid" style={{ margin: "50px 0" }}>
         <div className="row">

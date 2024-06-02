@@ -3,8 +3,8 @@ import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import { profileImage } from "@/utils/getProfileImage";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { MdAccountCircle, MdTune, MdVerifiedUser } from "react-icons/md";
+import { MdVerifiedUser } from "react-icons/md";
+import AccountSettingsTabs from "../components/AccountSettingsTabs";
 import ProfileButtons from "./components/ProfileButtons";
 
 export const metadata: Metadata = {
@@ -23,18 +23,7 @@ export default async function TeacherAccountSettingsPage() {
     <>
       <PageHeader title="Actualizar perfíl docente" />
 
-      <ul className="nav nav-tabs nav-justified">
-        <li className="active">
-          <Link href="/learning/teachers/account-settings/profile">
-            <MdAccountCircle /> Perfil
-          </Link>
-        </li>
-        <li>
-          <Link href="/learning/teachers/account-settings/advanced">
-            <MdTune /> Otras opciones
-          </Link>
-        </li>
-      </ul>
+      <AccountSettingsTabs />
 
       <div
         className="container-fluid"

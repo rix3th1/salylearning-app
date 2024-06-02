@@ -48,8 +48,8 @@ export default function FormRegistro({
 
   useEffect(() => {
     if (!isModalRegistroOpen || grados.length > 0) return;
-
     inputFcs.current?.focus();
+    if ((formData.rol as User["rol"]) !== "ESTUDIANTE") return;
 
     toast.promise(
       obtenerGrados()
@@ -68,7 +68,7 @@ export default function FormRegistro({
     );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isModalRegistroOpen]);
+  }, [isModalRegistroOpen, formData.rol]);
 
   return (
     <form onSubmit={handleSubmit}>

@@ -1,7 +1,7 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import type { Metadata } from "next";
-import Link from "next/link";
-import { MdCheck, MdCheckCircle, MdPending } from "react-icons/md";
+import { MdCheck } from "react-icons/md";
+import ActivitiesTabs from "../components/ActivitiesTabs";
 
 export const metadata: Metadata = {
   title: "Pendientes (Actividades): Estudiantes | Saly Learning",
@@ -17,24 +17,7 @@ export default function PendingActivitiesPage() {
           className="container-flat-form text-center"
           style={{ backgroundColor: "#d4edda" }}
         >
-          <ul className="nav nav-tabs custom-tabs">
-            <li className="nav-item active">
-              <Link
-                className="nav-link"
-                href="/learning/students/activities/pending"
-              >
-                <MdPending /> Por hacer
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className="nav-link"
-                href="/learning/students/activities/done"
-              >
-                <MdCheckCircle /> Hecho
-              </Link>
-            </li>
-          </ul>
+          <ActivitiesTabs />
 
           <div className="tab-content">
             <div id="por-hacer">

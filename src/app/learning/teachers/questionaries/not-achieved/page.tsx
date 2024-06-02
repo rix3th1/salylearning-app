@@ -3,13 +3,8 @@ import calendarImage from "@/assets/calendar.png";
 import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import {
-  MdCancel,
-  MdCheckCircle,
-  MdDescription,
-  MdPending,
-} from "react-icons/md";
+import { MdDescription } from "react-icons/md";
+import QuestionariesTabs from "../components/QuestionariesTabs";
 
 export const metadata: Metadata = {
   title: "No logrados (Cuestionarios): Docentes | Saly Learning",
@@ -22,25 +17,7 @@ export default async function NotAchievedQuestionaries() {
     <>
       <PageHeader title="Cuestionarios no logrados" />
 
-      <div className="container-fluid">
-        <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
-          <li>
-            <Link href="/learning/teachers/questionaries/completed">
-              <MdCheckCircle /> Completos
-            </Link>
-          </li>
-          <li>
-            <Link href="/learning/teachers/questionaries/pending">
-              <MdPending /> Incompletos
-            </Link>
-          </li>
-          <li className="active">
-            <Link href="/learning/teachers/questionaries/not-achieved">
-              <MdCancel /> No logrados
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <QuestionariesTabs />
 
       <div className="container-fluid" style={{ margin: "50px 0" }}>
         <div className="row">

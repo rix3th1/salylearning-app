@@ -2,8 +2,7 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import categoryImage from "@/assets/category.png";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { MdBarChart, MdTrendingUp } from "react-icons/md";
+import StatisticsAndReportsTabs from "../components/StatisticsAndReportsTabs";
 
 export const metadata: Metadata = {
   title: "Reportes Grado: Docentes | Saly Learning",
@@ -14,20 +13,7 @@ export default function ReportsAndStatisticsPage() {
     <>
       <PageHeader title="Reportes Grado" />
 
-      <div className="container-fluid">
-        <ul className="nav nav-tabs nav-justified">
-          <li>
-            <Link href="/learning/teachers/statistics">
-              <MdBarChart /> Estadísticas general
-            </Link>
-          </li>
-          <li className="active">
-            <Link href="/learning/teachers/reports">
-              <MdTrendingUp /> Reporte Grado
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <StatisticsAndReportsTabs />
 
       <div className="container-fluid" style={{ margin: "15px" }}>
         <div className="row">
