@@ -1,6 +1,7 @@
 import { registrarse, registrarseInitState } from "@/services/auth.service";
 import { obtenerGrados } from "@/services/grados.service";
 import { THandleChange, THandleSubmit } from "@/types";
+import { User } from "next-auth";
 import { useEffect, useRef, useState } from "react";
 import { MdOutlineArrowCircleRight } from "react-icons/md";
 import { toast } from "sonner";
@@ -134,22 +135,24 @@ export default function FormRegistro({
             value={formData.edad}
           />
         </div>
-        <div className="form-group col-md-6 py-3">
-          <select
-            name="id_grado"
-            className="form-control"
-            required
-            onChange={handleChange}
-            value={formData.id_grado}
-          >
-            <option value="">Seleccione su grado escolar</option>
-            {grados.map((grado: any) => (
-              <option key={grado.id} value={grado.id}>
-                {grado.nom_grado}
-              </option>
-            ))}
-          </select>
-        </div>
+        {(formData.rol as User["rol"]) === "ESTUDIANTE" && (
+          <div className="form-group col-md-6 py-3">
+            <select
+              name="id_grado"
+              className="form-control"
+              required
+              onChange={handleChange}
+              value={formData.id_grado}
+            >
+              <option value="">Seleccione su grado escolar</option>
+              {grados.map((grado: any) => (
+                <option key={grado.id} value={grado.id}>
+                  {grado.nom_grado}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="form-group col-md-6 py-3">
           <select
             name="rol"

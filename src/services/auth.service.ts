@@ -35,7 +35,7 @@ export async function registrarse(formData: typeof registrarseInitState) {
     body: JSON.stringify({
       ...formData,
       edad: parseInt(formData.edad),
-      id_grado: parseInt(formData.id_grado),
+      id_grado: parseInt(formData.id_grado) || null,
       username: formData.email.split("@")[0],
       s_nombre: formData.s_nombre || null,
       s_apellido: formData.s_apellido || null,
