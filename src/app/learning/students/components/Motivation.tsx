@@ -37,7 +37,7 @@ export default function Motivation() {
           style={{ width: "auto" }}
           priority
         />
-        <audio autoPlay src="/audio/welcome.mp3" ref={audioPlayer} />
+        <audio src="/audio/welcome.mp3" ref={audioPlayer} />
         <div
           onClick={() => {
             setPlay(!play);
