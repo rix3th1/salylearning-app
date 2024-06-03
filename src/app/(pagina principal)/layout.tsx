@@ -14,7 +14,7 @@ export default function MainPageLayout({
   return (
     <>
       {children}
-      <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" />
+      <Script src="/js/bootstrap@5.2.3.min.js" />
     </>
   );
 }
