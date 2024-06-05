@@ -1,18 +1,5 @@
 import { fetchClient, fetchServer } from "./api.service";
 
-export const crearLibroInitState = {
-  nom_libro: "",
-  num_pag: "",
-  autor: "",
-  editorial: "",
-  descripcion: "",
-  fecha_pub: "",
-  id_genero_literario: "",
-  imagen_portada: null,
-  url_libro: "",
-  id_grado: "",
-};
-
 export async function crearLibro(formData: FormData) {
   const res = await fetchClient("/libros", {
     method: "POST",

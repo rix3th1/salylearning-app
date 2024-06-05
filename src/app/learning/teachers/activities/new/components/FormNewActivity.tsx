@@ -1,5 +1,9 @@
 "use client";
 
+import {
+  crearCuestionarioConPreguntas,
+  cuestionarioInitState,
+} from "@/services/cuestionarios.service";
 import { obtenerLibros } from "@/services/libros.service";
 import { obtenerPreguntas } from "@/services/preguntas.service";
 import { THandleChange, THandleSubmit } from "@/types";
@@ -14,14 +18,9 @@ export default function FormNewActivity() {
   const [libros, setLibros] = useState([]);
   const [preguntasOrig, setpreguntasOrig] = useState([]);
   const [preguntas, setPreguntas] = useState([]);
-
-  const [formData, setFormData] = useState({
-    id_libro: "",
-    fecha_entrega: "",
-    hora_entrega: "",
-    id_preguntas: [] as string[],
-  });
+  const [formData, setFormData] = useState(cuestionarioInitState);
   const [isLoading, setIsLoading] = useState(false);
+  const [id_libro, setId_libro] = useState("");
 
   const handleChange = (e: THandleChange) => {
     setFormData({
@@ -31,10 +30,10 @@ export default function FormNewActivity() {
   };
 
   const handleChangeLibro = (e: THandleChange) => {
+    setId_libro(e.target.value);
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
-      id_preguntas: [],
+      preguntas: [],
     });
 
     setPreguntas(
@@ -47,20 +46,28 @@ export default function FormNewActivity() {
   const handleSubmit = async (e: THandleSubmit) => {
     e.preventDefault();
 
-    if (formData.id_preguntas.length === 0) {
+    if (formData.preguntas.length === 0) {
       toast.error("Debe seleccionar al menos una pregunta.");
       return;
     }
 
-    console.log(formData);
-
     setIsLoading(true);
-
-    try {
-    } catch (error) {
-    } finally {
-      setIsLoading(false);
-    }
+    toast.promise(crearCuestionarioConPreguntas(formData), {
+      loading: "Creando actividad...",
+      success(_data) {
+        setFormData(cuestionarioInitState);
+        setId_libro("");
+        return "Actividad creada exitosamente!";
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+      finally() {
+        setIsLoading(false);
+      },
+    });
   };
 
   useEffect(
@@ -96,8 +103,8 @@ export default function FormNewActivity() {
             id="id_libro"
             className="form-control"
             required
-            value={formData.id_libro}
             onChange={handleChangeLibro}
+            value={id_libro}
             disabled={isLoading}
           >
             <option value="">Seleccione el libro</option>
@@ -114,7 +121,7 @@ export default function FormNewActivity() {
             Fecha de entrega de la actividad:
           </label>
           <input
-            type="date"
+            type="datetime-local"
             className="form-control"
             id="fecha_entrega"
             name="fecha_entrega"
@@ -125,26 +132,11 @@ export default function FormNewActivity() {
             disabled={isLoading}
           />
         </div>
-
-        <div className="form-group">
-          <label htmlFor="hora_entrega">Hora de entrega de la actividad</label>
-          <input
-            type="time"
-            className="form-control"
-            id="hora_entrega"
-            name="hora_entrega"
-            placeholder="Hora de entrega"
-            onChange={handleChange}
-            value={formData.hora_entrega}
-            required
-            disabled={isLoading}
-          />
-        </div>
       </div>
 
       <div className="col-md-7">
         <ul className="list-group text-center">
-          {preguntas.length > 0 || !formData.id_libro ? (
+          {preguntas.length > 0 ? (
             preguntas.map((pregunta: any) => (
               <li key={pregunta.id} className="list-group-item">
                 <div className="checkbox">
@@ -156,16 +148,13 @@ export default function FormNewActivity() {
                         if (e.target.checked) {
                           setFormData({
                             ...formData,
-                            id_preguntas: [
-                              ...formData.id_preguntas,
-                              pregunta.id,
-                            ],
+                            preguntas: [...formData.preguntas, pregunta.id],
                           });
                         } else {
                           setFormData({
                             ...formData,
-                            id_preguntas: formData.id_preguntas.filter(
-                              (id: string) => id !== pregunta.id
+                            preguntas: formData.preguntas.filter(
+                              (id: number) => id !== parseInt(pregunta.id)
                             ),
                           });
                         }
