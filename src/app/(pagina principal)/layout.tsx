@@ -1,10 +1,5 @@
-import type { Metadata } from "next";
 import Script from "next/script";
 import "./paginaprincipal.css";
-
-export const metadata: Metadata = {
-  title: "Software Saly | Página principal",
-};
 
 export default function MainPageLayout({
   children,

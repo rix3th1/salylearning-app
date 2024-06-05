@@ -115,26 +115,22 @@ export default function FormAccount({ user, student }: IProps) {
 
   useEffect(() => {
     setIsLoading(true);
-    toast.promise(
-      obtenerGrados()
-        .then((data) => {
-          setGrados(data);
-          setFormData({
-            ...formData,
-            id_grado: gradoSelected,
-          });
-        })
-        .catch((error) => {
-          if (error instanceof Error) {
-            toast.error(error.message.replace(/,/g, ", "));
-          }
-        })
-        .finally(() => setIsLoading(false)),
-      {
-        loading: "Cargando grados...",
-        success: "Listo",
-      }
-    );
+    toast.promise(obtenerGrados, {
+      loading: "Cargando grados...",
+      success(data) {
+        setGrados(data);
+        setFormData({ ...formData, id_grado: gradoSelected });
+        return "Listo";
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+      finally() {
+        setIsLoading(false);
+      },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

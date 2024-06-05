@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const mapDataCarrousel = async () => {
-  const libros = await obtenerLibros();
+  const libros = await obtenerLibros.server();
   return libros.map(
     (libro: any): ReactImageGalleryItem => ({
       original: libro.imagen_portada,
@@ -61,7 +61,13 @@ export default async function HomePage() {
                   </Link>
                 </div>
                 <div className="tile-num full-reset">
-                  {contadores[1] - contadores[1]}
+                  {contadores[1] - contadores[1] > 0 ? (
+                    contadores[1] - contadores[1]
+                  ) : (
+                    <span style={{ fontSize: "18px" }}>
+                      No hay retos pendientes!
+                    </span>
+                  )}
                 </div>
               </article>
               <article className="tile">

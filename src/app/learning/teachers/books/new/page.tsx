@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const mapDataCarrousel = async () => {
-  const libros = await obtenerLibros();
+  const libros = await obtenerLibros.server();
   return libros.map(
     (libro: any): ReactImageGalleryItem => ({
       original: libro.imagen_portada,

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import ChangePswSection from "./components/ChangePswSection";
 
 export const metadata: Metadata = {
-  title: "Software Saly | Cambiar contraseña",
+  title: "Saly Learning | Cambiar contraseña",
 };
 
 export default function ContactPage() {

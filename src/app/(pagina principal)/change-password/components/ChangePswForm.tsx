@@ -26,23 +26,26 @@ export default function ChangePswForm({
     });
   };
 
-  const handleSubmit = async (e: THandleSubmit) => {
+  const handleSubmit = (e: THandleSubmit) => {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const claveCambiada = await cambiarClaveRecuperacion(formData, tk);
-
-      toast.success(claveCambiada.message);
-      setFormData(cambiarClaveRecuperacionInitState);
-      router.push("/");
-    } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message.replace(/,/g, ", "));
-      }
-    } finally {
-      setIsLoading(false);
-    }
+    toast.promise(cambiarClaveRecuperacion(formData, tk), {
+      loading: "Cambiando contraseña...",
+      success(data) {
+        setFormData(cambiarClaveRecuperacionInitState);
+        router.push("/");
+        return data.message;
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+      finally() {
+        setIsLoading(false);
+      },
+    });
   };
 
   return (

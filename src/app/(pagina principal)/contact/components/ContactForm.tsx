@@ -21,25 +21,26 @@ export default function ContactForm() {
     });
   };
 
-  const handleSubmit = async (e: THandleSubmit) => {
+  const handleSubmit = (e: THandleSubmit) => {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const contacto = await crearContacto(formData);
-
-      toast.success(
-        `Gracias por contactarnos, ${contacto.nombre_completo}! Nos pondremos en contacto contigo pronto. Atentamente, el equipo de ${pkg.publisher}. 🚀`
-      );
-      setFormData(contactoInitState);
-      router.push("/");
-    } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message.replace(/,/g, ", "));
-      }
-    } finally {
-      setIsLoading(false);
-    }
+    toast.promise(crearContacto(formData), {
+      loading: "Enviando...",
+      success(data) {
+        setFormData(contactoInitState);
+        router.push("/");
+        return `Gracias por contactarnos, ${data.nombre_completo}! Nos pondremos en contacto contigo pronto. Atentamente, el equipo de ${pkg.publisher}. 🚀`;
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+      finally() {
+        setIsLoading(false);
+      },
+    });
   };
 
   return (

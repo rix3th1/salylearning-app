@@ -1,6 +1,7 @@
 "use client";
 
 import Footer from "@/components/ui/Footer";
+import { signOut } from "next-auth/react";
 import { useEffect } from "react";
 import { MdSentimentVeryDissatisfied } from "react-icons/md";
 import "./(pagina principal)/paginaprincipal.css";
@@ -12,6 +13,11 @@ interface ErrorProps {
 }
 
 export default function ErrorPage({ error, reset }: ErrorProps) {
+  const handleClick = () => {
+    reset();
+    signOut();
+  };
+
   useEffect(() => {
     // Log the error to an error reporting service
     console.error({ error });
@@ -35,7 +41,7 @@ export default function ErrorPage({ error, reset }: ErrorProps) {
             <div className="row gx-5 justify-content-center">
               <div className="col-lg-8 col-xl-6 text-center">
                 <button
-                  onClick={() => reset()}
+                  onClick={handleClick}
                   className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
                 >
                   Intentar Otra Vez

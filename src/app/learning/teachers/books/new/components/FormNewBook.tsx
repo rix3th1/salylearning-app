@@ -11,22 +11,19 @@ export default function FormNewBook() {
   const [generosLiterarios, setGenerosLiterarios] = useState([]);
 
   useEffect(() => {
-    toast.promise(
-      getData()
-        .then((data) => {
-          setGenerosLiterarios(data[0]);
-          setGrados(data[1]);
-        })
-        .catch((error) => {
-          if (error instanceof Error) {
-            toast.error(error.message.replace(/,/g, ", "));
-          }
-        }),
-      {
-        loading: "Cargando grados...",
-        success: "Listo",
-      }
-    );
+    toast.promise(getData, {
+      loading: "Cargando grados...",
+      success(data) {
+        setGenerosLiterarios(data[0]);
+        setGrados(data[1]);
+        return "Listo";
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -86,14 +83,13 @@ export default function FormNewBook() {
       />
 
       <label className="swal2-input-label">
-        Más información
+        Descripción del libro
         <span className="text-danger">*</span>
       </label>
-      <input
-        type="url"
-        name="url_info"
-        className="swal2-input"
-        placeholder="URL de más información"
+      <textarea
+        name="descripcion"
+        className="swal2-textarea"
+        placeholder="Breve descripción del libro"
         required
       />
 

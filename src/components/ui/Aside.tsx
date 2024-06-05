@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import {
   MdAccountCircle,
+  MdAddCircle,
   MdAssignment,
   MdBarChart,
   MdBook,
@@ -120,6 +121,35 @@ export default async function Aside() {
             </li>
             {isTeacher && (
               <>
+                <li>
+                  <div
+                    className="dropdown-menu-button"
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                    }}
+                  >
+                    <span>
+                      <MdLocalActivity />
+                      &nbsp;&nbsp; Actividades
+                    </span>
+                    <MdKeyboardArrowDown
+                      style={{ fontSize: 20, margin: "0 5px" }}
+                    />
+                  </div>
+                  <ul className="list-unstyled">
+                    <li>
+                      <Link
+                        className="saly-link"
+                        href="/learning/teachers/activities/new"
+                      >
+                        <MdAddCircle />
+                        &nbsp;&nbsp;Asignar
+                      </Link>
+                    </li>
+                  </ul>
+                </li>
                 <li>
                   <div
                     className="dropdown-menu-button"

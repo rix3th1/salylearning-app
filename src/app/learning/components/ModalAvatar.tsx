@@ -24,6 +24,7 @@ export default function ModalAvatar({
   const [isLoading, setIsLoading] = useState(false);
   const [idAvatarSelected, setIdAvatarSelected] = useState<number | null>(null);
   const [avatars, setAvatars] = useState([]);
+  const [error, setError] = useState(false);
 
   const router = useRouter();
 
@@ -31,48 +32,47 @@ export default function ModalAvatar({
     setIdAvatarSelected(id_avatar);
   };
 
-  const handleAcceptClick = async () => {
+  const handleAcceptClick = () => {
     setIsLoading(true);
 
-    try {
-      if (!idAvatarSelected) {
-        return toast.error("Por favor, selecciona un avatar.");
-      }
-
-      await actualizarAvatarUsuario(avatar_id, {
-        id_avatar: `${idAvatarSelected}`,
-      });
-
-      setIsAvatarModalOpen(false);
-      toast.success("Avatar actualizado correctamente!");
-      router.refresh();
-    } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message.replace(/,/g, ", "));
-      }
-    } finally {
-      setIsLoading(false);
+    if (!idAvatarSelected) {
+      setError(true);
+      return;
     }
+
+    const avatar = { id_avatar: `${idAvatarSelected}` };
+    toast.promise(actualizarAvatarUsuario(avatar_id, avatar), {
+      success() {
+        setIsAvatarModalOpen(false);
+        router.refresh();
+        return "Avatar actualizado correctamente!";
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+      finally() {
+        setIsLoading(false);
+      },
+    });
   };
 
   useEffect(() => {
     if (!isAvatarModalOpen || avatars.length > 0) return;
 
-    toast.promise(
-      obtenerAvatars(userType)
-        .then((data) => {
-          setAvatars(data);
-        })
-        .catch((error) => {
-          if (error instanceof Error) {
-            toast.error(error.message.replace(/,/g, ", "));
-          }
-        }),
-      {
-        loading: "Cargando avatares...",
-        success: "Listo",
-      }
-    );
+    toast.promise(obtenerAvatars(userType), {
+      loading: "Cargando avatares...",
+      success(data) {
+        setAvatars(data);
+        return "Listo";
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAvatarModalOpen]);
@@ -115,6 +115,17 @@ export default function ModalAvatar({
             <p>Cargando...</p>
           )}
         </div>
+
+        {error && (
+          <div
+            className="alert alert-danger"
+            role="alert"
+            style={{ marginTop: "1rem" }}
+          >
+            <p>Por favor, selecciona un avatar.</p>
+          </div>
+        )}
+
         <section style={{ margin: "0.5rem" }}>
           <button
             type="submit"

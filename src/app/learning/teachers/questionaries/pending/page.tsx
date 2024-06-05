@@ -4,6 +4,7 @@ import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service"
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MdSchedule } from "react-icons/md";
+import NewPreguntaButton from "../components/NewPreguntaButton";
 import Nothing from "../components/Nothing";
 import QuestionariesTabs from "../components/QuestionariesTabs";
 
@@ -17,6 +18,8 @@ export default async function PendingQuestionaries() {
   return (
     <>
       <PageHeader title="Cuestionarios pendientes" />
+
+      <NewPreguntaButton />
 
       <QuestionariesTabs />
 

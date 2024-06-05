@@ -3,10 +3,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  applicationName: pkg.displayName,
+  applicationName: pkg.publisher,
   title: pkg.publisher,
   description: pkg.description,
-  generator: "Next JS",
+  generator: pkg.publisher,
   creator: pkg.publisher,
   publisher: pkg.publisher,
   authors: pkg.contributors,

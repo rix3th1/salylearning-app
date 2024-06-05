@@ -33,20 +33,22 @@ export default function InfoAccountVerified() {
       return;
     }
 
-    verificarCuenta(token)
-      .then((data) => {
-        toast.success(data.message);
+    toast.promise(verificarCuenta(token), {
+      loading: "Verificando cuenta...",
+      success(data) {
         setAccountVerified(data.verified);
-      })
-      .catch((error) => {
+        return data.message;
+      },
+      error(error) {
         if (error instanceof Error) {
-          toast.error(error.message.replace(/,/g, ", "));
           setAccountVerified(false);
+          return error.message.replace(/,/g, ", ");
         }
-      })
-      .finally(() => {
+      },
+      finally() {
         setIsLoading(false);
-      });
+      },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

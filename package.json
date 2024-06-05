@@ -13,20 +13,23 @@
     "email": "rojasricor@gmail.com",
     "url": "https://github.com/rojasricor/salylearning-app/issues"
   },
-  "displayName": "salylearning-app",
   "repository": {
     "type": "git",
     "url": "https://github.com/rojasricor/salylearning-app"
   },
-  "homepage": "https://salylearning-app.vercel.app",
+  "homepage": "https://salylearning.online",
   "keywords": [
-    "Saly Learning Software",
+    "Saly Learning",
+    "salylearning",
+    "saly learning",
+    "saly",
+    "learning",
     "Audiolibros",
     "Audio enseñanza",
     "Institución Técnica Santa Lucia",
     "Sede Agua Negra"
   ],
-  "publisher": "Saly Learning Software",
+  "publisher": "Saly Learning",
   "author": {
     "name": "Richard A. Rich",
     "email": "rojasricor@gmail.com"

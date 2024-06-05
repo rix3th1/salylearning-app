@@ -5,7 +5,7 @@ export const crearLibroInitState = {
   num_pag: "",
   autor: "",
   editorial: "",
-  url_info: "",
+  descripcion: "",
   fecha_pub: "",
   id_genero_literario: "",
   imagen_portada: null,
@@ -30,7 +30,21 @@ export async function crearLibro(formData: FormData) {
   return data;
 }
 
-export async function obtenerLibros() {
+async function obtenerLibrosC() {
+  const res = await fetchClient("/libros", { method: "GET" });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error al obtener la información de los libros, por favor intente de nuevo."
+    );
+  }
+
+  return data;
+}
+
+async function obtenerLibrosS() {
   const res = await fetchServer("/libros", {
     method: "GET",
   });
@@ -78,3 +92,8 @@ export async function obtenerLibrosPorGeneroLiterario(
 
   return data;
 }
+
+export const obtenerLibros = {
+  server: obtenerLibrosS,
+  client: obtenerLibrosC,
+};

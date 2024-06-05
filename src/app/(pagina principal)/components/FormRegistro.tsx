@@ -27,23 +27,26 @@ export default function FormRegistro({
     });
   };
 
-  const handleSubmit = async (e: THandleSubmit) => {
+  const handleSubmit = (e: THandleSubmit) => {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const registro = await registrarse(formData);
-
-      toast.success(registro.message);
-      setFormData(registrarseInitState);
-      setIsModalRegistroOpen(false);
-    } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message.replace(/,/g, ", "));
-      }
-    } finally {
-      setIsLoading(false);
-    }
+    toast.promise(registrarse(formData), {
+      loading: "Registrando usuario...",
+      success(data) {
+        setFormData(registrarseInitState);
+        setIsModalRegistroOpen(false);
+        return data.message;
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+      finally() {
+        setIsLoading(false);
+      },
+    });
   };
 
   useEffect(() => {
@@ -51,21 +54,18 @@ export default function FormRegistro({
     inputFcs.current?.focus();
     if ((formData.rol as User["rol"]) !== "ESTUDIANTE") return;
 
-    toast.promise(
-      obtenerGrados()
-        .then((data) => {
-          setGrados(data);
-        })
-        .catch((error) => {
-          if (error instanceof Error) {
-            toast.error(error.message.replace(/,/g, ", "));
-          }
-        }),
-      {
-        loading: "Cargando grados...",
-        success: "Listo",
-      }
-    );
+    toast.promise(obtenerGrados, {
+      loading: "Cargando grados...",
+      success(data) {
+        setGrados(data);
+        return "Listo";
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isModalRegistroOpen, formData.rol]);

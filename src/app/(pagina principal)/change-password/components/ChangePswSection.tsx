@@ -21,7 +21,7 @@ export default function ChangePswSection() {
   useEffect(() => {
     document.title =
       isLoading && !validReq
-        ? "Verificando token... | Saly Learning"
+        ? "Verificando solicitud... | Saly Learning"
         : validReq
         ? "Cambiar contraseña | Saly Learning"
         : "Solicitud inválida | Saly Learning";
@@ -34,22 +34,22 @@ export default function ChangePswSection() {
       return;
     }
 
-    validarToken(token)
-      .then((data) => {
-        toast.success(
-          `Bienvenido, ${data.p_nombre} ${data.p_apellido} a la sección de cambio de contraseña. Por favor, cambia tu contraseña.`
-        );
+    toast.promise(validarToken(token), {
+      loading: "Verificando solicitud...",
+      success(data) {
         setValidReq(data.isTokenValid);
-      })
-      .catch((error) => {
+        return `Bienvenido, ${data.p_nombre} ${data.p_apellido} a la sección de cambio de contraseña. Por favor, cambia tu contraseña.`;
+      },
+      error(error) {
         if (error instanceof Error) {
-          toast.error(error.message.replace(/,/g, ", "));
           setValidReq(false);
+          return error.message.replace(/,/g, ", ");
         }
-      })
-      .finally(() => {
+      },
+      finally() {
         setIsLoading(false);
-      });
+      },
+    });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -68,7 +68,7 @@ export default function ChangePswSection() {
         </div>
         <h1 className="fw-bolder">
           {isLoading && !validReq
-            ? "Verificando token..."
+            ? "Verificando solicitud..."
             : validReq
             ? "Cambiar contraseña"
             : "Solicitud inválida"}

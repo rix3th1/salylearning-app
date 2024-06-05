@@ -20,24 +20,25 @@ export default function ContactAndSupportForm() {
     });
   };
 
-  const handleSubmit = async (e: THandleSubmit) => {
+  const handleSubmit = (e: THandleSubmit) => {
     e.preventDefault();
     setIsLoading(true);
 
-    try {
-      const soporte = await crearContactoYSoporte(formData);
-
-      toast.success(
-        `Gracias por contactarnos, ${soporte.nombre_completo}! Nos pondremos en contacto contigo pronto. 🚀`
-      );
-      setFormData(contactoYSoporteInitState);
-    } catch (error) {
-      if (error instanceof Error) {
-        toast.error(error.message.replace(/,/g, ", "));
-      }
-    } finally {
-      setIsLoading(false);
-    }
+    toast.promise(crearContactoYSoporte(formData), {
+      loading: "Enviando mensaje...",
+      success(data) {
+        setFormData(contactoYSoporteInitState);
+        return `Gracias por contactarnos, ${data.nombre_completo}! Nos pondremos en contacto contigo pronto. 🚀`;
+      },
+      error(error) {
+        if (error instanceof Error) {
+          return error.message.replace(/,/g, ", ");
+        }
+      },
+      finally() {
+        setIsLoading(false);
+      },
+    });
   };
 
   return (
