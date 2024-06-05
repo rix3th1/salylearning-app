@@ -17,7 +17,6 @@ export default async function TeacherAccountSettingsPage() {
   const avatar_id = user.avatar_usuario.id;
   const name = `${user?.p_nombre} ${user?.p_apellido}`;
   const rol = `${user?.rol[0]}${user?.rol.slice(1).toLowerCase()}`;
-  const grade = user.grado_usuario.grados.nom_grado;
 
   return (
     <>
@@ -107,14 +106,6 @@ export default async function TeacherAccountSettingsPage() {
                   <p className="text-muted mb-0">
                     {user?.edad > 0 ? user?.edad : "No establecida"}
                   </p>
-                </div>
-              </div>
-              <div className="report-content">
-                <div className="col-sm-3">
-                  <p className="mb-0">Grado</p>
-                </div>
-                <div className="col-sm-9">
-                  <p className="text-muted mb-0">{grade}</p>
                 </div>
               </div>
               <div className="report-content">

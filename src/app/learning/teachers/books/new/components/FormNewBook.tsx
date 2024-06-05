@@ -12,7 +12,7 @@ export default function FormNewBook() {
 
   useEffect(() => {
     toast.promise(getData, {
-      loading: "Cargando grados...",
+      loading: "Cargando datos...",
       success(data) {
         setGenerosLiterarios(data[0]);
         setGrados(data[1]);

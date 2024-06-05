@@ -4,17 +4,22 @@ import { obtenerLibros } from "@/services/libros.service";
 import { obtenerPreguntas } from "@/services/preguntas.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useEffect, useState } from "react";
-import { MdAdd } from "react-icons/md";
+import { MdAdd, MdWarning } from "react-icons/md";
 import { toast } from "sonner";
+
+const promises = [obtenerLibros.client, obtenerPreguntas];
+const getData = () => Promise.all(promises.map((res) => res()));
 
 export default function FormNewActivity() {
   const [libros, setLibros] = useState([]);
+  const [preguntasOrig, setpreguntasOrig] = useState([]);
   const [preguntas, setPreguntas] = useState([]);
 
   const [formData, setFormData] = useState({
     id_libro: "",
     fecha_entrega: "",
     hora_entrega: "",
+    id_preguntas: [] as string[],
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,24 +31,28 @@ export default function FormNewActivity() {
   };
 
   const handleChangeLibro = (e: THandleChange) => {
-    handleChange(e);
-
-    toast.promise(obtenerPreguntas, {
-      loading: "Cargando preguntas...",
-      success(data) {
-        setPreguntas(data);
-        return "Listo";
-      },
-      error(error) {
-        if (error instanceof Error) {
-          return error.message.replace(/,/g, ", ");
-        }
-      },
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+      id_preguntas: [],
     });
+
+    setPreguntas(
+      preguntasOrig.filter(
+        (pregunta: any) => pregunta.id_libro === parseInt(e.target.value)
+      )
+    );
   };
 
   const handleSubmit = async (e: THandleSubmit) => {
     e.preventDefault();
+
+    if (formData.id_preguntas.length === 0) {
+      toast.error("Debe seleccionar al menos una pregunta.");
+      return;
+    }
+
+    console.log(formData);
 
     setIsLoading(true);
 
@@ -56,10 +65,11 @@ export default function FormNewActivity() {
 
   useEffect(
     () => {
-      toast.promise(obtenerLibros.client, {
-        loading: "Cargando libros...",
+      toast.promise(getData, {
+        loading: "Cargando datos...",
         success(data) {
-          setLibros(data);
+          setLibros(data[0]);
+          setpreguntasOrig(data[1]);
           return "Listo";
         },
         error(error) {
@@ -91,8 +101,8 @@ export default function FormNewActivity() {
             disabled={isLoading}
           >
             <option value="">Seleccione el libro</option>
-            {libros.map((libro: any) => (
-              <option key={libro.id} value={libro.id}>
+            {libros.map((libro: any, i) => (
+              <option key={i} value={libro.id}>
                 {libro.nom_libro}
               </option>
             ))}
@@ -133,17 +143,52 @@ export default function FormNewActivity() {
       </div>
 
       <div className="col-md-7">
-        <ul className="list-group">
-          {preguntas.map((pregunta: any) => (
-            <li key={pregunta.id} className="list-group-item">
-              <div className="checkbox">
-                <label>
-                  <input type="checkbox" value={pregunta.id} />
-                  {pregunta.pregunta}
-                </label>
+        <ul className="list-group text-center">
+          {preguntas.length > 0 || !formData.id_libro ? (
+            preguntas.map((pregunta: any) => (
+              <li key={pregunta.id} className="list-group-item">
+                <div className="checkbox">
+                  <label>
+                    <input
+                      type="checkbox"
+                      value={pregunta.id}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          setFormData({
+                            ...formData,
+                            id_preguntas: [
+                              ...formData.id_preguntas,
+                              pregunta.id,
+                            ],
+                          });
+                        } else {
+                          setFormData({
+                            ...formData,
+                            id_preguntas: formData.id_preguntas.filter(
+                              (id: string) => id !== pregunta.id
+                            ),
+                          });
+                        }
+                      }}
+                    />
+                    {pregunta.pregunta}
+                  </label>
+                </div>
+              </li>
+            ))
+          ) : (
+            <article
+              className="tile"
+              style={{ margin: "2rem 0", padding: "0.5rem" }}
+            >
+              <div className="text-center">
+                <MdWarning />
               </div>
-            </li>
-          ))}
+              <span style={{ fontSize: "15px" }}>
+                Aún no hay preguntas disponibles para este libro.
+              </span>
+            </article>
+          )}
         </ul>
       </div>
 

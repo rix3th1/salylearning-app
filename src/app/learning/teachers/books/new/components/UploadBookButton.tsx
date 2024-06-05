@@ -4,7 +4,7 @@ import { plus_jakarta_sans } from "@/app/fonts";
 import { crearLibro } from "@/services/libros.service";
 import { useRouter } from "next-nprogress-bar";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { MdCancel, MdDoneOutline, MdUpload } from "react-icons/md";
+import { MdCancel, MdCheckCircle, MdUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import FormNewBook from "./FormNewBook";
@@ -60,7 +60,7 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
       `,
       confirmButtonText: (
         <>
-          <MdDoneOutline /> Aceptar
+          <MdCheckCircle /> Aceptar
         </>
       ),
     });
