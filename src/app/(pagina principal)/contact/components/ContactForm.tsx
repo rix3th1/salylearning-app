@@ -5,7 +5,7 @@ import { contactoInitState, crearContacto } from "@/services/contactos.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
-import { MdSend } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import { toast } from "sonner";
 
 export default function ContactForm() {
@@ -117,7 +117,8 @@ export default function ContactForm() {
           className="btn btn-primary btn-lg"
           disabled={isLoading}
         >
-          <MdSend /> {isLoading ? "ENVIANDO..." : "ENVIAR"}
+          <MdEmail style={{ position: "relative", bottom: 3 }} />{" "}
+          {isLoading ? "ENVIANDO..." : "ENVIAR"}
         </button>
       </div>
     </form>

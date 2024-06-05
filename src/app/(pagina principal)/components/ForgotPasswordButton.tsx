@@ -1,6 +1,6 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { enviarEmailDeRecuperacion } from "@/services/recuperar-clave.service";
-import { MdCancel, MdSend } from "react-icons/md";
+import { MdCancel, MdEmail } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
@@ -22,12 +22,12 @@ const showSwalForSendEmail = async (
     showCancelButton: true,
     confirmButtonText: (
       <>
-        <MdSend /> Enviar
+        <MdEmail style={{ position: "relative", bottom: 2 }} /> Enviar
       </>
     ),
     cancelButtonText: (
       <>
-        <MdCancel /> Cancelar
+        <MdCancel style={{ position: "relative", bottom: 2 }} /> Cancelar
       </>
     ),
     showLoaderOnConfirm: true,
