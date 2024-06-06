@@ -27,7 +27,6 @@ export default function RootLayout({
           type="image/x-icon"
           sizes="32x32"
         />
-        <meta name="google-site-verification" content="v8sqUWl794OwlrWfbJuj7zgXIwHhPW0sbPA0FQemZJY" />
       </head>
 
       <body>{children}</body>
