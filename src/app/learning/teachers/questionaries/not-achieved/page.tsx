@@ -4,7 +4,6 @@ import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service"
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MdDescription } from "react-icons/md";
-import NewPreguntaButton from "../components/NewPreguntaButton";
 import Nothing from "../components/Nothing";
 import QuestionariesTabs from "../components/QuestionariesTabs";
 
@@ -18,8 +17,6 @@ export default async function NotAchievedQuestionaries() {
   return (
     <>
       <PageHeader title="Cuestionarios no logrados" />
-
-      <NewPreguntaButton />
 
       <QuestionariesTabs />
 
