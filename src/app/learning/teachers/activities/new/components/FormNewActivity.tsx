@@ -100,7 +100,10 @@ export default function FormNewActivity() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="col-md-6" style={{ marginBottom: "2rem" }}>
+      <div
+        className="col-md-6 col-md-offset-3"
+        style={{ marginBottom: "2rem" }}
+      >
         <div className="form-group">
           <label htmlFor="id_libro">
             Libro al que se refiere la actividad:
