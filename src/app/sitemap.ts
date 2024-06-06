@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = await getAllPages();
 
   return pages.map((page) => ({
-    url: page,
+    url: process.env.NEXTAUTH_URL + page,
     lastModified: new Date(),
     changeFrequency: "weekly",
     priority: 0.8,
