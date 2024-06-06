@@ -66,14 +66,14 @@ export default async function PendingQuestionaries() {
                 {cuestionarios.map((cuestionario: any, i: number) => (
                   <tr key={i} className="info">
                     <td>{i + 1}</td>
-                    <td>{cuestionario.preguntas.libros.nom_libro}</td>
+                    <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
                     <td>
-                      {`${cuestionario.preguntas.libros.mis_libros[0].usuario.p_nombre} ${cuestionario.preguntas.libros.mis_libros[0].usuario.p_apellido}`}
+                      {`${cuestionario.preguntas[0]?.libros?.mis_libros[0]?.usuario.p_nombre} ${cuestionario.preguntas[0].libros.mis_libros[0].usuario.p_apellido}`}
                     </td>
                     <td>
                       {
-                        cuestionario.preguntas.libros.mis_libros[0].usuario
-                          .grado_usuario.grados.nom_grado
+                        cuestionario.preguntas[0]?.libros?.mis_libros[0]
+                          ?.usuario?.grado_usuario?.grados.nom_grado
                       }
                     </td>
                     <td>

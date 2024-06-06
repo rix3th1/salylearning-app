@@ -3,80 +3,87 @@
 import {
   crearCuestionarioConPreguntas,
   cuestionarioInitState,
+  preguntasInitState,
 } from "@/services/cuestionarios.service";
 import { obtenerLibros } from "@/services/libros.service";
-import { obtenerPreguntas } from "@/services/preguntas.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useEffect, useState } from "react";
-import { MdAdd, MdWarning } from "react-icons/md";
+import { MdAdd, MdAddCircleOutline } from "react-icons/md";
 import { toast } from "sonner";
 
-const promises = [obtenerLibros.client, obtenerPreguntas];
-const getData = () => Promise.all(promises.map((res) => res()));
-
 export default function FormNewActivity() {
-  const [libros, setLibros] = useState([]);
-  const [preguntasOrig, setpreguntasOrig] = useState([]);
-  const [preguntas, setPreguntas] = useState([]);
-  const [formData, setFormData] = useState(cuestionarioInitState);
   const [isLoading, setIsLoading] = useState(false);
+  const [libros, setLibros] = useState([]);
+  const [formData, setFormData] = useState(cuestionarioInitState);
+  const [preguntas, setPreguntas] =
+    useState<typeof preguntasInitState>(preguntasInitState);
   const [id_libro, setId_libro] = useState("");
 
-  const handleChange = (e: THandleChange) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const agregarPregunta = () => {
+    setPreguntas((prevState) => [
+      ...prevState,
+      {
+        id: new Date().toISOString(),
+        pregunta: "",
+        resA: "",
+        resB: "",
+        resC: "",
+        resD: "",
+        id_libro,
+      },
+    ]);
   };
 
-  const handleChangeLibro = (e: THandleChange) => {
-    setId_libro(e.target.value);
-    setFormData({
-      ...formData,
-      preguntas: [],
-    });
+  const handleChangeFormData = (e: THandleChange) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
-    setPreguntas(
-      preguntasOrig.filter(
-        (pregunta: any) => pregunta.id_libro === parseInt(e.target.value)
-      )
-    );
+  const handleChangePreguntas = (index: number, event: THandleChange) => {
+    const newPreguntas = [...preguntas];
+    (newPreguntas[index] as any)[event.target.name] = event.target.value;
+    setPreguntas(newPreguntas);
   };
 
   const handleSubmit = async (e: THandleSubmit) => {
     e.preventDefault();
 
-    if (formData.preguntas.length === 0) {
-      toast.error("Debe seleccionar al menos una pregunta.");
-      return;
-    }
-
     setIsLoading(true);
-    toast.promise(crearCuestionarioConPreguntas(formData), {
-      loading: "Creando actividad...",
-      success(_data) {
-        setFormData(cuestionarioInitState);
-        setId_libro("");
-        return "Actividad creada exitosamente!";
-      },
-      error(error) {
-        if (error instanceof Error) {
-          return error.message.replace(/,/g, ", ");
-        }
-      },
-      finally() {
-        setIsLoading(false);
-      },
-    });
+    toast.promise(
+      crearCuestionarioConPreguntas({
+        ...formData,
+        preguntas: preguntas.map((p) => {
+          const { id, ...rest } = p;
+          return { ...rest, id_libro: parseInt(id_libro) };
+        }),
+      }),
+      {
+        loading: "Creando actividad...",
+        success(_data) {
+          setFormData(cuestionarioInitState);
+          setPreguntas(preguntasInitState);
+          return `Actividad creada exitosamente con ${preguntas.length} preguntas.`;
+        },
+        error(error) {
+          if (error instanceof Error) {
+            return error.message.replace(/,/g, ", ");
+          }
+        },
+        finally() {
+          setIsLoading(false);
+        },
+      }
+    );
   };
 
   useEffect(
     () => {
-      toast.promise(getData, {
+      toast.promise(obtenerLibros.client, {
         loading: "Cargando datos...",
         success(data) {
-          setLibros(data[0]);
-          setpreguntasOrig(data[1]);
+          setLibros(data);
           return "Listo";
         },
         error(error) {
@@ -93,7 +100,7 @@ export default function FormNewActivity() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="col-md-5">
+      <div className="col-md-6" style={{ marginBottom: "2rem" }}>
         <div className="form-group">
           <label htmlFor="id_libro">
             Libro al que se refiere la actividad:
@@ -103,7 +110,7 @@ export default function FormNewActivity() {
             id="id_libro"
             className="form-control"
             required
-            onChange={handleChangeLibro}
+            onChange={(e) => setId_libro(e.target.value)}
             value={id_libro}
             disabled={isLoading}
           >
@@ -126,7 +133,7 @@ export default function FormNewActivity() {
             id="fecha_entrega"
             name="fecha_entrega"
             placeholder="Fecha de entrega"
-            onChange={handleChange}
+            onChange={handleChangeFormData}
             value={formData.fecha_entrega}
             required
             disabled={isLoading}
@@ -134,59 +141,90 @@ export default function FormNewActivity() {
         </div>
       </div>
 
-      <div className="col-md-7">
-        <ul className="list-group text-center">
-          {preguntas.length > 0 ? (
-            preguntas.map((pregunta: any) => (
-              <li key={pregunta.id} className="list-group-item">
-                <div className="checkbox">
-                  <label>
-                    <input
-                      type="checkbox"
-                      value={pregunta.id}
-                      onChange={(e) => {
-                        if (e.target.checked) {
-                          setFormData({
-                            ...formData,
-                            preguntas: [...formData.preguntas, pregunta.id],
-                          });
-                        } else {
-                          setFormData({
-                            ...formData,
-                            preguntas: formData.preguntas.filter(
-                              (id: number) => id !== parseInt(pregunta.id)
-                            ),
-                          });
-                        }
-                      }}
-                    />
-                    {pregunta.pregunta}
-                  </label>
-                </div>
-              </li>
-            ))
-          ) : (
-            <article
-              className="tile"
-              style={{ margin: "2rem 0", padding: "0.5rem" }}
-            >
-              <div className="text-center">
-                <MdWarning />
-              </div>
-              <span style={{ fontSize: "15px" }}>
-                Aún no hay preguntas disponibles para este libro.
-              </span>
-            </article>
-          )}
-        </ul>
-      </div>
+      {preguntas.map((pregunta, index) => (
+        <div key={pregunta.id} className="col-md-6 col-md-offset-3">
+          <label htmlFor="pregunta">Contenido de la pregunta {index + 1}</label>
+          <textarea
+            className="form-control"
+            name="pregunta"
+            id="pregunta"
+            onChange={(e) => handleChangePreguntas(index, e)}
+            value={pregunta.pregunta}
+            placeholder="Redacta la pregunta acerca del tema del libro"
+            required
+          />
+
+          <hr />
+          <p>Opciones de respuesta única:</p>
+
+          <label htmlFor="resA">Respuesta A.</label>
+          <textarea
+            className="form-control"
+            name="resA"
+            id="resA"
+            onChange={(e) => handleChangePreguntas(index, e)}
+            value={pregunta.resA}
+            placeholder="Redacta la opción de respuesta A"
+            required
+          />
+
+          <label htmlFor="resB">Respuesta B.</label>
+          <textarea
+            className="form-control"
+            name="resB"
+            id="resB"
+            onChange={(e) => handleChangePreguntas(index, e)}
+            value={pregunta.resB}
+            placeholder="Redacta la opción de respuesta B"
+            required
+          />
+
+          <label htmlFor="resC">Respuesta C.</label>
+          <textarea
+            className="form-control"
+            name="resC"
+            id="resC"
+            onChange={(e) => handleChangePreguntas(index, e)}
+            value={pregunta.resC}
+            placeholder="Redacta la opción de respuesta C"
+            required
+          />
+
+          <label htmlFor="resD">Respuesta D.</label>
+          <textarea
+            className="form-control"
+            name="resD"
+            id="resD"
+            onChange={(e) => handleChangePreguntas(index, e)}
+            value={pregunta.resD}
+            placeholder="Redacta la opción de respuesta D"
+            required
+          />
+          <hr />
+        </div>
+      ))}
 
       <div
         className="col-md-12 text-center"
         style={{ margin: "1rem 0 0.5rem 0" }}
       >
-        <button type="submit" className="btn btn-primary" disabled={isLoading}>
-          <MdAdd /> {isLoading ? "Creando..." : "Crear"}
+        <button
+          type="button"
+          className="btn btn-default"
+          disabled={isLoading}
+          style={{ marginRight: "0.3rem" }}
+          onClick={agregarPregunta}
+        >
+          <MdAddCircleOutline /> Agregar pregunta
+        </button>
+
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isLoading}
+          style={{ marginLeft: "0.3rem" }}
+        >
+          <MdAdd /> {isLoading ? "Creando actividad..." : "Crear actividad"}
         </button>
       </div>
     </form>

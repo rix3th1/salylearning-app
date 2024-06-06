@@ -2,11 +2,24 @@ import { fetchClient, fetchServer } from "./api.service";
 
 export const cuestionarioInitState = {
   fecha_entrega: "",
-  preguntas: [] as number[],
 };
 
+export const preguntasInitState = [
+  {
+    id: new Date().toISOString(),
+    pregunta: "",
+    resA: "",
+    resB: "",
+    resC: "",
+    resD: "",
+    id_libro: "",
+  },
+];
+
 export async function crearCuestionarioConPreguntas(
-  formData: typeof cuestionarioInitState
+  formData: typeof cuestionarioInitState & {
+    preguntas: any;
+  }
 ) {
   const res = await fetchClient("/cuestionarios/preguntas", {
     method: "POST",
