@@ -2,7 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdCancel, MdCheckCircle, MdPending } from "react-icons/md";
+import {
+  MdCancel,
+  MdOutlineCancel,
+  MdCheckCircle,
+  MdOutlineCheckCircle,
+  MdPending,
+  MdOutlinePending,
+} from "react-icons/md";
 
 export default function QuestionariesTabs() {
   const pathname = usePathname().split("/").pop();
@@ -12,17 +19,24 @@ export default function QuestionariesTabs() {
       <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
         <li className={pathname === "completed" ? "active" : ""}>
           <Link href="/learning/teachers/questionaries/completed">
-            <MdCheckCircle /> Completos
+            {pathname === "completed" ? (
+              <MdCheckCircle />
+            ) : (
+              <MdOutlineCheckCircle />
+            )}{" "}
+            Completos
           </Link>
         </li>
         <li className={pathname === "pending" ? "active" : ""}>
           <Link href="/learning/teachers/questionaries/pending">
-            <MdPending /> Incompletos
+            {pathname === "pending" ? <MdPending /> : <MdOutlinePending />}{" "}
+            Incompletos
           </Link>
         </li>
         <li className={pathname === "not-achieved" ? "active" : ""}>
           <Link href="/learning/teachers/questionaries/not-achieved">
-            <MdCancel /> No logrados
+            {pathname === "not-achieved" ? <MdCancel /> : <MdOutlineCancel />}{" "}
+            No logrados
           </Link>
         </li>
       </ul>

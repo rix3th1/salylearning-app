@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdAccountCircle, MdTune } from "react-icons/md";
+import {
+  MdAccountCircle,
+  MdOutlineAccountCircle,
+  MdTune,
+  MdOutlineTune,
+} from "react-icons/md";
 
 export default function AccountSettingsTabs() {
   const pathname = usePathname().split("/").pop();
@@ -11,12 +16,18 @@ export default function AccountSettingsTabs() {
     <ul className="nav nav-tabs nav-justified">
       <li className={pathname === "profile" ? "active" : ""}>
         <Link href="/learning/teachers/account-settings/profile">
-          <MdAccountCircle /> Perfil
+          {pathname === "profile" ? (
+            <MdAccountCircle />
+          ) : (
+            <MdOutlineAccountCircle />
+          )}{" "}
+          Perfil
         </Link>
       </li>
       <li className={pathname === "advanced" ? "active" : ""}>
         <Link href="/learning/teachers/account-settings/advanced">
-          <MdTune /> Otras opciones
+          {pathname === "advanced" ? <MdTune /> : <MdOutlineTune />} Otras
+          opciones
         </Link>
       </li>
     </ul>

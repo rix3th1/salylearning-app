@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdCheckCircle, MdPending } from "react-icons/md";
+import {
+  MdCheckCircle,
+  MdOutlineCheckCircle,
+  MdOutlinePending,
+  MdPending,
+} from "react-icons/md";
 
 export default function ActivitiesTabs() {
   const pathname = usePathname().split("/").pop();
@@ -11,12 +16,17 @@ export default function ActivitiesTabs() {
     <ul className="nav nav-tabs custom-tabs">
       <li className={pathname === "pending" ? "active" : ""}>
         <Link className="nav-link" href="/learning/students/activities/pending">
-          <MdPending /> Por hacer
+          {pathname === "pending" ? (
+            <MdCheckCircle />
+          ) : (
+            <MdOutlineCheckCircle />
+          )}{" "}
+          Por hacer
         </Link>
       </li>
       <li className={pathname === "done" ? "active" : ""}>
         <Link className="nav-link" href="/learning/students/activities/done">
-          <MdCheckCircle /> Hecho
+          {pathname === "done" ? <MdPending /> : <MdOutlinePending />} Hecho
         </Link>
       </li>
     </ul>

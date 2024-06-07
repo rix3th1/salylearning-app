@@ -2,7 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdBarChart, MdTrendingUp } from "react-icons/md";
+import {
+  MdBarChart,
+  MdOutlineBarChart,
+  MdTrendingUp,
+  MdOutlineTrendingUp,
+} from "react-icons/md";
 
 export default function StatisticsAndReportsTabs() {
   const pathname = usePathname().split("/").pop();
@@ -12,12 +17,18 @@ export default function StatisticsAndReportsTabs() {
       <ul className="nav nav-tabs nav-justified">
         <li className={pathname === "statistics" ? "active" : ""}>
           <Link href="/learning/teachers/statistics">
-            <MdBarChart /> Estadísticas general
+            {pathname === "statistics" ? <MdBarChart /> : <MdOutlineBarChart />}{" "}
+            Estadísticas general
           </Link>
         </li>
         <li className={pathname === "reports" ? "active" : ""}>
           <Link href="/learning/teachers/reports">
-            <MdTrendingUp /> Reporte Grado
+            {pathname === "reports" ? (
+              <MdTrendingUp />
+            ) : (
+              <MdOutlineTrendingUp />
+            )}{" "}
+            Reporte Grado
           </Link>
         </li>
       </ul>

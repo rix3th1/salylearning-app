@@ -6,6 +6,10 @@ import {
   MdGavel,
   MdHandshake,
   MdLocalLibrary,
+  MdOutlineGavel,
+  MdOutlineHandshake,
+  MdOutlineLocalLibrary,
+  MdOutlineQuestionAnswer,
   MdQuestionAnswer,
 } from "react-icons/md";
 
@@ -17,22 +21,42 @@ export default function FaqsTabs() {
       <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
         <li className={pathname === "introduction" ? "active" : ""}>
           <Link href="/learning/teachers/faqs/introduction">
-            <MdLocalLibrary /> Introducción
+            {pathname === "introduction" ? (
+              <MdLocalLibrary />
+            ) : (
+              <MdOutlineLocalLibrary />
+            )}{" "}
+            Introducción
           </Link>
         </li>
         <li className={pathname === "faqs" ? "active" : ""}>
           <Link href="/learning/teachers/faqs">
-            <MdQuestionAnswer /> Preguntas frecuentes
+            {pathname === "faqs" ? (
+              <MdQuestionAnswer />
+            ) : (
+              <MdOutlineQuestionAnswer />
+            )}{" "}
+            Preguntas frecuentes
           </Link>
         </li>
         <li className={pathname === "contact-and-support" ? "active" : ""}>
           <Link href="/learning/teachers/faqs/contact-and-support">
-            <MdHandshake /> Información de Contacto y Soporte
+            {pathname === "contact-and-support" ? (
+              <MdHandshake />
+            ) : (
+              <MdOutlineHandshake />
+            )}{" "}
+            Información de Contacto y Soporte
           </Link>
         </li>
         <li className={pathname === "policies-and-terms" ? "active" : ""}>
           <Link href="/learning/teachers/faqs/policies-and-terms">
-            <MdGavel /> Políticas y Términos
+            {pathname === "policies-and-terms" ? (
+              <MdGavel />
+            ) : (
+              <MdOutlineGavel />
+            )}{" "}
+            Políticas y Términos
           </Link>
         </li>
       </ul>
