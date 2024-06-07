@@ -155,7 +155,7 @@ export default function FormNewActivity() {
       {preguntas.map((pregunta, index) => (
         <div
           key={pregunta.id}
-          className="col-md-6 col-md-offset-3"
+          className="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 text-center"
           style={{
             borderRadius: 15,
             boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
