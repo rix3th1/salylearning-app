@@ -8,7 +8,7 @@ import {
 import { obtenerLibros } from "@/services/libros.service";
 import { THandleChange, THandleSubmit } from "@/types";
 import { useEffect, useState } from "react";
-import { MdAdd, MdAddCircleOutline } from "react-icons/md";
+import { MdAdd, MdAddCircleOutline, MdClose } from "react-icons/md";
 import { toast } from "sonner";
 
 export default function FormNewActivity() {
@@ -32,6 +32,14 @@ export default function FormNewActivity() {
         id_libro,
       },
     ]);
+  };
+
+  const quitarPregunta = (index: number) => {
+    setPreguntas((prevState) => {
+      const newState = [...prevState];
+      newState.splice(index, 1);
+      return newState;
+    });
   };
 
   const handleChangeFormData = (e: THandleChange) => {
@@ -145,7 +153,29 @@ export default function FormNewActivity() {
       </div>
 
       {preguntas.map((pregunta, index) => (
-        <div key={pregunta.id} className="col-md-6 col-md-offset-3">
+        <div
+          key={pregunta.id}
+          className="col-md-6 col-md-offset-3"
+          style={{
+            borderRadius: 15,
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+            backgroundColor: "#fff",
+            maxWidth: "80%",
+            padding: "2rem 1.5rem",
+            marginBottom: "1rem",
+          }}
+        >
+          <div className="col-md-12" style={{ marginBottom: 5 }}>
+            <button
+              type="button"
+              className="btn btn-danger btn-xs pull-right"
+              onClick={() => quitarPregunta(index)}
+              disabled={preguntas.length === 1}
+            >
+              <MdClose style={{ position: "relative", top: 2 }} />
+            </button>
+          </div>
+
           <label htmlFor="pregunta">Contenido de la pregunta {index + 1}</label>
           <textarea
             className="form-control"
@@ -155,11 +185,10 @@ export default function FormNewActivity() {
             value={pregunta.pregunta}
             placeholder="Redacta la pregunta acerca del tema del libro"
             required
+            autoFocus
           />
-
           <hr />
           <p>Opciones de respuesta única:</p>
-
           <label htmlFor="resA">Respuesta A.</label>
           <textarea
             className="form-control"
@@ -170,7 +199,6 @@ export default function FormNewActivity() {
             placeholder="Redacta la opción de respuesta A"
             required
           />
-
           <label htmlFor="resB">Respuesta B.</label>
           <textarea
             className="form-control"
@@ -181,7 +209,6 @@ export default function FormNewActivity() {
             placeholder="Redacta la opción de respuesta B"
             required
           />
-
           <label htmlFor="resC">Respuesta C.</label>
           <textarea
             className="form-control"
@@ -192,7 +219,6 @@ export default function FormNewActivity() {
             placeholder="Redacta la opción de respuesta C"
             required
           />
-
           <label htmlFor="resD">Respuesta D.</label>
           <textarea
             className="form-control"
@@ -203,7 +229,6 @@ export default function FormNewActivity() {
             placeholder="Redacta la opción de respuesta D"
             required
           />
-          <hr />
         </div>
       ))}
 
