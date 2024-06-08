@@ -1,5 +1,7 @@
 "use client";
 
+import { plus_jakarta_sans } from "@/app/fonts";
+import { asignarCuestionarioEstudianteATodosLosEstudiantes } from "@/services/cuestionario-estudiante.service";
 import {
   crearCuestionarioConPreguntas,
   cuestionarioInitState,
@@ -7,9 +9,11 @@ import {
 } from "@/services/cuestionarios.service";
 import { obtenerLibros } from "@/services/libros.service";
 import { THandleChange, THandleSubmit } from "@/types";
+import "@github/relative-time-element";
 import { useEffect, useState } from "react";
 import { MdAdd, MdAddCircleOutline, MdClose } from "react-icons/md";
 import { toast } from "sonner";
+import Swal from "sweetalert2";
 
 export default function FormNewActivity() {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,33 +61,55 @@ export default function FormNewActivity() {
 
   const handleSubmit = async (e: THandleSubmit) => {
     e.preventDefault();
-
     setIsLoading(true);
-    toast.promise(
-      crearCuestionarioConPreguntas({
+
+    try {
+      const cuestionarioCreado = await crearCuestionarioConPreguntas({
         ...formData,
         preguntas: preguntas.map((p) => {
           const { id, ...rest } = p;
           return { ...rest, id_libro: parseInt(id_libro) };
         }),
-      }),
-      {
-        loading: "Creando actividad...",
-        success(_data) {
-          setFormData(cuestionarioInitState);
-          setPreguntas(preguntasInitState);
-          return `Actividad creada exitosamente con ${preguntas.length} preguntas.`;
-        },
-        error(error) {
-          if (error instanceof Error) {
-            return error.message.replace(/,/g, ", ");
-          }
-        },
-        finally() {
-          setIsLoading(false);
-        },
+      });
+
+      await Swal.fire({
+        customClass: plus_jakarta_sans.className,
+        title: "¡Cuestionario creado!",
+        text: cuestionarioCreado.message,
+        icon: "success",
+        timer: 1500,
+      });
+
+      const id_cuestionario = cuestionarioCreado.id;
+
+      const cuestionarioEstudianteAsignaciones =
+        await asignarCuestionarioEstudianteATodosLosEstudiantes(
+          id_cuestionario
+        );
+
+      await Swal.fire({
+        customClass: plus_jakarta_sans.className,
+        title: "¡Cuestionario asignado a los estudiantes!",
+        text: cuestionarioEstudianteAsignaciones.message,
+        icon: "success",
+        timer: 1500,
+      });
+
+      setFormData(cuestionarioInitState);
+      setPreguntas(preguntasInitState);
+    } catch (error) {
+      if (error instanceof Error) {
+        Swal.fire({
+          customClass: plus_jakarta_sans.className,
+          title: "¡Error!",
+          text: error.message.replace(/,/g, ", "),
+          icon: "error",
+          timer: 3000,
+        });
       }
-    );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(
@@ -136,7 +162,20 @@ export default function FormNewActivity() {
 
         <div className="form-group">
           <label htmlFor="fecha_entrega">
-            Fecha de entrega de la actividad:
+            Fecha de entrega de la actividad:{" "}
+            {formData.fecha_entrega && (
+              <relative-time
+                datetime={formData.fecha_entrega}
+                format="relative"
+                tense="future"
+                formatStyle="long"
+                style={{
+                  fontWeight: "normal",
+                  fontSize: "0.8rem",
+                  fontStyle: "italic",
+                }}
+              />
+            )}
           </label>
           <input
             type="datetime-local"
