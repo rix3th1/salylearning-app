@@ -1,6 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import clockImage from "@/assets/clock.png";
-import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service";
+import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionarios.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MdSchedule } from "react-icons/md";
@@ -12,7 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default async function PendingQuestionaries() {
-  const cuestionarios = await obtenerCuestionariosPorEstado("PENDIENTE");
+  const cuestionariosEstudiantes =
+    await obtenerCuestionariosEstudiantesPorEstado("PENDIENTE");
 
   return (
     <>
@@ -45,7 +46,7 @@ export default async function PendingQuestionaries() {
       <div className="container-fluid">
         <h2 className="text-center">Listado de cuestionarios pendientes</h2>
 
-        {cuestionarios.length > 0 ? (
+        {cuestionariosEstudiantes.length > 0 ? (
           <div className="table-responsive">
             <table className="table table-hover">
               <thead>
@@ -60,32 +61,31 @@ export default async function PendingQuestionaries() {
                 </tr>
               </thead>
               <tbody>
-                {cuestionarios.map((cuestionario: any, i: number) => (
-                  <tr key={i} className="info">
-                    <td>{i + 1}</td>
-                    <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
-                    <td>
-                      {`${cuestionario.preguntas[0]?.libros?.mis_libros[0]?.usuario.p_nombre} ${cuestionario.preguntas[0].libros.mis_libros[0].usuario.p_apellido}`}
-                    </td>
-                    <td>
-                      {
-                        cuestionario.preguntas[0]?.libros?.mis_libros[0]
-                          ?.usuario?.grado_usuario?.grados.nom_grado
-                      }
-                    </td>
-                    <td>
-                      {new Date(cuestionario.fecha_asignado).toLocaleString()}
-                    </td>
-                    <td>
-                      {new Date(cuestionario.fecha_entrega).toLocaleString()}
-                    </td>
-                    <td>
-                      <button className="btn btn-success">
-                        <MdSchedule />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+                {cuestionariosEstudiantes.map(
+                  ({ cuestionario, estudiante }: any, i: number) => (
+                    <tr key={i} className="info">
+                      <td>{i + 1}</td>
+                      <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
+                      <td>
+                        {`${estudiante.usuario.p_nombre} ${estudiante.usuario.p_apellido}`}
+                      </td>
+                      <td>
+                        {estudiante.usuario.grado_usuario.grados.nom_grado}
+                      </td>
+                      <td>
+                        {new Date(cuestionario.fecha_asignado).toLocaleString()}
+                      </td>
+                      <td>
+                        {new Date(cuestionario.fecha_entrega).toLocaleString()}
+                      </td>
+                      <td>
+                        <button className="btn btn-success">
+                          <MdSchedule />
+                        </button>
+                      </td>
+                    </tr>
+                  )
+                )}
               </tbody>
             </table>
           </div>

@@ -36,11 +36,11 @@ export async function crearCuestionarioConPreguntas(
   return data;
 }
 
-export async function obtenerCuestionariosPorEstado(
+export async function obtenerCuestionariosEstudiantesPorEstado(
   estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO"
 ) {
   const res = await fetchServer(
-    `/cuestionarios/estado?estado_cuestionario=${estado}`,
+    `/cuestionario-estudiante/estado?estado_cuestionario_estudiante=${estado}`,
     {
       method: "GET",
     }
