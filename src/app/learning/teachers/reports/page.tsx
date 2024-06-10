@@ -1,5 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import categoryImage from "@/assets/category.png";
+import { obtenerEstudiantes } from "@/services/estudiantes.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import StatisticsAndReportsTabs from "../components/StatisticsAndReportsTabs";
@@ -8,7 +9,13 @@ export const metadata: Metadata = {
   title: "Reportes Grado: Docentes | Saly Learning",
 };
 
-export default function ReportsAndStatisticsPage() {
+export default async function ReportsAndStatisticsPage() {
+  const estudiantesRegistrados = await obtenerEstudiantes();
+  const nombresEstudiantes = estudiantesRegistrados.map(
+    (estudiante: any) =>
+      estudiante.usuario.p_nombre + " " + estudiante.usuario.p_apellido
+  );
+
   return (
     <>
       <PageHeader title="Reportes Grado" />
@@ -53,8 +60,6 @@ export default function ReportsAndStatisticsPage() {
             </div>
           </div>
           <div className="col-md-7" style={{ marginTop: "2rem" }}>
-            {/* Contenido de demás lugares */}
-            <p>Contenido de la segunda columna</p>
             <div className="other-positions">
               <div className="position">
                 <Image
@@ -78,61 +83,6 @@ export default function ReportsAndStatisticsPage() {
                 />
                 <div>5. Quinto Puesto</div>
               </div>
-              <div className="position">
-                <Image
-                  width={110}
-                  height={110}
-                  quality={100}
-                  src={categoryImage}
-                  alt="Imagen Pequeña"
-                  className="small-image"
-                />
-                <div>6. Sexto Puesto</div>
-              </div>
-              <div className="position">
-                <Image
-                  width={110}
-                  height={110}
-                  quality={100}
-                  src={categoryImage}
-                  alt="Imagen Pequeña"
-                  className="small-image"
-                />
-                <div>7. Séptimo Puesto</div>
-              </div>
-              <div className="position">
-                <Image
-                  width={110}
-                  height={110}
-                  quality={100}
-                  src={categoryImage}
-                  alt="Imagen Pequeña"
-                  className="small-image"
-                />
-                <div>8. Octavo Puesto</div>
-              </div>
-              <div className="position">
-                <Image
-                  width={110}
-                  height={110}
-                  quality={100}
-                  src={categoryImage}
-                  alt="Imagen Pequeña"
-                  className="small-image"
-                />
-                <div>9. Noveno Puesto</div>
-              </div>
-              <div className="position">
-                <Image
-                  width={110}
-                  height={110}
-                  quality={100}
-                  src={categoryImage}
-                  alt="Imagen Pequeña"
-                  className="small-image"
-                />
-                <div>10. Décimo Puesto</div>
-              </div>
             </div>
           </div>
         </div>
@@ -154,17 +104,14 @@ export default function ReportsAndStatisticsPage() {
           </div>
         </div>
 
-        {/*div estudiantes activos*/}
         <div className="chart-style02">
           <h2>Estudiantes Registrados</h2>
           <div id="active-students-list" className="student">
-            <ul id="active-students">
-              {Array.from({ length: 10 }, (_, i) => (
-                <li key={i} className="text-danger">
-                  Estudiante {i + 1}
-                </li>
+            <ol id="active-students">
+              {nombresEstudiantes.map((nombre: string, i: number) => (
+                <li key={i}>{nombre}</li>
               ))}
-            </ul>
+            </ol>
           </div>
         </div>
       </div>
