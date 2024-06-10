@@ -1,6 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import calendarImage from "@/assets/calendar.png";
-import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionarios.service";
+import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MdDescription } from "react-icons/md";

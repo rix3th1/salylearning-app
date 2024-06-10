@@ -91,6 +91,7 @@ export default function FormNewBook() {
         className="swal2-textarea"
         placeholder="Breve descripción del libro"
         required
+        spellCheck={false}
       />
 
       <label className="swal2-input-label">

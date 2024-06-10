@@ -8,10 +8,10 @@ export const preguntasInitState = [
   {
     id: new Date().toISOString(),
     pregunta: "",
-    resA: "",
-    resB: "",
-    resC: "",
-    resD: "",
+    A: "",
+    B: "",
+    C: "",
+    D: "",
     id_libro: "",
   },
 ];
@@ -19,6 +19,8 @@ export const preguntasInitState = [
 export async function crearCuestionarioConPreguntas(
   formData: typeof cuestionarioInitState & {
     preguntas: any;
+  } & {
+    opciones_respuesta: any;
   }
 ) {
   const res = await fetchClient("/cuestionarios/preguntas", {
@@ -36,11 +38,11 @@ export async function crearCuestionarioConPreguntas(
   return data;
 }
 
-export async function obtenerCuestionariosEstudiantesPorEstado(
+export async function obtenerCuestionariosPorEstado(
   estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO"
 ) {
   const res = await fetchServer(
-    `/cuestionario-estudiante/estado?estado_cuestionario_estudiante=${estado}`,
+    `/cuestionarios/estado?estado_cuestionario=${estado}`,
     {
       method: "GET",
     }

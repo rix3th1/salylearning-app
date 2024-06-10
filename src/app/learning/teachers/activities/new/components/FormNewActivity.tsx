@@ -24,15 +24,26 @@ export default function FormNewActivity() {
   const [id_libro, setId_libro] = useState("");
 
   const agregarPregunta = () => {
+    if (preguntas.length >= 10) {
+      Swal.fire({
+        customClass: plus_jakarta_sans.className,
+        title: "¡No se permiten más de 10 preguntas!",
+        text: "Sólo se permiten 10 preguntas por libro en una actividad.",
+        icon: "error",
+        timer: 3000,
+      });
+      return;
+    }
+
     setPreguntas((prevState) => [
       ...prevState,
       {
         id: new Date().toISOString(),
         pregunta: "",
-        resA: "",
-        resB: "",
-        resC: "",
-        resD: "",
+        A: "",
+        B: "",
+        C: "",
+        D: "",
         id_libro,
       },
     ]);
@@ -66,9 +77,23 @@ export default function FormNewActivity() {
     try {
       const cuestionarioCreado = await crearCuestionarioConPreguntas({
         ...formData,
-        preguntas: preguntas.map((p) => {
-          const { id, ...rest } = p;
-          return { ...rest, id_libro: parseInt(id_libro) };
+        preguntas: preguntas.map(({ pregunta }) => ({
+          pregunta,
+          id_libro: parseInt(id_libro),
+        })),
+        opciones_respuesta: preguntas.map((p) => {
+          const { id, pregunta, id_libro, ...rest } = p;
+
+          let opciones_respuesta = [];
+
+          for (const opcion in rest) {
+            opciones_respuesta.push({
+              opcion,
+              respuesta: (rest as any)[opcion],
+            });
+          }
+
+          return opciones_respuesta;
         }),
       });
 
@@ -96,7 +121,17 @@ export default function FormNewActivity() {
       });
 
       setFormData(cuestionarioInitState);
-      setPreguntas(preguntasInitState);
+      setPreguntas([
+        {
+          id: new Date().toISOString(),
+          pregunta: "",
+          A: "",
+          B: "",
+          C: "",
+          D: "",
+          id_libro,
+        },
+      ]);
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({
@@ -204,7 +239,7 @@ export default function FormNewActivity() {
             marginBottom: "1rem",
           }}
         >
-          <div className="col-md-12" style={{ marginBottom: 5 }}>
+          <div className="col-md-12" style={{ marginBottom: "2rem" }}>
             <button
               type="button"
               className="btn btn-danger btn-xs pull-right"
@@ -225,48 +260,53 @@ export default function FormNewActivity() {
             placeholder="Redacta la pregunta acerca del tema del libro"
             required
             autoFocus
+            spellCheck={false}
           />
           <hr />
-          <p>Opciones de respuesta única:</p>
-          <label htmlFor="resA">Respuesta A.</label>
+          <p style={{ fontStyle: "italic" }}>Opciones de respuesta única:</p>
+          <label htmlFor="A">Respuesta A.</label>
           <textarea
             className="form-control"
-            name="resA"
-            id="resA"
+            name="A"
+            id="A"
             onChange={(e) => handleChangePreguntas(index, e)}
-            value={pregunta.resA}
+            value={pregunta.A}
             placeholder="Redacta la opción de respuesta A"
             required
+            spellCheck={false}
           />
-          <label htmlFor="resB">Respuesta B.</label>
+          <label htmlFor="B">Respuesta B.</label>
           <textarea
             className="form-control"
-            name="resB"
-            id="resB"
+            name="B"
+            id="B"
             onChange={(e) => handleChangePreguntas(index, e)}
-            value={pregunta.resB}
+            value={pregunta.B}
             placeholder="Redacta la opción de respuesta B"
             required
+            spellCheck={false}
           />
-          <label htmlFor="resC">Respuesta C.</label>
+          <label htmlFor="C">Respuesta C.</label>
           <textarea
             className="form-control"
-            name="resC"
-            id="resC"
+            name="C"
+            id="C"
             onChange={(e) => handleChangePreguntas(index, e)}
-            value={pregunta.resC}
+            value={pregunta.C}
             placeholder="Redacta la opción de respuesta C"
             required
+            spellCheck={false}
           />
-          <label htmlFor="resD">Respuesta D.</label>
+          <label htmlFor="D">Respuesta D.</label>
           <textarea
             className="form-control"
-            name="resD"
-            id="resD"
+            name="D"
+            id="D"
             onChange={(e) => handleChangePreguntas(index, e)}
-            value={pregunta.resD}
+            value={pregunta.D}
             placeholder="Redacta la opción de respuesta D"
             required
+            spellCheck={false}
           />
         </div>
       ))}
@@ -282,7 +322,8 @@ export default function FormNewActivity() {
           style={{ marginRight: "0.3rem" }}
           onClick={agregarPregunta}
         >
-          <MdAddCircleOutline /> Agregar pregunta
+          <MdAddCircleOutline style={{ position: "relative", top: 2 }} />{" "}
+          Agregar pregunta
         </button>
 
         <button
@@ -291,7 +332,8 @@ export default function FormNewActivity() {
           disabled={isLoading}
           style={{ marginLeft: "0.3rem" }}
         >
-          <MdAdd /> {isLoading ? "Creando actividad..." : "Crear actividad"}
+          <MdAdd style={{ position: "relative", top: 2 }} />{" "}
+          {isLoading ? "Creando actividad..." : "Crear actividad"}
         </button>
       </div>
     </form>
