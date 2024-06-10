@@ -17,6 +17,22 @@ export async function crearLibro(formData: FormData) {
   return data;
 }
 
+export async function obtenerLibrosPopulares() {
+  const res = await fetchServer("/libros/populares", {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error al obtener la información de los libros populares, por favor intente de nuevo."
+    );
+  }
+
+  return data;
+}
+
 async function obtenerLibrosC() {
   const res = await fetchClient("/libros", { method: "GET" });
 

@@ -1,15 +1,18 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import checkListImage from "@/assets/checklist.png";
+import { obtenerLibrosPopulares } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { MdInfo, MdOpenInNew, MdSearch } from "react-icons/md";
+import { MdSearch } from "react-icons/md";
+import ButtonMoreInfoBook from "./components/ButtonMoreInfoBook";
 
 export const metadata: Metadata = {
   title: "Libros Populares: Docentes | Saly Learning",
 };
 
-export default function PopularBooksPage() {
+export default async function PopularBooksPage() {
+  const librosPopulares = await obtenerLibrosPopulares();
+
   return (
     <>
       <PageHeader title="Libros populares" />
@@ -47,35 +50,28 @@ export default function PopularBooksPage() {
       </div>
 
       <div className="container-fluid" id="libros-container">
-        {Array.from({ length: 10 }, (_, i) => (
+        {librosPopulares.map((libro: any, i: number) => (
           <div key={i} className="media media-hover" data-tiempo="semana">
             <div className="media-left media-middle">
               <Image
                 className="media-object"
-                src="/img/matilda.jpg"
-                alt="Libro"
+                src={libro.imagen_portada}
+                alt={libro.nom_libro}
                 width={60}
                 height={60}
                 quality={75}
+                style={{ borderRadius: "5px" }}
               />
             </div>
             <div className="media-body">
-              <h4 className="media-heading">Matilda, de Roald Dahl</h4>
+              <h4 className="media-heading">{`"${libro.nom_libro}" de ${libro.autor}`}</h4>
               <div className="pull-left" style={{ fontWeight: "bold" }}>
-                Roald Dahl
+                {libro.autor}
                 <br />
-                publicación original: 1 de octubre de 1988
+                Publicación original: {new Date(libro.fecha_pub).getFullYear()}
               </div>
               <p className="text-center pull-right">
-                <Link
-                  href="https://es.wikipedia.org/wiki/Matilda"
-                  className="btn btn-info btn-xs"
-                  style={{ marginRight: 10 }}
-                  target="_blank"
-                >
-                  <MdInfo /> Más información&nbsp;
-                  <MdOpenInNew />
-                </Link>
+                <ButtonMoreInfoBook libro_descripcion={libro.descripcion} />
               </p>
             </div>
           </div>
