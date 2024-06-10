@@ -121,16 +121,18 @@ export default async function PendingActivitiesPage() {
                       );
                     })
                   ) : (
-                    <Image
-                      src={terminasteImage}
-                      className="img-finish"
-                      style={{ margin: "2rem 0", borderRadius: "10px" }}
-                      alt="estas al dia"
-                      width={200}
-                      height={300}
-                      quality={100}
-                      placeholder="blur"
-                    />
+                    <div className="text-center">
+                      <Image
+                        src={terminasteImage}
+                        className="img-finish"
+                        style={{ margin: "2rem 0", borderRadius: "10px" }}
+                        alt="estas al dia"
+                        width={200}
+                        height={300}
+                        quality={100}
+                        placeholder="blur"
+                      />
+                    </div>
                   )}
                 </div>
               </div>
