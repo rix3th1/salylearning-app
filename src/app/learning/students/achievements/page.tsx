@@ -2,7 +2,11 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import faroDelSaberLogro from "@/assets/farodelsaber.png";
 import genioDelQuizLogro from "@/assets/geniodelquiz.png";
 import genioEmergenteLogro from "@/assets/genioemergente.png";
-import { obtenerContadoresLogros } from "@/services/achievements.service";
+import PieStatic from "@/components/Statistics/PieStatic";
+import {
+  obtenerContadoresLogros,
+  obtenerEstadisticasLogrosEstudiante,
+} from "@/services/achievements.service";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
@@ -16,6 +20,9 @@ export default async function AchievementsPage() {
   const user = await obtenerPerfilUsuario();
   const estudiante = await obtenerEstudiante(user.id);
   const contadoresLogros = await obtenerContadoresLogros(estudiante.id);
+  const estadisticasLogros = await obtenerEstadisticasLogrosEstudiante(
+    estudiante.id
+  );
 
   return (
     <>
@@ -125,11 +132,11 @@ export default async function AchievementsPage() {
             >
               <div className="col-chart">
                 <h4>Progreso en Lectura</h4>
-                <canvas id="logros-chart-1" width={200} height={200} />
+                <PieStatic title={{}} data={estadisticasLogros[0]} />
               </div>
               <div className="col-chart">
                 <h4>Preguntas Respondidas Correctamente</h4>
-                <canvas id="logros-chart-2" width={200} height={200} />
+                <PieStatic title={{}} data={estadisticasLogros[1]} />
               </div>
             </div>
           </div>

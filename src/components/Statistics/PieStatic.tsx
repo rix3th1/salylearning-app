@@ -15,20 +15,10 @@ export default function PieStatic({
   const [constructedData, setConstructedData] = useState<StatisticData>([]);
   const [timeOut, setTimeOut] = useState(false);
 
-  const constructData = async (data: any) => {
-    const inputData = data;
-    const transformedData = Object.entries(inputData).map(([name, value]) => ({
-      name,
-      value,
-    })) as typeof constructedData;
-
-    setConstructedData(transformedData);
-  };
-
   const opt = optsPieChart(title, constructedData);
 
   useEffect(() => {
-    constructData(data);
+    setConstructedData(data);
 
     const timeout = setTimeout(() => setTimeOut(true), 500);
 
