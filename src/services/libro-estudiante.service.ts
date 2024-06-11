@@ -27,14 +27,9 @@ export async function crearLibroEstudiante(
   return data;
 }
 
-const actualizarLibroEstudianteInitState = {
-  terminado: false,
-  tiempo_lectura: 0,
-};
-
 export async function actualizarLibroEstudiante(
   id_libro_estudiante: string,
-  formData: typeof actualizarLibroEstudianteInitState
+  formData: any
 ) {
   const res = await fetchClient(`/libros-estudiante/${id_libro_estudiante}`, {
     method: "PATCH",

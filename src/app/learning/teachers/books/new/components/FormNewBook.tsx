@@ -47,18 +47,6 @@ export default function FormNewBook() {
       />
 
       <label className="swal2-input-label">
-        Páginas
-        <span className="text-danger">*</span>
-      </label>
-      <input
-        type="number"
-        name="num_pag"
-        className="swal2-input"
-        placeholder="Número de Páginas"
-        required
-      />
-
-      <label className="swal2-input-label">
         Autor
         <span className="text-danger">*</span>
       </label>
@@ -95,14 +83,15 @@ export default function FormNewBook() {
       />
 
       <label className="swal2-input-label">
-        URL del libro (Canva)
+        Archivo de video del libro
         <span className="text-danger">*</span>
       </label>
       <input
-        type="url"
-        name="url_libro"
-        className="swal2-input"
-        placeholder="URL del libro"
+        type="file"
+        name="video_libro"
+        className="swal2-file"
+        placeholder="Video del libro"
+        accept="video/mp4"
         required
       />
 

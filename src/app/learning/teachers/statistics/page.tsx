@@ -1,4 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
+import BarStatic from "@/components/Statistics/BarStatic";
+import { obtenerEstadisticasDocente } from "@/services/estatisticas-docente.service";
 import type { Metadata } from "next";
 import StatisticsAndReportsTabs from "../components/StatisticsAndReportsTabs";
 
@@ -6,7 +8,9 @@ export const metadata: Metadata = {
   title: "Estadísticas Generales: Docentes | Saly Learning",
 };
 
-export default function ReportsAndStatisticsPage() {
+export default async function ReportsAndStatisticsPage() {
+  const estadisticas = await obtenerEstadisticasDocente();
+
   return (
     <>
       <PageHeader title="Estadísticas Generales" />
@@ -20,13 +24,13 @@ export default function ReportsAndStatisticsPage() {
           <div className="col-md-6">
             <div className="chart-style">
               <h3>Libros completados</h3>
-              <canvas id="bar-chart-1" width={400} height={400} />
+              <BarStatic data={estadisticas[0]} title={{}} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="chart-style">
               <h3>Libros Incompletos</h3>
-              <canvas id="bar-chart-2" width={400} height={400} />
+              <BarStatic data={estadisticas[1]} title={{}} />
             </div>
           </div>
         </div>
@@ -35,13 +39,13 @@ export default function ReportsAndStatisticsPage() {
           <div className="col-md-6">
             <div className="chart-style">
               <h3>Actividades completadas</h3>
-              <canvas id="pie-chart-1" width={400} height={400} />
+              <BarStatic data={estadisticas[2]} title={{}} />
             </div>
           </div>
           <div className="col-md-6">
             <div className="chart-style">
               <h3>Actividades pendientes</h3>
-              <canvas id="pie-chart-2" width={400} height={400} />
+              <BarStatic data={estadisticas[3]} title={{}} />
             </div>
           </div>
         </div>

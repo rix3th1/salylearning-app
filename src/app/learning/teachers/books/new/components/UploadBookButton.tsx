@@ -2,6 +2,7 @@
 
 import { plus_jakarta_sans } from "@/app/fonts";
 import { crearLibro } from "@/services/libros.service";
+import confetti from "canvas-confetti";
 import { useRouter } from "next-nprogress-bar";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MdCancel, MdCheckCircle, MdUpload } from "react-icons/md";
@@ -31,7 +32,28 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
         Swal.getPopup()?.getElementsByTagName("form")[0]
       );
 
+      const imagen_portada = formData.get("imagen_portada");
+      const video_libro = formData.get("video_libro");
+
       try {
+        if (imagen_portada instanceof File) {
+          if (imagen_portada.size > 5000 * 1024) {
+            throw new Error("La imagen de portada no debe superar los 5MB");
+          }
+          if (!/(jpe?g|png)$/i.test(imagen_portada.type)) {
+            throw new Error("La imagen de portada debe ser de tipo jpeg o png");
+          }
+        }
+
+        if (video_libro instanceof File) {
+          if (video_libro.size > 50000 * 1024) {
+            throw new Error("El video del libro no debe superar los 50MB");
+          }
+          if (!/(mp4)$/i.test(video_libro.type)) {
+            throw new Error("El video del libro debe ser de tipo mp4");
+          }
+        }
+
         return await crearLibro(formData);
       } catch (error) {
         if (error instanceof Error) {
@@ -64,6 +86,8 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
         </>
       ),
     });
+
+    confetti();
   }
 };
 

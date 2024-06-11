@@ -1,9 +1,13 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import categoryImage from "@/assets/category.png";
-import { obtenerEstudiantes } from "@/services/estudiantes.service";
+import {
+  obtenerEstudiantes,
+  obtenerEstudiantesConMejorPuntaje,
+} from "@/services/estudiantes.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import StatisticsAndReportsTabs from "../components/StatisticsAndReportsTabs";
+// import PieStatic from "@/components/Statistics/PieStatic";
 
 export const metadata: Metadata = {
   title: "Reportes Grado: Docentes | Saly Learning",
@@ -15,6 +19,7 @@ export default async function ReportsAndStatisticsPage() {
     (estudiante: any) =>
       estudiante.usuario.p_nombre + " " + estudiante.usuario.p_apellido
   );
+  const mejorPuntaje = await obtenerEstudiantesConMejorPuntaje();
 
   return (
     <>
@@ -34,7 +39,13 @@ export default async function ReportsAndStatisticsPage() {
                 src={categoryImage}
                 alt="Primer Lugar"
               />
-              <p>Primer Lugar</p>
+              <p>
+                Primer Lugar:{" "}
+                {mejorPuntaje[0].usuario.p_nombre +
+                  " " +
+                  mejorPuntaje[0].usuario.p_apellido}{" "}
+                - Puntuación: {mejorPuntaje[0].puntaje_total}
+              </p>
             </div>
             <div className="fila-lugares" style={{ marginRight: "1rem" }}>
               <div className="lugar">
@@ -45,7 +56,13 @@ export default async function ReportsAndStatisticsPage() {
                   src={categoryImage}
                   alt="Segundo Lugar"
                 />
-                <p>Segundo Lugar</p>
+                <p>
+                  Segundo Lugar:{" "}
+                  {mejorPuntaje[1].usuario.p_nombre +
+                    " " +
+                    mejorPuntaje[1].usuario.p_apellido}{" "}
+                  - Puntuación: {mejorPuntaje[1].puntaje_total}
+                </p>
               </div>
               <div className="lugar">
                 <Image
@@ -55,7 +72,12 @@ export default async function ReportsAndStatisticsPage() {
                   src={categoryImage}
                   alt="Tercer Lugar"
                 />
-                <p>Tercer Lugar</p>
+                <p>
+                  {mejorPuntaje[2].usuario.p_nombre +
+                    " " +
+                    mejorPuntaje[2].usuario.p_apellido}{" "}
+                  - Puntuación: {mejorPuntaje[2].puntaje_total}
+                </p>
               </div>
             </div>
           </div>
@@ -70,7 +92,10 @@ export default async function ReportsAndStatisticsPage() {
                   alt="Imagen Pequeña"
                   className="small-image"
                 />
-                <p>4. Cuarto Puesto</p>
+                <p>
+                  4. Cuarto Puesto: {mejorPuntaje[3].usuario.p_nombre} -
+                  Puntuación: {mejorPuntaje[3].puntaje_total}
+                </p>
               </div>
               <div className="position">
                 <Image
@@ -81,30 +106,40 @@ export default async function ReportsAndStatisticsPage() {
                   alt="Imagen Pequeña"
                   className="small-image"
                 />
-                <div>5. Quinto Puesto</div>
+                <div>
+                  5. Quinto Puesto: {mejorPuntaje[4].usuario.p_nombre} -
+                  Puntuación: {mejorPuntaje[4].puntaje_total}
+                </div>
               </div>
             </div>
           </div>
         </div>
-        {/*divs en una fila  */}
-        <div className="container-fluid">
-          <div className="row chart-puntuacion">
-            <div className="chart-style02 col-md-4">
-              <h3>Promedio Puntuación Grado Tercero</h3>
-              <canvas id="ranking-chart-2" width={350} height={350} />
-            </div>
-            <div className="chart-style02 col-md-4">
-              <h3>Promedio Puntuación Grado Cuarto</h3>
-              <canvas id="ranking-chart-3" width={350} height={350} />
-            </div>
-            <div className="chart-style02 col-md-4">
-              <h3>Promedio Puntuación Grado Quinto</h3>
-              <canvas id="ranking-chart-4" width={350} height={350} />
-            </div>
-          </div>
-        </div>
 
-        <div className="chart-style02">
+        {/* <div className="container-fluid">
+          <div className="row chart-puntuacion">
+            <PieStatic
+              title={{
+                text: "Promedio Puntuación Grado Tercero",
+              }}
+              data={[]}
+            />
+
+            <PieStatic
+              title={{
+                text: "Promedio Puntuación Grado Tercero",
+              }}
+              data={[]}
+            />
+            <PieStatic
+              title={{
+                text: "Promedio Puntuación Grado Tercero",
+              }}
+              data={[]}
+            />
+          </div>
+        </div> */}
+
+        <div className="chart-style02" style={{ marginTop: "2rem" }}>
           <h2>Estudiantes Registrados</h2>
           <div id="active-students-list" className="student">
             <ol id="active-students">
