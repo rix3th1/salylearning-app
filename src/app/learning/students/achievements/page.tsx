@@ -2,6 +2,9 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import faroDelSaberLogro from "@/assets/farodelsaber.png";
 import genioDelQuizLogro from "@/assets/geniodelquiz.png";
 import genioEmergenteLogro from "@/assets/genioemergente.png";
+import { obtenerContadoresLogros } from "@/services/achievements.service";
+import { obtenerEstudiante } from "@/services/estudiantes.service";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 
@@ -9,7 +12,11 @@ export const metadata: Metadata = {
   title: "Logros: Estudiantes | Saly Learning",
 };
 
-export default function AchievementsPage() {
+export default async function AchievementsPage() {
+  const user = await obtenerPerfilUsuario();
+  const estudiante = await obtenerEstudiante(user.id);
+  const contadoresLogros = await obtenerContadoresLogros(estudiante.id);
+
   return (
     <>
       <PageHeader title="Logros" />
@@ -25,15 +32,21 @@ export default function AchievementsPage() {
                       <tr>
                         <td className="tabla-logros">
                           <h4>Libros Leídos</h4>
-                          <p id="logros-libros">2</p>
+                          <p id="logros-libros">
+                            {contadoresLogros[0]} unidades.
+                          </p>
                         </td>
                         <td className="tabla-logros">
                           <h4>Preguntas Correctas</h4>
-                          <p id="logros-preguntas">2</p>
+                          <p id="logros-preguntas">
+                            {contadoresLogros[1]} unidades.
+                          </p>
                         </td>
                         <td className="tabla-logros">
                           <h4>Tiempo de Lectura (min)</h4>
-                          <p id="logros-tiempo">2</p>
+                          <p id="logros-tiempo">
+                            {contadoresLogros[2]} minutos.
+                          </p>
                         </td>
                       </tr>
                     </tbody>
@@ -87,7 +100,7 @@ export default function AchievementsPage() {
 
               <div className="subcolumna">
                 <div className="row">
-                  <div className="col-md-6">
+                  <div className="col-md-12">
                     <h4>Historial de Logros</h4>
                     <ul className="list-group" style={{ color: "#317DFF" }}>
                       <li className="list-group-item">
@@ -95,16 +108,6 @@ export default function AchievementsPage() {
                       </li>
                       <li className="list-group-item">
                         Respondidas correctamente 60 preguntas (01/03/2024)
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="col-md-6">
-                    <h4>Logros Destacados</h4>
-                    <ul className="list-unstyled">
-                      <li>Leídos 15 libros en un mes</li>
-                      <li>
-                        Responder correctamente todas las preguntas de un libro
-                        difícil
                       </li>
                     </ul>
                   </div>
