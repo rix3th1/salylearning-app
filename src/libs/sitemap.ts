@@ -17,7 +17,7 @@ export const getAllPages = async () => {
       const fullPath = `${currentPath}/${item.name}`;
       if (item.isDirectory()) {
         // Exclude API directory
-        if (!fullPath.includes("/api")) {
+        if (!fullPath.includes("/api") && !fullPath.includes("/learning")) {
           await collectPages(fullPath, currentPages);
         }
       } else if (item.isFile() && item.name === "page.tsx") {
