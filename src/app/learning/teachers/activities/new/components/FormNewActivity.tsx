@@ -44,6 +44,7 @@ export default function FormNewActivity() {
         B: "",
         C: "",
         D: "",
+        opcion_correcta: "",
         id_libro,
       },
     ]);
@@ -77,12 +78,13 @@ export default function FormNewActivity() {
     try {
       const cuestionarioCreado = await crearCuestionarioConPreguntas({
         ...formData,
-        preguntas: preguntas.map(({ pregunta }) => ({
-          pregunta,
+        preguntas: preguntas.map(({ pregunta, opcion_correcta }) => ({
           id_libro: parseInt(id_libro),
+          pregunta,
+          opcion_correcta,
         })),
         opciones_respuesta: preguntas.map((p) => {
-          const { id, pregunta, id_libro, ...rest } = p;
+          const { id, pregunta, id_libro, opcion_correcta, ...rest } = p;
 
           let opciones_respuesta = [];
 
@@ -129,6 +131,7 @@ export default function FormNewActivity() {
           B: "",
           C: "",
           D: "",
+          opcion_correcta: "",
           id_libro,
         },
       ]);
@@ -308,6 +311,21 @@ export default function FormNewActivity() {
             required
             spellCheck={false}
           />
+          <label htmlFor="opcion_correcta">Opción correcta.</label>
+          <select
+            className="form-control"
+            name="opcion_correcta"
+            id="opcion_correcta"
+            onChange={(e) => handleChangePreguntas(index, e)}
+            value={pregunta.opcion_correcta}
+            required
+          >
+            <option value="">Seleccione la opción correcta</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+          </select>
         </div>
       ))}
 

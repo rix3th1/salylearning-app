@@ -12,6 +12,7 @@ export const preguntasInitState = [
     B: "",
     C: "",
     D: "",
+    opcion_correcta: "",
     id_libro: "",
   },
 ];
