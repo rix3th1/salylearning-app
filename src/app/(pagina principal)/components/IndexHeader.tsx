@@ -14,9 +14,9 @@ export default function IndexHeader() {
   return (
     <header className="py-5">
       <div className="container px-5 pb-5">
-        <div className="row gx-5 align-items-center">
+        <div className="row gx-5 align-items-center justify-content-center">
           <section className="col-xxl-5">
-            <article className="text-center text-xxl-start">
+            <article className="text-center text-center">
               <p className="fs-3 fw-light text-muted">
                 Leer te da el superpoder de aprender y soñar a la vez.
               </p>

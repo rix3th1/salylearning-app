@@ -4,7 +4,7 @@ import Dots from "./svgs/Dots";
 
 export default function ImageSection() {
   return (
-    <section className="col-xxl-7">
+    <section className="col-12">
       {/* Imagen de encabezado */}
       <div className="d-flex justify-content-center mt-5 mt-xxl-0">
         <div className="profile bg-gradient-primary-to-secondary">

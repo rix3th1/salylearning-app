@@ -10,12 +10,12 @@ export default function HeaderContent({
   setIsModalRegistroOpen,
 }: IProps) {
   return (
-    <section className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
+    <section className="d-flex gap-4 justify-content-center mb-3">
       <button
         onClick={() => {
           setIsModalInicioSesionOpen(true);
         }}
-        className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
+        className="btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder"
       >
         Iniciar{" "}
         <MdLogin
@@ -26,7 +26,7 @@ export default function HeaderContent({
         onClick={() => {
           setIsModalRegistroOpen(true);
         }}
-        className="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"
+        className="btn btn-primary btn-lg px-5 py-3 fs-6 fw-bolder"
       >
         Registrarse{" "}
         <MdOutlineArrowCircleRight
