@@ -33,86 +33,96 @@ export default async function ReportsAndStatisticsPage() {
             <div className="row">
               <div className="col-md-5">
                 {/* Contenido de la primera columna */}
-                <div className="ranking" style={{ marginRight: "1rem" }}>
-                  <Image
-                    width={525}
-                    height={525}
-                    quality={100}
-                    src={categoryImage}
-                    alt="Primer Lugar"
-                  />
-                  <p>
-                    Primer Lugar:{" "}
-                    {mejorPuntaje[0]?.usuario.p_nombre +
-                      " " +
-                      mejorPuntaje[0]?.usuario.p_apellido}{" "}
-                    - Puntuación: {mejorPuntaje[0]?.puntaje_total}
-                  </p>
-                </div>
+                {mejorPuntaje[0] && (
+                  <div className="ranking" style={{ marginRight: "1rem" }}>
+                    <Image
+                      width={525}
+                      height={525}
+                      quality={100}
+                      src={categoryImage}
+                      alt="Primer Lugar"
+                    />
+                    <p>
+                      Primer Lugar:{" "}
+                      {mejorPuntaje[0]?.usuario.p_nombre +
+                        " " +
+                        mejorPuntaje[0]?.usuario.p_apellido}{" "}
+                      - Puntuación: {mejorPuntaje[0]?.puntaje_total}
+                    </p>
+                  </div>
+                )}
                 <div className="fila-lugares" style={{ marginRight: "1rem" }}>
-                  <div className="lugar">
-                    <Image
-                      width={260}
-                      height={260}
-                      quality={100}
-                      src={categoryImage}
-                      alt="Segundo Lugar"
-                    />
-                    <p>
-                      Segundo Lugar:{" "}
-                      {mejorPuntaje[1]?.usuario.p_nombre +
-                        " " +
-                        mejorPuntaje[1]?.usuario.p_apellido}{" "}
-                      - Puntuación: {mejorPuntaje[1]?.puntaje_total}
-                    </p>
-                  </div>
-                  <div className="lugar">
-                    <Image
-                      width={260}
-                      height={260}
-                      quality={100}
-                      src={categoryImage}
-                      alt="Tercer Lugar"
-                    />
-                    <p>
-                      {mejorPuntaje[2]?.usuario.p_nombre +
-                        " " +
-                        mejorPuntaje[2]?.usuario.p_apellido}{" "}
-                      - Puntuación: {mejorPuntaje[2]?.puntaje_total}
-                    </p>
-                  </div>
+                  {mejorPuntaje[1] && (
+                    <div className="lugar">
+                      <Image
+                        width={260}
+                        height={260}
+                        quality={100}
+                        src={categoryImage}
+                        alt="Segundo Lugar"
+                      />
+                      <p>
+                        Segundo Lugar:{" "}
+                        {mejorPuntaje[1]?.usuario.p_nombre +
+                          " " +
+                          mejorPuntaje[1]?.usuario.p_apellido}{" "}
+                        - Puntuación: {mejorPuntaje[1]?.puntaje_total}
+                      </p>
+                    </div>
+                  )}
+                  {mejorPuntaje[2] && (
+                    <div className="lugar">
+                      <Image
+                        width={260}
+                        height={260}
+                        quality={100}
+                        src={categoryImage}
+                        alt="Tercer Lugar"
+                      />
+                      <p>
+                        {mejorPuntaje[2]?.usuario.p_nombre +
+                          " " +
+                          mejorPuntaje[2]?.usuario.p_apellido}{" "}
+                        - Puntuación: {mejorPuntaje[2]?.puntaje_total}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="col-md-7" style={{ marginTop: "2rem" }}>
                 <div className="other-positions">
-                  <div className="position">
-                    <Image
-                      width={110}
-                      height={110}
-                      quality={100}
-                      src={categoryImage}
-                      alt="Imagen Pequeña"
-                      className="small-image"
-                    />
-                    <p>
-                      4. Cuarto Puesto: {mejorPuntaje[3]?.usuario.p_nombre} -
-                      Puntuación: {mejorPuntaje[3]?.puntaje_total}
-                    </p>
-                  </div>
-                  <div className="position">
-                    <Image
-                      width={110}
-                      height={110}
-                      quality={100}
-                      src={categoryImage}
-                      alt="Imagen Pequeña"
-                      className="small-image"
-                    />
-                    <div>
-                      5. Quinto Puesto: {mejorPuntaje[4]?.usuario.p_nombre} -
-                      Puntuación: {mejorPuntaje[4]?.puntaje_total}
+                  {mejorPuntaje[3] && (
+                    <div className="position">
+                      <Image
+                        width={110}
+                        height={110}
+                        quality={100}
+                        src={categoryImage}
+                        alt="Imagen Pequeña"
+                        className="small-image"
+                      />
+                      <p>
+                        4. Cuarto Puesto: {mejorPuntaje[3]?.usuario.p_nombre} -
+                        Puntuación: {mejorPuntaje[3]?.puntaje_total}
+                      </p>
                     </div>
-                  </div>
+                  )}
+                  {mejorPuntaje[4] && (
+                    <div className="position">
+                      <Image
+                        width={110}
+                        height={110}
+                        quality={100}
+                        src={categoryImage}
+                        alt="Imagen Pequeña"
+                        className="small-image"
+                      />
+                      <div>
+                        5. Quinto Puesto: {mejorPuntaje[4]?.usuario.p_nombre} -
+                        Puntuación: {mejorPuntaje[4]?.puntaje_total}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
