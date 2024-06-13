@@ -57,12 +57,12 @@ export default async function BooksPage() {
           </div>
 
           <div className="row">
-            {generosLiterarios.map(async (genero: any, i: number) => {
+            {generosLiterarios.map(async (genero: any, index: number) => {
               const images: [] = await mapDataCarrousel(genero.nom_genero);
 
               return (
                 <div
-                  key={i}
+                  key={index}
                   className="col-xs-12 col-sm-6 col-md-6 text-justify lead"
                 >
                   <div className="custom-tile">

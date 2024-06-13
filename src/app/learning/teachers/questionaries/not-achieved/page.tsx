@@ -63,9 +63,9 @@ export default async function NotAchievedQuestionaries() {
               </thead>
               <tbody>
                 {cuestionariosEstudiantes.map(
-                  ({ cuestionario, estudiante }: any, i: number) => (
-                    <tr key={i} className="info">
-                      <td>{i + 1}</td>
+                  ({ cuestionario, estudiante }: any, index: number) => (
+                    <tr key={index} className="info">
+                      <td>{index + 1}</td>
                       <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
                       <td>
                         {`${estudiante.usuario.p_nombre} ${estudiante.usuario.p_apellido}`}

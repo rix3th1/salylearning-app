@@ -50,8 +50,8 @@ export default async function PopularBooksPage() {
       </div>
 
       <div className="container-fluid" id="libros-container">
-        {librosPopulares.map((libro: any, i: number) => (
-          <div key={i} className="media media-hover" data-tiempo="semana">
+        {librosPopulares.map((libro: any, index: number) => (
+          <div key={index} className="media media-hover" data-tiempo="semana">
             <div className="media-left media-middle">
               <Image
                 className="media-object"

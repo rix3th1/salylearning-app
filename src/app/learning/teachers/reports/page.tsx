@@ -131,8 +131,8 @@ export default async function ReportsAndStatisticsPage() {
               <h2>Estudiantes Registrados</h2>
               <div id="active-students-list" className="student">
                 <ol id="active-students">
-                  {nombresEstudiantes.map((nombre: string, i: number) => (
-                    <li key={i}>{nombre}</li>
+                  {nombresEstudiantes.map((nombre: string, index: number) => (
+                    <li key={index}>{nombre}</li>
                   ))}
                 </ol>
               </div>

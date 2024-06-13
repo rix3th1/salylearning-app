@@ -4,6 +4,7 @@ import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service"
 import type { Metadata } from "next";
 import Image from "next/image";
 import ActivitiesTabs from "../components/ActivitiesTabs";
+import FormResponderPreguntas from "./components/FormResponderPreguntas";
 
 export const metadata: Metadata = {
   title: "Pendientes (Actividades): Estudiantes | Saly Learning",
@@ -41,85 +42,107 @@ export default async function PendingActivitiesPage() {
               >
                 <div className="row" style={{ padding: "0 10px" }}>
                   {cuestionariosPendientes.length > 0 ? (
-                    cuestionariosPendientes.map((c: any, i: number) => {
-                      const preguntas = c.preguntas.map(
-                        ({ pregunta }: any) => ({
-                          pregunta,
-                          opciones_respuesta: c.opciones_respuesta,
-                        })
-                      );
+                    cuestionariosPendientes.map(
+                      (cuestionario: any, index: number) => {
+                        /**
+                         * @example
+                         * Tengo estos datos:
+                         *
+                         * const data = {
+                         *   c: {
+                         *     id: 2,
+                         *     fecha_asignado: '2024-06-12T16:46:28.000Z',
+                         *     fecha_entrega: '2017-02-27T04:45:00.000Z',
+                         *     estado: 'PENDIENTE',
+                         *     preguntas: [
+                         *       {
+                         *         pregunta: 'Et nostrum aliquid e',
+                         *         libros: { nom_libro: 'Vero ullam magna quo', mis_libros: [] }
+                         *       },
+                         *       {
+                         *         pregunta: 'Optio temporibus al',
+                         *         libros: { nom_libro: 'Vero ullam magna quo', mis_libros: [] }
+                         *       }
+                         *     ],
+                         *     opciones_respuesta: [
+                         *       { opcion: 'A', respuesta: 'Similique tempor omn' },
+                         *       { opcion: 'B', respuesta: 'Aut eaque quia alias' },
+                         *       { opcion: 'C', respuesta: 'Cillum perferendis e' },
+                         *       { opcion: 'D', respuesta: 'Eius id aspernatur n' },
+                         *       { opcion: 'A', respuesta: 'Consequatur ut non e' },
+                         *       { opcion: 'B', respuesta: 'Ut delectus laboris' },
+                         *       { opcion: 'C', respuesta: 'Ut laborum Quia sun' },
+                         *       { opcion: 'D', respuesta: 'Ducimus ea eum odio' }
+                         *     ]
+                         *   }
+                         * }
+                         *
+                         * Y quiero obtener una respuesta como esta:
+                         *
+                         * const result = [
+                         *   {
+                         *     pregunta: 'Et nostrum aliquid e',
+                         *     opciones_respuesta: [
+                         *       { opcion: 'A', respuesta: 'Similique tempor omn' },
+                         *       { opcion: 'B', respuesta: 'Aut eaque quia alias' },
+                         *       { opcion: 'C', respuesta: 'Cillum perferendis e' },
+                         *       { opcion: 'D', respuesta: 'Eius id aspernatur n' },
+                         *     ]
+                         *   },
+                         *   {
+                         *     pregunta: 'Optio temporibus al',
+                         *     opciones_respuesta: [
+                         *       { opcion: 'A', respuesta: 'Consequatur ut non e' },
+                         *       { opcion: 'B', respuesta: 'Ut delectus laboris' },
+                         *       { opcion: 'C', respuesta: 'Ut laborum Quia sun' },
+                         *       { opcion: 'D', respuesta: 'Ducimus ea eum odio' },
+                         *     ]
+                         *   }
+                         * ]
+                         */
 
-                      return (
-                        <div
-                          key={i}
-                          className="col-md-12"
-                          style={{
-                            backgroundColor: "#fcb67c",
-                            borderRadius: "10px",
-                            border: "1px solid #bec0c1",
-                            padding: "40px",
-                            marginBottom: "20px", // Espacio entre las filas
-                          }}
-                        >
-                          <h4
-                            className="mr-3"
+                        const preguntas = cuestionario.preguntas.map(
+                          (pregunta: any, index: number) => ({
+                            id: pregunta.id,
+                            pregunta: pregunta.pregunta,
+                            opciones_respuesta:
+                              cuestionario.opciones_respuesta.slice(
+                                index * 4,
+                                (index + 1) * 4
+                              ),
+                          })
+                        );
+
+                        return (
+                          <div
+                            key={index}
+                            className="col-md-12"
                             style={{
-                              fontWeight: "bold",
+                              backgroundColor: "#fcb67c",
+                              borderRadius: "10px",
+                              border: "1px solid #bec0c1",
+                              padding: "40px",
+                              marginBottom: "20px",
                             }}
                           >
-                            Actividad {i + 1} -{" "}
-                            {c.preguntas[0]?.libros?.nom_libro}
-                          </h4>
-                          <hr />
+                            <h4
+                              className="mr-3"
+                              style={{
+                                fontWeight: "bold",
+                              }}
+                            >
+                              {`Actividad ${cuestionario.id} - Cuestionario: ${cuestionario.preguntas[0]?.libros?.nom_libro}`}
+                            </h4>
+                            <hr />
 
-                          <form>
-                            {preguntas.map((p: any, j: number) => (
-                              <div
-                                key={j}
-                                className="form-group"
-                                style={{
-                                  marginBottom: "20px",
-                                }}
-                              >
-                                <h4 style={{ fontStyle: "italic" }}>
-                                  <span style={{ fontWeight: "bold" }}>
-                                    {j + 1}.
-                                  </span>{" "}
-                                  {p.pregunta}
-                                </h4>
-                                <div className="form-check">
-                                  {p.opciones_respuesta.map(
-                                    ({ opcion, respuesta }: any) => (
-                                      <div className="form-check" key={opcion}>
-                                        <input
-                                          className="form-check-input"
-                                          type="radio"
-                                          name={p.pregunta}
-                                          id={opcion}
-                                          value={opcion}
-                                        />
-                                        <label
-                                          className="form-check-label"
-                                          htmlFor={opcion}
-                                        >
-                                          {" "}
-                                          {opcion}.{" "}
-                                          <span
-                                            style={{ fontWeight: "normal" }}
-                                          >
-                                            {respuesta}
-                                          </span>
-                                        </label>
-                                      </div>
-                                    )
-                                  )}
-                                </div>
-                              </div>
-                            ))}
-                          </form>
-                        </div>
-                      );
-                    })
+                            <FormResponderPreguntas
+                              preguntas={preguntas}
+                              cuestionario={cuestionario}
+                            />
+                          </div>
+                        );
+                      }
+                    )
                   ) : (
                     <div className="text-center">
                       <Image
