@@ -153,6 +153,20 @@ export default function FormRegistro({
             </select>
           </div>
         )}
+
+        {formData.rol === "DOCENTE" && (
+          <div className="form-group col-md-6 py-3">
+            <input
+              name="cod_docente"
+              type="text"
+              className="form-control"
+              placeholder="Código Docente"
+              required
+              onChange={handleChange}
+              value={formData.cod_docente}
+            />
+          </div>
+        )}
         <div className="form-group col-md-6 py-3">
           <select
             name="rol"

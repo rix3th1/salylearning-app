@@ -11,6 +11,7 @@ export const registrarseInitState = {
   confirmar_password: "",
   id_grado: "",
   rol: "",
+  cod_docente: "",
 };
 
 export async function autenticar(username: string, password: string) {
@@ -39,6 +40,7 @@ export async function registrarse(formData: typeof registrarseInitState) {
       username: formData.email.split("@")[0],
       s_nombre: formData.s_nombre || null,
       s_apellido: formData.s_apellido || null,
+      cod_docente: formData.cod_docente || null,
     }),
     headers: { "Content-Type": "application/json" },
   });
