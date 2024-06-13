@@ -37,6 +37,7 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
 
       try {
         if (imagen_portada instanceof File) {
+          // 5 MB
           if (imagen_portada.size > 5000 * 1024) {
             throw new Error("La imagen de portada no debe superar los 5MB");
           }
@@ -46,7 +47,8 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
         }
 
         if (video_libro instanceof File) {
-          if (video_libro.size > 50000 * 1024) {
+          // 200 MB
+          if (video_libro.size > 200000 * 1024) {
             throw new Error("El video del libro no debe superar los 50MB");
           }
           if (!/(mp4)$/i.test(video_libro.type)) {
