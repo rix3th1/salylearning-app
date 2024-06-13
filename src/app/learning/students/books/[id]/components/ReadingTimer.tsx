@@ -41,6 +41,8 @@ export default function ReadingTimer({ id_libro_estudiante, libro }: IProps) {
     }, 60000); // 60000ms = 1 minute
 
     return () => clearInterval(interval); // Cleanup interval on component unmount
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
