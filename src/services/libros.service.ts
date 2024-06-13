@@ -63,6 +63,22 @@ async function obtenerLibrosS() {
   return data;
 }
 
+export async function obtenerLibrosPorNombre(nombre: string) {
+  const res = await fetchClient(`/libros/nombre?nom_libro=${nombre}`, {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(
+      "Ocurrió un error al obtener la información de los libros, por favor intente de nuevo."
+    );
+  }
+
+  return data;
+}
+
 export async function obtenerLibro(id: string) {
   const res = await fetchServer(`/libros/${id}`, {
     method: "GET",

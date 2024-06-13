@@ -1,19 +1,19 @@
 import { plus_jakarta_sans } from "@/app/fonts";
-import { useState } from "react";
+import { obtenerLibrosPorNombre } from "@/services/libros.service";
+import confetti from "canvas-confetti";
 import { MdCancel, MdSearch } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import ListLibrosFound from "./ListLibrosFound";
 
 export default function SearchBookButton() {
-  const [inputValue, setInputValue] = useState("");
-
-  const showSearchBookSwal = () => {
-    withReactContent(Swal).fire({
+  const showSearchBookSwal = async () => {
+    const result = await withReactContent(Swal).fire({
       customClass: plus_jakarta_sans.className,
       title: "¿Qué libro estás buscando?",
       text: "Por favor escribe el nombre del libro",
       input: "text",
-      inputValue,
+      inputPlaceholder: "Escribe aquí el nombre de libro",
       showCancelButton: true,
       confirmButtonText: (
         <>
@@ -25,15 +25,32 @@ export default function SearchBookButton() {
           <MdCancel /> Cancelar
         </>
       ),
-      inputPlaceholder: "Escribe aquí el nombre de libro",
-      preConfirm: (inputValue) => {
-        if (!inputValue) {
+      showLoaderOnConfirm: true,
+      preConfirm: async (nom_libro) => {
+        if (!nom_libro) {
           Swal.showValidationMessage("Debes escribir el nombre del libro");
         }
 
-        setInputValue(inputValue);
+        try {
+          return await obtenerLibrosPorNombre(nom_libro);
+        } catch (error) {
+          if (error instanceof Error) {
+            Swal.showValidationMessage(error.message.replace(/,/g, ", "));
+          }
+        }
       },
+      allowOutsideClick: () => !Swal.isLoading(),
     });
+
+    if (result.isConfirmed) {
+      confetti();
+      withReactContent(Swal).fire({
+        customClass: plus_jakarta_sans.className,
+        title: "Hemos encontrado los siguientes libros",
+        html: <ListLibrosFound libros={result.value} />,
+        icon: result.value.length > 0 ? "success" : "error",
+      });
+    }
   };
 
   return (

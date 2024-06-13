@@ -4,7 +4,7 @@ import { obtenerLibrosPopulares } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MdSearch } from "react-icons/md";
-import ButtonMoreInfoBook from "./components/ButtonMoreInfoBook";
+import ListLibros from "./components/ListLibros";
 
 export const metadata: Metadata = {
   title: "Libros Populares: Docentes | Saly Learning",
@@ -51,30 +51,7 @@ export default async function PopularBooksPage() {
 
       <div className="container-fluid" id="libros-container">
         {librosPopulares.map((libro: any, index: number) => (
-          <div key={index} className="media media-hover" data-tiempo="semana">
-            <div className="media-left media-middle">
-              <Image
-                className="media-object"
-                src={libro.imagen_portada}
-                alt={libro.nom_libro}
-                width={60}
-                height={60}
-                quality={75}
-                style={{ borderRadius: "5px" }}
-              />
-            </div>
-            <div className="media-body">
-              <h4 className="media-heading">{`"${libro.nom_libro}" de ${libro.autor}`}</h4>
-              <div className="pull-left" style={{ fontWeight: "bold" }}>
-                {libro.autor}
-                <br />
-                Publicación original: {new Date(libro.fecha_pub).getFullYear()}
-              </div>
-              <p className="text-center pull-right">
-                <ButtonMoreInfoBook libro_descripcion={libro.descripcion} />
-              </p>
-            </div>
-          </div>
+          <ListLibros key={index} libros={libro} />
         ))}
       </div>
     </>
