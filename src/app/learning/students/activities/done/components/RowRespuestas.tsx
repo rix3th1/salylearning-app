@@ -11,6 +11,7 @@ export default function RowRespuestas({ actividadesCompletadas }: IProps) {
     ({ cuestionario, calificacion }: any, index: number) => {
       return (
         <tr
+          key={index}
           className="success"
           onClick={() => showSwalRespuestasCuestionario({ cuestionario })}
         >
