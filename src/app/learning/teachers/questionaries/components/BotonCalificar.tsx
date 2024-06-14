@@ -11,7 +11,7 @@ interface IProps {
   id_cuestionario: string;
   estadoCuestionario: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO";
   calificacion: any;
-  cuestionario: any;
+  cuestionario?: any;
 }
 
 export default function BotonCalificar({
