@@ -60,3 +60,23 @@ export async function obtenerCuestionariosEstudiantesPorEstado(
 
   return data;
 }
+
+export async function obtenerCuestionarioEstudiantePorEstado(
+  estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO",
+  id_estudiante: string
+) {
+  const res = await fetchServer(
+    `/cuestionario-estudiante/estado/${id_estudiante}?estado_cuestionario=${estado}`,
+    {
+      method: "GET",
+    }
+  );
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}

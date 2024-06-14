@@ -1,14 +1,24 @@
 import PageHeader from "@/app/learning/components/PageHeader";
-import terminasteImage from "@/assets/Terminaste.png";
+import Nothing from "@/app/learning/teachers/questionaries/components/Nothing";
+import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionario-estudiante.service";
+import { obtenerEstudiante } from "@/services/estudiantes.service";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
-import Image from "next/image";
 import ActivitiesTabs from "../components/ActivitiesTabs";
+import RowRespuestas from "./components/RowRespuestas";
 
 export const metadata: Metadata = {
   title: "Hechas (Actividades): Estudiantes | Saly Learning",
 };
 
-export default function PendingActivitiesPage() {
+export default async function PendingActivitiesPage() {
+  const user = await obtenerPerfilUsuario();
+  const estudiante = await obtenerEstudiante(user.id);
+  const actividadesCompletadas = await obtenerCuestionarioEstudiantePorEstado(
+    "COMPLETADO",
+    estudiante.id
+  );
+
   return (
     <>
       <PageHeader title="Actividades hechas" />
@@ -20,24 +30,31 @@ export default function PendingActivitiesPage() {
         >
           <ActivitiesTabs />
 
-          <div className="tab-content">
-            <Image
-              src={terminasteImage}
-              className="img-finish"
-              style={{ margin: "2rem 0", borderRadius: "10px" }}
-              alt="estas al dia"
-              width={200}
-              height={300}
-              quality={100}
-              placeholder="blur"
-            />
-            <div id="hecho">
-              {/* Contenido de "Hecho" */}
-              <h2>¡Actividades hechas!</h2>
-              <p>¡Felicidades por completar estas actividades!</p>
-              <div className="row">
-                {/* Tarjetas de actividades hechas aquí */}
-              </div>
+          <div className="container">
+            <h2>¡Actividades hechas!</h2>
+            <p>¡Felicidades por completar estas actividades!</p>
+            <div className="row" style={{ marginTop: "3rem" }}>
+              {actividadesCompletadas.length > 0 ? (
+                <div className="table-responsive text-left">
+                  <table className="table table-hover">
+                    <thead>
+                      <tr className="active">
+                        <th>No.</th>
+                        <th>Nombre del libro</th>
+                        <th>Número de preguntas</th>
+                        <th>Calificación</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <RowRespuestas
+                        actividadesCompletadas={actividadesCompletadas}
+                      />
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <Nothing type="completados" />
+              )}
             </div>
           </div>
         </div>

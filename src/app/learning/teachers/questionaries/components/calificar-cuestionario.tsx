@@ -67,29 +67,76 @@ export async function showSwalcalificarCuestionario({
   }
 }
 
-export async function showSwalRespuestasCuestionario() {
+export async function showSwalRespuestasCuestionario({
+  cuestionario,
+}: {
+  cuestionario: any;
+}) {
+  const respuestas = cuestionario.preguntas.map(
+    (pregunta: any, index: number) => ({
+      id: pregunta.id,
+      pregunta: pregunta.pregunta,
+      opciones_respuesta: cuestionario.opciones_respuesta.slice(
+        index * 4,
+        (index + 1) * 4
+      ),
+      respuesta: cuestionario.respuestas[index].respuesta,
+    })
+  );
+
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
-    title: "Calificar cuestionario",
+    title: "Respuestas cuestionario",
     text: "¿Qué calificación quieres?",
     html: (
       <>
-        <p>Calificaciones:</p>
-        <ul>
-          <li>A: 10</li>
-          <li>B: 9</li>
-          <li>C: 8</li>
-          <li>D: 7</li>
-          <li>E: 6</li>
-          <li>F: 5</li>
-          <li>G: 4</li>
-          <li>H: 3</li>
-          <li>I: 2</li>
-          <li>J: 1</li>
-        </ul>
+        <p
+          style={{
+            fontSize: "0.8rem",
+            fontWeight: "bold",
+            color: "#007bff",
+            fontStyle: "italic",
+          }}
+        >
+          Respuestas cuestionario del estudiante:
+        </p>
+        <ol className="text-left">
+          {respuestas.map((respuesta: any, index: number) => (
+            <li key={index}>
+              <p style={{ fontWeight: "bold" }}>{respuesta.pregunta}</p>
+
+              <ul>
+                {respuesta.opciones_respuesta.map(
+                  (opcion_respuesta: any, index: number) => {
+                    return (
+                      <p
+                        key={index}
+                        className={`text-${
+                          opcion_respuesta.opcion === respuesta.respuesta
+                            ? "success"
+                            : "danger"
+                        }`}
+                      >
+                        <span style={{ fontWeight: "bold" }}>
+                          {opcion_respuesta.opcion}.
+                        </span>{" "}
+                        {opcion_respuesta.respuesta}{" "}
+                        {opcion_respuesta.opcion === respuesta.respuesta ? (
+                          <MdCheckCircle />
+                        ) : (
+                          <MdCancel />
+                        )}
+                      </p>
+                    );
+                  }
+                )}
+              </ul>
+            </li>
+          ))}
+        </ol>
       </>
     ),
-    icon: "success",
+    icon: "info",
     confirmButtonText: (
       <>
         <MdCheckCircle /> Aceptar

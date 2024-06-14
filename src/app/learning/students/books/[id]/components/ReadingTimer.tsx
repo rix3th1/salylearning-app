@@ -1,5 +1,6 @@
 "use client";
 
+import { realisticLookConfetti } from "@/libs/confetti";
 import {
   actualizarLibroEstudiante,
   obtenerLibroEstudiante,
@@ -7,7 +8,6 @@ import {
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import "./styles.css";
-import confetti from "canvas-confetti";
 
 interface IProps {
   id_libro_estudiante: string;
@@ -67,7 +67,7 @@ export default function ReadingTimer({ id_libro_estudiante, libro }: IProps) {
           actualizarLibroEstudiante(id_libro_estudiante, {
             terminado: true,
           });
-          confetti();
+          realisticLookConfetti();
           toast.success("¡Lectura terminada!");
         }}
       >

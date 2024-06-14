@@ -11,12 +11,14 @@ interface IProps {
   id_cuestionario: string;
   estadoCuestionario: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO";
   calificacion: any;
+  cuestionario: any;
 }
 
 export default function BotonCalificar({
   id_cuestionario,
   calificacion,
   estadoCuestionario,
+  cuestionario,
 }: IProps) {
   const router = useRouter();
 
@@ -26,7 +28,9 @@ export default function BotonCalificar({
     }
 
     if (estadoCuestionario === "COMPLETADO") {
-      const result = await showSwalRespuestasCuestionario();
+      const result = await showSwalRespuestasCuestionario({
+        cuestionario,
+      });
 
       if (result.isConfirmed) {
         await showSwalcalificarCuestionario({ id_cuestionario });

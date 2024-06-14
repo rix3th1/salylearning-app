@@ -98,6 +98,7 @@ export default async function CompletedQuestionariesPage() {
                           id_cuestionario={cuestionario_id}
                           estadoCuestionario={estado}
                           calificacion={calificacion}
+                          cuestionario={cuestionario}
                         />
                       </td>
                     </tr>

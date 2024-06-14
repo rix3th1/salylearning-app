@@ -1,6 +1,7 @@
 "use client";
 
 import { plus_jakarta_sans } from "@/app/fonts";
+import { realisticLookConfetti } from "@/libs/confetti";
 import { responderPreguntasCuestionario } from "@/services/respuestas.service";
 import { THandleSubmit } from "@/types";
 import { useRouter } from "next-nprogress-bar";
@@ -43,13 +44,15 @@ export default function FormResponderPreguntas({
 
       router.refresh();
 
-      Swal.fire({
+      await Swal.fire({
         customClass: plus_jakarta_sans.className,
         title: "¡Respuestas enviadas!",
         text: "Has completado la actividad.",
         icon: "success",
         timer: 3000,
       });
+
+      realisticLookConfetti();
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({

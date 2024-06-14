@@ -1,6 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import terminasteImage from "@/assets/Terminaste.png";
-import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionarios.service";
+import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionario-estudiante.service";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";

@@ -1,9 +1,9 @@
 import { fetchServer } from "./api.service";
 
 export enum EstadoCuestionario {
-  COMPLETADO = "COMPLETADO",
   PENDIENTE = "PENDIENTE",
   NO_LOGRADO = "NO_LOGRADO",
+  COMPLETADO = "COMPLETADO",
 }
 
 const commonUrls = ["/libros/contar"];
