@@ -43,8 +43,8 @@ export default function ModalAvatar({
     const avatar = { id_avatar: `${idAvatarSelected}` };
     toast.promise(actualizarAvatarUsuario(avatar_id, avatar), {
       success() {
-        setIsAvatarModalOpen(false);
         router.refresh();
+        setIsAvatarModalOpen(false);
         return "Avatar actualizado correctamente!";
       },
       error(error) {

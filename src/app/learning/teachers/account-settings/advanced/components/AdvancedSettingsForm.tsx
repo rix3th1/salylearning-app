@@ -62,6 +62,9 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
 
       const docente = await actualizarDocente(teacher.id, { cod_docente });
 
+      router.refresh();
+      router.push("/learning/teachers/account-settings/profile");
+
       Swal.fire({
         customClass: plus_jakarta_sans.className,
         title: "¡Perfíl docente actualizado!",
@@ -69,9 +72,6 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
         icon: "success",
         timer: 1500,
       });
-
-      router.refresh();
-      router.push("/learning/teachers/account-settings/profile");
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({

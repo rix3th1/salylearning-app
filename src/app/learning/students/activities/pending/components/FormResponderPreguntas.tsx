@@ -41,6 +41,8 @@ export default function FormResponderPreguntas({
         }))
       );
 
+      router.refresh();
+
       Swal.fire({
         customClass: plus_jakarta_sans.className,
         title: "¡Respuestas enviadas!",
@@ -48,7 +50,6 @@ export default function FormResponderPreguntas({
         icon: "success",
         timer: 3000,
       });
-      router.refresh();
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({

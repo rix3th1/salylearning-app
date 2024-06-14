@@ -89,6 +89,8 @@ export default function FormAccount({ user, student }: IProps) {
         apodo,
       });
 
+      router.refresh();
+
       Swal.fire({
         customClass: plus_jakarta_sans.className,
         title: "¡Perfíl estudiante actualizado!",
@@ -96,8 +98,6 @@ export default function FormAccount({ user, student }: IProps) {
         icon: "success",
         timer: 1500,
       });
-
-      router.refresh();
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({

@@ -2,15 +2,12 @@
 
 import { plus_jakarta_sans } from "@/app/fonts";
 import { crearLibro } from "@/services/libros.service";
-import confetti from "canvas-confetti";
-import { useRouter } from "next-nprogress-bar";
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import { MdCancel, MdCheckCircle, MdUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import FormNewBook from "./FormNewBook";
 
-const showSwalUploadBook = async (router: AppRouterInstance) => {
+const showSwalUploadBook = async () => {
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
     title: "Subir nuevo libro",
@@ -67,9 +64,7 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
   });
 
   if (result.isConfirmed) {
-    router.refresh();
-
-    withReactContent(Swal).fire({
+    await withReactContent(Swal).fire({
       customClass: plus_jakarta_sans.className,
       title: "Libro subido a la plataforma SalyLearning exitosamente!",
       width: 600,
@@ -89,18 +84,13 @@ const showSwalUploadBook = async (router: AppRouterInstance) => {
       ),
     });
 
-    confetti();
+    window.location.reload();
   }
 };
 
 export default function UploadBookButton() {
-  const router = useRouter();
-
   return (
-    <button
-      onClick={() => showSwalUploadBook(router)}
-      className="btn btn-success"
-    >
+    <button onClick={showSwalUploadBook} className="btn btn-success">
       <MdUpload /> Subir Libro
     </button>
   );

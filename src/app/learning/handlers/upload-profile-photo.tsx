@@ -50,14 +50,14 @@ export const showSwalUploadProfilePhoto = async (
   });
 
   if (result.isConfirmed) {
-    await Swal.fire({
+    router.refresh();
+
+    Swal.fire({
       customClass: plus_jakarta_sans.className,
       title: "Foto de perfil subida exitosamente!",
       text: "Tu foto de perfil ha sido subida exitosamente.",
       icon: "success",
       timer: 3000,
     });
-
-    router.refresh();
   }
 };
