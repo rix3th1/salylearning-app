@@ -3,9 +3,10 @@ import calendarImage from "@/assets/calendar.png";
 import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MdDescription } from "react-icons/md";
+import BotonCalificar from "../components/BotonCalificar";
 import Nothing from "../components/Nothing";
 import QuestionariesTabs from "../components/QuestionariesTabs";
+import { RelativeTime } from "../components/RelativeTime";
 
 export const metadata: Metadata = {
   title: "No logrados (Cuestionarios): Docentes | Saly Learning",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default async function NotAchievedQuestionaries() {
   const cuestionariosEstudiantes =
-    await obtenerCuestionariosEstudiantesPorEstado("PENDIENTE");
+    await obtenerCuestionariosEstudiantesPorEstado("NO_LOGRADO");
 
   return (
     <>
@@ -53,27 +54,27 @@ export default async function NotAchievedQuestionaries() {
                 <tr className="active">
                   <th>No.</th>
                   <th>Nombre de libro</th>
-                  <th>Nombre de usuario</th>
+                  <th>Nombre estudiante</th>
                   <th>Grado</th>
-                  <th>Fecha asignado</th>
-                  <th>Fecha entrega</th>
+                  <th>Asignado</th>
                   <th>Estado</th>
-                  <th>Ver puntuación</th>
+                  <th>Calificación</th>
                 </tr>
               </thead>
               <tbody>
                 {cuestionariosEstudiantes.map(
                   (
                     {
+                      id: cuestionario_id,
                       fecha_asignado,
-                      fecha_entrega,
                       estado,
+                      calificacion,
                       cuestionario,
                       estudiante,
                     }: any,
                     index: number
                   ) => (
-                    <tr key={index} className="info">
+                    <tr key={index} className="danger">
                       <td>{index + 1}</td>
                       <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
                       <td>
@@ -82,15 +83,18 @@ export default async function NotAchievedQuestionaries() {
                       <td>
                         {estudiante.usuario.grado_usuario.grados.nom_grado}
                       </td>
-                      <td>{new Date(fecha_asignado).toLocaleString()}</td>
-                      <td>{new Date(fecha_entrega).toLocaleString()}</td>
+                      <td>
+                        <RelativeTime datetime={fecha_asignado} />
+                      </td>
                       <td>
                         <span className="label label-danger">{estado}</span>
                       </td>
                       <td>
-                        <button className="btn btn-info">
-                          <MdDescription />
-                        </button>
+                        <BotonCalificar
+                          id_cuestionario={cuestionario_id}
+                          estadoCuestionario={estado}
+                          calificacion={calificacion}
+                        />
                       </td>
                     </tr>
                   )

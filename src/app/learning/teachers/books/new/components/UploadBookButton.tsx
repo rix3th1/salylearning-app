@@ -2,6 +2,7 @@
 
 import { plus_jakarta_sans } from "@/app/fonts";
 import { crearLibro } from "@/services/libros.service";
+import { useRouter } from "next-nprogress-bar";
 import { MdCancel, MdCheckCircle, MdUpload } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -63,34 +64,42 @@ const showSwalUploadBook = async () => {
     allowOutsideClick: () => !Swal.isLoading(),
   });
 
-  if (result.isConfirmed) {
-    await withReactContent(Swal).fire({
-      customClass: plus_jakarta_sans.className,
-      title: "Libro subido a la plataforma SalyLearning exitosamente!",
-      width: 600,
-      padding: "3em",
-      color: "#716add",
-      background: "#fff url(/trees.png)",
-      backdrop: `
-        rgba(0,0,123,0.4)
-        url("/nyan-cat.gif")
-        left bottom
-        no-repeat
-      `,
-      confirmButtonText: (
-        <>
-          <MdCheckCircle /> Aceptar
-        </>
-      ),
-    });
-
-    window.location.reload();
-  }
+  return result;
 };
 
 export default function UploadBookButton() {
+  const router = useRouter();
+
+  const handleClickUploadBook = async () => {
+    const result = await showSwalUploadBook();
+
+    if (result.isConfirmed) {
+      router.refresh();
+
+      withReactContent(Swal).fire({
+        customClass: plus_jakarta_sans.className,
+        title: "Libro subido a la plataforma SalyLearning exitosamente!",
+        width: 600,
+        padding: "3em",
+        color: "#716add",
+        background: "#fff url(/trees.png)",
+        backdrop: `
+          rgba(0,0,123,0.4)
+          url("/nyan-cat.gif")
+          left bottom
+          no-repeat
+        `,
+        confirmButtonText: (
+          <>
+            <MdCheckCircle /> Aceptar
+          </>
+        ),
+      });
+    }
+  };
+
   return (
-    <button onClick={showSwalUploadBook} className="btn btn-success">
+    <button onClick={handleClickUploadBook} className="btn btn-success">
       <MdUpload /> Subir Libro
     </button>
   );

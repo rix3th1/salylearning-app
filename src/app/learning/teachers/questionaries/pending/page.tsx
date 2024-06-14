@@ -3,9 +3,9 @@ import clockImage from "@/assets/clock.png";
 import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MdSchedule } from "react-icons/md";
 import Nothing from "../components/Nothing";
 import QuestionariesTabs from "../components/QuestionariesTabs";
+import { RelativeTime } from "../components/RelativeTime";
 
 export const metadata: Metadata = {
   title: "Pendientes (Cuestionarios): Docentes | Saly Learning",
@@ -53,11 +53,11 @@ export default async function PendingQuestionaries() {
                 <tr className="active">
                   <th>No.</th>
                   <th>Nombre de libro</th>
-                  <th>Nombre de usuario</th>
+                  <th>Nombre de estudiante</th>
                   <th>Grado</th>
-                  <th>Fecha asignado</th>
-                  <th>Fecha entrega</th>
-                  <th>Ver puntuación</th>
+                  <th>Asignado</th>
+                  <th>Entrega</th>
+                  <th>Estado</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,10 +68,11 @@ export default async function PendingQuestionaries() {
                       fecha_entrega,
                       cuestionario,
                       estudiante,
+                      estado,
                     }: any,
                     index: number
                   ) => (
-                    <tr key={index} className="info">
+                    <tr key={index} className="warning">
                       <td>{index + 1}</td>
                       <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
                       <td>
@@ -80,12 +81,14 @@ export default async function PendingQuestionaries() {
                       <td>
                         {estudiante.usuario.grado_usuario.grados.nom_grado}
                       </td>
-                      <td>{new Date(fecha_asignado).toLocaleString()}</td>
-                      <td>{new Date(fecha_entrega).toLocaleString()}</td>
                       <td>
-                        <button className="btn btn-success">
-                          <MdSchedule />
-                        </button>
+                        <RelativeTime datetime={fecha_asignado} />
+                      </td>
+                      <td>
+                        <RelativeTime datetime={fecha_entrega} />
+                      </td>
+                      <td>
+                        <span className="label label-warning">{estado}</span>
                       </td>
                     </tr>
                   )

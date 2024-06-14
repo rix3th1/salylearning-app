@@ -5,6 +5,25 @@ const asignarCuestionarioInitState = {
   fecha_entrega: "",
 };
 
+export async function calificarCuestionarioEstudiante(
+  id_cuestionario: string,
+  calificacion: number
+) {
+  const res = await fetchClient(`/cuestionario-estudiante/${id_cuestionario}`, {
+    method: "PATCH",
+    body: JSON.stringify({ calificacion }),
+    headers: { "Content-Type": "application/json" },
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
+
 export async function asignarCuestionarioEstudianteATodosLosEstudiantes(
   formData: typeof asignarCuestionarioInitState
 ) {
