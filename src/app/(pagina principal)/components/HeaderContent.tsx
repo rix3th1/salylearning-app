@@ -10,7 +10,7 @@ export default function HeaderContent({
   setIsModalRegistroOpen,
 }: IProps) {
   return (
-    <section className="d-flex gap-4 justify-content-center mb-3">
+    <section className="d-grid gap-3 d-sm-flex justify-content-center mb-3">
       <button
         onClick={() => {
           setIsModalInicioSesionOpen(true);
