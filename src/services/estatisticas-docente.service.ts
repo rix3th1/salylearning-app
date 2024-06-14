@@ -3,8 +3,8 @@ import { fetchServer } from "./api.service";
 const urls = [
   "/libros-estudiante/estadisticas-semanales?terminado=true",
   "/libros-estudiante/estadisticas-semanales?terminado=false",
-  "/cuestionarios/estadisticas-semanales?estado_cuestionario=COMPLETADO",
-  "/cuestionarios/estadisticas-semanales?estado_cuestionario=PENDIENTE",
+  "/cuestionario-estudiante/estadisticas-semanales?estado_cuestionario=COMPLETADO",
+  "/cuestionario-estudiante/estadisticas-semanales?estado_cuestionario=PENDIENTE",
 ];
 
 export async function obtenerEstadisticasDocente() {

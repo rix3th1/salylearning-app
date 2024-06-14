@@ -63,7 +63,16 @@ export default async function NotAchievedQuestionaries() {
               </thead>
               <tbody>
                 {cuestionariosEstudiantes.map(
-                  ({ cuestionario, estudiante }: any, index: number) => (
+                  (
+                    {
+                      fecha_asignado,
+                      fecha_entrega,
+                      estado,
+                      cuestionario,
+                      estudiante,
+                    }: any,
+                    index: number
+                  ) => (
                     <tr key={index} className="info">
                       <td>{index + 1}</td>
                       <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
@@ -73,16 +82,10 @@ export default async function NotAchievedQuestionaries() {
                       <td>
                         {estudiante.usuario.grado_usuario.grados.nom_grado}
                       </td>
+                      <td>{new Date(fecha_asignado).toLocaleString()}</td>
+                      <td>{new Date(fecha_entrega).toLocaleString()}</td>
                       <td>
-                        {new Date(cuestionario.fecha_asignado).toLocaleString()}
-                      </td>
-                      <td>
-                        {new Date(cuestionario.fecha_entrega).toLocaleString()}
-                      </td>
-                      <td>
-                        <span className="label label-danger">
-                          {cuestionario.estado}
-                        </span>
+                        <span className="label label-danger">{estado}</span>
                       </td>
                       <td>
                         <button className="btn btn-info">

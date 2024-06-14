@@ -13,7 +13,8 @@ const urlsParaDocentes: string[] = [
   ...commonUrls,
   "/generos-literarios/contar",
   ...Object.values(EstadoCuestionario).map(
-    (e) => `/cuestionarios/contar/estado?estado_cuestionario=${e}`
+    (estado_cuestionario) =>
+      `/cuestionario-estudiante/contar/estado?estado_cuestionario=${estado_cuestionario}`
   ),
 ];
 

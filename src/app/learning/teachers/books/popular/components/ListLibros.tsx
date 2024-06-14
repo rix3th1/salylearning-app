@@ -8,8 +8,12 @@ interface IProps {
 export default function ListLibros({ libros }: IProps) {
   if (!libros.length) {
     return (
-      <div className="text-center">
-        <p>No hay libros disponibles para este género literario.</p>
+      <div className="row">
+        <div className="col-md-12 text-center">
+          <div className="alert alert-warning">
+            <p>En este momento no hay libros populares.</p>
+          </div>
+        </div>
       </div>
     );
   }

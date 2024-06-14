@@ -10,12 +10,12 @@ import Swal from "sweetalert2";
 
 interface IProps {
   preguntas: any;
-  cuestionario: any;
+  cuestionario_id: string;
 }
 
 export default function FormResponderPreguntas({
   preguntas,
-  cuestionario,
+  cuestionario_id,
 }: IProps) {
   const [isLoading, setIsLoading] = useState(false);
 
@@ -66,7 +66,7 @@ export default function FormResponderPreguntas({
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="hidden" name="id_cuestionario" value={cuestionario.id} />
+      <input type="hidden" name="id_cuestionario" value={cuestionario_id} />
       {preguntas.map(
         ({ id: pregunta_id, pregunta, opciones_respuesta }: any, j: number) => (
           <div

@@ -77,7 +77,6 @@ export default function FormNewActivity() {
 
     try {
       const cuestionarioCreado = await crearCuestionarioConPreguntas({
-        ...formData,
         preguntas: preguntas.map(({ pregunta, opcion_correcta }) => ({
           id_libro: parseInt(id_libro),
           pregunta,
@@ -110,9 +109,10 @@ export default function FormNewActivity() {
       const id_cuestionario = cuestionarioCreado.id;
 
       const cuestionarioEstudianteAsignaciones =
-        await asignarCuestionarioEstudianteATodosLosEstudiantes(
-          id_cuestionario
-        );
+        await asignarCuestionarioEstudianteATodosLosEstudiantes({
+          fecha_entrega: formData.fecha_entrega,
+          id_cuestionario,
+        });
 
       await Swal.fire({
         customClass: plus_jakarta_sans.className,
@@ -185,7 +185,7 @@ export default function FormNewActivity() {
             id="id_libro"
             className="form-control"
             required
-            onChange={(e) => setId_libro(e.target.value)}
+            onChange={(event) => setId_libro(event.target.value)}
             value={id_libro}
             disabled={isLoading}
           >
@@ -258,7 +258,7 @@ export default function FormNewActivity() {
             className="form-control"
             name="pregunta"
             id="pregunta"
-            onChange={(e) => handleChangePreguntas(index, e)}
+            onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.pregunta}
             placeholder="Redacta la pregunta acerca del tema del libro"
             required
@@ -272,7 +272,7 @@ export default function FormNewActivity() {
             className="form-control"
             name="A"
             id="A"
-            onChange={(e) => handleChangePreguntas(index, e)}
+            onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.A}
             placeholder="Redacta la opción de respuesta A"
             required
@@ -283,7 +283,7 @@ export default function FormNewActivity() {
             className="form-control"
             name="B"
             id="B"
-            onChange={(e) => handleChangePreguntas(index, e)}
+            onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.B}
             placeholder="Redacta la opción de respuesta B"
             required
@@ -294,7 +294,7 @@ export default function FormNewActivity() {
             className="form-control"
             name="C"
             id="C"
-            onChange={(e) => handleChangePreguntas(index, e)}
+            onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.C}
             placeholder="Redacta la opción de respuesta C"
             required
@@ -305,7 +305,7 @@ export default function FormNewActivity() {
             className="form-control"
             name="D"
             id="D"
-            onChange={(e) => handleChangePreguntas(index, e)}
+            onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.D}
             placeholder="Redacta la opción de respuesta D"
             required
@@ -316,7 +316,7 @@ export default function FormNewActivity() {
             className="form-control"
             name="opcion_correcta"
             id="opcion_correcta"
-            onChange={(e) => handleChangePreguntas(index, e)}
+            onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.opcion_correcta}
             required
           >

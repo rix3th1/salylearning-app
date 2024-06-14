@@ -50,9 +50,7 @@ export default async function PopularBooksPage() {
       </div>
 
       <div className="container-fluid" id="libros-container">
-        {librosPopulares.map((libro: any, index: number) => (
-          <ListLibros key={index} libros={libro} />
-        ))}
+        <ListLibros libros={librosPopulares} />
       </div>
     </>
   );

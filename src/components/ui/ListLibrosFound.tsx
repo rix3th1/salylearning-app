@@ -8,8 +8,8 @@ interface IProps {
 export default function ListLibrosFound({ libros }: IProps) {
   if (!libros.length) {
     return (
-      <div className="text-center">
-        <p>No hay libros disponibles para este género literario.</p>
+      <div className="alert alert-warning">
+        <p>En este momento no hay libros disponibles.</p>
       </div>
     );
   }

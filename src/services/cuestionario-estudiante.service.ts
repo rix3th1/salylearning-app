@@ -1,11 +1,16 @@
 import { fetchClient, fetchServer } from "./api.service";
 
+const asignarCuestionarioInitState = {
+  id_cuestionario: "",
+  fecha_entrega: "",
+};
+
 export async function asignarCuestionarioEstudianteATodosLosEstudiantes(
-  id_cuestionario: string
+  formData: typeof asignarCuestionarioInitState
 ) {
   const res = await fetchClient("/cuestionario-estudiante/asignar", {
     method: "POST",
-    body: JSON.stringify({ id_cuestionario }),
+    body: JSON.stringify(formData),
     headers: { "Content-Type": "application/json" },
   });
 
@@ -22,7 +27,7 @@ export async function obtenerCuestionariosEstudiantesPorEstado(
   estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO"
 ) {
   const res = await fetchServer(
-    `/cuestionario-estudiante/estado?estado_cuestionario_estudiante=${estado}`,
+    `/cuestionario-estudiante/estado?estado_cuestionario=${estado}`,
     {
       method: "GET",
     }

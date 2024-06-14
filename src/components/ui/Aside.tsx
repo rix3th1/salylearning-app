@@ -304,19 +304,19 @@ export default async function Aside() {
                     <li>
                       <Link
                         className="saly-link"
-                        href="/learning/students/activities/done"
+                        href="/learning/students/activities/pending"
                       >
-                        <MdCheckCircle />
-                        &nbsp;&nbsp;Hecho
+                        <MdStar />
+                        &nbsp;&nbsp;Por hacer
                       </Link>
                     </li>
                     <li>
                       <Link
                         className="saly-link"
-                        href="/learning/students/activities/pending"
+                        href="/learning/students/activities/done"
                       >
-                        <MdStar />
-                        &nbsp;&nbsp;Por hacer
+                        <MdCheckCircle />
+                        &nbsp;&nbsp;Hecho
                       </Link>
                     </li>
                   </ul>

@@ -1,6 +1,5 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { obtenerLibrosPorNombre } from "@/services/libros.service";
-import confetti from "canvas-confetti";
 import { MdCancel, MdSearch } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -43,7 +42,6 @@ export default function SearchBookButton() {
     });
 
     if (result.isConfirmed) {
-      confetti();
       withReactContent(Swal).fire({
         customClass: plus_jakarta_sans.className,
         title: "Hemos encontrado los siguientes libros",

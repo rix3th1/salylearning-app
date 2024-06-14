@@ -1,6 +1,8 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import terminasteImage from "@/assets/Terminaste.png";
-import { obtenerCuestionariosPorEstado } from "@/services/cuestionarios.service";
+import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionarios.service";
+import { obtenerEstudiante } from "@/services/estudiantes.service";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import ActivitiesTabs from "../components/ActivitiesTabs";
@@ -11,8 +13,11 @@ export const metadata: Metadata = {
 };
 
 export default async function PendingActivitiesPage() {
-  const cuestionariosPendientes = await obtenerCuestionariosPorEstado(
-    "PENDIENTE"
+  const user = await obtenerPerfilUsuario();
+  const estudiante = await obtenerEstudiante(user.id);
+  const cuestionariosPendientes = await obtenerCuestionarioEstudiantePorEstado(
+    "PENDIENTE",
+    estudiante.id
   );
 
   return (
@@ -43,7 +48,10 @@ export default async function PendingActivitiesPage() {
                 <div className="row" style={{ padding: "0 10px" }}>
                   {cuestionariosPendientes.length > 0 ? (
                     cuestionariosPendientes.map(
-                      (cuestionario: any, index: number) => {
+                      (
+                        { id: cuestionario_id, cuestionario }: any,
+                        index: number
+                      ) => {
                         /**
                          * @example
                          * Tengo estos datos:
@@ -137,7 +145,7 @@ export default async function PendingActivitiesPage() {
 
                             <FormResponderPreguntas
                               preguntas={preguntas}
-                              cuestionario={cuestionario}
+                              cuestionario_id={cuestionario_id}
                             />
                           </div>
                         );
