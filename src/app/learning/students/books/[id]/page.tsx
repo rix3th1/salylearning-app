@@ -19,23 +19,24 @@ export const metadata: Metadata = {
 export default async function ReadBookPage({ params }: IProps) {
   let id_libro_estudiante = null;
   const libro = await obtenerLibro(params.id);
-  console.log(libro);
 
   const user = await obtenerPerfilUsuario();
   const estudiante = await obtenerEstudiante(user.id);
 
-  if (libro.libros_estudiante.length < 1) {
+  id_libro_estudiante = libro.libros_estudiante.filter(
+    (libroEstudiante: any) =>
+      libroEstudiante.id_estudiante === estudiante.id &&
+      libroEstudiante.id_libro === libro.id
+  )[0];
+
+  if (libro.libros_estudiante.length && !id_libro_estudiante) {
     const libroEstudianteCreado = await crearLibroEstudiante({
       id_estudiante: estudiante.id,
       id_libro: libro.id,
     });
     id_libro_estudiante = libroEstudianteCreado.id;
   } else {
-    id_libro_estudiante = libro.libros_estudiante.filter(
-      (libroEstudiante: any) =>
-        libroEstudiante.id_estudiante === estudiante.id &&
-        libroEstudiante.id_libro === libro.id
-    )[0].id;
+    id_libro_estudiante = id_libro_estudiante.id;
   }
 
   const favorito = await obtenerLibroFavorito(libro.id);
