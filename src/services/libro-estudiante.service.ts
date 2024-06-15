@@ -50,15 +50,10 @@ export async function actualizarLibroEstudiante(
   return data;
 }
 
-export async function obtenerLibroEstudiantePorIdEstudiante(
-  id_estudiante: string
-) {
-  const res = await fetchServer(
-    `/libros-estudiante/estudiante/${id_estudiante}`,
-    {
-      method: "GET",
-    }
-  );
+export async function obtenerLibroEstudiantePorIdLibro(id_libro: string) {
+  const res = await fetchServer(`/libros-estudiante/libro/${id_libro}`, {
+    method: "GET",
+  });
 
   const data = await res.json();
 

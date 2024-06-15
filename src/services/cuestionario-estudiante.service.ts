@@ -9,11 +9,14 @@ export async function calificarCuestionarioEstudiante(
   id_cuestionario: string,
   calificacion: number
 ) {
-  const res = await fetchClient(`/cuestionario-estudiante/${id_cuestionario}`, {
-    method: "PATCH",
-    body: JSON.stringify({ calificacion }),
-    headers: { "Content-Type": "application/json" },
-  });
+  const res = await fetchClient(
+    `/cuestionario-estudiante/calificar/${id_cuestionario}`,
+    {
+      method: "PATCH",
+      body: JSON.stringify({ calificacion }),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
 
   const data = await res.json();
 

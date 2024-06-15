@@ -2,7 +2,7 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
 import {
   crearLibroEstudiante,
-  obtenerLibroEstudiantePorIdEstudiante,
+  obtenerLibroEstudiantePorIdLibro,
 } from "@/services/libro-estudiante.service";
 import { obtenerLibro } from "@/services/libros.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
@@ -22,8 +22,8 @@ export const metadata: Metadata = {
 export default async function ReadBookPage({ params }: IProps) {
   try {
     let id_libro_estudiante = null;
-
     const libro = await obtenerLibro(params.id);
+
     const user = await obtenerPerfilUsuario();
     const estudiante = await obtenerEstudiante(user.id);
 
@@ -34,9 +34,7 @@ export default async function ReadBookPage({ params }: IProps) {
       });
       id_libro_estudiante = libroEstudianteCreado.id;
     } else {
-      const libroEstudiante = await obtenerLibroEstudiantePorIdEstudiante(
-        estudiante.id
-      );
+      const libroEstudiante = await obtenerLibroEstudiantePorIdLibro(libro.id);
       id_libro_estudiante = libroEstudiante.id;
     }
 

@@ -12,13 +12,13 @@ export default function optsBarChart(
     xAxis: {
       type: "category",
       data: [
+        "Domingo",
         "Lunes",
         "Martes",
         "Miercoles",
         "Jueves",
         "Viernes",
         "Sabado",
-        "Domingo",
       ],
     },
     yAxis: {
