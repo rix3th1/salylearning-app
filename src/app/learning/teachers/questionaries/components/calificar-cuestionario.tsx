@@ -4,7 +4,7 @@ import { MdCancel, MdCheckCircle } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-export async function showSwalcalificarCuestionario({
+export async function showSwalCalificarCuestionario({
   id_cuestionario,
 }: {
   id_cuestionario: string;
@@ -76,6 +76,7 @@ export async function showSwalRespuestasCuestionario({
     (pregunta: any, index: number) => ({
       id: pregunta.id,
       pregunta: pregunta.pregunta,
+      opcion_correcta: pregunta.opcion_correcta,
       opciones_respuesta: cuestionario.opciones_respuesta.slice(
         index * 4,
         (index + 1) * 4
@@ -107,28 +108,30 @@ export async function showSwalRespuestasCuestionario({
 
               <ul>
                 {respuesta.opciones_respuesta.map(
-                  (opcion_respuesta: any, index: number) => {
-                    return (
-                      <p
-                        key={index}
-                        className={`text-${
-                          opcion_respuesta.opcion === respuesta.respuesta
-                            ? "success"
-                            : "danger"
-                        }`}
-                      >
-                        <span style={{ fontWeight: "bold" }}>
-                          {opcion_respuesta.opcion}.
-                        </span>{" "}
-                        {opcion_respuesta.respuesta}{" "}
-                        {opcion_respuesta.opcion === respuesta.respuesta ? (
-                          <MdCheckCircle />
-                        ) : (
-                          <MdCancel />
-                        )}
-                      </p>
-                    );
-                  }
+                  (opcion_respuesta: any, index: number) => (
+                    <p
+                      key={index}
+                      className={`text-${
+                        opcion_respuesta.opcion === respuesta.opcion_correcta &&
+                        opcion_respuesta.opcion === respuesta.respuesta
+                          ? "success"
+                          : opcion_respuesta.opcion === respuesta.respuesta
+                          ? "warning"
+                          : "danger"
+                      }`}
+                    >
+                      <span style={{ fontWeight: "bold" }}>
+                        {opcion_respuesta.opcion}.
+                      </span>{" "}
+                      {opcion_respuesta.respuesta}{" "}
+                      {opcion_respuesta.opcion === respuesta.opcion_correcta &&
+                      opcion_respuesta.opcion === respuesta.respuesta ? (
+                        <MdCheckCircle />
+                      ) : opcion_respuesta.opcion === respuesta.respuesta ? (
+                        <MdCancel />
+                      ) : null}
+                    </p>
+                  )
                 )}
               </ul>
             </li>

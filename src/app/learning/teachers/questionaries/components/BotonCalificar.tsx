@@ -4,7 +4,7 @@ import { useRouter } from "next-nprogress-bar";
 import { MdSchedule } from "react-icons/md";
 import {
   showSwalRespuestasCuestionario,
-  showSwalcalificarCuestionario,
+  showSwalCalificarCuestionario,
 } from "./calificar-cuestionario";
 
 interface IProps {
@@ -33,12 +33,12 @@ export default function BotonCalificar({
       });
 
       if (result.isConfirmed) {
-        await showSwalcalificarCuestionario({ id_cuestionario });
+        await showSwalCalificarCuestionario({ id_cuestionario });
       }
     }
 
     if (estadoCuestionario === "NO_LOGRADO") {
-      await showSwalcalificarCuestionario({ id_cuestionario });
+      await showSwalCalificarCuestionario({ id_cuestionario });
     }
 
     router.refresh();
@@ -46,7 +46,7 @@ export default function BotonCalificar({
 
   return (
     <button
-      className={`btn btn-lg btn-${
+      className={`btn btn-${
         estadoCuestionario === "COMPLETADO"
           ? "success"
           : estadoCuestionario === "PENDIENTE"
