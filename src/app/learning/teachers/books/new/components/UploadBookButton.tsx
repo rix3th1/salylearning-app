@@ -1,6 +1,7 @@
 "use client";
 
 import { plus_jakarta_sans } from "@/app/fonts";
+import { uploadCloudinary } from "@/services/cloudinary.service";
 import { crearLibro } from "@/services/libros.service";
 import { useRouter } from "next-nprogress-bar";
 import { MdCancel, MdCheckCircle, MdUpload } from "react-icons/md";
@@ -35,9 +36,9 @@ const showSwalUploadBook = async () => {
 
       try {
         if (imagen_portada instanceof File) {
-          // 5 MB
-          if (imagen_portada.size > 5000 * 1024) {
-            throw new Error("La imagen de portada no debe superar los 5MB");
+          // 1 MB
+          if (imagen_portada.size > 1000 * 1024) {
+            throw new Error("La imagen de portada no debe superar 1MB");
           }
           if (!/(jpe?g|png)$/i.test(imagen_portada.type)) {
             throw new Error("La imagen de portada debe ser de tipo jpeg o png");
@@ -54,6 +55,10 @@ const showSwalUploadBook = async () => {
           }
         }
 
+        const uploadData = await uploadCloudinary(video_libro as File);
+        const { secure_url: video_libro_url } = uploadData;
+
+        formData.set("video_libro", video_libro_url);
         return await crearLibro(formData);
       } catch (error) {
         if (error instanceof Error) {
