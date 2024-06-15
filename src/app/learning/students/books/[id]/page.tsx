@@ -5,9 +5,9 @@ import {
   obtenerLibroEstudiantePorIdLibro,
 } from "@/services/libro-estudiante.service";
 import { obtenerLibro } from "@/services/libros.service";
+import { obtenerLibroFavorito } from "@/services/mis-libros.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import ButtonAddFavorite from "./components/ButtonAddFavorite";
 import ReadingTimer from "./components/ReadingTimer";
 
@@ -20,49 +20,51 @@ export const metadata: Metadata = {
 };
 
 export default async function ReadBookPage({ params }: IProps) {
-  try {
-    let id_libro_estudiante = null;
-    const libro = await obtenerLibro(params.id);
+  let id_libro_estudiante = null;
+  const libro = await obtenerLibro(params.id);
 
-    const user = await obtenerPerfilUsuario();
-    const estudiante = await obtenerEstudiante(user.id);
+  const user = await obtenerPerfilUsuario();
+  const estudiante = await obtenerEstudiante(user.id);
 
-    if (libro.libros_estudiante.length < 1) {
-      const libroEstudianteCreado = await crearLibroEstudiante({
-        id_estudiante: estudiante.id,
-        id_libro: libro.id,
-      });
-      id_libro_estudiante = libroEstudianteCreado.id;
-    } else {
-      const libroEstudiante = await obtenerLibroEstudiantePorIdLibro(libro.id);
-      id_libro_estudiante = libroEstudiante.id;
-    }
+  if (libro.libros_estudiante.length < 1) {
+    const libroEstudianteCreado = await crearLibroEstudiante({
+      id_estudiante: estudiante.id,
+      id_libro: libro.id,
+    });
+    id_libro_estudiante = libroEstudianteCreado.id;
+  } else {
+    const libroEstudiante = await obtenerLibroEstudiantePorIdLibro(libro.id);
+    id_libro_estudiante = libroEstudiante.id;
+  }
 
-    return (
-      <>
-        <PageHeader title="Leer libro" />
+  const favorito = await obtenerLibroFavorito(libro.id);
 
-        <section>
+  return (
+    <>
+      <PageHeader title="Leer libro" />
+
+      <section>
+        <div className="container-fluid">
           <div className="container-fluid">
-            <div className="container-fluid">
-              <div className="row">
-                <div className="container-fluid">
-                  <article>
-                    <ReadingTimer
-                      id_libro_estudiante={id_libro_estudiante}
-                      libro={libro}
-                    />
+            <div className="row">
+              <div className="container-fluid">
+                <article>
+                  <ReadingTimer
+                    id_libro_estudiante={id_libro_estudiante}
+                    libro={libro}
+                  />
 
-                    <ButtonAddFavorite />
-                  </article>
-                </div>
+                  <ButtonAddFavorite
+                    libro={libro}
+                    favorito={favorito}
+                    user={user}
+                  />
+                </article>
               </div>
             </div>
           </div>
-        </section>
-      </>
-    );
-  } catch (error) {
-    notFound();
-  }
+        </div>
+      </section>
+    </>
+  );
 }
