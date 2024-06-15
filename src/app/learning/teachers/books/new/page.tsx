@@ -11,8 +11,7 @@ export const metadata: Metadata = {
   title: "Libros: Docentes | Saly Learning",
 };
 
-const mapDataCarrousel = async () => {
-  const libros = await obtenerLibros.server();
+const mapDataCarrousel = (libros: any) => {
   return libros.map(
     (libro: any): ReactImageGalleryItem => ({
       original: libro.imagen_portada,
@@ -23,7 +22,8 @@ const mapDataCarrousel = async () => {
 };
 
 export default async function NewBookPage() {
-  const images = await mapDataCarrousel();
+  const libros = await obtenerLibros.server();
+  const images = await mapDataCarrousel(libros);
 
   return (
     <>
@@ -64,7 +64,7 @@ export default async function NewBookPage() {
 
               {/* Botón para subir libros */}
               <section className="text-center" style={{ marginTop: "2rem" }}>
-                <UploadBookButton />
+                <UploadBookButton libros={libros} />
               </section>
             </div>
           </div>

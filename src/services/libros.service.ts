@@ -17,6 +17,20 @@ export async function crearLibro(formData: FormData) {
   return data;
 }
 
+export async function eliminarLibro(id: string) {
+  const res = await fetchClient(`/libros/${id}`, {
+    method: "DELETE",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
+
 export async function obtenerLibrosPopulares() {
   const res = await fetchServer("/libros/populares", {
     method: "GET",
