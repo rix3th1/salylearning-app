@@ -1,9 +1,6 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
-import {
-  crearLibroEstudiante,
-  obtenerLibroEstudiantePorIdLibro,
-} from "@/services/libro-estudiante.service";
+import { crearLibroEstudiante } from "@/services/libro-estudiante.service";
 import { obtenerLibro } from "@/services/libros.service";
 import { obtenerLibroFavorito } from "@/services/mis-libros.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
@@ -22,6 +19,7 @@ export const metadata: Metadata = {
 export default async function ReadBookPage({ params }: IProps) {
   let id_libro_estudiante = null;
   const libro = await obtenerLibro(params.id);
+  console.log(libro);
 
   const user = await obtenerPerfilUsuario();
   const estudiante = await obtenerEstudiante(user.id);
@@ -33,8 +31,11 @@ export default async function ReadBookPage({ params }: IProps) {
     });
     id_libro_estudiante = libroEstudianteCreado.id;
   } else {
-    const libroEstudiante = await obtenerLibroEstudiantePorIdLibro(libro.id);
-    id_libro_estudiante = libroEstudiante.id;
+    id_libro_estudiante = libro.libros_estudiante.filter(
+      (libroEstudiante: any) =>
+        libroEstudiante.id_estudiante === estudiante.id &&
+        libroEstudiante.id_libro === libro.id
+    )[0].id;
   }
 
   const favorito = await obtenerLibroFavorito(libro.id);
