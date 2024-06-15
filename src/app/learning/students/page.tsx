@@ -7,6 +7,8 @@ import type { ReactImageGalleryItem } from "react-image-gallery";
 import PageHeader from "../components/PageHeader";
 import Carrousel from "../teachers/books/new/components/Carrousel";
 import Motivation from "./components/Motivation";
+import { obtenerEstudiante } from "@/services/estudiantes.service";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 
 export const metadata: Metadata = {
   title: "Inicio: Estudiantes | Saly Learning",
@@ -25,8 +27,13 @@ const mapDataCarrousel = async () => {
 };
 
 export default async function HomePage() {
+  const user = await obtenerPerfilUsuario();
+  const estudiante = await obtenerEstudiante(user.id);
   const images = await mapDataCarrousel();
-  const contadores = await obtenerContadoresParaEstudiantes();
+  const contadores = await obtenerContadoresParaEstudiantes(
+    estudiante.id,
+    user.id
+  );
 
   return (
     <>
@@ -61,8 +68,8 @@ export default async function HomePage() {
                   </Link>
                 </div>
                 <div className="tile-num full-reset">
-                  {contadores[1] - contadores[1] > 0 ? (
-                    contadores[1] - contadores[1]
+                  {contadores[1] > 0 ? (
+                    contadores[1]
                   ) : (
                     <span style={{ fontSize: "18px" }}>
                       No hay retos pendientes!
@@ -77,7 +84,7 @@ export default async function HomePage() {
                 <div className="tile-name">
                   <Link href="/learning/students/achievements">Logros</Link>
                 </div>
-                <div className="tile-num full-reset">3</div>
+                <div className="tile-num full-reset">{contadores[2]}</div>
               </article>
             </div>
             <div className="col-md-6">

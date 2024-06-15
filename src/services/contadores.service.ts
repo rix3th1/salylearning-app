@@ -18,8 +18,6 @@ const urlsParaDocentes: string[] = [
   ),
 ];
 
-const urlsParaEstudiantes: string[] = ["/mis-libros/contar", ...commonUrls];
-
 export async function obtenerContadoresParaDocentes() {
   const promises = urlsParaDocentes.map((url) =>
     fetchServer(url, { method: "GET" })
@@ -37,7 +35,16 @@ export async function obtenerContadoresParaDocentes() {
   return Promise.all(responses.map((res) => res.json()));
 }
 
-export async function obtenerContadoresParaEstudiantes() {
+export async function obtenerContadoresParaEstudiantes(
+  id_estudiante: string,
+  id_usuario: string
+) {
+  const urlsParaEstudiantes: string[] = [
+    `/mis-libros/contar/usuario/${id_usuario}`,
+    `/libros-estudiante/contar/no-terminados/${id_estudiante}`,
+    `/libros-estudiante/contar/terminados/${id_estudiante}`,
+  ];
+
   const promises = urlsParaEstudiantes.map((url) =>
     fetchServer(url, { method: "GET" })
   );
