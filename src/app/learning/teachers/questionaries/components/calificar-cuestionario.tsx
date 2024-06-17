@@ -81,7 +81,7 @@ export async function showSwalRespuestasCuestionario({
         index * 4,
         (index + 1) * 4
       ),
-      respuesta: cuestionario.respuestas[index].respuesta,
+      respuesta: cuestionario.respuestas[index]?.respuesta,
     })
   );
 
