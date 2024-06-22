@@ -1,7 +1,7 @@
 import IndexHeader from "./components/IndexHeader";
 import IndexSection from "./components/IndexSection";
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <>
       <IndexHeader />
