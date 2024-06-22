@@ -1,6 +1,6 @@
 "use client";
 
-import { showSwalRespuestasCuestionario } from "@/app/learning/teachers/questionaries/components/calificar-cuestionario";
+import { showSwalCalificacion } from "@/app/learning/teachers/questionaries/components/calificar-cuestionario";
 
 interface IProps {
   actividadesCompletadas: any;
@@ -13,7 +13,7 @@ export default function RowRespuestas({ actividadesCompletadas }: IProps) {
         <tr
           key={index}
           className="success"
-          onClick={() => showSwalRespuestasCuestionario({ cuestionario })}
+          onClick={() => showSwalCalificacion({ cuestionario })}
         >
           <td>{index + 1}</td>
           <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>

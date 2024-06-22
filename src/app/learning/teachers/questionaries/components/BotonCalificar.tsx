@@ -3,8 +3,8 @@
 import { useRouter } from "next-nprogress-bar";
 import { MdSchedule } from "react-icons/md";
 import {
-  showSwalRespuestasCuestionario,
-  showSwalCalificarCuestionario,
+  showSwalCalificacion,
+  showSwalRetroalimentacion,
 } from "./calificar-cuestionario";
 
 interface IProps {
@@ -28,17 +28,19 @@ export default function BotonCalificar({
     }
 
     if (estadoCuestionario === "COMPLETADO") {
-      const result = await showSwalRespuestasCuestionario({
+      const result = await showSwalCalificacion({
         cuestionario,
       });
 
+      const calificacion = result.value;
+
       if (result.isConfirmed) {
-        await showSwalCalificarCuestionario({ id_cuestionario });
+        await showSwalRetroalimentacion({ id_cuestionario, calificacion });
       }
     }
 
     if (estadoCuestionario === "NO_LOGRADO") {
-      await showSwalCalificarCuestionario({ id_cuestionario });
+      await showSwalRetroalimentacion({ id_cuestionario, calificacion: 0 });
     }
 
     router.refresh();
@@ -55,10 +57,12 @@ export default function BotonCalificar({
       }`}
       onClick={handleClickCalificar}
     >
-      {calificacion || (
+      {calificacion ? (
+        Number(calificacion).toFixed(1)
+      ) : (
         <>
           <MdSchedule style={{ position: "relative", top: 2 }} />
-          <span style={{ fontSize: "0.8rem" }}> Calificar</span>
+          <span style={{ fontSize: "0.8rem" }}> Publicar calificación</span>
         </>
       )}
     </button>

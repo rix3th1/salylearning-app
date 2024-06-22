@@ -5,15 +5,20 @@ const asignarCuestionarioInitState = {
   fecha_entrega: "",
 };
 
+export const calificacionInitState = {
+  calificacion: 0,
+  retroalimentacion: "",
+};
+
 export async function calificarCuestionarioEstudiante(
   id_cuestionario: string,
-  calificacion: number
+  calificacionData: typeof calificacionInitState
 ) {
   const res = await fetchClient(
     `/cuestionario-estudiante/calificar/${id_cuestionario}`,
     {
       method: "PATCH",
-      body: JSON.stringify({ calificacion }),
+      body: JSON.stringify(calificacionData),
       headers: { "Content-Type": "application/json" },
     }
   );

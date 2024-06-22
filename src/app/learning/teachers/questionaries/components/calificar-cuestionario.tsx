@@ -3,26 +3,33 @@ import { calificarCuestionarioEstudiante } from "@/services/cuestionario-estudia
 import { MdCancel, MdCheckCircle } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { getRespuestasData, questionIsCorrect } from "./libs";
 
-export async function showSwalCalificarCuestionario({
+export async function showSwalRetroalimentacion({
   id_cuestionario,
+  calificacion,
 }: {
   id_cuestionario: string;
+  calificacion: number;
 }) {
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
     title: "Calificar cuestionario",
     text: "¿Qué calificación quieres?",
-    input: "number",
-    inputPlaceholder: "Calificación 0.0 - 5.0",
-    inputAutoFocus: true,
-    inputValidator(calificacion: any) {
-      if (!calificacion) {
-        return "Debes escribir la calificación";
+    input: "textarea",
+    inputAttributes: {
+      placeholder: "Escribe una retroalimentación al estudiante",
+      autofocus: "true",
+      required: "true",
+      spellcheck: "false",
+    },
+    inputValidator(retroalimentacion_txt: any) {
+      if (!retroalimentacion_txt) {
+        return "Debes dejarle una retroalimentación al estudiante";
       }
 
-      if (calificacion < 0 || calificacion > 5) {
-        return "Calificación debe ser entre 0.0 y 5.0";
+      if (retroalimentacion_txt.length > 500) {
+        return "La retroalimentación no debe ser mayor a 500 caracteres";
       }
     },
     showCancelButton: true,
@@ -37,16 +44,12 @@ export async function showSwalCalificarCuestionario({
       </>
     ),
     showLoaderOnConfirm: true,
-    preConfirm: async (calificacion: number) => {
-      if (!calificacion) {
-        Swal.showValidationMessage("Debes escribir la calificación");
-      }
-
+    preConfirm: async (retroalimentacion: string) => {
       try {
-        return await calificarCuestionarioEstudiante(
-          id_cuestionario,
-          calificacion
-        );
+        return await calificarCuestionarioEstudiante(id_cuestionario, {
+          calificacion,
+          retroalimentacion,
+        });
       } catch (error) {
         if (error instanceof Error) {
           Swal.showValidationMessage(error.message.replace(/,/g, ", "));
@@ -60,30 +63,19 @@ export async function showSwalCalificarCuestionario({
     Swal.fire({
       customClass: plus_jakarta_sans.className,
       title: "¡Calificado!",
-      text: `Calificación: ${result.value.calificacion}`,
+      text: `Calificación: ${Number(result.value.calificacion).toFixed(1)}`,
       icon: "success",
       timer: 3000,
     });
   }
 }
 
-export async function showSwalRespuestasCuestionario({
+export async function showSwalCalificacion({
   cuestionario,
 }: {
   cuestionario: any;
 }) {
-  const respuestas = cuestionario.preguntas.map(
-    (pregunta: any, index: number) => ({
-      id: pregunta.id,
-      pregunta: pregunta.pregunta,
-      opcion_correcta: pregunta.opcion_correcta,
-      opciones_respuesta: cuestionario.opciones_respuesta.slice(
-        index * 4,
-        (index + 1) * 4
-      ),
-      respuesta: cuestionario.respuestas[index]?.respuesta,
-    })
-  );
+  const respuestasData = getRespuestasData(cuestionario);
 
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
@@ -101,37 +93,56 @@ export async function showSwalRespuestasCuestionario({
         >
           Respuestas cuestionario del estudiante:
         </p>
+
+        <p style={{ fontSize: "0.8rem" }}>
+          Calificación estimada:{" "}
+          <span
+            className={`text-${
+              respuestasData.calificacion >= 3 ? "success" : "danger"
+            }`}
+            style={{ fontWeight: "bold", fontSize: "1.5rem" }}
+          >
+            {respuestasData.calificacion > 5
+              ? 5.0
+              : respuestasData.calificacion.toFixed(1)}
+          </span>
+        </p>
         <ol className="text-left">
-          {respuestas.map((respuesta: any, index: number) => (
+          {respuestasData.respuestas.map((respuesta: any, index: number) => (
             <li key={index}>
               <p style={{ fontWeight: "bold" }}>{respuesta.pregunta}</p>
 
               <ul>
                 {respuesta.opciones_respuesta.map(
-                  (opcion_respuesta: any, index: number) => (
-                    <p
-                      key={index}
-                      className={`text-${
-                        opcion_respuesta.opcion === respuesta.opcion_correcta &&
-                        opcion_respuesta.opcion === respuesta.respuesta
-                          ? "success"
-                          : opcion_respuesta.opcion === respuesta.respuesta
-                          ? "warning"
-                          : "danger"
-                      }`}
-                    >
-                      <span style={{ fontWeight: "bold" }}>
-                        {opcion_respuesta.opcion}.
-                      </span>{" "}
-                      {opcion_respuesta.respuesta}{" "}
-                      {opcion_respuesta.opcion === respuesta.opcion_correcta &&
-                      opcion_respuesta.opcion === respuesta.respuesta ? (
-                        <MdCheckCircle />
-                      ) : opcion_respuesta.opcion === respuesta.respuesta ? (
-                        <MdCancel />
-                      ) : null}
-                    </p>
-                  )
+                  (opcion_respuesta: any, index: number) => {
+                    const isCorrect = questionIsCorrect(
+                      opcion_respuesta,
+                      respuesta
+                    );
+
+                    return (
+                      <p
+                        key={index}
+                        className={`text-${
+                          isCorrect
+                            ? "success"
+                            : opcion_respuesta.opcion === respuesta.respuesta
+                            ? "warning"
+                            : "danger"
+                        }`}
+                      >
+                        <span style={{ fontWeight: "bold" }}>
+                          {opcion_respuesta.opcion}.
+                        </span>{" "}
+                        {opcion_respuesta.respuesta}{" "}
+                        {isCorrect ? (
+                          <MdCheckCircle />
+                        ) : opcion_respuesta.opcion === respuesta.respuesta ? (
+                          <MdCancel />
+                        ) : null}
+                      </p>
+                    );
+                  }
                 )}
               </ul>
             </li>
@@ -151,7 +162,7 @@ export async function showSwalRespuestasCuestionario({
       </>
     ),
     showLoaderOnConfirm: true,
-
+    preConfirm: () => respuestasData.calificacion,
     allowOutsideClick: () => !Swal.isLoading(),
   });
 
