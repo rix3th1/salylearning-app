@@ -13,7 +13,14 @@ export default function SearchBookButton() {
       text: "Por favor escribe el nombre del libro",
       input: "text",
       inputPlaceholder: "Escribe aquí el nombre de libro",
+      inputValidator(nom_libro: string) {
+        if (!nom_libro) {
+          return "Debes escribir el nombre del libro";
+        }
+      },
       showCancelButton: true,
+      cancelButtonColor: "#1e30f3",
+      confirmButtonColor: "#e21e80",
       confirmButtonText: (
         <>
           <MdSearch /> Buscar libro
@@ -26,10 +33,6 @@ export default function SearchBookButton() {
       ),
       showLoaderOnConfirm: true,
       preConfirm: async (nom_libro) => {
-        if (!nom_libro) {
-          Swal.showValidationMessage("Debes escribir el nombre del libro");
-        }
-
         try {
           return await obtenerLibrosPorNombre(nom_libro);
         } catch (error) {

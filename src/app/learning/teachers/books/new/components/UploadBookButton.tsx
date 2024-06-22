@@ -19,6 +19,8 @@ const showSwalUploadBook = async () => {
     title: "Subir nuevo libro",
     html: <FormNewBook />,
     showCancelButton: true,
+    confirmButtonColor: "#e21e80",
+    cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
         <MdUpload /> Subir Libro
@@ -90,7 +92,14 @@ export default function UploadBookButton({ libros }: IProps) {
         return acumulador;
       }, {}),
       inputPlaceholder: "Seleccione el libro",
+      inputValidator(nom_libro: string) {
+        if (!nom_libro) {
+          return "Debes seleccionar el libro que quieres eliminar";
+        }
+      },
       showCancelButton: true,
+      confirmButtonColor: "#e21e80",
+      cancelButtonColor: "#1e30f3",
       confirmButtonText: (
         <>
           <MdDelete /> Eliminar
@@ -103,11 +112,6 @@ export default function UploadBookButton({ libros }: IProps) {
       ),
       showLoaderOnConfirm: true,
       preConfirm: async (nom_libro: string) => {
-        if (!nom_libro) {
-          Swal.showValidationMessage("Debes escribir el nombre del libro");
-          return;
-        }
-
         const confirmation = await withReactContent(Swal).fire({
           customClass: plus_jakarta_sans.className,
           title: "¿Estás seguro?",
@@ -145,7 +149,7 @@ export default function UploadBookButton({ libros }: IProps) {
     if (result.isConfirmed) {
       router.refresh();
 
-      withReactContent(Swal).fire({
+      Swal.fire({
         customClass: plus_jakarta_sans.className,
         title: "Libro eliminado exitosamente!",
         text: "El libro ha sido eliminado exitosamente.",
@@ -174,6 +178,7 @@ export default function UploadBookButton({ libros }: IProps) {
           left bottom
           no-repeat
         `,
+        confirmButtonColor: "#e21e80",
         confirmButtonText: (
           <>
             <MdCheckCircle /> Aceptar

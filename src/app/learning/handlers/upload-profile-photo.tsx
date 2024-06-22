@@ -23,6 +23,8 @@ export const showSwalUploadProfilePhoto = async (
       }
     },
     showCancelButton: true,
+    confirmButtonColor: "#e21e80",
+    cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
         <MdCloudUpload /> Subir

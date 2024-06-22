@@ -33,6 +33,8 @@ export async function showSwalRetroalimentacion({
       }
     },
     showCancelButton: true,
+    confirmButtonColor: "#e21e80",
+    cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
         <MdCheckCircle /> Aceptar
@@ -151,6 +153,8 @@ export async function showSwalCalificacion({
       </>
     ),
     icon: "info",
+    confirmButtonColor: "#e21e80",
+    cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
         <MdCheckCircle /> Aceptar

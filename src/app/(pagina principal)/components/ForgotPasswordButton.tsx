@@ -19,7 +19,14 @@ const showSwalForSendEmail = async (
     text: "Por favor ingresa tu correo electrónico",
     input: "email",
     inputPlaceholder: "Escribe aquí tu correo electrónico",
+    inputValidator(email: string) {
+      if (!email) {
+        return "Debes escribir tu correo electrónico";
+      }
+    },
     showCancelButton: true,
+    confirmButtonColor: "#e21e80",
+    cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
         <MdEmail style={{ position: "relative", bottom: 2 }} /> Enviar
@@ -32,10 +39,6 @@ const showSwalForSendEmail = async (
     ),
     showLoaderOnConfirm: true,
     preConfirm: async (email) => {
-      if (!email) {
-        Swal.showValidationMessage("Debes escribir tu correo electrónico");
-      }
-
       try {
         return await enviarEmailDeRecuperacion(email);
       } catch (error) {

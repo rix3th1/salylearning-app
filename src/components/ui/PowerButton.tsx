@@ -9,6 +9,8 @@ const showSignOutSwal = async () => {
     customClass: plus_jakarta_sans.className,
     title: "¿Estás seguro de que quieres salir?",
     showCancelButton: true,
+    confirmButtonColor: "#e21e80",
+    cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
         <MdLogout /> Si, salir

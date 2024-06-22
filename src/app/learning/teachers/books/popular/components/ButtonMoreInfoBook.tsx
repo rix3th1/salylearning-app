@@ -14,7 +14,6 @@ const showBookDescription = (libro_descripcion: string) => {
     title: "Información del libro",
     text: libro_descripcion,
     icon: "info",
-    confirmButtonText: "Cerrar",
   });
 };
 

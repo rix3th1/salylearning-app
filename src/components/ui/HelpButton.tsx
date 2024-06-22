@@ -10,6 +10,7 @@ const showHelpSwal = () => {
     width: 800,
     text: "¡Bienvenidos! En el menú, encontrarán una variedad emocionante de actividades diseñadas especialmente para ayudarlos a mejorar sus habilidades de lectura. Desde cuentos interactivos hasta desafíos divertidos, cada opción está aquí para hacer que su experiencia sea educativa y entretenida. No duden en explorar y descubrir nuevas aventuras literarias.",
     icon: "info",
+    confirmButtonColor: "#e21e80",
     confirmButtonText: (
       <>
         <MdThumbUp /> &nbsp; De acuerdo
