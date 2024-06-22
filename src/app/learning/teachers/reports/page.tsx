@@ -7,6 +7,7 @@ import {
 import type { Metadata } from "next";
 import Image from "next/image";
 import StatisticsAndReportsTabs from "../components/StatisticsAndReportsTabs";
+import GradesReport from "./components/GradesReport";
 // import PieStatic from "@/components/Statistics/PieStatic";
 
 export const metadata: Metadata = {
@@ -123,6 +124,9 @@ export default async function ReportsAndStatisticsPage() {
                       </div>
                     </div>
                   )}
+                  <div className="position">
+                    <GradesReport />
+                  </div>
                 </div>
               </div>
             </div>
