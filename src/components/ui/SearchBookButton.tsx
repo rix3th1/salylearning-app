@@ -50,6 +50,7 @@ export default function SearchBookButton() {
         title: "Hemos encontrado los siguientes libros",
         html: <ListLibrosFound libros={result.value} />,
         icon: result.value.length > 0 ? "success" : "error",
+        showConfirmButton: false,
       });
     }
   };

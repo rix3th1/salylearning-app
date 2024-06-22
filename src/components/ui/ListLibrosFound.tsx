@@ -27,9 +27,14 @@ export default function ListLibrosFound({ libros }: IProps) {
           style={{ borderRadius: "5px" }}
         />
       </div>
-      <div className="media-body">
+      <div
+        className="media-body"
+        style={{
+          fontSize: "0.8rem",
+        }}
+      >
         <h4 className="pull-left media-heading">{libro.nom_libro}</h4>
-        <div className="pull-left" style={{ fontWeight: "bold" }}>
+        <div className="pull-left text-muted" style={{ fontStyle: "italic" }}>
           {libro.autor}
         </div>
         <p className="pull-right">
