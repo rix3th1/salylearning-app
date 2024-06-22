@@ -6,22 +6,10 @@ import { obtenerLibrosPorGeneroLiterario } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { MdWarning } from "react-icons/md";
-import type { ReactImageGalleryItem } from "react-image-gallery";
+import { mapDataCarrousel } from "../../libs";
 
 export const metadata: Metadata = {
   title: "Libros: Estudiantes | Saly Learning",
-};
-
-const mapDataCarrousel = async (genero_literario: string) => {
-  const libros = await obtenerLibrosPorGeneroLiterario(genero_literario);
-  return libros.map(
-    (libro: any): ReactImageGalleryItem => ({
-      original: libro.imagen_portada,
-      originalAlt: libro.nom_libro,
-      description: libro.nom_libro,
-      book_url: `/learning/students/books/${libro.id}`,
-    })
-  );
 };
 
 export default async function BooksPage() {
@@ -58,7 +46,10 @@ export default async function BooksPage() {
 
           <div className="row">
             {generosLiterarios.map(async (genero: any, index: number) => {
-              const images: [] = await mapDataCarrousel(genero.nom_genero);
+              const libros = await obtenerLibrosPorGeneroLiterario(
+                genero.nom_genero
+              );
+              const images: [] = mapDataCarrousel(libros, true);
 
               return (
                 <div

@@ -4,6 +4,7 @@ import { crearMiLibro, eliminarMiLibro } from "@/services/mis-libros.service";
 import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { toast } from "sonner";
 
 interface IProps {
   libro: any;
@@ -12,17 +13,25 @@ interface IProps {
 }
 
 export default function ButtonAddFavorite({ libro, favorito, user }: IProps) {
-  const [isFavorite, setIsFavorite] = useState(favorito);
+  const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
 
   const handleClickFavorite = async () => {
-    if (favorito) {
-      setIsFavorite(false);
-      await eliminarMiLibro(favorito.id);
-    } else {
-      setIsFavorite(true);
-      await crearMiLibro({ id_libro: libro.id, id_usuario: user.id });
+    setIsLoading(true);
+
+    try {
+      if (favorito) {
+        await eliminarMiLibro(favorito.id);
+      } else {
+        await crearMiLibro({ id_libro: libro.id, id_usuario: user.id });
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        toast(error.message.replace(/,/g, ", "));
+      }
+    } finally {
+      setIsLoading(false);
     }
 
     router.refresh();
@@ -34,12 +43,12 @@ export default function ButtonAddFavorite({ libro, favorito, user }: IProps) {
       style={{ backgroundColor: "#dd1e82", color: "#fff" }}
       onClick={handleClickFavorite}
     >
-      {isFavorite ? (
+      {favorito ? (
         <MdFavorite style={{ position: "relative", top: 3 }} />
       ) : (
         <MdFavoriteBorder style={{ position: "relative", top: 3 }} />
       )}{" "}
-      Favoritos
+      {isLoading ? "Cargando..." : "Favoritos"}
     </button>
   );
 }

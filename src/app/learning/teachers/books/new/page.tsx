@@ -1,9 +1,9 @@
 import PageHeader from "@/app/learning/components/PageHeader";
+import { mapDataCarrousel } from "@/app/learning/libs";
 import flatBookImage from "@/assets/flat-book.png";
 import { obtenerLibros } from "@/services/libros.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import type { ReactImageGalleryItem } from "react-image-gallery";
 import Carrousel from "./components/Carrousel";
 import UploadBookButton from "./components/UploadBookButton";
 
@@ -11,19 +11,9 @@ export const metadata: Metadata = {
   title: "Libros: Docentes | Saly Learning",
 };
 
-const mapDataCarrousel = (libros: any) => {
-  return libros.map(
-    (libro: any): ReactImageGalleryItem => ({
-      original: libro.imagen_portada,
-      originalAlt: libro.nom_libro,
-      description: libro.nom_libro,
-    })
-  );
-};
-
 export default async function NewBookPage() {
   const libros = await obtenerLibros.server();
-  const images = await mapDataCarrousel(libros);
+  const images = mapDataCarrousel(libros, false);
 
   return (
     <>

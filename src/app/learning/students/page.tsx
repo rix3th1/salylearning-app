@@ -1,35 +1,24 @@
+import { mapDataCarrousel } from "@/app/learning/libs";
 import { obtenerContadoresParaEstudiantes } from "@/services/contadores.service";
+import { obtenerEstudiante } from "@/services/estudiantes.service";
 import { obtenerLibros } from "@/services/libros.service";
+import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { MdBarChart, MdMenuBook, MdTrendingUp } from "react-icons/md";
-import type { ReactImageGalleryItem } from "react-image-gallery";
 import PageHeader from "../components/PageHeader";
 import Carrousel from "../teachers/books/new/components/Carrousel";
 import Motivation from "./components/Motivation";
-import { obtenerEstudiante } from "@/services/estudiantes.service";
-import { obtenerPerfilUsuario } from "@/services/perfil.service";
 
 export const metadata: Metadata = {
   title: "Inicio: Estudiantes | Saly Learning",
 };
 
-const mapDataCarrousel = async () => {
-  const libros = await obtenerLibros.server();
-  return libros.map(
-    (libro: any): ReactImageGalleryItem => ({
-      original: libro.imagen_portada,
-      originalAlt: libro.nom_libro,
-      description: libro.nom_libro,
-      book_url: `/learning/students/books/${libro.id}`,
-    })
-  );
-};
-
 export default async function HomePage() {
   const user = await obtenerPerfilUsuario();
   const estudiante = await obtenerEstudiante(user.id);
-  const images = await mapDataCarrousel();
+  const libros = await obtenerLibros.server();
+  const images = mapDataCarrousel(libros, true);
   const contadores = await obtenerContadoresParaEstudiantes(
     estudiante.id,
     user.id
