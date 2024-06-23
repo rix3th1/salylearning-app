@@ -20,7 +20,14 @@ export default async function TeacherAccountSettingsPage() {
 
       <AccountSettingsTabs />
 
-      <div style={{ backgroundColor: "#adb5bd", padding: 20 }}>
+      <div
+        style={{
+          padding: 20,
+          margin: 20,
+          marginBottom: "100px",
+          backgroundColor: "#adb5bd",
+        }}
+      >
         <div
           className="container-fluid"
           style={{

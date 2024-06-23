@@ -23,13 +23,13 @@ export default async function PendingActivitiesPage() {
     <>
       <PageHeader title="Actividades hechas" />
 
+      <ActivitiesTabs />
+
       <section className="container-fluid">
         <div
           className="container-flat-form text-center"
           style={{ backgroundColor: "#d4edda" }}
         >
-          <ActivitiesTabs />
-
           <div className="container">
             <h2>¡Actividades hechas!</h2>
             <p>¡Felicidades por completar estas actividades!</p>

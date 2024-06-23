@@ -18,7 +18,7 @@ export default function FaqsTabs() {
 
   return (
     <div className="container-fluid">
-      <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
+      <ul className="nav nav-tabs nav-justified">
         <li className={pathname === "introduction" ? "active" : ""}>
           <Link href="/learning/teachers/faqs/introduction">
             {pathname === "introduction" ? (

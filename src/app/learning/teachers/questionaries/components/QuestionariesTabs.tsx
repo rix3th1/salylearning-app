@@ -16,7 +16,7 @@ export default function QuestionariesTabs() {
 
   return (
     <div className="container-fluid">
-      <ul className="nav nav-tabs nav-justified" style={{ fontSize: 17 }}>
+      <ul className="nav nav-tabs nav-justified">
         <li className={pathname === "completed" ? "active" : ""}>
           <Link href="/learning/teachers/questionaries/completed">
             {pathname === "completed" ? (

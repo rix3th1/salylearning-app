@@ -20,7 +20,9 @@ export default function RowRespuestas({ actividadesCompletadas }: IProps) {
           <td>{cuestionario.preguntas.length}</td>
           <td>
             {calificacion ? (
-              <span className="label label-success">{calificacion}</span>
+              <span className="label label-success">
+                {Number(calificacion).toFixed(1)}
+              </span>
             ) : (
               <span className="label label-info">No calificado</span>
             )}
