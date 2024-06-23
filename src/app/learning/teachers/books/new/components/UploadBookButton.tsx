@@ -155,6 +155,7 @@ export default function UploadBookButton({ libros }: IProps) {
         text: "El libro ha sido eliminado exitosamente.",
         icon: "success",
         timer: 3000,
+        confirmButtonColor: "#e21e80",
       });
     }
   };

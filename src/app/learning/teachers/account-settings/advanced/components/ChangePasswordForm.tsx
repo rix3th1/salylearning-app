@@ -44,6 +44,7 @@ export default function ChangePasswordForm({ email }: IProps) {
         text: cambioClave.message,
         icon: "success",
         timer: 3000,
+        confirmButtonColor: "#e21e80",
       });
 
       setFormData(cambiarClaveInitState);
@@ -56,6 +57,7 @@ export default function ChangePasswordForm({ email }: IProps) {
           text: error.message.replace(/,/g, ", "),
           icon: "error",
           timer: 3000,
+          confirmButtonColor: "#e21e80",
         });
       }
     } finally {
@@ -74,12 +76,12 @@ export default function ChangePasswordForm({ email }: IProps) {
         <label htmlFor="current_password">Contraseña Actual</label>
         <input
           type={passwordsVisibility.password ? "text" : "password"}
+          autoComplete="current-password"
           className="form-control"
           id="current_password"
           name="current_password"
           placeholder="Contraseña actual"
           required
-          autoComplete="current-password"
           value={formData.current_password}
           onChange={handleChange}
         />
@@ -117,11 +119,11 @@ export default function ChangePasswordForm({ email }: IProps) {
         <label htmlFor="password">Nueva Contraseña</label>
         <input
           type={passwordsVisibility.newPassword ? "text" : "password"}
+          autoComplete="new-password"
           className="form-control"
           id="password"
           name="password"
           placeholder="Nueva contraseña"
-          autoComplete="new-password"
           value={formData.password}
           onChange={handleChange}
         />

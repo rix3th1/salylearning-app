@@ -50,6 +50,7 @@ export default function FormResponderPreguntas({
         text: "Has completado la actividad.",
         icon: "success",
         timer: 3000,
+        confirmButtonColor: "#e21e80",
       });
 
       realisticLookConfetti();
@@ -61,6 +62,7 @@ export default function FormResponderPreguntas({
           text: error.message.replace(/,/g, ", "),
           icon: "error",
           timer: 3000,
+          confirmButtonColor: "#e21e80",
         });
       }
     } finally {

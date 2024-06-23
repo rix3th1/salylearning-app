@@ -48,17 +48,18 @@ export default function ContactForm() {
       {/* Name input*/}
       <div className="form-floating mb-3">
         <input
-          className="form-control"
+          className="form-control text-capitalize"
           style={{ color: "#000" }}
           name="nombre_completo"
           id="nombre_completo"
           type="text"
           placeholder="Ingrese su nombre"
-          autoComplete="name"
+          autoComplete="off"
           onChange={handleChange}
           value={formData.nombre_completo}
           required
           autoFocus
+          spellCheck={false}
         />
         <label htmlFor="nombre_completo">Nombre completo</label>
       </div>
@@ -71,10 +72,11 @@ export default function ContactForm() {
           id="email"
           type="email"
           placeholder="name@example.com"
-          autoComplete="email"
+          autoComplete="off"
           onChange={handleChange}
           value={formData.email}
           required
+          spellCheck={false}
         />
         <label htmlFor="email">Correo electrónico</label>
       </div>

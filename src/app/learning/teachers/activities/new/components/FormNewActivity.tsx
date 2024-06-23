@@ -31,6 +31,7 @@ export default function FormNewActivity() {
         text: "Sólo se permiten 10 preguntas por libro en una actividad.",
         icon: "error",
         timer: 3000,
+        confirmButtonColor: "#e21e80",
       });
       return;
     }
@@ -104,6 +105,7 @@ export default function FormNewActivity() {
         text: cuestionarioCreado.message,
         icon: "success",
         timer: 1500,
+        confirmButtonColor: "#e21e80",
       });
 
       const id_cuestionario = cuestionarioCreado.id;
@@ -120,6 +122,7 @@ export default function FormNewActivity() {
         text: cuestionarioEstudianteAsignaciones.message,
         icon: "success",
         timer: 1500,
+        confirmButtonColor: "#e21e80",
       });
 
       setFormData(cuestionarioInitState);
@@ -143,6 +146,7 @@ export default function FormNewActivity() {
           text: error.message.replace(/,/g, ", "),
           icon: "error",
           timer: 3000,
+          confirmButtonColor: "#e21e80",
         });
       }
     } finally {
@@ -253,11 +257,13 @@ export default function FormNewActivity() {
             </button>
           </div>
 
-          <label htmlFor="pregunta">Contenido de la pregunta {index + 1}</label>
+          <label htmlFor={`pregunta-${index}`}>
+            Contenido de la pregunta {index + 1}
+          </label>
           <textarea
             className="form-control"
             name="pregunta"
-            id="pregunta"
+            id={`pregunta-${index}`}
             onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.pregunta}
             placeholder="Redacta la pregunta acerca del tema del libro"
@@ -267,55 +273,60 @@ export default function FormNewActivity() {
           />
           <hr />
           <p style={{ fontStyle: "italic" }}>Opciones de respuesta única:</p>
-          <label htmlFor="A">Respuesta A.</label>
+          <label htmlFor={`A-${index}`}>Respuesta A.</label>
           <textarea
+            style={{ marginBottom: "1rem" }}
             className="form-control"
             name="A"
-            id="A"
+            id={`A-${index}`}
             onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.A}
             placeholder="Redacta la opción de respuesta A"
             required
             spellCheck={false}
           />
-          <label htmlFor="B">Respuesta B.</label>
+          <label htmlFor={`B-${index}`}>Respuesta B.</label>
           <textarea
+            style={{ marginBottom: "1rem" }}
             className="form-control"
             name="B"
-            id="B"
+            id={`B-${index}`}
             onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.B}
             placeholder="Redacta la opción de respuesta B"
             required
             spellCheck={false}
           />
-          <label htmlFor="C">Respuesta C.</label>
+          <label htmlFor={`C-${index}`}>Respuesta C.</label>
           <textarea
+            style={{ marginBottom: "1rem" }}
             className="form-control"
             name="C"
-            id="C"
+            id={`C-${index}`}
             onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.C}
             placeholder="Redacta la opción de respuesta C"
             required
             spellCheck={false}
           />
-          <label htmlFor="D">Respuesta D.</label>
+          <label htmlFor={`D-${index}`}>Respuesta D.</label>
           <textarea
+            style={{ marginBottom: "1rem" }}
             className="form-control"
             name="D"
-            id="D"
+            id={`D-${index}`}
             onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.D}
             placeholder="Redacta la opción de respuesta D"
             required
             spellCheck={false}
           />
-          <label htmlFor="opcion_correcta">Opción correcta.</label>
+          <label htmlFor={`opcion_correcta-${index}`}>Opción correcta.</label>
           <select
+            style={{ marginBottom: "1rem" }}
             className="form-control"
             name="opcion_correcta"
-            id="opcion_correcta"
+            id={`opcion_correcta-${index}`}
             onChange={(event) => handleChangePreguntas(index, event)}
             value={pregunta.opcion_correcta}
             required

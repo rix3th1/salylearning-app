@@ -68,6 +68,7 @@ export async function showSwalRetroalimentacion({
       text: `Calificación: ${Number(result.value.calificacion).toFixed(1)}`,
       icon: "success",
       timer: 3000,
+      confirmButtonColor: "#e21e80",
     });
   }
 }

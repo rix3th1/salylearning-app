@@ -19,6 +19,10 @@ const showSwalForSendEmail = async (
     text: "Por favor ingresa tu correo electrónico",
     input: "email",
     inputPlaceholder: "Escribe aquí tu correo electrónico",
+    inputAttributes: {
+      spellCheck: "false",
+      autocomplete: "off",
+    },
     inputValidator(email: string) {
       if (!email) {
         return "Debes escribir tu correo electrónico";
@@ -57,6 +61,7 @@ const showSwalForSendEmail = async (
       text: result.value.message,
       icon: "success",
       timer: 3000,
+      confirmButtonColor: "#e21e80",
     });
   }
 };

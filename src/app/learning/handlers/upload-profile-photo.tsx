@@ -60,6 +60,7 @@ export const showSwalUploadProfilePhoto = async (
       text: "Tu foto de perfil ha sido subida exitosamente.",
       icon: "success",
       timer: 3000,
+      confirmButtonColor: "#e21e80",
     });
   }
 };

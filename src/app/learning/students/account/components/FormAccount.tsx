@@ -69,6 +69,7 @@ export default function FormAccount({ user, student }: IProps) {
         text: usuario.message,
         icon: "success",
         timer: 1500,
+        confirmButtonColor: "#e21e80",
       });
 
       const gradoUsuario = await actualizarGradoUsuario(
@@ -82,6 +83,7 @@ export default function FormAccount({ user, student }: IProps) {
         text: gradoUsuario.message,
         icon: "success",
         timer: 1500,
+        confirmButtonColor: "#e21e80",
       });
 
       const estudiante = await actualizarEstudiante(student.id, {
@@ -97,6 +99,7 @@ export default function FormAccount({ user, student }: IProps) {
         text: estudiante.message,
         icon: "success",
         timer: 1500,
+        confirmButtonColor: "#e21e80",
       });
     } catch (error) {
       if (error instanceof Error) {
@@ -106,6 +109,7 @@ export default function FormAccount({ user, student }: IProps) {
           text: error.message.replace(/,/g, ", "),
           icon: "error",
           timer: 3000,
+          confirmButtonColor: "#e21e80",
         });
       }
     } finally {
@@ -141,7 +145,7 @@ export default function FormAccount({ user, student }: IProps) {
         <label htmlFor="p_nombre">Primer Nombre:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           id="p_nombre"
           name="p_nombre"
           placeholder="Primer nombre del alumno"
@@ -150,26 +154,28 @@ export default function FormAccount({ user, student }: IProps) {
           autoFocus
           required
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group">
         <label htmlFor="s_nombre">Segundo Nombre:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           id="s_nombre"
           name="s_nombre"
           placeholder="Segundo nombre del alumno"
           value={formData.s_nombre}
           onChange={handleChange}
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group">
         <label htmlFor="p_apellido">Primer Apellido:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           id="p_apellido"
           name="p_apellido"
           placeholder="Primer apellido del alumno"
@@ -177,19 +183,21 @@ export default function FormAccount({ user, student }: IProps) {
           onChange={handleChange}
           required
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group">
         <label htmlFor="s_apellido">Segundo Apellido:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           id="s_apellido"
           name="s_apellido"
           placeholder="Segundo apellido del alumno"
           value={formData.s_apellido}
           onChange={handleChange}
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group">
@@ -242,6 +250,8 @@ export default function FormAccount({ user, student }: IProps) {
           minLength={10}
           maxLength={10}
           onChange={handleChange}
+          spellCheck={false}
+          autoComplete="off"
         />
       </div>
       <div className="form-group">
@@ -255,6 +265,7 @@ export default function FormAccount({ user, student }: IProps) {
           value={formData.apodo}
           disabled={isLoading}
           onChange={handleChange}
+          spellCheck={false}
         />
       </div>
 

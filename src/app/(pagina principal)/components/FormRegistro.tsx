@@ -80,21 +80,23 @@ export default function FormRegistro({
             ref={inputFcs}
             name="p_nombre"
             type="text"
-            className="form-control"
+            className="form-control text-capitalize"
             placeholder="Primer nombre"
             required
             onChange={handleChange}
             value={formData.p_nombre}
+            spellCheck={false}
           />
         </div>
         <div className="form-group col-md-6 py-3">
           <input
             name="s_nombre"
             type="text"
-            className="form-control"
+            className="form-control text-capitalize"
             placeholder="Segundo nombre"
             onChange={handleChange}
             value={formData.s_nombre}
+            spellCheck={false}
           />
         </div>
       </div>
@@ -104,21 +106,23 @@ export default function FormRegistro({
           <input
             name="p_apellido"
             type="text"
-            className="form-control"
+            className="form-control text-capitalize"
             placeholder="Primer apellido"
             required
             onChange={handleChange}
             value={formData.p_apellido}
+            spellCheck={false}
           />
         </div>
         <div className="form-group col-md-6 py-3">
           <input
             name="s_apellido"
             type="text"
-            className="form-control"
+            className="form-control text-capitalize"
             placeholder="Segundo apellido"
             onChange={handleChange}
             value={formData.s_apellido}
+            spellCheck={false}
           />
         </div>
       </div>
@@ -164,6 +168,7 @@ export default function FormRegistro({
               required
               onChange={handleChange}
               value={formData.cod_docente}
+              spellCheck={false}
             />
           </div>
         )}
@@ -187,20 +192,21 @@ export default function FormRegistro({
             className="form-control"
             placeholder="Correo electrónico"
             required
-            autoComplete="email"
+            autoComplete="off"
             onChange={handleChange}
             value={formData.email}
+            spellCheck={false}
           />
         </div>
         <div className="form-group col-md-6 py-3">
           <input
             name="password"
             type="password"
+            autoComplete="new-password"
             className="form-control"
             placeholder="Contraseña"
             required
             minLength={6}
-            autoComplete="new-password"
             onChange={handleChange}
             value={formData.password}
           />
@@ -212,11 +218,11 @@ export default function FormRegistro({
           <input
             name="confirmar_password"
             type="password"
+            autoComplete="new-password"
             className="form-control"
             placeholder="Confirmar contraseña"
             required
             minLength={6}
-            autoComplete="new-password"
             onChange={handleChange}
             value={formData.confirmar_password}
           />

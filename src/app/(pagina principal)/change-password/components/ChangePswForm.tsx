@@ -57,8 +57,8 @@ export default function ChangePswForm({
           name="password"
           id="password"
           type="password"
+          autoComplete="new-password"
           placeholder="Contraseña"
-          autoComplete="name"
           onChange={handleChange}
           value={formData.password}
           required
@@ -74,8 +74,8 @@ export default function ChangePswForm({
           name="confirmar_password"
           id="confirmar_password"
           type="password"
+          autoComplete="new-password"
           placeholder="Confirmar contraseña"
-          autoComplete="name"
           onChange={handleChange}
           value={formData.confirmar_password}
           required

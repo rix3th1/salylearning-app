@@ -85,19 +85,20 @@ export default function FormIniciarSesion({
           className="form-control"
           placeholder="Ingrese su nombre de usuario"
           required
-          autoComplete="username"
+          autoComplete="off"
           onChange={handleChange}
           value={formData.username}
+          spellCheck={false}
         />
       </div>
       <div className="form-group mx-sm-4 pb-4">
         <input
           name="password"
           type="password"
+          autoComplete="current-password"
           className="form-control"
           placeholder="Ingrese su contraseña"
           required
-          autoComplete="current-password"
           onChange={handleChange}
           value={formData.password}
         />

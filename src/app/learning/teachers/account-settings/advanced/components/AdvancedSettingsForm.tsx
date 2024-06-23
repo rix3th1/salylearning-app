@@ -58,6 +58,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
         text: usuario.message,
         icon: "success",
         timer: 1500,
+        confirmButtonColor: "#e21e80",
       });
 
       const docente = await actualizarDocente(teacher.id, { cod_docente });
@@ -71,6 +72,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
         text: docente.message,
         icon: "success",
         timer: 1500,
+        confirmButtonColor: "#e21e80",
       });
     } catch (error) {
       if (error instanceof Error) {
@@ -80,6 +82,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           text: error.message.replace(/,/g, ", "),
           icon: "error",
           timer: 3000,
+          confirmButtonColor: "#e21e80",
         });
       }
     } finally {
@@ -110,30 +113,32 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       <div className="form-group mx-sm-4 pt-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           placeholder="Primer nombre"
           name="p_nombre"
           required
           value={formData.p_nombre}
           onChange={handleChange}
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group mx-sm-4 pt-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           placeholder="Segundo nombre"
           name="s_nombre"
           value={formData.s_nombre}
           onChange={handleChange}
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group mx-sm-4 pt-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           placeholder="Primer apellido"
           name="p_apellido"
           required
@@ -145,7 +150,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       <div className="form-group mx-sm-4 pt-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           placeholder="Segundo apellido"
           name="s_apellido"
           value={formData.s_apellido}
@@ -164,6 +169,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           value={formData.email}
           onChange={handleChange}
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <div className="form-group mx-sm-4 pt-3">
@@ -178,6 +184,8 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           maxLength={6}
           minLength={6}
           disabled={isLoading}
+          spellCheck={false}
+          autoComplete="off"
         />
       </div>
       <div className="form-group mx-sm-4 pt-3">
@@ -195,12 +203,13 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       <div className="form-group mx-sm-4 pt-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control text-capitalize"
           placeholder="Ciudad"
           name="ciudad"
           value={formData.ciudad}
           onChange={handleChange}
           disabled={isLoading}
+          spellCheck={false}
         />
       </div>
       <button

@@ -34,72 +34,89 @@ export default function FormNewBook() {
         Por favor, completa los siguientes campos para subir un nuevo libro.
       </p>
 
-      <label className="swal2-input-label">
+      <label htmlFor="nom_libro" className="swal2-input-label">
         Nombre del libro
         <span className="text-danger">*</span>
       </label>
       <input
         type="text"
+        id="nom_libro"
         name="nom_libro"
-        className="swal2-input"
+        className="swal2-input text-capitalize"
         placeholder="Nombre del libro"
         required
+        autoComplete="off"
+        spellCheck={false}
+        autoFocus
       />
 
-      <label className="swal2-input-label">
+      <label htmlFor="autor" className="swal2-input-label">
         Autor
         <span className="text-danger">*</span>
       </label>
       <input
         type="text"
         name="autor"
-        className="swal2-input"
+        id="autor"
+        className="swal2-input text-capitalize"
         placeholder="Autor"
         required
+        autoComplete="off"
+        spellCheck={false}
       />
 
-      <label className="swal2-input-label">
+      <label htmlFor="editorial" className="swal2-input-label">
         Editorial
         <span className="text-danger">*</span>
       </label>
       <input
         type="text"
         name="editorial"
-        className="swal2-input"
+        id="editorial"
+        className="swal2-input text-capitalize"
         placeholder="Editorial"
         required
+        autoComplete="off"
+        spellCheck={false}
       />
 
-      <label className="swal2-input-label">
+      <label htmlFor="descripcion" className="swal2-input-label">
         Descripción del libro
         <span className="text-danger">*</span>
       </label>
       <textarea
         name="descripcion"
+        id="descripcion"
         className="swal2-textarea"
         placeholder="Breve descripción del libro"
         required
         spellCheck={false}
       />
 
-      <label className="swal2-input-label">
+      <label htmlFor="video_libro" className="swal2-input-label">
         Archivo de video del libro
         <span className="text-danger">*</span>
       </label>
       <input
         type="file"
         name="video_libro"
+        id="video_libro"
         className="swal2-file"
         placeholder="Video del libro"
         accept="video/mp4"
         required
       />
 
-      <label className="swal2-input-label">
+      <label htmlFor="id_genero_literario" className="swal2-input-label">
         Género Literario
         <span className="text-danger">*</span>
       </label>
-      <select name="id_genero_literario" className="swal2-select" required>
+      <select
+        name="id_genero_literario"
+        id="id_genero_literario"
+        className="swal2-select"
+        required
+      >
         <option value="">Seleccione el género literario</option>
         {generosLiterarios.map((genero: any) => (
           <option key={genero.id} value={genero.id}>
@@ -108,11 +125,11 @@ export default function FormNewBook() {
         ))}
       </select>
 
-      <label className="swal2-input-label">
+      <label htmlFor="id_grado" className="swal2-input-label">
         Grado al que pertenece Libro
         <span className="text-danger">*</span>
       </label>
-      <select name="id_grado" className="swal2-select" required>
+      <select name="id_grado" id="id_grado" className="swal2-select" required>
         <option value="">Seleccione su grado escolar</option>
         {grados.map((grado: any) => (
           <option key={grado.id} value={grado.id}>
@@ -121,25 +138,27 @@ export default function FormNewBook() {
         ))}
       </select>
 
-      <label className="swal2-input-label">
+      <label htmlFor="fecha_pub" className="swal2-input-label">
         Fecha de Publicación
         <span className="text-danger">*</span>
       </label>
       <input
         type="date"
         name="fecha_pub"
+        id="fecha_pub"
         className="swal2-input"
         placeholder="Fecha de Publicación"
         required
       />
 
-      <label className="swal2-input-label">
+      <label htmlFor="imagen_portada" className="swal2-input-label">
         Portada del libro
         <span className="text-danger">*</span>
       </label>
       <input
         type="file"
         name="imagen_portada"
+        id="imagen_portada"
         className="swal2-file"
         placeholder="Portada del libro"
         accept="image/png, image/jpeg"
