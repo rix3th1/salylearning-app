@@ -1,10 +1,10 @@
 import { fetchServer } from "./api.service";
 
-export async function obtenerContadoresLogros(id_estudiante: string) {
+export async function obtenerContadoresLogros() {
   const urls = [
-    `/libros-estudiante/contar/terminados/${id_estudiante}`,
-    `/cuestionario-estudiante/contar/preguntas-correctas/${id_estudiante}`,
-    `/libros-estudiante/tiempo-lectura/${id_estudiante}`,
+    "/libros-estudiante/contar/terminados",
+    "/cuestionario-estudiante/contar/preguntas-correctas",
+    "/libros-estudiante/tiempo-lectura",
   ];
 
   const promises = urls.map((url) =>
@@ -25,12 +25,10 @@ export async function obtenerContadoresLogros(id_estudiante: string) {
   return Promise.all(responses.map((res) => res.json()));
 }
 
-export async function obtenerEstadisticasLogrosEstudiante(
-  id_estudiante: string
-) {
+export async function obtenerEstadisticasLogrosEstudiante() {
   const urls = [
-    `/libros-estudiante/estadisticas-semanales/lectura/${id_estudiante}`,
-    `/cuestionario-estudiante/estadisticas-semanales/preguntas-correctas/${id_estudiante}`,
+    "/libros-estudiante/estadisticas-semanales/lectura",
+    "/cuestionario-estudiante/estadisticas-semanales/preguntas-correctas",
   ];
 
   const promises = urls.map((url) =>

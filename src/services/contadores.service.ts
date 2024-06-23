@@ -35,14 +35,11 @@ export async function obtenerContadoresParaDocentes() {
   return Promise.all(responses.map((res) => res.json()));
 }
 
-export async function obtenerContadoresParaEstudiantes(
-  id_estudiante: string,
-  id_usuario: string
-) {
+export async function obtenerContadoresParaEstudiantes() {
   const urlsParaEstudiantes: string[] = [
-    `/mis-libros/contar/usuario/${id_usuario}`,
-    `/libros-estudiante/contar/no-terminados/${id_estudiante}`,
-    `/libros-estudiante/contar/terminados/${id_estudiante}`,
+    "/mis-libros/contar/usuario",
+    "/libros-estudiante/contar/no-terminados",
+    "/libros-estudiante/contar/terminados",
   ];
 
   const promises = urlsParaEstudiantes.map((url) =>
