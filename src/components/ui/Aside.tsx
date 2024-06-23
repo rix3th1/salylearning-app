@@ -50,7 +50,7 @@ export default async function Aside() {
             color: "#fff",
           }}
         >
-          <SalyFigure canChange={session?.user.rol === "ESTUDIANTE"} />
+          <SalyFigure canChange={isStudent} />
         </div>
         <div className="full-reset nav-lateral-list-menu">
           <ul

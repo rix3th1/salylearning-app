@@ -1,21 +1,17 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import calendarBookImage from "@/assets/calendar_book.png";
-import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
+import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
 import Image from "next/image";
-import BotonCalificacion from "../components/BotonCalificacion";
-import Nothing from "../components/Nothing";
+import { Suspense } from "react";
 import QuestionariesTabs from "../components/QuestionariesTabs";
-import { RelativeTime } from "../components/RelativeTime";
+import TableCompletedQuestionaries from "./components/TableCompletedQuestionaries";
 
 export const metadata: Metadata = {
   title: "Completados (Cuestionarios): Docentes | Saly Learning",
 };
 
-export default async function CompletedQuestionariesPage() {
-  const cuestionariosEstudiantes =
-    await obtenerCuestionariosEstudiantesPorEstado("COMPLETADO");
-
+export default function CompletedQuestionariesPage() {
   return (
     <>
       <PageHeader title="Cuestionarios completos" />
@@ -46,70 +42,9 @@ export default async function CompletedQuestionariesPage() {
       <div className="container-fluid">
         <h2 className="text-center">Cuestionarios completos</h2>
 
-        {cuestionariosEstudiantes.length > 0 ? (
-          <div className="table-responsive">
-            <table className="table table-hover">
-              <thead>
-                <tr className="active">
-                  <th>No.</th>
-                  <th>Nombre de libro</th>
-                  <th>Nombre estudiante</th>
-                  <th>Grado</th>
-                  <th>Fecha asignado</th>
-                  <th>Fecha entrega</th>
-                  <th>Estado</th>
-                  <th>Calificación</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cuestionariosEstudiantes.map(
-                  (
-                    {
-                      id: cuestionario_id,
-                      fecha_asignado,
-                      fecha_entrega,
-                      calificacion,
-                      estado,
-                      cuestionario,
-                      estudiante,
-                    }: any,
-                    index: number
-                  ) => (
-                    <tr key={index} className="success">
-                      <td>{index + 1}</td>
-                      <td>{cuestionario.preguntas[0]?.libros?.nom_libro}</td>
-                      <td>
-                        {`${estudiante.usuario.p_nombre} ${estudiante.usuario.p_apellido}`}
-                      </td>
-                      <td>
-                        {estudiante.usuario.grado_usuario.grados.nom_grado}
-                      </td>
-                      <td>
-                        <RelativeTime datetime={fecha_asignado} />
-                      </td>
-                      <td>
-                        <RelativeTime datetime={fecha_entrega} />
-                      </td>
-                      <td>
-                        <span className="label label-success">{estado}</span>
-                      </td>
-                      <td>
-                        <BotonCalificacion
-                          id_cuestionario={cuestionario_id}
-                          estadoCuestionario={estado}
-                          calificacion={calificacion}
-                          cuestionario={cuestionario}
-                        />
-                      </td>
-                    </tr>
-                  )
-                )}
-              </tbody>
-            </table>
-          </div>
-        ) : (
-          <Nothing complement="completados" />
-        )}
+        <Suspense fallback={<Fallback />}>
+          <TableCompletedQuestionaries />
+        </Suspense>
       </div>
     </>
   );
