@@ -71,18 +71,7 @@ export default function GradesReport() {
   }, []);
 
   return (
-    <div className="row" style={{ margin: "1rem" }}>
-      <div className="col-md-6 text-center">
-        <span
-          style={{
-            fontWeight: "bold",
-            fontStyle: "italic",
-          }}
-        >
-          Reporte de calificaciones:
-        </span>
-      </div>
-
+    <>
       <div className="col-md-6 text-center">
         <select
           name="id_grado"
@@ -119,6 +108,6 @@ export default function GradesReport() {
           <MdDownload style={{ position: "relative", top: 2 }} />
         </button>
       </div>
-    </div>
+    </>
   );
 }

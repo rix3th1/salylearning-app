@@ -3,7 +3,7 @@ import calendarBookImage from "@/assets/calendar_book.png";
 import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import BotonCalificar from "../components/BotonCalificar";
+import BotonCalificacion from "../components/BotonCalificacion";
 import Nothing from "../components/Nothing";
 import QuestionariesTabs from "../components/QuestionariesTabs";
 import { RelativeTime } from "../components/RelativeTime";
@@ -94,7 +94,7 @@ export default async function CompletedQuestionariesPage() {
                         <span className="label label-success">{estado}</span>
                       </td>
                       <td>
-                        <BotonCalificar
+                        <BotonCalificacion
                           id_cuestionario={cuestionario_id}
                           estadoCuestionario={estado}
                           calificacion={calificacion}
@@ -108,7 +108,7 @@ export default async function CompletedQuestionariesPage() {
             </table>
           </div>
         ) : (
-          <Nothing type="completados" />
+          <Nothing complement="completados" />
         )}
       </div>
     </>

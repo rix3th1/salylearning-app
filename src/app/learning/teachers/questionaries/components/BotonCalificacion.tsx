@@ -14,7 +14,7 @@ interface IProps {
   cuestionario?: any;
 }
 
-export default function BotonCalificar({
+export default function BotonCalificacion({
   id_cuestionario,
   calificacion,
   estadoCuestionario,

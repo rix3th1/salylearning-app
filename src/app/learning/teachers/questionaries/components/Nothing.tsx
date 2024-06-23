@@ -1,11 +1,11 @@
 interface IProps {
-  type: string;
+  complement: string;
 }
 
-export default function Nothing({ type }: IProps) {
+export default function Nothing({ complement }: IProps) {
   return (
     <div className="text-center">
-      <p>No hay cuestionarios {type}.</p>
+      <p>No hay cuestionarios {complement}.</p>
     </div>
   );
 }

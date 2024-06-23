@@ -1,3 +1,5 @@
+"use client";
+
 import { plus_jakarta_sans } from "@/app/fonts";
 import { obtenerLibrosPorNombre } from "@/services/libros.service";
 import { MdCancel, MdSearch } from "react-icons/md";

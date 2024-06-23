@@ -125,7 +125,20 @@ export default async function ReportsAndStatisticsPage() {
                     </div>
                   )}
                   <div className="position">
-                    <GradesReport />
+                    <div className="row" style={{ margin: "1rem" }}>
+                      <div className="col-md-6 text-center">
+                        <span
+                          style={{
+                            fontWeight: "bold",
+                            fontStyle: "italic",
+                          }}
+                        >
+                          Reporte de calificaciones:
+                        </span>
+                      </div>
+
+                      <GradesReport />
+                    </div>
                   </div>
                 </div>
               </div>

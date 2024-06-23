@@ -53,7 +53,7 @@ export default async function PendingActivitiesPage() {
                   </table>
                 </div>
               ) : (
-                <Nothing type="completados" />
+                <Nothing complement="completados" />
               )}
             </div>
           </div>

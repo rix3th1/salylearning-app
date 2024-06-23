@@ -1,3 +1,5 @@
+"use client";
+
 import { plus_jakarta_sans } from "@/app/fonts";
 import { MdHelpOutline, MdThumbUp } from "react-icons/md";
 import Swal from "sweetalert2";

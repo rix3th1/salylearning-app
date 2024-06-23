@@ -97,7 +97,7 @@ export default async function PendingQuestionaries() {
             </table>
           </div>
         ) : (
-          <Nothing type="pendientes" />
+          <Nothing complement="pendientes" />
         )}
       </div>
     </>

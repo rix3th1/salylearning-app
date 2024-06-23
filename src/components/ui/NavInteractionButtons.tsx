@@ -1,5 +1,3 @@
-"use client";
-
 import HelpButton from "./HelpButton";
 import PowerButton from "./PowerButton";
 import SearchBookButton from "./SearchBookButton";

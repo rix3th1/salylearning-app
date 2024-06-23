@@ -3,7 +3,7 @@ import calendarImage from "@/assets/calendar.png";
 import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
 import type { Metadata } from "next";
 import Image from "next/image";
-import BotonCalificar from "../components/BotonCalificar";
+import BotonCalificacion from "../components/BotonCalificacion";
 import Nothing from "../components/Nothing";
 import QuestionariesTabs from "../components/QuestionariesTabs";
 import { RelativeTime } from "../components/RelativeTime";
@@ -90,7 +90,7 @@ export default async function NotAchievedQuestionaries() {
                         <span className="label label-danger">{estado}</span>
                       </td>
                       <td>
-                        <BotonCalificar
+                        <BotonCalificacion
                           id_cuestionario={cuestionario_id}
                           estadoCuestionario={estado}
                           calificacion={calificacion}
@@ -103,7 +103,7 @@ export default async function NotAchievedQuestionaries() {
             </table>
           </div>
         ) : (
-          <Nothing type="no logrados" />
+          <Nothing complement="no logrados" />
         )}
       </div>
     </>
