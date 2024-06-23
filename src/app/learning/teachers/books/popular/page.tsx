@@ -1,8 +1,9 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import checkListImage from "@/assets/checklist.png";
-import { obtenerLibrosPopulares } from "@/services/libros.service";
+import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
 import Image from "next/image";
+import { Suspense } from "react";
 import { MdSearch } from "react-icons/md";
 import ListLibros from "./components/ListLibros";
 
@@ -10,9 +11,7 @@ export const metadata: Metadata = {
   title: "Libros Populares: Docentes | Saly Learning",
 };
 
-export default async function PopularBooksPage() {
-  const librosPopulares = await obtenerLibrosPopulares();
-
+export default function PopularBooksPage() {
   return (
     <>
       <PageHeader title="Libros populares" />
@@ -50,7 +49,9 @@ export default async function PopularBooksPage() {
       </div>
 
       <div className="container-fluid" id="libros-container">
-        <ListLibros libros={librosPopulares} />
+        <Suspense fallback={<Fallback />}>
+          <ListLibros />
+        </Suspense>
       </div>
     </>
   );

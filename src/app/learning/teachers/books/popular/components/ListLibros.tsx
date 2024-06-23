@@ -1,12 +1,11 @@
+import { obtenerLibrosPopulares } from "@/services/libros.service";
 import Image from "next/image";
 import ButtonMoreInfoBook from "./ButtonMoreInfoBook";
 
-interface IProps {
-  libros: any;
-}
+export default async function ListLibros() {
+  const librosPopulares = await obtenerLibrosPopulares();
 
-export default function ListLibros({ libros }: IProps) {
-  if (!libros.length) {
+  if (!librosPopulares.length) {
     return (
       <div className="row">
         <div className="col-md-12 text-center">
@@ -18,7 +17,7 @@ export default function ListLibros({ libros }: IProps) {
     );
   }
 
-  return libros.map((libro: any, index: number) => (
+  return librosPopulares.map((libro: any, index: number) => (
     <div key={index} className="media media-hover" data-tiempo="semana">
       <div className="media-left media-middle">
         <Image

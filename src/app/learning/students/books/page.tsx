@@ -1,20 +1,16 @@
 import PageHeader from "@/app/learning/components/PageHeader";
-import Carrousel from "@/app/learning/teachers/books/new/components/Carrousel";
 import calendarImage from "@/assets/calendar.png";
-import { obtenerGenerosLiterarios } from "@/services/generos-literarios.service";
-import { obtenerLibrosPorGeneroLiterario } from "@/services/libros.service";
+import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { MdWarning } from "react-icons/md";
-import { mapDataCarrousel } from "../../libs";
+import { Suspense } from "react";
+import BookExplore from "./components/BookExplore";
 
 export const metadata: Metadata = {
   title: "Libros: Estudiantes | Saly Learning",
 };
 
-export default async function BooksPage() {
-  const generosLiterarios = await obtenerGenerosLiterarios.server();
-
+export default function BooksPage() {
   return (
     <>
       <PageHeader title="Explorar libros" />
@@ -44,44 +40,9 @@ export default async function BooksPage() {
             </div>
           </div>
 
-          <div className="row">
-            {generosLiterarios.map(async (genero: any, index: number) => {
-              const libros = await obtenerLibrosPorGeneroLiterario(
-                genero.nom_genero
-              );
-              const images: [] = mapDataCarrousel(libros, true);
-
-              return (
-                <div
-                  key={index}
-                  className="col-xs-12 col-sm-6 col-md-6 text-justify lead"
-                >
-                  <div className="custom-tile">
-                    <h3>{genero.nom_genero}</h3>
-                    <p>{genero.descripcion}</p>
-                    <div className="container-items">
-                      {images.length > 0 ? (
-                        <Carrousel items={images} />
-                      ) : (
-                        <article
-                          className="tile"
-                          style={{ margin: "2rem 0", padding: "0.5rem" }}
-                        >
-                          <div className="text-center">
-                            <MdWarning />
-                          </div>
-                          <span style={{ fontSize: "15px" }}>
-                            Aún no hay libros disponibles para este género
-                            literario.
-                          </span>
-                        </article>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <Suspense fallback={<Fallback />}>
+            <BookExplore />
+          </Suspense>
         </div>
       </section>
     </>
