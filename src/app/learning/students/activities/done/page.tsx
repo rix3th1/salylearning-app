@@ -27,34 +27,44 @@ export default async function PendingActivitiesPage() {
 
       <section className="container-fluid">
         <div
-          className="container-flat-form text-center"
+          className="container-flat-form"
           style={{ backgroundColor: "#d4edda" }}
         >
-          <div className="container">
-            <h2>¡Actividades hechas!</h2>
-            <p>¡Felicidades por completar estas actividades!</p>
-            <div className="row" style={{ marginTop: "3rem" }}>
-              {actividadesCompletadas.length > 0 ? (
-                <div className="table-responsive text-left">
-                  <table className="table table-hover">
-                    <thead>
-                      <tr className="active">
-                        <th>No.</th>
-                        <th>Nombre del libro</th>
-                        <th>Número de preguntas</th>
-                        <th>Calificación</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <RowRespuestas
-                        actividadesCompletadas={actividadesCompletadas}
-                      />
-                    </tbody>
-                  </table>
+          <div className="tab-content">
+            <div>
+              <section className="text-center">
+                <h2>¡Actividades hechas!</h2>
+                <p>¡Felicidades por completar estas actividades!</p>
+              </section>
+
+              <div
+                className="container"
+                style={{ marginTop: "2rem", marginBottom: "3rem" }}
+              >
+                <div className="row" style={{ padding: "0 10px" }}>
+                  {actividadesCompletadas.length > 0 ? (
+                    <div className="table-responsive text-left">
+                      <table className="table table-hover">
+                        <thead>
+                          <tr className="active">
+                            <th>No.</th>
+                            <th>Nombre del libro</th>
+                            <th>Número de preguntas</th>
+                            <th>Calificación</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <RowRespuestas
+                            actividadesCompletadas={actividadesCompletadas}
+                          />
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : (
+                    <Nothing complement="completados" />
+                  )}
                 </div>
-              ) : (
-                <Nothing complement="completados" />
-              )}
+              </div>
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ export default async function PendingActivitiesPage() {
 
       <section className="container-fluid">
         <div
-          className="container-flat-form "
+          className="container-flat-form"
           style={{ backgroundColor: "#d4edda" }}
         >
           <div className="tab-content">
@@ -52,63 +52,6 @@ export default async function PendingActivitiesPage() {
                         { id: cuestionario_id, cuestionario }: any,
                         index: number
                       ) => {
-                        /**
-                         * @example
-                         * Tengo estos datos:
-                         *
-                         * const data = {
-                         *   c: {
-                         *     id: 2,
-                         *     fecha_asignado: '2024-06-12T16:46:28.000Z',
-                         *     fecha_entrega: '2017-02-27T04:45:00.000Z',
-                         *     estado: 'PENDIENTE',
-                         *     preguntas: [
-                         *       {
-                         *         pregunta: 'Et nostrum aliquid e',
-                         *         libros: { nom_libro: 'Vero ullam magna quo', mis_libros: [] }
-                         *       },
-                         *       {
-                         *         pregunta: 'Optio temporibus al',
-                         *         libros: { nom_libro: 'Vero ullam magna quo', mis_libros: [] }
-                         *       }
-                         *     ],
-                         *     opciones_respuesta: [
-                         *       { opcion: 'A', respuesta: 'Similique tempor omn' },
-                         *       { opcion: 'B', respuesta: 'Aut eaque quia alias' },
-                         *       { opcion: 'C', respuesta: 'Cillum perferendis e' },
-                         *       { opcion: 'D', respuesta: 'Eius id aspernatur n' },
-                         *       { opcion: 'A', respuesta: 'Consequatur ut non e' },
-                         *       { opcion: 'B', respuesta: 'Ut delectus laboris' },
-                         *       { opcion: 'C', respuesta: 'Ut laborum Quia sun' },
-                         *       { opcion: 'D', respuesta: 'Ducimus ea eum odio' }
-                         *     ]
-                         *   }
-                         * }
-                         *
-                         * Y quiero obtener una respuesta como esta:
-                         *
-                         * const result = [
-                         *   {
-                         *     pregunta: 'Et nostrum aliquid e',
-                         *     opciones_respuesta: [
-                         *       { opcion: 'A', respuesta: 'Similique tempor omn' },
-                         *       { opcion: 'B', respuesta: 'Aut eaque quia alias' },
-                         *       { opcion: 'C', respuesta: 'Cillum perferendis e' },
-                         *       { opcion: 'D', respuesta: 'Eius id aspernatur n' },
-                         *     ]
-                         *   },
-                         *   {
-                         *     pregunta: 'Optio temporibus al',
-                         *     opciones_respuesta: [
-                         *       { opcion: 'A', respuesta: 'Consequatur ut non e' },
-                         *       { opcion: 'B', respuesta: 'Ut delectus laboris' },
-                         *       { opcion: 'C', respuesta: 'Ut laborum Quia sun' },
-                         *       { opcion: 'D', respuesta: 'Ducimus ea eum odio' },
-                         *     ]
-                         *   }
-                         * ]
-                         */
-
                         const preguntas = cuestionario.preguntas.map(
                           (pregunta: any, index: number) => ({
                             id: pregunta.id,
