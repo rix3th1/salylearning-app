@@ -1,24 +1,15 @@
 import PageHeader from "@/app/learning/components/PageHeader";
-import Nothing from "@/app/learning/teachers/questionaries/components/Nothing";
-import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionario-estudiante.service";
-import { obtenerEstudiante } from "@/services/estudiantes.service";
-import { obtenerPerfilUsuario } from "@/services/perfil.service";
+import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import ActivitiesTabs from "../components/ActivitiesTabs";
-import RowRespuestas from "./components/RowRespuestas";
+import DoneActivitiesTable from "./components/DoneActivitiesTable";
 
 export const metadata: Metadata = {
   title: "Hechas (Actividades): Estudiantes | Saly Learning",
 };
 
-export default async function PendingActivitiesPage() {
-  const user = await obtenerPerfilUsuario();
-  const estudiante = await obtenerEstudiante(user.id);
-  const actividadesCompletadas = await obtenerCuestionarioEstudiantePorEstado(
-    "COMPLETADO",
-    estudiante.id
-  );
-
+export default function PendingActivitiesPage() {
   return (
     <>
       <PageHeader title="Actividades hechas" />
@@ -42,27 +33,9 @@ export default async function PendingActivitiesPage() {
                 style={{ marginTop: "2rem", marginBottom: "3rem" }}
               >
                 <div className="row" style={{ padding: "0 10px" }}>
-                  {actividadesCompletadas.length > 0 ? (
-                    <div className="table-responsive text-left">
-                      <table className="table table-hover">
-                        <thead>
-                          <tr className="active">
-                            <th>No.</th>
-                            <th>Nombre del libro</th>
-                            <th>Número de preguntas</th>
-                            <th>Calificación</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <RowRespuestas
-                            actividadesCompletadas={actividadesCompletadas}
-                          />
-                        </tbody>
-                      </table>
-                    </div>
-                  ) : (
-                    <Nothing complement="completados" />
-                  )}
+                  <Suspense fallback={<Fallback />}>
+                    <DoneActivitiesTable />
+                  </Suspense>
                 </div>
               </div>
             </div>

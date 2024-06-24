@@ -1,25 +1,15 @@
 import PageHeader from "@/app/learning/components/PageHeader";
-import terminasteImage from "@/assets/Terminaste.png";
-import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionario-estudiante.service";
-import { obtenerEstudiante } from "@/services/estudiantes.service";
-import { obtenerPerfilUsuario } from "@/services/perfil.service";
+import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
-import Image from "next/image";
+import { Suspense } from "react";
 import ActivitiesTabs from "../components/ActivitiesTabs";
-import FormResponderPreguntas from "./components/FormResponderPreguntas";
+import PendingActivitiesCard from "./components/PendingActivitiesCard";
 
 export const metadata: Metadata = {
   title: "Pendientes (Actividades): Estudiantes | Saly Learning",
 };
 
-export default async function PendingActivitiesPage() {
-  const user = await obtenerPerfilUsuario();
-  const estudiante = await obtenerEstudiante(user.id);
-  const cuestionariosPendientes = await obtenerCuestionarioEstudiantePorEstado(
-    "PENDIENTE",
-    estudiante.id
-  );
-
+export default function PendingActivitiesPage() {
   return (
     <>
       <PageHeader title="Actividades por hacer" />
@@ -45,70 +35,9 @@ export default async function PendingActivitiesPage() {
                 className="container"
                 style={{ marginTop: "2rem", marginBottom: "3rem" }}
               >
-                <div className="row" style={{ padding: "0 10px" }}>
-                  {cuestionariosPendientes.length > 0 ? (
-                    cuestionariosPendientes.map(
-                      (
-                        { id: cuestionario_id, cuestionario }: any,
-                        index: number
-                      ) => {
-                        const preguntas = cuestionario.preguntas.map(
-                          (pregunta: any, index: number) => ({
-                            id: pregunta.id,
-                            pregunta: pregunta.pregunta,
-                            opciones_respuesta:
-                              cuestionario.opciones_respuesta.slice(
-                                index * 4,
-                                (index + 1) * 4
-                              ),
-                          })
-                        );
-
-                        return (
-                          <div
-                            key={index}
-                            className="col-md-12"
-                            style={{
-                              backgroundColor: "#fcb67c",
-                              borderRadius: "10px",
-                              border: "1px solid #bec0c1",
-                              padding: "40px",
-                              marginBottom: "20px",
-                            }}
-                          >
-                            <h4
-                              className="mr-3"
-                              style={{
-                                fontWeight: "bold",
-                              }}
-                            >
-                              {`Actividad ${cuestionario.id} - Cuestionario: ${cuestionario.preguntas[0]?.libros?.nom_libro}`}
-                            </h4>
-                            <hr />
-
-                            <FormResponderPreguntas
-                              preguntas={preguntas}
-                              cuestionario_id={cuestionario_id}
-                            />
-                          </div>
-                        );
-                      }
-                    )
-                  ) : (
-                    <div className="text-center">
-                      <Image
-                        src={terminasteImage}
-                        className="img-finish"
-                        style={{ margin: "2rem 0", borderRadius: "10px" }}
-                        alt="estas al dia"
-                        width={200}
-                        height={300}
-                        quality={100}
-                        placeholder="blur"
-                      />
-                    </div>
-                  )}
-                </div>
+                <Suspense fallback={<Fallback />}>
+                  <PendingActivitiesCard />
+                </Suspense>
               </div>
             </div>
           </div>

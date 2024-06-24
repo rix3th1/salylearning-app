@@ -70,14 +70,11 @@ export async function obtenerCuestionariosEstudiantesPorEstado(
 }
 
 export async function obtenerCuestionarioEstudiantePorEstado(
-  estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO",
-  id_estudiante: string
+  estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO"
 ) {
   const res = await fetchServer(
-    `/cuestionario-estudiante/estado/${id_estudiante}?estado_cuestionario=${estado}`,
-    {
-      method: "GET",
-    }
+    `/cuestionario-estudiante/estado?estado_cuestionario=${estado}`,
+    { method: "GET" }
   );
 
   const data = await res.json();
