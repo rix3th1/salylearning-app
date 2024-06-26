@@ -1,3 +1,5 @@
+import LoadingPage from "@/app/loading";
+
 export default function Fallback() {
-  return <div className="text-center">Cargando...</div>;
+  return <LoadingPage />;
 }
