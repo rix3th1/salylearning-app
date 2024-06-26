@@ -64,7 +64,7 @@ export default function ChangePswForm({
           required
           autoFocus
         />
-        <label htmlFor="password">Contraseña</label>
+        <label htmlFor="password">Contraseña *</label>
       </div>
 
       <div className="form-floating mb-3">
@@ -80,7 +80,7 @@ export default function ChangePswForm({
           value={formData.confirmar_password}
           required
         />
-        <label htmlFor="confirmar_password">Confirmar contraseña</label>
+        <label htmlFor="confirmar_password">Confirmar contraseña *</label>
       </div>
 
       {/* Submit Button*/}

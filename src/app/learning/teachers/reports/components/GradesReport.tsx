@@ -83,7 +83,7 @@ export default function GradesReport() {
           value={gradoSelected}
         >
           <option value="" disabled>
-            Seleccione su grado escolar
+            Seleccione su grado escolar *
           </option>
           {grados.map((grado: any) => (
             <option key={grado.id} value={grado.id}>

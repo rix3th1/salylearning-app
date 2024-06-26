@@ -61,7 +61,7 @@ export default function ContactForm() {
           autoFocus
           spellCheck={false}
         />
-        <label htmlFor="nombre_completo">Nombre completo</label>
+        <label htmlFor="nombre_completo">Nombre completo *</label>
       </div>
       {/* Email address input*/}
       <div className="form-floating mb-3">
@@ -78,7 +78,7 @@ export default function ContactForm() {
           required
           spellCheck={false}
         />
-        <label htmlFor="email">Correo electrónico</label>
+        <label htmlFor="email">Correo electrónico *</label>
       </div>
       {/* Phone number input*/}
       <div className="form-floating mb-3">
@@ -94,7 +94,7 @@ export default function ContactForm() {
           value={formData.telefono}
           required
         />
-        <label htmlFor="telefono">Teléfono</label>
+        <label htmlFor="telefono">Teléfono *</label>
       </div>
       {/* Message input*/}
       <div className="form-floating mb-3">
@@ -109,7 +109,7 @@ export default function ContactForm() {
           required
           spellCheck={false}
         />
-        <label htmlFor="mensaje">Mensaje o comentario</label>
+        <label htmlFor="mensaje">Mensaje o comentario *</label>
       </div>
 
       {/* Submit Button*/}

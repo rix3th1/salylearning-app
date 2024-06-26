@@ -183,6 +183,7 @@ export default function FormNewActivity() {
         <div className="form-group">
           <label htmlFor="id_libro">
             Libro al que se refiere la actividad:
+            <span className="text-danger">*</span>
           </label>
           <select
             name="id_libro"
@@ -205,6 +206,7 @@ export default function FormNewActivity() {
         <div className="form-group">
           <label htmlFor="fecha_entrega">
             Fecha de entrega de la actividad:{" "}
+            <span className="text-danger">*</span>{" "}
             {formData.fecha_entrega && (
               <relative-time
                 datetime={formData.fecha_entrega}
@@ -259,6 +261,7 @@ export default function FormNewActivity() {
 
           <label htmlFor={`pregunta-${index}`}>
             Contenido de la pregunta {index + 1}
+            <span className="text-danger">*</span>
           </label>
           <textarea
             className="form-control"
@@ -273,7 +276,10 @@ export default function FormNewActivity() {
           />
           <hr />
           <p style={{ fontStyle: "italic" }}>Opciones de respuesta única:</p>
-          <label htmlFor={`A-${index}`}>Respuesta A.</label>
+          <label htmlFor={`A-${index}`}>
+            Respuesta A.
+            <span className="text-danger">*</span>
+          </label>
           <textarea
             style={{ marginBottom: "1rem" }}
             className="form-control"
@@ -285,7 +291,10 @@ export default function FormNewActivity() {
             required
             spellCheck={false}
           />
-          <label htmlFor={`B-${index}`}>Respuesta B.</label>
+          <label htmlFor={`B-${index}`}>
+            Respuesta B.
+            <span className="text-danger">*</span>
+          </label>
           <textarea
             style={{ marginBottom: "1rem" }}
             className="form-control"
@@ -297,7 +306,10 @@ export default function FormNewActivity() {
             required
             spellCheck={false}
           />
-          <label htmlFor={`C-${index}`}>Respuesta C.</label>
+          <label htmlFor={`C-${index}`}>
+            Respuesta C.
+            <span className="text-danger">*</span>
+          </label>
           <textarea
             style={{ marginBottom: "1rem" }}
             className="form-control"
@@ -309,7 +321,10 @@ export default function FormNewActivity() {
             required
             spellCheck={false}
           />
-          <label htmlFor={`D-${index}`}>Respuesta D.</label>
+          <label htmlFor={`D-${index}`}>
+            Respuesta D.
+            <span className="text-danger">*</span>
+          </label>
           <textarea
             style={{ marginBottom: "1rem" }}
             className="form-control"
@@ -321,7 +336,10 @@ export default function FormNewActivity() {
             required
             spellCheck={false}
           />
-          <label htmlFor={`opcion_correcta-${index}`}>Opción correcta.</label>
+          <label htmlFor={`opcion_correcta-${index}`}>
+            Opción correcta.
+            <span className="text-danger">*</span>
+          </label>
           <select
             style={{ marginBottom: "1rem" }}
             className="form-control"

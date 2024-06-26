@@ -83,7 +83,8 @@ export default function FormResponderPreguntas({
             }}
           >
             <h4 style={{ fontStyle: "italic" }}>
-              <span style={{ fontWeight: "bold" }}>{j + 1}.</span> {pregunta}
+              <span style={{ fontWeight: "bold" }}>{j + 1}.</span> {pregunta}{" "}
+              <span className="text-danger">*</span>
             </h4>
             <div className="form-check">
               {opciones_respuesta.map(({ opcion, respuesta }: any) => {

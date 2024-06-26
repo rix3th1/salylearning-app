@@ -18,7 +18,7 @@ export async function showSwalRetroalimentacion({
     text: "¿Qué calificación quieres?",
     input: "textarea",
     inputAttributes: {
-      placeholder: "Escribe una retroalimentación al estudiante",
+      placeholder: "Escribe una retroalimentación al estudiante *",
       autofocus: "true",
       required: "true",
       spellcheck: "false",

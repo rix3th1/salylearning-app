@@ -101,7 +101,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           className="form-control text-lowercase"
           placeholder="Nombre de usuario"
           name="username"
-          autoComplete="username"
+          autoComplete="username *"
           required
           autoFocus
           value={formData.username}
@@ -115,7 +115,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           type="text"
           className="form-control text-capitalize"
           placeholder="Primer nombre"
-          name="p_nombre"
+          name="p_nombre *"
           required
           value={formData.p_nombre}
           onChange={handleChange}
@@ -140,7 +140,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           type="text"
           className="form-control text-capitalize"
           placeholder="Primer apellido"
-          name="p_apellido"
+          name="p_apellido *"
           required
           value={formData.p_apellido}
           onChange={handleChange}
@@ -164,7 +164,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           className="form-control"
           placeholder="Email"
           name="email"
-          autoComplete="email"
+          autoComplete="email *"
           required
           value={formData.email}
           onChange={handleChange}
@@ -177,7 +177,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           type="text"
           className="form-control"
           placeholder="Cod. docente"
-          name="cod_docente"
+          name="cod_docente *"
           required
           value={formData.cod_docente}
           onChange={handleChange}

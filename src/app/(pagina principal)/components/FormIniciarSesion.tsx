@@ -83,7 +83,7 @@ export default function FormIniciarSesion({
           name="username"
           type="text"
           className="form-control"
-          placeholder="Ingrese su nombre de usuario"
+          placeholder="Ingrese su nombre de usuario *"
           required
           autoComplete="off"
           onChange={handleChange}
@@ -97,7 +97,7 @@ export default function FormIniciarSesion({
           type="password"
           autoComplete="current-password"
           className="form-control"
-          placeholder="Ingrese su contraseña"
+          placeholder="Ingrese su contraseña *"
           required
           onChange={handleChange}
           value={formData.password}

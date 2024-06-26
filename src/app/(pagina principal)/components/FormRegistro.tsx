@@ -81,7 +81,7 @@ export default function FormRegistro({
             name="p_nombre"
             type="text"
             className="form-control text-capitalize"
-            placeholder="Primer nombre"
+            placeholder="Primer nombre *"
             required
             onChange={handleChange}
             value={formData.p_nombre}
@@ -107,7 +107,7 @@ export default function FormRegistro({
             name="p_apellido"
             type="text"
             className="form-control text-capitalize"
-            placeholder="Primer apellido"
+            placeholder="Primer apellido *"
             required
             onChange={handleChange}
             value={formData.p_apellido}
@@ -133,7 +133,7 @@ export default function FormRegistro({
             name="edad"
             type="number"
             className="form-control"
-            placeholder="Edad"
+            placeholder="Edad *"
             required
             onChange={handleChange}
             value={formData.edad}
@@ -148,7 +148,7 @@ export default function FormRegistro({
               onChange={handleChange}
               value={formData.id_grado}
             >
-              <option value="">Seleccione su grado escolar</option>
+              <option value="">Seleccione su grado escolar *</option>
               {grados.map((grado: any) => (
                 <option key={grado.id} value={grado.id}>
                   {grado.nom_grado}
@@ -164,7 +164,7 @@ export default function FormRegistro({
               name="cod_docente"
               type="text"
               className="form-control"
-              placeholder="Código Docente"
+              placeholder="Código Docente *"
               required
               onChange={handleChange}
               value={formData.cod_docente}
@@ -180,7 +180,7 @@ export default function FormRegistro({
             onChange={handleChange}
             value={formData.rol}
           >
-            <option value="">Seleccione su rol</option>
+            <option value="">Seleccione su rol *</option>
             <option value={"DOCENTE"}>Docente</option>
             <option value={"ESTUDIANTE"}>Estudiante</option>
           </select>
@@ -190,7 +190,7 @@ export default function FormRegistro({
             name="email"
             type="email"
             className="form-control"
-            placeholder="Correo electrónico"
+            placeholder="Correo electrónico *"
             required
             autoComplete="off"
             onChange={handleChange}
@@ -204,7 +204,7 @@ export default function FormRegistro({
             type="password"
             autoComplete="new-password"
             className="form-control"
-            placeholder="Contraseña"
+            placeholder="Contraseña *"
             required
             minLength={6}
             onChange={handleChange}
@@ -220,7 +220,7 @@ export default function FormRegistro({
             type="password"
             autoComplete="new-password"
             className="form-control"
-            placeholder="Confirmar contraseña"
+            placeholder="Confirmar contraseña *"
             required
             minLength={6}
             onChange={handleChange}

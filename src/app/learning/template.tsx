@@ -14,7 +14,9 @@ export default function LearningTemplate({
       <ProgressProvider>
         <main className="content-page-container full-reset">
           <InternalNav />
-          <section>{children}</section>
+          <section style={{ minHeight: "calc(100vh - 100px)" }}>
+            {children}
+          </section>
           <FooterLogged />
         </main>
       </ProgressProvider>

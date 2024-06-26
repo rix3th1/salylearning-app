@@ -80,7 +80,7 @@ export default function ChangePasswordForm({ email }: IProps) {
           className="form-control"
           id="current_password"
           name="current_password"
-          placeholder="Contraseña actual"
+          placeholder="Contraseña actual *"
           required
           value={formData.current_password}
           onChange={handleChange}
@@ -123,7 +123,8 @@ export default function ChangePasswordForm({ email }: IProps) {
           className="form-control"
           id="password"
           name="password"
-          placeholder="Nueva contraseña"
+          placeholder="Nueva contraseña *"
+          required
           value={formData.password}
           onChange={handleChange}
         />
@@ -164,7 +165,8 @@ export default function ChangePasswordForm({ email }: IProps) {
           className="form-control"
           id="confirmar_password"
           name="confirmar_password"
-          placeholder="Confirmar contraseña"
+          placeholder="Confirmar contraseña *"
+          required
           autoComplete="new-password"
           value={formData.confirmar_password}
           onChange={handleChange}

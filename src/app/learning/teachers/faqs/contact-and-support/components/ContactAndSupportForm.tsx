@@ -56,7 +56,7 @@ export default function ContactAndSupportForm() {
         spellCheck={false}
         autoComplete="off"
       />
-      <label htmlFor="email">Correo Electrónico:</label>
+      <label htmlFor="email">Correo Electrónico: *</label>
       <input
         type="email"
         id="email"
@@ -68,7 +68,7 @@ export default function ContactAndSupportForm() {
         autoComplete="email"
         spellCheck={false}
       />
-      <label htmlFor="asunto">Asunto:</label>
+      <label htmlFor="asunto">Asunto: *</label>
       <input
         type="text"
         id="asunto"
@@ -80,7 +80,7 @@ export default function ContactAndSupportForm() {
         autoComplete="off"
         spellCheck={false}
       />
-      <label htmlFor="mensaje">Mensaje:</label>
+      <label htmlFor="mensaje">Mensaje: *</label>
       <textarea
         id="mensaje"
         name="mensaje"

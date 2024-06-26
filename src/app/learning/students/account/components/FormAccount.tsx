@@ -148,7 +148,7 @@ export default function FormAccount({ user, student }: IProps) {
           className="form-control text-capitalize"
           id="p_nombre"
           name="p_nombre"
-          placeholder="Primer nombre del alumno"
+          placeholder="Primer nombre del alumno *"
           value={formData.p_nombre}
           onChange={handleChange}
           autoFocus
@@ -178,7 +178,7 @@ export default function FormAccount({ user, student }: IProps) {
           className="form-control text-capitalize"
           id="p_apellido"
           name="p_apellido"
-          placeholder="Primer apellido del alumno"
+          placeholder="Primer apellido del alumno *"
           value={formData.p_apellido}
           onChange={handleChange}
           required
@@ -207,7 +207,7 @@ export default function FormAccount({ user, student }: IProps) {
           className="form-control"
           id="edad"
           name="edad"
-          placeholder="Edad del alumno"
+          placeholder="Edad del alumno *"
           value={formData.edad}
           onChange={handleChange}
           disabled={isLoading}
@@ -227,7 +227,7 @@ export default function FormAccount({ user, student }: IProps) {
           value={formData.id_grado}
         >
           <option value="" disabled>
-            Seleccione su grado escolar
+            Seleccione su grado escolar *
           </option>
           {grados.map((grado: any) => (
             <option key={grado.id} value={grado.id}>
@@ -243,7 +243,7 @@ export default function FormAccount({ user, student }: IProps) {
           className="form-control"
           id="cod_estudiante"
           name="cod_estudiante"
-          placeholder="Cod. Estudiante"
+          placeholder="Cod. Estudiante *"
           required
           value={formData.cod_estudiante}
           disabled={isLoading}
