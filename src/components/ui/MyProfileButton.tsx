@@ -1,23 +1,36 @@
-import Link from "next/link";
-import { MdAccountCircle } from "react-icons/md";
+"use client";
+
+import { profileImage } from "@/utils/getProfileImage";
+import { useRouter } from "next-nprogress-bar";
+import Image from "next/image";
 
 interface IProps {
   href: string;
+  user: any;
 }
 
-export default function MyProfileButton({ href }: IProps) {
+export default function MyProfileButton({ href, user }: IProps) {
+  const router = useRouter();
+
+  const handleClickProfileRedirect = () => {
+    router.push(href);
+  };
+
   return (
-    <li
-      className="tooltips-general"
-      data-toggle="tooltip"
-      data-placement="bottom"
-      title="Mi perfíl"
-    >
-      <Link href={href} className="simple-link">
-        <MdAccountCircle
-          style={{ fontSize: 25, marginTop: 15, marginRight: 15 }}
-        />
-      </Link>
-    </li>
+    <figure>
+      <Image
+        onClick={handleClickProfileRedirect}
+        data-toggle="tooltip"
+        data-placement="bottom"
+        title="Mi perfíl"
+        src={profileImage(user)}
+        alt="Imagen usuario"
+        className="img-responsive img-circle center-box"
+        width={100}
+        height={100}
+        quality={100}
+        priority
+      />
+    </figure>
   );
 }
