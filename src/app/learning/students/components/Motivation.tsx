@@ -1,5 +1,6 @@
 "use client";
 
+import { kalam } from "@/app/fonts";
 import SALYCAPIBARA from "@/assets/saly/SALY CAPIBARA.png";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -19,7 +20,7 @@ export default function Motivation() {
 
   return (
     <>
-      <p>
+      <p className={kalam.className} style={{ fontSize: "1.1rem" }}>
         ¡Hola niños! ¿Están listos para comenzar una aventura emocionante en el
         mundo de la lectura? ¡Los libros están esperando por ustedes! ¡Vamos a
         explorar juntos historias increíbles, resolver misterios y descubrir

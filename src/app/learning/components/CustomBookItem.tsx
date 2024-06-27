@@ -1,3 +1,4 @@
+import { bungee_spice } from "@/app/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactImageGalleryItem } from "react-image-gallery";
@@ -19,14 +20,29 @@ export default function CustomBookItem({ item }: IProps) {
         priority
       />
       {item.description && (
-        <span className="image-gallery-description">
-          {item.description}
+        <article className="image-gallery-description">
+          {item.description}{" "}
+          {item.isNew && (
+            <span
+              className={`${bungee_spice.className}`}
+              style={{
+                fontSize: "0.8rem",
+                fontWeight: "bold",
+                backgroundColor: "#fff",
+                padding: "5px 10px",
+                color: "#e21e80",
+                borderRadius: "5px",
+              }}
+            >
+              Nuevo!
+            </span>
+          )}{" "}
           {item.book_url && (
             <Link href={item.book_url} className="btn-book">
               Leer
             </Link>
           )}
-        </span>
+        </article>
       )}
     </div>
   );

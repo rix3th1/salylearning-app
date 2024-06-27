@@ -1,3 +1,4 @@
+import { dm_sans } from "@/app/fonts";
 import authOptions from "@/libs/authOptions";
 import { getServerSession } from "next-auth";
 import Link from "next/link";
@@ -52,7 +53,9 @@ export default async function Aside() {
         >
           <SalyFigure canChange={isStudent} />
         </div>
-        <div className="full-reset nav-lateral-list-menu">
+        <div
+          className={`full-reset nav-lateral-list-menu ${dm_sans.className}`}
+        >
           <ul
             className="list-unstyled"
             style={{
