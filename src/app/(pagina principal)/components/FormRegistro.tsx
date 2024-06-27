@@ -106,6 +106,7 @@ export default function FormRegistro({
             onChange={handleChange}
             value={formData.p_nombre}
             spellCheck={false}
+            autoComplete="off"
           />
         </div>
         <div className="form-group col-md-6 py-3">
@@ -117,6 +118,7 @@ export default function FormRegistro({
             onChange={handleChange}
             value={formData.s_nombre}
             spellCheck={false}
+            autoComplete="off"
           />
         </div>
       </div>
@@ -132,6 +134,7 @@ export default function FormRegistro({
             onChange={handleChange}
             value={formData.p_apellido}
             spellCheck={false}
+            autoComplete="off"
           />
         </div>
         <div className="form-group col-md-6 py-3">
@@ -143,6 +146,7 @@ export default function FormRegistro({
             onChange={handleChange}
             value={formData.s_apellido}
             spellCheck={false}
+            autoComplete="off"
           />
         </div>
       </div>
@@ -189,6 +193,7 @@ export default function FormRegistro({
               onChange={handleChange}
               value={formData.cod_docente}
               spellCheck={false}
+              autoComplete="off"
             />
           </div>
         )}
