@@ -1,8 +1,8 @@
 import { plus_jakarta_sans } from "@/app/fonts";
 import { enviarEmailDeRecuperacion } from "@/services/recuperar-clave.service";
 import { MdCancel, MdEmail } from "react-icons/md";
-import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Swal from "sweetalert2/dist/sweetalert2.js";
 
 interface IProps {
   setIsModalIniciarSesionOpen: (value: boolean) => void;
