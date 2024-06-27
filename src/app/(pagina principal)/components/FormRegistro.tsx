@@ -11,6 +11,14 @@ interface IProps {
   isModalRegistroOpen: boolean;
 }
 
+const objectiveInputsNumber = ["edad"];
+const objectiveInputsString = [
+  "p_nombre",
+  "s_nombre",
+  "p_apellido",
+  "s_apellido",
+];
+
 export default function FormRegistro({
   isModalRegistroOpen,
   setIsModalRegistroOpen,
@@ -21,6 +29,18 @@ export default function FormRegistro({
   const inputFcs = useRef<HTMLInputElement>(null);
 
   const handleChange = (e: THandleChange) => {
+    if (objectiveInputsString.includes(e.target.name)) {
+      if (!/^[a-zA-Z]*$/.test(e.target.value)) {
+        return;
+      }
+    }
+
+    if (objectiveInputsNumber.includes(e.target.name)) {
+      if (!/^[0-9]{0,2}$/.test(e.target.value)) {
+        return;
+      }
+    }
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
