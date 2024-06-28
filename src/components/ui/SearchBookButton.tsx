@@ -60,9 +60,8 @@ export default function SearchBookButton() {
   return (
     <li
       className="tooltips-general"
-      data-toggle="tooltip"
-      data-placement="bottom"
-      title="Buscar libro"
+      data-tooltip-id="tooltip-navbar-actions"
+      data-tooltip-content="Buscar libro"
       onClick={showSearchBookSwal}
     >
       <MdSearch style={{ fontSize: 25, marginTop: 15 }} />

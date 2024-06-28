@@ -20,9 +20,8 @@ export default function MyProfileButton({ href, user }: IProps) {
     <figure>
       <Image
         onClick={handleClickProfileRedirect}
-        data-toggle="tooltip"
-        data-placement="bottom"
-        title="Mi perfíl"
+        data-tooltip-id="tooltip-navbar-actions"
+        data-tooltip-content="Mi perfíl"
         src={profileImage(user)}
         alt="Imagen usuario"
         className="img-responsive img-circle center-box"

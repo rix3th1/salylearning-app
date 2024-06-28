@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { Tooltip } from "react-tooltip";
 import HelpButton from "./HelpButton";
 import MyProfileButton from "./MyProfileButton";
 import PowerButton from "./PowerButton";
@@ -12,10 +12,6 @@ interface IProps {
 }
 
 export default function NavInteractionButtons({ user, isStudent }: IProps) {
-  useEffect(() => {
-    $(() => $('[data-toggle="tooltip"]').tooltip());
-  }, []);
-
   return (
     <>
       <MyProfileButton
@@ -32,6 +28,8 @@ export default function NavInteractionButtons({ user, isStudent }: IProps) {
           <HelpButton />
         </>
       )}
+
+      <Tooltip id="tooltip-navbar-actions" place="bottom" />
     </>
   );
 }

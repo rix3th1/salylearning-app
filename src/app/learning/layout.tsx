@@ -15,8 +15,7 @@ export default function LearningLayout({
   return (
     <>
       {children}
-      <Script src="/js/jquery-1.11.2.min.js" strategy="beforeInteractive" />
-      <Script src="/js/bootstrap.min.js" />
+      <Script src="/js/jquery-1.11.2.min.js" strategy="lazyOnload" />
     </>
   );
 }

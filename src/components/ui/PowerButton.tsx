@@ -35,9 +35,8 @@ export default function PowerButton() {
   return (
     <li
       className="tooltips-general"
-      data-toggle="tooltip"
-      data-placement="bottom"
-      title="Salir del sistema"
+      data-tooltip-id="tooltip-navbar-actions"
+      data-tooltip-content="Salir del sistema"
       onClick={showSignOutSwal}
     >
       <MdOutlinePowerSettingsNew style={{ fontSize: 25, marginTop: 15 }} />

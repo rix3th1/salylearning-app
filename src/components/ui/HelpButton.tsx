@@ -25,9 +25,8 @@ export default function HelpButton() {
   return (
     <li
       className="tooltips-general"
-      data-toggle="tooltip"
-      data-placement="bottom"
-      title="Ayuda"
+      data-tooltip-id="tooltip-navbar-actions"
+      data-tooltip-content="Ayuda"
       onClick={showHelpSwal}
     >
       <MdHelpOutline style={{ fontSize: 25, marginTop: 15 }} />

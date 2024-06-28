@@ -49,7 +49,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
     >
       <li>
         <Link
-          className="saly-link"
           onClick={handleClickCloseMobileMenu}
           href={`/learning/${isStudent ? "students" : "teachers"}`}
         >
@@ -78,7 +77,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             <>
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/books/new"
                 >
@@ -88,7 +86,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               </li>
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/books/popular"
                 >
@@ -101,7 +98,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           {isStudent && (
             <li>
               <Link
-                className="saly-link"
                 onClick={handleClickCloseMobileMenu}
                 href="/learning/students/books"
               >
@@ -133,7 +129,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             <ul className="list-unstyled">
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/activities/new"
                 >
@@ -162,7 +157,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             <ul className="list-unstyled">
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/completed"
                 >
@@ -172,7 +166,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               </li>
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/pending"
                 >
@@ -182,7 +175,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               </li>
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/not-achieved"
                 >
@@ -211,7 +203,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             <ul className="list-unstyled">
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/reports"
                 >
@@ -221,7 +212,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               </li>
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/statistics"
                 >
@@ -250,7 +240,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             <ul className="list-unstyled">
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/account-settings/profile"
                 >
@@ -260,7 +249,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               </li>
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/account-settings/advanced"
                 >
@@ -272,7 +260,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           </li>
           <li>
             <Link
-              className="saly-link"
               onClick={handleClickCloseMobileMenu}
               href="/learning/teachers/faqs"
             >
@@ -303,7 +290,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             <ul className="list-unstyled">
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/students/activities/pending"
                 >
@@ -313,7 +299,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               </li>
               <li>
                 <Link
-                  className="saly-link"
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/students/activities/done"
                 >
@@ -325,7 +310,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           </li>
           <li>
             <Link
-              className="saly-link"
               onClick={handleClickCloseMobileMenu}
               href="/learning/students/achievements"
             >
@@ -335,7 +319,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           </li>
           <li>
             <Link
-              className="saly-link"
               onClick={handleClickCloseMobileMenu}
               href="/learning/students/account"
             >
@@ -345,7 +328,6 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           </li>
           <li>
             <Link
-              className="saly-link"
               onClick={handleClickCloseMobileMenu}
               href="/learning/students/help"
             >
