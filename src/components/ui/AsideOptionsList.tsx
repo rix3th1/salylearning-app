@@ -1,3 +1,6 @@
+"use client";
+
+import { THandleClick } from "@/types";
 import Link from "next/link";
 import {
   MdAccountCircle,
@@ -26,6 +29,16 @@ interface IProps {
 }
 
 export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
+  const handleClickCloseDropdowns = (e: THandleClick<HTMLDivElement>) => {
+    const dropMenu = $(e.target).next("ul");
+    dropMenu.slideToggle("slow");
+  };
+
+  const handleClickCloseMobileMenu = () => {
+    const mobileMenu = $(".navbar-lateral");
+    mobileMenu.css("display", "none");
+  };
+
   return (
     <ul
       className="list-unstyled"
@@ -37,6 +50,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
       <li>
         <Link
           className="saly-link"
+          onClick={handleClickCloseMobileMenu}
           href={`/learning/${isStudent ? "students" : "teachers"}`}
         >
           <MdHome style={{ fontSize: 15 }} />
@@ -46,6 +60,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
       <li>
         <div
           className="dropdown-menu-button"
+          onClick={handleClickCloseDropdowns}
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -62,7 +77,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           {isTeacher && (
             <>
               <li>
-                <Link className="saly-link" href="/learning/teachers/books/new">
+                <Link
+                  className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
+                  href="/learning/teachers/books/new"
+                >
                   <MdBook />
                   &nbsp;&nbsp; Nuevo libro
                 </Link>
@@ -70,6 +89,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/books/popular"
                 >
                   <MdBookmark />
@@ -80,7 +100,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           )}
           {isStudent && (
             <li>
-              <Link className="saly-link" href="/learning/students/books">
+              <Link
+                className="saly-link"
+                onClick={handleClickCloseMobileMenu}
+                href="/learning/students/books"
+              >
                 <MdBook />
                 &nbsp;&nbsp; Explorar libros
               </Link>
@@ -93,6 +117,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           <li>
             <div
               className="dropdown-menu-button"
+              onClick={handleClickCloseDropdowns}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -109,6 +134,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/activities/new"
                 >
                   <MdAddCircle />
@@ -120,6 +146,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           <li>
             <div
               className="dropdown-menu-button"
+              onClick={handleClickCloseDropdowns}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -136,6 +163,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/completed"
                 >
                   <MdCheckCircle />
@@ -145,6 +173,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/pending"
                 >
                   <MdStarHalf />
@@ -154,6 +183,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/not-achieved"
                 >
                   <MdLocationOff />
@@ -165,6 +195,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           <li>
             <div
               className="dropdown-menu-button"
+              onClick={handleClickCloseDropdowns}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -179,7 +210,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             </div>
             <ul className="list-unstyled">
               <li>
-                <Link className="saly-link" href="/learning/teachers/reports">
+                <Link
+                  className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
+                  href="/learning/teachers/reports"
+                >
                   <MdTrendingUp />
                   &nbsp;&nbsp;Reportes
                 </Link>
@@ -187,6 +222,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/statistics"
                 >
                   <MdBarChart />
@@ -198,6 +234,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           <li>
             <div
               className="dropdown-menu-button"
+              onClick={handleClickCloseDropdowns}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -214,6 +251,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/account-settings/profile"
                 >
                   <MdPerson />
@@ -223,6 +261,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/account-settings/advanced"
                 >
                   <MdManageAccounts />
@@ -232,7 +271,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             </ul>
           </li>
           <li>
-            <Link className="saly-link" href="/learning/teachers/faqs">
+            <Link
+              className="saly-link"
+              onClick={handleClickCloseMobileMenu}
+              href="/learning/teachers/faqs"
+            >
               <MdHelpOutline />
               &nbsp;&nbsp; Preguntas frecuentes
             </Link>
@@ -244,6 +287,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           <li>
             <div
               className="dropdown-menu-button"
+              onClick={handleClickCloseDropdowns}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -260,6 +304,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/students/activities/pending"
                 >
                   <MdStar />
@@ -269,6 +314,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               <li>
                 <Link
                   className="saly-link"
+                  onClick={handleClickCloseMobileMenu}
                   href="/learning/students/activities/done"
                 >
                   <MdCheckCircle />
@@ -278,19 +324,31 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
             </ul>
           </li>
           <li>
-            <Link className="saly-link" href="/learning/students/achievements">
+            <Link
+              className="saly-link"
+              onClick={handleClickCloseMobileMenu}
+              href="/learning/students/achievements"
+            >
               <MdTrendingUp />
               &nbsp;&nbsp; Mi progreso
             </Link>
           </li>
           <li>
-            <Link className="saly-link" href="/learning/students/account">
+            <Link
+              className="saly-link"
+              onClick={handleClickCloseMobileMenu}
+              href="/learning/students/account"
+            >
               <MdAccountCircle />
               &nbsp;&nbsp; Configuración
             </Link>
           </li>
           <li>
-            <Link className="saly-link" href="/learning/students/help">
+            <Link
+              className="saly-link"
+              onClick={handleClickCloseMobileMenu}
+              href="/learning/students/help"
+            >
               <MdHelpOutline />
               &nbsp;&nbsp; Ayuda
             </Link>

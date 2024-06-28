@@ -1,6 +1,5 @@
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import MenuButton from "./MenuButton";
-import MyProfileButton from "./MyProfileButton";
 import NavInteractionButtons from "./NavInteractionButtons";
 
 export default async function InternalNav() {
@@ -13,13 +12,7 @@ export default async function InternalNav() {
       style={{ position: "sticky", zIndex: 7 }}
     >
       <ul className="list-unstyled full-reset">
-        <MyProfileButton
-          user={user}
-          href={`/learning/${
-            isStudent ? "students/account" : "teachers/account-settings/profile"
-          }`}
-        />
-        <NavInteractionButtons isStudent={isStudent} />
+        <NavInteractionButtons user={user} isStudent={isStudent} />
         <MenuButton />
       </ul>
     </nav>
