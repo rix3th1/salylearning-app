@@ -1,23 +1,26 @@
 import Link from "next/link";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 export default function Footer() {
   return (
     <footer className="bg-white py-4 mt-auto">
-      <div className="container px-5">
-        <div className="row align-items-center justify-content-between flex-column flex-sm-row">
-          <div className="col-auto">
+      <Container className="px-5">
+        <Row className="align-items-center justify-content-between flex-column flex-sm-row">
+          <Col md="auto">
             <div className="small m-0">
               SALY&copy; Todos los derechos reservados{" "}
               {new Date().getFullYear()}
             </div>
-          </div>
-          <div className="col-auto">
+          </Col>
+          <Col md="auto">
             <Link className="small" href="#">
               Privacidad
             </Link>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     </footer>
   );
 }

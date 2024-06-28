@@ -1,5 +1,5 @@
 import Footer from "@/components/ui/Footer";
-import Nav from "@/components/ui/Nav";
+import NavBar from "@/components/ui/NavBar";
 import authOptions from "@/libs/authOptions";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
@@ -19,7 +19,7 @@ export default async function MainPageTemplate({
 
   return (
     <main className={plus_jakarta_sans.className}>
-      <Nav />
+      <NavBar />
       <section>{children}</section>
       <Footer />
     </main>
