@@ -1,7 +1,7 @@
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import { profileImage } from "@/utils/getProfileImage";
 import Image from "next/image";
-import { MdVerifiedUser } from "react-icons/md";
+import { MdCabin, MdSchool, MdVerifiedUser } from "react-icons/md";
 import ProfileButtons from "./ProfileButtons";
 
 export default async function ProfileSection() {
@@ -10,6 +10,8 @@ export default async function ProfileSection() {
   const avatar_id = user.avatar_usuario.id;
   const name = `${user?.p_nombre} ${user?.p_apellido}`;
   const rol = `${user?.rol[0]}${user?.rol.slice(1).toLowerCase()}`;
+  const sede = user?.sede;
+  const grado = user?.grado_usuario?.grados?.nom_grado;
 
   return (
     <div className="row">
@@ -35,9 +37,20 @@ export default async function ProfileSection() {
               <h5 className="my-3" style={{ fontSize: "1.5rem" }}>
                 {name}
               </h5>
-              <p className="text-muted mb-1">{rol}</p>
-              <p className="text-muted mb-4">
-                <MdVerifiedUser /> Rol: {rol}
+              <p className="text-muted" style={{ fontWeight: "bold" }}>
+                {rol}
+              </p>
+              <p className="text-muted">
+                <MdVerifiedUser style={{ position: "relative", top: 2 }} />{" "}
+                <span style={{ fontWeight: "bold" }}>Rol:</span> {rol}
+              </p>
+              <p className="text-muted">
+                <MdSchool style={{ position: "relative", top: 2 }} />{" "}
+                <span style={{ fontWeight: "bold" }}>Grado clase:</span> {grado}
+              </p>
+              <p className="text-muted" style={{ marginBottom: 20 }}>
+                <MdCabin style={{ position: "relative", top: 2 }} />{" "}
+                <span style={{ fontWeight: "bold" }}>Sede:</span> {sede}
               </p>
 
               <ProfileButtons

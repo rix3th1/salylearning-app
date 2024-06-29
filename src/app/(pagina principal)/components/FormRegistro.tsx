@@ -72,7 +72,6 @@ export default function FormRegistro({
   useEffect(() => {
     if (!isModalRegistroOpen || grados.length > 0) return;
     inputFcs.current?.focus();
-    if ((formData.rol as User["rol"]) !== "ESTUDIANTE") return;
 
     toast.promise(obtenerGrados, {
       loading: "Cargando grados...",
@@ -163,24 +162,27 @@ export default function FormRegistro({
             value={formData.edad}
           />
         </div>
-        {(formData.rol as User["rol"]) === "ESTUDIANTE" && (
-          <div className="form-group col-md-6 py-3">
-            <select
-              name="id_grado"
-              className="form-control"
-              required
-              onChange={handleChange}
-              value={formData.id_grado}
-            >
-              <option value="">Seleccione su grado escolar *</option>
-              {grados.map((grado: any) => (
-                <option key={grado.id} value={grado.id}>
-                  {grado.nom_grado}
-                </option>
-              ))}
-            </select>
-          </div>
-        )}
+        <div className="form-group col-md-6 py-3">
+          <select
+            name="id_grado"
+            className="form-control"
+            required
+            onChange={handleChange}
+            value={formData.id_grado}
+          >
+            <option value="">
+              {(formData.rol as User["rol"]) === "ESTUDIANTE"
+                ? "Seleccione su grado escolar"
+                : "Seleccione el grado al que da clase"}{" "}
+              *
+            </option>
+            {grados.map((grado: any) => (
+              <option key={grado.id} value={grado.id}>
+                {grado.nom_grado}
+              </option>
+            ))}
+          </select>
+        </div>
 
         {formData.rol === "DOCENTE" && (
           <div className="form-group col-md-6 py-3">
