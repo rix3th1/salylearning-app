@@ -194,6 +194,8 @@ export default function FormRegistro({
               value={formData.cod_docente}
               spellCheck={false}
               autoComplete="off"
+              minLength={10}
+              maxLength={10}
             />
           </div>
         )}

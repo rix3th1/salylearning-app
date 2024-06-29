@@ -181,8 +181,8 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           required
           value={formData.cod_docente}
           onChange={handleChange}
-          maxLength={6}
-          minLength={6}
+          maxLength={10}
+          minLength={10}
           disabled={isLoading}
           spellCheck={false}
           autoComplete="off"
