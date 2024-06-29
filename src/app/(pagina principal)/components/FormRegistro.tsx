@@ -187,7 +187,7 @@ export default function FormRegistro({
             <input
               name="cod_docente"
               type="text"
-              className="form-control"
+              className="form-control text-uppercase"
               placeholder="Código Docente *"
               required
               onChange={handleChange}

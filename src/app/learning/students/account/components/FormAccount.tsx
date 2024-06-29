@@ -240,7 +240,7 @@ export default function FormAccount({ user, student }: IProps) {
         <label htmlFor="cod_estudiante">Código Estudiante:</label>
         <input
           type="text"
-          className="form-control"
+          className="form-control text-uppercase"
           id="cod_estudiante"
           name="cod_estudiante"
           placeholder="Cod. Estudiante *"

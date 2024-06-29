@@ -175,7 +175,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       <div className="form-group mx-sm-4 pt-3">
         <input
           type="text"
-          className="form-control"
+          className="form-control text-uppercase"
           placeholder="Cod. docente *"
           name="cod_docente"
           required
