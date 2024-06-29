@@ -14,8 +14,8 @@ export async function showSwalRetroalimentacion({
 }) {
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
-    title: "Calificar cuestionario",
-    text: "¿Qué calificación quieres?",
+    title: "Publicar calificación",
+    text: "Por favor deja una retroalimentación al estudiante",
     input: "textarea",
     inputAttributes: {
       placeholder: "Escribe una retroalimentación al estudiante *",
@@ -83,7 +83,6 @@ export async function showSwalCalificacion({
   const result = await withReactContent(Swal).fire({
     customClass: plus_jakarta_sans.className,
     title: "Respuestas cuestionario",
-    text: "¿Qué calificación quieres?",
     html: (
       <>
         <p
