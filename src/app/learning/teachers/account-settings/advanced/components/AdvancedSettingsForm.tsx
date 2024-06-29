@@ -183,9 +183,10 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
           onChange={handleChange}
           maxLength={10}
           minLength={10}
-          disabled={isLoading}
           spellCheck={false}
           autoComplete="off"
+          disabled
+          readOnly
         />
       </div>
       <div className="form-group mx-sm-4 pt-3">

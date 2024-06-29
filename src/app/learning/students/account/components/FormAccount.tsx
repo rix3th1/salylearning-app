@@ -246,12 +246,13 @@ export default function FormAccount({ user, student }: IProps) {
           placeholder="Cod. Estudiante *"
           required
           value={formData.cod_estudiante}
-          disabled={isLoading}
           minLength={10}
           maxLength={10}
           onChange={handleChange}
           spellCheck={false}
           autoComplete="off"
+          disabled
+          readOnly
         />
       </div>
       <div className="form-group">
