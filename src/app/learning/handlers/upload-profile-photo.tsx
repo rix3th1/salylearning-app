@@ -13,7 +13,7 @@ export const showSwalUploadProfilePhoto = async (
   router: AppRouterInstance
 ) => {
   const result = await withReactContent(Swal).fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "Selecciona tu foto de perfil",
     input: "file",
     inputAttributes: {
@@ -47,7 +47,7 @@ export const showSwalUploadProfilePhoto = async (
     const url = result.value as string;
 
     const response = await withReactContent(Swal).fire({
-      customClass: plus_jakarta_sans.className,
+      customClass: { container: plus_jakarta_sans.className },
       title: "Edita tu foto de perfil y ¡súbela!",
       html: `
         <img id="preview" src=${url}>
@@ -111,7 +111,7 @@ export const showSwalUploadProfilePhoto = async (
       router.refresh();
 
       Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "Foto de perfil subida exitosamente!",
         text: "Tu foto de perfil ha sido subida exitosamente.",
         icon: "success",

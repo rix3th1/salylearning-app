@@ -45,7 +45,7 @@ export default function FormResponderPreguntas({
       router.refresh();
 
       await Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "¡Respuestas enviadas!",
         text: "Has completado la actividad.",
         icon: "success",
@@ -57,7 +57,7 @@ export default function FormResponderPreguntas({
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({
-          customClass: plus_jakarta_sans.className,
+          customClass: { container: plus_jakarta_sans.className },
           title: "¡Error!",
           text: error.message.replace(/,/g, ", "),
           icon: "error",

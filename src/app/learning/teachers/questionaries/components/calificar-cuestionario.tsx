@@ -13,7 +13,7 @@ export async function showSwalRetroalimentacion({
   calificacion: number;
 }) {
   const result = await withReactContent(Swal).fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "Publicar calificación",
     text: "Por favor deja una retroalimentación al estudiante",
     input: "textarea",
@@ -63,7 +63,7 @@ export async function showSwalRetroalimentacion({
 
   if (result.isConfirmed) {
     Swal.fire({
-      customClass: plus_jakarta_sans.className,
+      customClass: { container: plus_jakarta_sans.className },
       title: "¡Calificado!",
       text: `Calificación: ${Number(result.value.calificacion).toFixed(1)}`,
       icon: "success",
@@ -81,7 +81,7 @@ export async function showSwalCalificacion({
   const respuestasData = getRespuestasData(cuestionario);
 
   const result = await withReactContent(Swal).fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "Respuestas cuestionario",
     html: (
       <>

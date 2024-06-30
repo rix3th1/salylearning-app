@@ -15,7 +15,7 @@ interface IProps {
 
 const showSwalUploadBook = async () => {
   const result = await withReactContent(Swal).fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "Subir nuevo libro",
     html: <FormNewBook />,
     showCancelButton: true,
@@ -83,7 +83,7 @@ export default function UploadBookButton({ libros }: IProps) {
 
   const handleClickDeleteBook = async () => {
     const result = await withReactContent(Swal).fire({
-      customClass: plus_jakarta_sans.className,
+      customClass: { container: plus_jakarta_sans.className },
       title: "Eliminar libro",
       text: "¿Qué libro quieres eliminar?",
       input: "select",
@@ -113,7 +113,7 @@ export default function UploadBookButton({ libros }: IProps) {
       showLoaderOnConfirm: true,
       preConfirm: async (nom_libro: string) => {
         const confirmation = await withReactContent(Swal).fire({
-          customClass: plus_jakarta_sans.className,
+          customClass: { container: plus_jakarta_sans.className },
           title: "¿Estás seguro?",
           text: "Al eliminar este libro, todos los datos asociados serán eliminados definitivamente. ¿Estás seguro de que quieres eliminar este libro?",
           icon: "warning",
@@ -152,7 +152,7 @@ export default function UploadBookButton({ libros }: IProps) {
       router.refresh();
 
       Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "Libro eliminado exitosamente!",
         text: "El libro ha sido eliminado exitosamente.",
         icon: "success",
@@ -169,7 +169,7 @@ export default function UploadBookButton({ libros }: IProps) {
       router.refresh();
 
       withReactContent(Swal).fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "Libro subido a la plataforma SalyLearning exitosamente!",
         width: 600,
         padding: "3em",

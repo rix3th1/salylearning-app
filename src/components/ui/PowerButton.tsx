@@ -8,7 +8,7 @@ import withReactContent from "sweetalert2-react-content";
 
 const showSignOutSwal = async () => {
   const result = await withReactContent(Swal).fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "¿Estás seguro de que quieres salir?",
     showCancelButton: true,
     confirmButtonColor: "#e21e80",

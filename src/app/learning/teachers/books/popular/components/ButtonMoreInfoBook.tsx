@@ -10,7 +10,7 @@ interface IProps {
 
 const showBookDescription = (libro_descripcion: string) => {
   Swal.fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "Información del libro",
     text: libro_descripcion,
     icon: "info",

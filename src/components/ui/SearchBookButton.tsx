@@ -10,7 +10,7 @@ import ListLibrosFound from "./ListLibrosFound";
 export default function SearchBookButton() {
   const showSearchBookSwal = async () => {
     const result = await withReactContent(Swal).fire({
-      customClass: plus_jakarta_sans.className,
+      customClass: { container: plus_jakarta_sans.className },
       title: "¿Qué libro estás buscando?",
       text: "Por favor escribe el nombre del libro",
       input: "text",
@@ -48,7 +48,7 @@ export default function SearchBookButton() {
 
     if (result.isConfirmed) {
       withReactContent(Swal).fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "Hemos encontrado los siguientes libros",
         html: <ListLibrosFound libros={result.value} />,
         icon: result.value.length > 0 ? "success" : "error",

@@ -7,7 +7,7 @@ import withReactContent from "sweetalert2-react-content";
 
 const showHelpSwal = () => {
   withReactContent(Swal).fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "Ayuda del sistema",
     width: 800,
     text: "¡Bienvenidos! En el menú, encontrarán una variedad emocionante de actividades diseñadas especialmente para ayudarlos a mejorar sus habilidades de lectura. Desde cuentos interactivos hasta desafíos divertidos, cada opción está aquí para hacer que su experiencia sea educativa y entretenida. No duden en explorar y descubrir nuevas aventuras literarias.",

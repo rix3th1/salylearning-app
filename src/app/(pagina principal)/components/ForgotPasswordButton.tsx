@@ -14,7 +14,7 @@ const showSwalForSendEmail = async (
   setIsModalIniciarSesionOpen(false);
 
   const result = await withReactContent(Swal).fire({
-    customClass: plus_jakarta_sans.className,
+    customClass: { container: plus_jakarta_sans.className },
     title: "¿Olvidaste tu contraseña?",
     text: "Por favor ingresa tu correo electrónico",
     input: "email",
@@ -56,7 +56,7 @@ const showSwalForSendEmail = async (
 
   if (result.isConfirmed) {
     Swal.fire({
-      customClass: plus_jakarta_sans.className,
+      customClass: { container: plus_jakarta_sans.className },
       title: "¡Correo enviado!",
       text: result.value.message,
       icon: "success",

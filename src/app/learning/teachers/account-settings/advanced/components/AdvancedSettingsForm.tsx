@@ -53,7 +53,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       const usuario = await actualizarUsuario(user.id, data);
 
       await Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "¡Usuario actualizado!",
         text: usuario.message,
         icon: "success",
@@ -67,7 +67,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
       router.push("/learning/teachers/account-settings/profile");
 
       Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "¡Perfíl docente actualizado!",
         text: docente.message,
         icon: "success",
@@ -77,7 +77,7 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({
-          customClass: plus_jakarta_sans.className,
+          customClass: { container: plus_jakarta_sans.className },
           title: "¡Error!",
           text: error.message.replace(/,/g, ", "),
           icon: "error",

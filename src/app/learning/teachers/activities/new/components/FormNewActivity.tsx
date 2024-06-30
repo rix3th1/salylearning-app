@@ -26,7 +26,7 @@ export default function FormNewActivity() {
   const agregarPregunta = () => {
     if (preguntas.length >= 10) {
       Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "¡No se permiten más de 10 preguntas!",
         text: "Sólo se permiten 10 preguntas por libro en una actividad.",
         icon: "error",
@@ -100,7 +100,7 @@ export default function FormNewActivity() {
       });
 
       await Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "¡Cuestionario creado!",
         text: cuestionarioCreado.message,
         icon: "success",
@@ -117,7 +117,7 @@ export default function FormNewActivity() {
         });
 
       await Swal.fire({
-        customClass: plus_jakarta_sans.className,
+        customClass: { container: plus_jakarta_sans.className },
         title: "¡Cuestionario asignado a los estudiantes!",
         text: cuestionarioEstudianteAsignaciones.message,
         icon: "success",
@@ -141,7 +141,7 @@ export default function FormNewActivity() {
     } catch (error) {
       if (error instanceof Error) {
         Swal.fire({
-          customClass: plus_jakarta_sans.className,
+          customClass: { container: plus_jakarta_sans.className },
           title: "¡Error!",
           text: error.message.replace(/,/g, ", "),
           icon: "error",
