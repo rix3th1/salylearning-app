@@ -30,12 +30,13 @@ export default function GradesReport() {
           new Date().toISOString().split("T")[0]
         }.pdf`;
         const url = window.URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", filename || "reporte.pdf");
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        const a = document.createElement("a");
+        a.href = url;
+        a.setAttribute("download", filename || "reporte.pdf");
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
         return "Reporte descargado correctamente!";
       },
       error(error) {
