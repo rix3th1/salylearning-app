@@ -23,12 +23,12 @@ const showSwalUploadBook = async () => {
     cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
-        <MdUpload /> Subir Libro
+        <MdUpload style={{ position: "relative", top: 2 }} /> Subir Libro
       </>
     ),
     cancelButtonText: (
       <>
-        <MdCancel /> Cancelar
+        <MdCancel style={{ position: "relative", top: 2 }} /> Cancelar
       </>
     ),
     showLoaderOnConfirm: true,
@@ -102,12 +102,12 @@ export default function UploadBookButton({ libros }: IProps) {
       cancelButtonColor: "#1e30f3",
       confirmButtonText: (
         <>
-          <MdDelete /> Eliminar
+          <MdDelete style={{ position: "relative", top: 2 }} /> Eliminar
         </>
       ),
       cancelButtonText: (
         <>
-          <MdCancel /> Cancelar
+          <MdCancel style={{ position: "relative", top: 2 }} /> Cancelar
         </>
       ),
       showLoaderOnConfirm: true,
@@ -118,14 +118,16 @@ export default function UploadBookButton({ libros }: IProps) {
           text: "Al eliminar este libro, todos los datos asociados serán eliminados definitivamente. ¿Estás seguro de que quieres eliminar este libro?",
           icon: "warning",
           showCancelButton: true,
+          confirmButtonColor: "#e21e80",
+          cancelButtonColor: "#1e30f3",
           confirmButtonText: (
             <>
-              <MdDelete /> Eliminar
+              <MdDelete style={{ position: "relative", top: 2 }} /> Eliminar
             </>
           ),
           cancelButtonText: (
             <>
-              <MdCancel /> Cancelar
+              <MdCancel style={{ position: "relative", top: 2 }} /> Cancelar
             </>
           ),
         });
@@ -182,7 +184,7 @@ export default function UploadBookButton({ libros }: IProps) {
         confirmButtonColor: "#e21e80",
         confirmButtonText: (
           <>
-            <MdCheckCircle /> Aceptar
+            <MdCheckCircle style={{ position: "relative", top: 2 }} /> Aceptar
           </>
         ),
       });
@@ -192,10 +194,10 @@ export default function UploadBookButton({ libros }: IProps) {
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
       <button onClick={handleClickUploadBook} className="btn btn-success">
-        <MdUpload style={{ position: "relative", top: 2 }} /> Subir Libro
+        <MdUpload style={{ position: "relative", top: 1 }} /> Subir Libro
       </button>
       <button onClick={handleClickDeleteBook} className="btn btn-danger">
-        <MdDelete style={{ position: "relative", top: 2 }} /> Eliminar Libro
+        <MdDelete style={{ position: "relative", top: 1 }} /> Eliminar Libro
       </button>
     </div>
   );

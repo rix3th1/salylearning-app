@@ -44,9 +44,9 @@ export default function ButtonAddFavorite({ libro, favorito, user }: IProps) {
       onClick={handleClickFavorite}
     >
       {favorito ? (
-        <MdFavorite style={{ position: "relative", top: 3 }} />
+        <MdFavorite style={{ position: "relative", top: 2 }} />
       ) : (
-        <MdFavoriteBorder style={{ position: "relative", top: 3 }} />
+        <MdFavoriteBorder style={{ position: "relative", top: 2 }} />
       )}{" "}
       {isLoading ? "Cargando..." : "Favoritos"}
     </button>

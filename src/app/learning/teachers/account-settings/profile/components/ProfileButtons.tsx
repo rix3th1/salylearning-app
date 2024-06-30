@@ -23,7 +23,7 @@ export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
         style={{ marginRight: "15px" }}
         onClick={() => showSwalUploadProfilePhoto(foto_perfil_id, router)}
       >
-        <MdUpload /> Subir foto
+        <MdUpload style={{ position: "relative", top: 2 }} /> Subir foto
       </button>
       <button
         className="btn btn-outline-primary"
@@ -31,7 +31,7 @@ export default function ProfileButtons({ avatar_id, foto_perfil_id }: IProps) {
           setIsAvatarModalOpen(true);
         }}
       >
-        <MdPhotoAlbum /> Elegir avatar
+        <MdPhotoAlbum style={{ position: "relative", top: 2 }} /> Elegir
       </button>
 
       {/* Avatar modal */}

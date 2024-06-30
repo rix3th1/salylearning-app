@@ -2,25 +2,45 @@
 
 import { THandleClick } from "@/types";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   MdAccountCircle,
-  MdAddCircle,
-  MdAssignment,
-  MdBarChart,
-  MdBook,
-  MdBookmark,
+  MdAddBox,
+  MdAnalytics,
+  MdAutoStories,
+  MdCancel,
   MdCheckCircle,
-  MdHelpOutline,
+  MdCollectionsBookmark,
+  MdHelp,
   MdHome,
   MdKeyboardArrowDown,
+  MdLeaderboard,
   MdLocalActivity,
-  MdLocationOff,
   MdManageAccounts,
-  MdMarkAsUnread,
-  MdPerson,
-  MdStar,
-  MdStarHalf,
-  MdTrendingUp,
+  MdMenuBook,
+  MdNoteAdd,
+  MdOutlineAccountCircle,
+  MdOutlineAddBox,
+  MdOutlineAnalytics,
+  MdOutlineAutoStories,
+  MdOutlineCancel,
+  MdOutlineCheckCircle,
+  MdOutlineCollectionsBookmark,
+  MdOutlineHelpOutline,
+  MdOutlineHome,
+  MdOutlineLeaderboard,
+  MdOutlineLocalActivity,
+  MdOutlineManageAccounts,
+  MdOutlineMenuBook,
+  MdOutlineNoteAdd,
+  MdOutlinePending,
+  MdOutlineQuestionAnswer,
+  MdOutlineQuiz,
+  MdOutlineSettings,
+  MdPending,
+  MdQuestionAnswer,
+  MdQuiz,
+  MdSettings,
 } from "react-icons/md";
 
 interface IProps {
@@ -29,6 +49,8 @@ interface IProps {
 }
 
 export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
+  const pathname = usePathname().split("/").slice(3).join("/");
+
   const handleClickCloseDropdowns = (e: THandleClick<HTMLDivElement>) => {
     const dropMenu = $(e.target).next("ul");
     dropMenu.slideToggle("slow");
@@ -52,7 +74,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           onClick={handleClickCloseMobileMenu}
           href={`/learning/${isStudent ? "students" : "teachers"}`}
         >
-          <MdHome style={{ fontSize: 15 }} />
+          {pathname === "" ? (
+            <MdHome style={{ position: "relative", top: 2 }} />
+          ) : (
+            <MdOutlineHome style={{ position: "relative", top: 2 }} />
+          )}
           &nbsp;&nbsp; Inicio
         </Link>
       </li>
@@ -67,7 +93,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
           }}
         >
           <span>
-            <MdAssignment />
+            {pathname.includes("books") ? (
+              <MdAutoStories />
+            ) : (
+              <MdOutlineAutoStories />
+            )}
             &nbsp;&nbsp; Libros
           </span>
           <MdKeyboardArrowDown style={{ fontSize: 20, margin: "0 5px" }} />
@@ -80,7 +110,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/books/new"
                 >
-                  <MdBook />
+                  {pathname === "books/new" ? (
+                    <MdNoteAdd style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineNoteAdd
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp; Nuevo libro
                 </Link>
               </li>
@@ -89,7 +125,15 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/books/popular"
                 >
-                  <MdBookmark />
+                  {pathname === "books/popular" ? (
+                    <MdCollectionsBookmark
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  ) : (
+                    <MdOutlineCollectionsBookmark
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp; Populares
                 </Link>
               </li>
@@ -101,7 +145,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                 onClick={handleClickCloseMobileMenu}
                 href="/learning/students/books"
               >
-                <MdBook />
+                {pathname === "books" ? (
+                  <MdMenuBook style={{ position: "relative", top: 2 }} />
+                ) : (
+                  <MdOutlineMenuBook style={{ position: "relative", top: 2 }} />
+                )}
                 &nbsp;&nbsp; Explorar libros
               </Link>
             </li>
@@ -121,7 +169,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               }}
             >
               <span>
-                <MdLocalActivity />
+                {pathname === "activities/new" ? (
+                  <MdLocalActivity style={{ position: "relative", top: 2 }} />
+                ) : (
+                  <MdOutlineLocalActivity
+                    style={{ position: "relative", top: 2 }}
+                  />
+                )}
                 &nbsp;&nbsp; Actividades
               </span>
               <MdKeyboardArrowDown style={{ fontSize: 20, margin: "0 5px" }} />
@@ -132,7 +186,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/activities/new"
                 >
-                  <MdAddCircle />
+                  {pathname === "activities/new" ? (
+                    <MdAddBox style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineAddBox style={{ position: "relative", top: 2 }} />
+                  )}
                   &nbsp;&nbsp;Asignar
                 </Link>
               </li>
@@ -149,7 +207,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               }}
             >
               <span>
-                <MdMarkAsUnread />
+                {pathname === "questionaries/completed" ||
+                pathname === "questionaries/pending" ||
+                pathname === "questionaries/not-achieved" ? (
+                  <MdQuiz style={{ position: "relative", top: 2 }} />
+                ) : (
+                  <MdOutlineQuiz style={{ position: "relative", top: 2 }} />
+                )}
                 &nbsp;&nbsp; Cuestionarios
               </span>
               <MdKeyboardArrowDown style={{ fontSize: 20, margin: "0 5px" }} />
@@ -160,8 +224,14 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/completed"
                 >
-                  <MdCheckCircle />
-                  &nbsp;&nbsp;Completados
+                  {pathname === "questionaries/completed" ? (
+                    <MdCheckCircle style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineCheckCircle
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
+                  &nbsp;&nbsp;Completos
                 </Link>
               </li>
               <li>
@@ -169,8 +239,14 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/pending"
                 >
-                  <MdStarHalf />
-                  &nbsp;&nbsp;Pendientes
+                  {pathname === "questionaries/pending" ? (
+                    <MdPending style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlinePending
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
+                  &nbsp;&nbsp;Incompletos
                 </Link>
               </li>
               <li>
@@ -178,7 +254,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/questionaries/not-achieved"
                 >
-                  <MdLocationOff />
+                  {pathname === "questionaries/not-achieved" ? (
+                    <MdCancel style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineCancel style={{ position: "relative", top: 2 }} />
+                  )}
                   &nbsp;&nbsp;No logrados
                 </Link>
               </li>
@@ -195,7 +275,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               }}
             >
               <span>
-                <MdTrendingUp />
+                {pathname === "reports" || pathname === "statistics" ? (
+                  <MdAnalytics style={{ position: "relative", top: 2 }} />
+                ) : (
+                  <MdOutlineAnalytics
+                    style={{ position: "relative", top: 2 }}
+                  />
+                )}
                 &nbsp;&nbsp; Reportes y estadísticas
               </span>
               <MdKeyboardArrowDown style={{ fontSize: 20, margin: "0 5px" }} />
@@ -206,7 +292,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/reports"
                 >
-                  <MdTrendingUp />
+                  {pathname === "reports" ? (
+                    <MdLeaderboard style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineLeaderboard
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp;Reportes
                 </Link>
               </li>
@@ -215,7 +307,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/statistics"
                 >
-                  <MdBarChart />
+                  {pathname === "statistics" ? (
+                    <MdAnalytics style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineAnalytics
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp;Estadísticas
                 </Link>
               </li>
@@ -232,7 +330,12 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               }}
             >
               <span>
-                <MdAccountCircle />
+                {pathname === "account-settings/profile" ||
+                pathname === "account-settings/advanced" ? (
+                  <MdSettings style={{ position: "relative", top: 2 }} />
+                ) : (
+                  <MdOutlineSettings style={{ position: "relative", top: 2 }} />
+                )}
                 &nbsp;&nbsp; Configuración de cuenta
               </span>
               <MdKeyboardArrowDown style={{ fontSize: 20, margin: "0 5px" }} />
@@ -243,7 +346,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/account-settings/profile"
                 >
-                  <MdPerson />
+                  {pathname === "account-settings/profile" ? (
+                    <MdAccountCircle style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineAccountCircle
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp;Perfíl
                 </Link>
               </li>
@@ -252,7 +361,15 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/account-settings/advanced"
                 >
-                  <MdManageAccounts />
+                  {pathname === "account-settings/advanced" ? (
+                    <MdManageAccounts
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  ) : (
+                    <MdOutlineManageAccounts
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp;Avanzadas
                 </Link>
               </li>
@@ -263,7 +380,16 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               onClick={handleClickCloseMobileMenu}
               href="/learning/teachers/faqs"
             >
-              <MdHelpOutline />
+              {pathname === "faqs" ||
+              pathname === "faqs/introduction" ||
+              pathname === "faqs/contact-and-support" ||
+              pathname === "faqs/policies-and-terms" ? (
+                <MdQuestionAnswer style={{ position: "relative", top: 2 }} />
+              ) : (
+                <MdOutlineQuestionAnswer
+                  style={{ position: "relative", top: 2 }}
+                />
+              )}
               &nbsp;&nbsp; Preguntas frecuentes
             </Link>
           </li>
@@ -282,7 +408,14 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               }}
             >
               <span>
-                <MdLocalActivity />
+                {pathname === "activities/pending" ||
+                pathname === "activities/done" ? (
+                  <MdLocalActivity style={{ position: "relative", top: 2 }} />
+                ) : (
+                  <MdOutlineLocalActivity
+                    style={{ position: "relative", top: 2 }}
+                  />
+                )}
                 &nbsp;&nbsp; Actividades
               </span>
               <MdKeyboardArrowDown style={{ fontSize: 20, margin: "0 5px" }} />
@@ -293,7 +426,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/students/activities/pending"
                 >
-                  <MdStar />
+                  {pathname === "activities/pending" ? (
+                    <MdPending style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlinePending
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp;Por hacer
                 </Link>
               </li>
@@ -302,7 +441,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/students/activities/done"
                 >
-                  <MdCheckCircle />
+                  {pathname === "activities/done" ? (
+                    <MdCheckCircle style={{ position: "relative", top: 2 }} />
+                  ) : (
+                    <MdOutlineCheckCircle
+                      style={{ position: "relative", top: 2 }}
+                    />
+                  )}
                   &nbsp;&nbsp;Hecho
                 </Link>
               </li>
@@ -313,7 +458,11 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               onClick={handleClickCloseMobileMenu}
               href="/learning/students/achievements"
             >
-              <MdTrendingUp />
+              {pathname === "achievements" ? (
+                <MdAnalytics style={{ position: "relative", top: 2 }} />
+              ) : (
+                <MdOutlineAnalytics style={{ position: "relative", top: 2 }} />
+              )}
               &nbsp;&nbsp; Mi progreso
             </Link>
           </li>
@@ -322,7 +471,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               onClick={handleClickCloseMobileMenu}
               href="/learning/students/account"
             >
-              <MdAccountCircle />
+              {pathname === "account" ? (
+                <MdAccountCircle style={{ position: "relative", top: 2 }} />
+              ) : (
+                <MdOutlineAccountCircle
+                  style={{ position: "relative", top: 2 }}
+                />
+              )}
               &nbsp;&nbsp; Configuración
             </Link>
           </li>
@@ -331,7 +486,13 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               onClick={handleClickCloseMobileMenu}
               href="/learning/students/help"
             >
-              <MdHelpOutline />
+              {pathname === "help" ? (
+                <MdHelp style={{ position: "relative", top: 2 }} />
+              ) : (
+                <MdOutlineHelpOutline
+                  style={{ position: "relative", top: 2 }}
+                />
+              )}
               &nbsp;&nbsp; Ayuda
             </Link>
           </li>

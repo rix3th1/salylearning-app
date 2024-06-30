@@ -369,7 +369,7 @@ export default function FormNewActivity() {
           style={{ marginRight: "0.3rem" }}
           onClick={agregarPregunta}
         >
-          <MdAddCircleOutline style={{ position: "relative", top: 2 }} />{" "}
+          <MdAddCircleOutline style={{ position: "relative", top: 1 }} />{" "}
           Agregar pregunta
         </button>
 
@@ -379,7 +379,7 @@ export default function FormNewActivity() {
           disabled={isLoading}
           style={{ marginLeft: "0.3rem" }}
         >
-          <MdAdd style={{ position: "relative", top: 2 }} />{" "}
+          <MdAdd style={{ position: "relative", top: 1 }} />{" "}
           {isLoading ? "Creando actividad..." : "Crear actividad"}
         </button>
       </div>

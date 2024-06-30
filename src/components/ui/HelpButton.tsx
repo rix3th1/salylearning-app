@@ -15,7 +15,7 @@ const showHelpSwal = () => {
     confirmButtonColor: "#e21e80",
     confirmButtonText: (
       <>
-        <MdThumbUp /> &nbsp; De acuerdo
+        <MdThumbUp style={{ position: "relative", top: 2 }} /> &nbsp; De acuerdo
       </>
     ),
   });
@@ -29,7 +29,7 @@ export default function HelpButton() {
       data-tooltip-content="Ayuda"
       onClick={showHelpSwal}
     >
-      <MdHelpOutline style={{ fontSize: 25, marginTop: 15 }} />
+      <MdHelpOutline style={{ position: "relative", top: 6, fontSize: 25 }} />
     </li>
   );
 }

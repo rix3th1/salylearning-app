@@ -3,13 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  MdGavel,
   MdHandshake,
   MdLocalLibrary,
-  MdOutlineGavel,
   MdOutlineHandshake,
   MdOutlineLocalLibrary,
+  MdOutlinePolicy,
   MdOutlineQuestionAnswer,
+  MdPolicy,
   MdQuestionAnswer,
 } from "react-icons/md";
 
@@ -22,9 +22,9 @@ export default function FaqsTabs() {
         <li className={pathname === "introduction" ? "active" : ""}>
           <Link href="/learning/teachers/faqs/introduction">
             {pathname === "introduction" ? (
-              <MdLocalLibrary />
+              <MdLocalLibrary style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineLocalLibrary />
+              <MdOutlineLocalLibrary style={{ position: "relative", top: 2 }} />
             )}{" "}
             Introducción
           </Link>
@@ -32,9 +32,11 @@ export default function FaqsTabs() {
         <li className={pathname === "faqs" ? "active" : ""}>
           <Link href="/learning/teachers/faqs">
             {pathname === "faqs" ? (
-              <MdQuestionAnswer />
+              <MdQuestionAnswer style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineQuestionAnswer />
+              <MdOutlineQuestionAnswer
+                style={{ position: "relative", top: 2 }}
+              />
             )}{" "}
             Preguntas frecuentes
           </Link>
@@ -42,9 +44,9 @@ export default function FaqsTabs() {
         <li className={pathname === "contact-and-support" ? "active" : ""}>
           <Link href="/learning/teachers/faqs/contact-and-support">
             {pathname === "contact-and-support" ? (
-              <MdHandshake />
+              <MdHandshake style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineHandshake />
+              <MdOutlineHandshake style={{ position: "relative", top: 2 }} />
             )}{" "}
             Información de Contacto y Soporte
           </Link>
@@ -52,9 +54,9 @@ export default function FaqsTabs() {
         <li className={pathname === "policies-and-terms" ? "active" : ""}>
           <Link href="/learning/teachers/faqs/policies-and-terms">
             {pathname === "policies-and-terms" ? (
-              <MdGavel />
+              <MdPolicy style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineGavel />
+              <MdOutlinePolicy style={{ position: "relative", top: 2 }} />
             )}{" "}
             Políticas y Términos
           </Link>

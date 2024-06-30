@@ -37,7 +37,14 @@ export default function PopularBooksPage() {
             <br />
             Si deseas buscar un libro por nombre o título has click en el icono
             &nbsp;
-            <MdSearch />
+            <MdSearch
+              style={{
+                position: "relative",
+                top: 3,
+                border: "1px solid #e9ecef",
+                borderRadius: "50%",
+              }}
+            />
             &nbsp; que se encuentra en la barra superior
           </div>
         </div>

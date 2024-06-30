@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  MdBarChart,
-  MdOutlineBarChart,
-  MdTrendingUp,
-  MdOutlineTrendingUp,
+  MdAnalytics,
+  MdLeaderboard,
+  MdOutlineAnalytics,
+  MdOutlineLeaderboard,
 } from "react-icons/md";
 
 export default function StatisticsAndReportsTabs() {
@@ -17,16 +17,20 @@ export default function StatisticsAndReportsTabs() {
       <ul className="nav nav-tabs nav-justified">
         <li className={pathname === "statistics" ? "active" : ""}>
           <Link href="/learning/teachers/statistics">
-            {pathname === "statistics" ? <MdBarChart /> : <MdOutlineBarChart />}{" "}
+            {pathname === "statistics" ? (
+              <MdAnalytics style={{ position: "relative", top: 2 }} />
+            ) : (
+              <MdOutlineAnalytics style={{ position: "relative", top: 2 }} />
+            )}{" "}
             Estadísticas general
           </Link>
         </li>
         <li className={pathname === "reports" ? "active" : ""}>
           <Link href="/learning/teachers/reports">
             {pathname === "reports" ? (
-              <MdTrendingUp />
+              <MdLeaderboard style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineTrendingUp />
+              <MdOutlineLeaderboard style={{ position: "relative", top: 2 }} />
             )}{" "}
             Reporte Grado
           </Link>

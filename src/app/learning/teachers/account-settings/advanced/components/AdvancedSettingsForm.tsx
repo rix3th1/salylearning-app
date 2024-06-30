@@ -219,7 +219,8 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
         style={{ marginBottom: "40px" }}
         disabled={isLoading}
       >
-        <MdSave /> {isLoading ? "Guardando..." : "Guardar cambios"}
+        <MdSave style={{ position: "relative", top: 1 }} />{" "}
+        {isLoading ? "Guardando..." : "Guardar cambios"}
       </button>
     </form>
   );

@@ -949,3 +949,15 @@ canvas {
   color: rgb(184, 196, 215) !important;
   transition: color 0.1s;
 }
+
+#cropperjs {
+  display: block;
+  max-width: 100%;
+}
+
+#preview {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 10px;
+  border-radius: 100%;
+}

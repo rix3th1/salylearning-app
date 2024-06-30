@@ -12,10 +12,7 @@ export default function CloseButton() {
     <MdClose
       onClick={handleClickClose}
       className="visible-xs pull-left mobile-menu-button"
-      style={{
-        cursor: "pointer",
-        margin: "17px 26px",
-      }}
+      style={{ position: "relative", top: 15, left: 25, fontSize: 25 }}
     />
   );
 }

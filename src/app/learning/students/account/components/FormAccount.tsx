@@ -271,7 +271,8 @@ export default function FormAccount({ user, student }: IProps) {
       </div>
 
       <button type="submit" className="btn btn-primary" disabled={isLoading}>
-        <MdUpdate /> {isLoading ? "Actualizando..." : "Actualizar"}
+        <MdUpdate style={{ position: "relative", top: 1 }} />{" "}
+        {isLoading ? "Actualizando..." : "Actualizar"}
       </button>
     </form>
   );

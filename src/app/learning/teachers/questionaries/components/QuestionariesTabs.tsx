@@ -20,22 +20,30 @@ export default function QuestionariesTabs() {
         <li className={pathname === "completed" ? "active" : ""}>
           <Link href="/learning/teachers/questionaries/completed">
             {pathname === "completed" ? (
-              <MdCheckCircle />
+              <MdCheckCircle style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineCheckCircle />
+              <MdOutlineCheckCircle style={{ position: "relative", top: 2 }} />
             )}{" "}
             Completos
           </Link>
         </li>
         <li className={pathname === "pending" ? "active" : ""}>
           <Link href="/learning/teachers/questionaries/pending">
-            {pathname === "pending" ? <MdPending /> : <MdOutlinePending />}{" "}
+            {pathname === "pending" ? (
+              <MdPending style={{ position: "relative", top: 2 }} />
+            ) : (
+              <MdOutlinePending style={{ position: "relative", top: 2 }} />
+            )}{" "}
             Incompletos
           </Link>
         </li>
         <li className={pathname === "not-achieved" ? "active" : ""}>
           <Link href="/learning/teachers/questionaries/not-achieved">
-            {pathname === "not-achieved" ? <MdCancel /> : <MdOutlineCancel />}{" "}
+            {pathname === "not-achieved" ? (
+              <MdCancel style={{ position: "relative", top: 2 }} />
+            ) : (
+              <MdOutlineCancel style={{ position: "relative", top: 2 }} />
+            )}{" "}
             No logrados
           </Link>
         </li>

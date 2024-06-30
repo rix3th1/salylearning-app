@@ -131,12 +131,7 @@ export default function FormResponderPreguntas({
             className="btn btn-success"
             disabled={isLoading}
           >
-            <MdCheckCircle
-              style={{
-                position: "relative",
-                top: 2,
-              }}
-            />{" "}
+            <MdCheckCircle style={{ position: "relative", top: 1 }} />{" "}
             {isLoading ? "Enviando..." : "He terminado"}
           </button>
         </div>

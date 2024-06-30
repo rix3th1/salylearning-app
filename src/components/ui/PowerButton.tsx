@@ -15,12 +15,12 @@ const showSignOutSwal = async () => {
     cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
-        <MdLogout /> Si, salir
+        <MdLogout style={{ position: "relative", top: 2 }} /> Si, salir
       </>
     ),
     cancelButtonText: (
       <>
-        <MdCancel /> Cancelar
+        <MdCancel style={{ position: "relative", top: 2 }} /> Cancelar
       </>
     ),
     icon: "question",
@@ -39,7 +39,9 @@ export default function PowerButton() {
       data-tooltip-content="Salir del sistema"
       onClick={showSignOutSwal}
     >
-      <MdOutlinePowerSettingsNew style={{ fontSize: 25, marginTop: 15 }} />
+      <MdOutlinePowerSettingsNew
+        style={{ position: "relative", top: 6, fontSize: 25 }}
+      />
     </li>
   );
 }

@@ -37,12 +37,12 @@ export async function showSwalRetroalimentacion({
     cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
-        <MdCheckCircle /> Aceptar
+        <MdCheckCircle style={{ position: "relative", top: 2 }} /> Aceptar
       </>
     ),
     cancelButtonText: (
       <>
-        <MdCancel /> Cancelar
+        <MdCancel style={{ position: "relative", top: 2 }} /> Cancelar
       </>
     ),
     showLoaderOnConfirm: true,
@@ -138,9 +138,11 @@ export async function showSwalCalificacion({
                         </span>{" "}
                         {opcion_respuesta.respuesta}{" "}
                         {isCorrect ? (
-                          <MdCheckCircle />
+                          <MdCheckCircle
+                            style={{ position: "relative", top: 2 }}
+                          />
                         ) : opcion_respuesta.opcion === respuesta.respuesta ? (
-                          <MdCancel />
+                          <MdCancel style={{ position: "relative", top: 2 }} />
                         ) : null}
                       </p>
                     );
@@ -157,12 +159,12 @@ export async function showSwalCalificacion({
     cancelButtonColor: "#1e30f3",
     confirmButtonText: (
       <>
-        <MdCheckCircle /> Aceptar
+        <MdCheckCircle style={{ position: "relative", top: 2 }} /> Aceptar
       </>
     ),
     cancelButtonText: (
       <>
-        <MdCancel /> Cancelar
+        <MdCancel style={{ position: "relative", top: 2 }} /> Cancelar
       </>
     ),
     showLoaderOnConfirm: true,

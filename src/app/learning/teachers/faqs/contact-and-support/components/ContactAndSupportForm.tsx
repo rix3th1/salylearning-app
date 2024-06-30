@@ -92,7 +92,8 @@ export default function ContactAndSupportForm() {
         spellCheck={false}
       />
       <button type="submit" className="btn btn-primary" disabled={isLoading}>
-        <MdMessage /> {isLoading ? "Enviando Mensaje..." : "Enviar Mensaje"}
+        <MdMessage style={{ position: "relative", top: 2 }} />{" "}
+        {isLoading ? "Contactando soporte..." : "Contactar soporte"}
       </button>
     </form>
   );

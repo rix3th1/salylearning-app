@@ -17,17 +17,22 @@ export default function ActivitiesTabs() {
       <ul className="nav nav-tabs nav-justified">
         <li className={pathname === "pending" ? "active" : ""}>
           <Link href="/learning/students/activities/pending">
-            {pathname === "pending" ? (
-              <MdCheckCircle />
+            {pathname === "done" ? (
+              <MdPending style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineCheckCircle />
+              <MdOutlinePending style={{ position: "relative", top: 2 }} />
             )}{" "}
             Por hacer
           </Link>
         </li>
         <li className={pathname === "done" ? "active" : ""}>
           <Link href="/learning/students/activities/done">
-            {pathname === "done" ? <MdPending /> : <MdOutlinePending />} Hecho
+            {pathname === "pending" ? (
+              <MdCheckCircle style={{ position: "relative", top: 2 }} />
+            ) : (
+              <MdOutlineCheckCircle style={{ position: "relative", top: 2 }} />
+            )}{" "}
+            Hecho
           </Link>
         </li>
       </ul>

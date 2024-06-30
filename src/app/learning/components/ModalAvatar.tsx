@@ -134,7 +134,8 @@ export default function ModalAvatar({
             onClick={handleAcceptClick}
             disabled={isLoading || avatars.length === 0}
           >
-            <MdCheck /> {isLoading ? "Cargando..." : "Aceptar"}
+            <MdCheck style={{ position: "relative", top: 1 }} />{" "}
+            {isLoading ? "Cargando..." : "Aceptar"}
           </button>
           <button
             className="btn btn-outline-primary"
@@ -144,7 +145,7 @@ export default function ModalAvatar({
             }}
             disabled={isLoading || avatars.length === 0}
           >
-            <MdCancel /> Cancelar
+            <MdCancel style={{ position: "relative", top: 1 }} /> Cancelar
           </button>
         </section>
       </div>

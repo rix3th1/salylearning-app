@@ -61,7 +61,7 @@ export default function BotonCalificacion({
         Number(calificacion).toFixed(1)
       ) : (
         <>
-          <MdSchedule style={{ position: "relative", top: 2 }} />
+          <MdSchedule style={{ position: "relative", top: 1 }} />
           <span style={{ fontSize: "0.8rem" }}> Publicar calificación</span>
         </>
       )}

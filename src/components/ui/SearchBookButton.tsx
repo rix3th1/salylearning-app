@@ -2,7 +2,7 @@
 
 import { plus_jakarta_sans } from "@/app/fonts";
 import { obtenerLibrosPorNombre } from "@/services/libros.service";
-import { MdCancel, MdSearch } from "react-icons/md";
+import { MdCancel, MdCheckCircle, MdSearch } from "react-icons/md";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ListLibrosFound from "./ListLibrosFound";
@@ -25,12 +25,12 @@ export default function SearchBookButton() {
       confirmButtonColor: "#e21e80",
       confirmButtonText: (
         <>
-          <MdSearch /> Buscar libro
+          <MdSearch style={{ position: "relative", top: 2 }} /> Buscar libro
         </>
       ),
       cancelButtonText: (
         <>
-          <MdCancel /> Cancelar
+          <MdCancel style={{ position: "relative", top: 2 }} /> Cancelar
         </>
       ),
       showLoaderOnConfirm: true,
@@ -52,7 +52,12 @@ export default function SearchBookButton() {
         title: "Hemos encontrado los siguientes libros",
         html: <ListLibrosFound libros={result.value} />,
         icon: result.value.length > 0 ? "success" : "error",
-        showConfirmButton: false,
+        confirmButtonColor: "#e21e80",
+        confirmButtonText: (
+          <>
+            <MdCheckCircle style={{ position: "relative", top: 2 }} /> Aceptar
+          </>
+        ),
       });
     }
   };
@@ -64,7 +69,7 @@ export default function SearchBookButton() {
       data-tooltip-content="Buscar libro"
       onClick={showSearchBookSwal}
     >
-      <MdSearch style={{ fontSize: 25, marginTop: 15 }} />
+      <MdSearch style={{ position: "relative", top: 6, fontSize: 25 }} />
     </li>
   );
 }

@@ -14,7 +14,7 @@ export default function MenuButton() {
       style={{ float: "left" }}
       onClick={handleClickMenu}
     >
-      <MdMenu style={{ fontSize: 25, marginTop: 15 }} />
+      <MdMenu style={{ position: "relative", top: 6, fontSize: 25 }} />
     </li>
   );
 }

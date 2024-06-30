@@ -25,8 +25,9 @@ export default function ButtonMoreInfoBook({ libro_descripcion }: IProps) {
       style={{ marginRight: 10 }}
       onClick={() => showBookDescription(libro_descripcion)}
     >
-      <MdInfo /> Más información&nbsp;
-      <MdOpenInNew />
+      <MdInfo style={{ position: "relative", top: 1, marginRight: 5 }} /> Más
+      información&nbsp;
+      <MdOpenInNew style={{ position: "relative", top: 2, marginLeft: 5 }} />
     </button>
   );
 }

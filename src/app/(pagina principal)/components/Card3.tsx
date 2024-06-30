@@ -33,7 +33,7 @@ export default function Card3() {
               target="_blank"
             >
               Más info.&nbsp;
-              <MdOpenInNew style={{ marginBottom: "2px" }} />
+              <MdOpenInNew style={{ position: "relative", bottom: 2 }} />
             </Link>
           </div>
         </div>

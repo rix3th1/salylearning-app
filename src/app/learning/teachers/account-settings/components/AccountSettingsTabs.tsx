@@ -4,9 +4,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   MdAccountCircle,
+  MdManageAccounts,
   MdOutlineAccountCircle,
-  MdTune,
-  MdOutlineTune,
+  MdOutlineManageAccounts,
 } from "react-icons/md";
 
 export default function AccountSettingsTabs() {
@@ -18,17 +18,25 @@ export default function AccountSettingsTabs() {
         <li className={pathname === "profile" ? "active" : ""}>
           <Link href="/learning/teachers/account-settings/profile">
             {pathname === "profile" ? (
-              <MdAccountCircle />
+              <MdAccountCircle style={{ position: "relative", top: 2 }} />
             ) : (
-              <MdOutlineAccountCircle />
+              <MdOutlineAccountCircle
+                style={{ position: "relative", top: 2 }}
+              />
             )}{" "}
             Perfil
           </Link>
         </li>
         <li className={pathname === "advanced" ? "active" : ""}>
           <Link href="/learning/teachers/account-settings/advanced">
-            {pathname === "advanced" ? <MdTune /> : <MdOutlineTune />} Otras
-            opciones
+            {pathname === "advanced" ? (
+              <MdManageAccounts style={{ position: "relative", top: 2 }} />
+            ) : (
+              <MdOutlineManageAccounts
+                style={{ position: "relative", top: 2 }}
+              />
+            )}{" "}
+            Otras opciones
           </Link>
         </li>
       </ul>

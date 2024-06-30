@@ -202,7 +202,8 @@ export default function ChangePasswordForm({ email }: IProps) {
         </span>
       </div>
       <button type="submit" className="btn btn-primary" disabled={isLoading}>
-        <MdUpdate /> {isLoading ? "Enviando..." : "Enviar"}
+        <MdUpdate style={{ position: "relative", top: 1 }} />{" "}
+        {isLoading ? "Actualizando..." : "Actualizar"}
       </button>
     </form>
   );
