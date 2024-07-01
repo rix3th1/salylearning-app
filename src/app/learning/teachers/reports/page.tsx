@@ -2,6 +2,7 @@ import PageHeader from "@/app/learning/components/PageHeader";
 import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import GradeSelector from "../components/GradeSelector";
 import StatisticsAndReportsTabs from "../components/StatisticsAndReportsTabs";
 import PuntajeSection from "./components/PuntajeSection";
 // import PieStatic from "@/components/Statistics/PieStatic";
@@ -18,6 +19,8 @@ export default function ReportsAndStatisticsPage() {
       <StatisticsAndReportsTabs />
 
       <div className="container-fluid" style={{ margin: "15px" }}>
+        <GradeSelector />
+
         <Suspense fallback={<Fallback />}>
           <PuntajeSection />
         </Suspense>

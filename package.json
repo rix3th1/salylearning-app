@@ -44,6 +44,7 @@
     "@github/mini-throttle": "^2.1.1",
     "@github/relative-time-element": "^4.4.2",
     "@sweetalert2/theme-dark": "^5.0.16",
+    "bootstrap": "3.3.2",
     "canvas-confetti": "^1.9.3",
     "cropperjs": "^1.6.2",
     "echarts": "^5.5.1",

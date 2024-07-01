@@ -3,7 +3,7 @@ import Fallback from "@/components/Fallback";
 import { obtenerEstudiantesConMejorPuntaje } from "@/services/estudiantes.service";
 import Image from "next/image";
 import { Suspense } from "react";
-import GradesReport from "./GradesReport";
+import GradeReport from "./GradeReport";
 import StudentsList from "./StudentsList";
 
 export default async function PuntajeSection() {
@@ -104,21 +104,19 @@ export default async function PuntajeSection() {
                 </div>
               </div>
             )}
-            <div className="position">
-              <div className="row" style={{ margin: "1rem" }}>
-                <div className="col-md-6 text-center">
-                  <span
-                    style={{
-                      fontWeight: "bold",
-                      fontStyle: "italic",
-                    }}
-                  >
-                    Reporte de calificaciones:
-                  </span>
-                </div>
-
-                <GradesReport />
+            <div className="position" style={{ margin: "2rem 0" }}>
+              <div className="col-md-12 text-center">
+                <span
+                  style={{
+                    fontWeight: "bold",
+                    fontStyle: "italic",
+                  }}
+                >
+                  Reporte de calificaciones:
+                </span>
               </div>
+
+              <GradeReport gradeSelected="1" />
             </div>
           </div>
         </div>

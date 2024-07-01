@@ -14,10 +14,11 @@ export async function obtenerEstudiantes() {
   return data;
 }
 
-export async function obtenerEstudiantesConMejorPuntaje() {
-  const res = await fetchServer("/estudiantes/mejor-puntaje", {
-    method: "GET",
-  });
+export async function obtenerEstudiantesConMejorPuntaje(id_grado?: string) {
+  const res = await fetchServer(
+    `/estudiantes/mejor-puntaje?id_grado=${id_grado}`,
+    { method: "GET" }
+  );
 
   const data = await res.json();
 
