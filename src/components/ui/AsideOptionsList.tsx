@@ -8,6 +8,7 @@ import {
   MdAddBox,
   MdAnalytics,
   MdAutoStories,
+  MdBook,
   MdCancel,
   MdCheckCircle,
   MdCollectionsBookmark,
@@ -17,12 +18,12 @@ import {
   MdLeaderboard,
   MdLocalActivity,
   MdManageAccounts,
-  MdMenuBook,
   MdNoteAdd,
   MdOutlineAccountCircle,
   MdOutlineAddBox,
   MdOutlineAnalytics,
   MdOutlineAutoStories,
+  MdOutlineBook,
   MdOutlineCancel,
   MdOutlineCheckCircle,
   MdOutlineCollectionsBookmark,
@@ -31,7 +32,6 @@ import {
   MdOutlineLeaderboard,
   MdOutlineLocalActivity,
   MdOutlineManageAccounts,
-  MdOutlineMenuBook,
   MdOutlineNoteAdd,
   MdOutlinePending,
   MdOutlineQuestionAnswer,
@@ -146,9 +146,9 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                 href="/learning/students/books"
               >
                 {pathname === "books" ? (
-                  <MdMenuBook style={{ position: "relative", top: 2 }} />
+                  <MdBook style={{ position: "relative", top: 2 }} />
                 ) : (
-                  <MdOutlineMenuBook style={{ position: "relative", top: 2 }} />
+                  <MdOutlineBook style={{ position: "relative", top: 2 }} />
                 )}
                 &nbsp;&nbsp; Explorar libros
               </Link>
