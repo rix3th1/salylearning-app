@@ -1,4 +1,5 @@
 import terminasteImage from "@/assets/Terminaste.png";
+import { EstadoCuestionario } from "@/services/contadores.service";
 import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionario-estudiante.service";
 import Image from "next/image";
 import { mapPreguntas } from "../libs";
@@ -6,7 +7,7 @@ import FormResponderPreguntas from "./FormResponderPreguntas";
 
 export default async function PendingActivitiesCard() {
   const cuestionariosPendientes = await obtenerCuestionarioEstudiantePorEstado(
-    "PENDIENTE"
+    EstadoCuestionario.PENDIENTE
   );
 
   return (

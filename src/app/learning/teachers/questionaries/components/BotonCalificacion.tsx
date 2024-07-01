@@ -1,5 +1,6 @@
 "use client";
 
+import { EstadoCuestionario } from "@/services/contadores.service";
 import { useRouter } from "next-nprogress-bar";
 import { MdSchedule } from "react-icons/md";
 import {
@@ -9,7 +10,7 @@ import {
 
 interface IProps {
   id_cuestionario: string;
-  estadoCuestionario: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO";
+  estadoCuestionario: EstadoCuestionario;
   calificacion: any;
   cuestionario?: any;
 }
@@ -27,7 +28,7 @@ export default function BotonCalificacion({
       return;
     }
 
-    if (estadoCuestionario === "COMPLETADO") {
+    if (estadoCuestionario === EstadoCuestionario.COMPLETADO) {
       const result = await showSwalCalificacion({
         cuestionario,
       });
@@ -39,7 +40,7 @@ export default function BotonCalificacion({
       }
     }
 
-    if (estadoCuestionario === "NO_LOGRADO") {
+    if (estadoCuestionario === EstadoCuestionario.NO_LOGRADO) {
       await showSwalRetroalimentacion({ id_cuestionario, calificacion: 0 });
     }
 
@@ -49,9 +50,9 @@ export default function BotonCalificacion({
   return (
     <button
       className={`btn btn-${
-        estadoCuestionario === "COMPLETADO"
+        estadoCuestionario === EstadoCuestionario.COMPLETADO
           ? "success"
-          : estadoCuestionario === "PENDIENTE"
+          : estadoCuestionario === EstadoCuestionario.PENDIENTE
           ? "warning"
           : "danger"
       }`}

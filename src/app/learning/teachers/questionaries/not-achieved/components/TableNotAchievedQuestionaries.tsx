@@ -1,3 +1,4 @@
+import { EstadoCuestionario } from "@/services/contadores.service";
 import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
 import BotonCalificacion from "../../components/BotonCalificacion";
 import Nothing from "../../components/Nothing";
@@ -5,7 +6,9 @@ import { RelativeTime } from "../../components/RelativeTime";
 
 export default async function TableNotAchievedQuestionaries() {
   const cuestionariosEstudiantes =
-    await obtenerCuestionariosEstudiantesPorEstado("NO_LOGRADO");
+    await obtenerCuestionariosEstudiantesPorEstado(
+      EstadoCuestionario.NO_LOGRADO
+    );
 
   return cuestionariosEstudiantes.length > 0 ? (
     <div className="table-responsive">

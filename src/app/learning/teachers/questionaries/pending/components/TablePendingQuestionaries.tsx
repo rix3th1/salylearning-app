@@ -1,10 +1,13 @@
+import { EstadoCuestionario } from "@/services/contadores.service";
 import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
 import Nothing from "../../components/Nothing";
 import { RelativeTime } from "../../components/RelativeTime";
 
 export default async function TablePendingQuestionaries() {
   const cuestionariosEstudiantes =
-    await obtenerCuestionariosEstudiantesPorEstado("PENDIENTE");
+    await obtenerCuestionariosEstudiantesPorEstado(
+      EstadoCuestionario.PENDIENTE
+    );
 
   return cuestionariosEstudiantes.length > 0 ? (
     <div className="table-responsive">

@@ -1,4 +1,5 @@
 import { fetchClient, fetchServer } from "./api.service";
+import { EstadoCuestionario } from "./contadores.service";
 
 const asignarCuestionarioInitState = {
   id_cuestionario: "",
@@ -51,13 +52,11 @@ export async function asignarCuestionarioEstudianteATodosLosEstudiantes(
 }
 
 export async function obtenerCuestionariosEstudiantesPorEstado(
-  estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO"
+  estado: EstadoCuestionario
 ) {
   const res = await fetchServer(
     `/cuestionario-estudiante/estado?estado_cuestionario=${estado}`,
-    {
-      method: "GET",
-    }
+    { method: "GET" }
   );
 
   const data = await res.json();
@@ -70,7 +69,7 @@ export async function obtenerCuestionariosEstudiantesPorEstado(
 }
 
 export async function obtenerCuestionarioEstudiantePorEstado(
-  estado: "COMPLETADO" | "PENDIENTE" | "NO_LOGRADO"
+  estado: EstadoCuestionario
 ) {
   const res = await fetchServer(
     `/cuestionario-estudiante/estado?estado_cuestionario=${estado}`,

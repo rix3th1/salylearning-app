@@ -1,10 +1,11 @@
 import Nothing from "@/app/learning/teachers/questionaries/components/Nothing";
+import { EstadoCuestionario } from "@/services/contadores.service";
 import { obtenerCuestionarioEstudiantePorEstado } from "@/services/cuestionario-estudiante.service";
 import RowRespuestas from "./RowRespuestas";
 
 export default async function DoneActivitiesTable() {
   const actividadesCompletadas = await obtenerCuestionarioEstudiantePorEstado(
-    "COMPLETADO"
+    EstadoCuestionario.COMPLETADO
   );
 
   return actividadesCompletadas.length > 0 ? (

@@ -27,9 +27,7 @@ export async function enviarEmailDeRecuperacion(email: string) {
 export async function validarToken(token: string) {
   const res = await fetchClient(
     `/recuperar-clave/validar-token?token=${token}`,
-    {
-      method: "GET",
-    }
+    { method: "GET" }
   );
 
   const data = await res.json();
