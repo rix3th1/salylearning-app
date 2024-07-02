@@ -14,13 +14,14 @@ interface IProps {
 export default function GradeSelector({ id_grado = "" }: IProps) {
   const [grados, setGrados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedGrade, _setSelectedGrade] = useState(id_grado);
+  const [selectedGrade, setSelectedGrade] = useState(id_grado);
 
   const router = useRouter();
   const pathname = usePathname().split("/").slice(0, 4).join("/");
 
   const handleChange = (e: THandleChange) => {
     const selGrade = e.target.value;
+    setSelectedGrade(selGrade);
     router.push(selGrade ? `${pathname}/grade/${selGrade}` : pathname);
   };
 
