@@ -3,7 +3,7 @@ import { obtenerEstadisticasDocente } from "@/services/estatisticas-docente.serv
 import chartsData from "../meta/chartData.json";
 
 interface IProps {
-  id_estudiante: string;
+  id_estudiante?: string;
 }
 
 export default async function Statistics({ id_estudiante }: IProps) {
