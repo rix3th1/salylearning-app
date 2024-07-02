@@ -8,13 +8,13 @@ import PuntajeSection from "./components/PuntajeSection";
 // import PieStatic from "@/components/Statistics/PieStatic";
 
 export const metadata: Metadata = {
-  title: "Reportes Grado: Docentes | Saly Learning",
+  title: "Reportes Grados: Docentes | Saly Learning",
 };
 
 export default function GradeReportsPage() {
   return (
     <>
-      <PageHeader title="Reportes Grado" />
+      <PageHeader title="Reportes Grados" />
 
       <StatisticsAndReportsTabs />
 

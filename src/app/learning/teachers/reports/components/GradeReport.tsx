@@ -5,13 +5,13 @@ import { MdDownload } from "react-icons/md";
 import { toast } from "sonner";
 
 interface IProps {
-  gradeSelected: string;
+  gradeSelected?: string;
 }
 
 export default function GradeReport({ gradeSelected }: IProps) {
   const handleClickReport = async () => {
-    if (gradeSelected === "") {
-      toast("Seleccione su grado escolar");
+    if (!gradeSelected) {
+      toast("Seleccione el grado escolar");
       return;
     }
 

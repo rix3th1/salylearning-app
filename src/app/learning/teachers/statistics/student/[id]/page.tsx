@@ -10,7 +10,7 @@ interface IProps {
 }
 
 export const metadata: Metadata = {
-  title: "Estadísticas Generales Estudiante: Docentes | Saly Learning",
+  title: "Estadísticas Estudiante: Docentes | Saly Learning",
 };
 
 export default function StudentStatisticsPage({ params }: IProps) {

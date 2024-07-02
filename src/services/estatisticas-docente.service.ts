@@ -1,12 +1,15 @@
 import { fetchServer } from "./api.service";
 import { EstadoCuestionario } from "./contadores.service";
 
-export async function obtenerEstadisticasDocente(id_estudiante?: string) {
+export async function obtenerEstadisticasDocente(
+  id_estudiante?: string,
+  id_grado?: string
+) {
   const urls = [
-    `/libros-estudiante/estadisticas-semanales/${true}?id_estudiante=${id_estudiante}`,
-    `/libros-estudiante/estadisticas-semanales/${false}?id_estudiante=${id_estudiante}`,
-    `/cuestionario-estudiante/estadisticas-semanales/${EstadoCuestionario.COMPLETADO}?id_estudiante=${id_estudiante}`,
-    `/cuestionario-estudiante/estadisticas-semanales/${EstadoCuestionario.PENDIENTE}?id_estudiante=${id_estudiante}`,
+    `/libros-estudiante/estadisticas-semanales/${true}?id_estudiante=${id_estudiante}&id_grado=${id_grado}`,
+    `/libros-estudiante/estadisticas-semanales/${false}?id_estudiante=${id_estudiante}&id_grado=${id_grado}`,
+    `/cuestionario-estudiante/estadisticas-semanales/${EstadoCuestionario.COMPLETADO}?id_estudiante=${id_estudiante}&id_grado=${id_grado}`,
+    `/cuestionario-estudiante/estadisticas-semanales/${EstadoCuestionario.PENDIENTE}?id_estudiante=${id_estudiante}&id_grado=${id_grado}`,
   ];
 
   const promises = urls.map((url) => fetchServer(url, { method: "GET" }));

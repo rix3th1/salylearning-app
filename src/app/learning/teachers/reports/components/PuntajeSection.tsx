@@ -6,8 +6,12 @@ import { Suspense } from "react";
 import GradeReport from "./GradeReport";
 import StudentsList from "./StudentsList";
 
-export default async function PuntajeSection() {
-  const mejorPuntaje = await obtenerEstudiantesConMejorPuntaje();
+interface IProps {
+  id_grado?: string;
+}
+
+export default async function PuntajeSection({ id_grado }: IProps) {
+  const mejorPuntaje = await obtenerEstudiantesConMejorPuntaje(id_grado);
 
   return mejorPuntaje.length > 0 ? (
     <>
@@ -116,7 +120,7 @@ export default async function PuntajeSection() {
                 </span>
               </div>
 
-              <GradeReport gradeSelected="1" />
+              <GradeReport gradeSelected={id_grado} />
             </div>
           </div>
         </div>
@@ -126,7 +130,7 @@ export default async function PuntajeSection() {
         <h2>Estudiantes Registrados (Ver Estadística)</h2>
         <div id="active-students-list" className="student">
           <Suspense fallback={<Fallback />}>
-            <StudentsList />
+            <StudentsList id_grado={id_grado} />
           </Suspense>
         </div>
       </div>

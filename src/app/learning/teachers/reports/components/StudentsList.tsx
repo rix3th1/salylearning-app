@@ -1,8 +1,12 @@
 import { obtenerEstudiantes } from "@/services/estudiantes.service";
 import Link from "next/link";
 
-export default async function StudentsList() {
-  const estudiantesRegistrados = await obtenerEstudiantes();
+interface IProps {
+  id_grado?: string;
+}
+
+export default async function StudentsList({ id_grado }: IProps) {
+  const estudiantesRegistrados = await obtenerEstudiantes(id_grado);
 
   return (
     <div className="list-group">

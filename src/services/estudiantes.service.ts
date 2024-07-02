@@ -1,7 +1,7 @@
 import { fetchClient, fetchServer } from "./api.service";
 
-export async function obtenerEstudiantes() {
-  const res = await fetchServer("/estudiantes", {
+export async function obtenerEstudiantes(id_grado?: string) {
+  const res = await fetchServer(`/estudiantes?id_grado=${id_grado}`, {
     method: "GET",
   });
 

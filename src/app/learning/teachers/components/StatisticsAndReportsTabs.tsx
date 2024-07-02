@@ -22,7 +22,7 @@ export default function StatisticsAndReportsTabs() {
             ) : (
               <MdOutlineLeaderboard style={{ position: "relative", top: 2 }} />
             )}{" "}
-            Reporte Grado
+            Reportes Grado
           </Link>
         </li>
         <li className={pathname === "statistics" ? "active" : ""}>

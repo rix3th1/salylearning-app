@@ -4,10 +4,14 @@ import chartsData from "../meta/chartData.json";
 
 interface IProps {
   id_estudiante?: string;
+  id_grado?: string;
 }
 
-export default async function Statistics({ id_estudiante }: IProps) {
-  const estadisticas = await obtenerEstadisticasDocente(id_estudiante);
+export default async function Statistics({ id_estudiante, id_grado }: IProps) {
+  const estadisticas = await obtenerEstadisticasDocente(
+    id_estudiante,
+    id_grado
+  );
 
   return (
     <div className="row text-center">

@@ -7,22 +7,26 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 // import PieStatic from "@/components/Statistics/PieStatic";
 
+interface IProps {
+  params: { id: string };
+}
+
 export const metadata: Metadata = {
-  title: "Reportes Grado: Docentes | Saly Learning",
+  title: "Reportes Por Grado: Docentes | Saly Learning",
 };
 
-export default function GradeReportsPage() {
+export default function ByGradeReportsPage({ params }: IProps) {
   return (
     <>
-      <PageHeader title="Reportes Grado" />
+      <PageHeader title="Reportes Por Grado" />
 
       <StatisticsAndReportsTabs />
 
       <div className="container-fluid" style={{ margin: "15px" }}>
-        <GradeSelector />
+        <GradeSelector id_grado={params.id} />
 
         <Suspense fallback={<Fallback />}>
-          <PuntajeSection />
+          <PuntajeSection id_grado={params.id} />
         </Suspense>
 
         {/* <div className="container-fluid">

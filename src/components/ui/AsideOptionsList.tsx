@@ -275,7 +275,8 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
               }}
             >
               <span>
-                {pathname === "reports" || pathname === "statistics" ? (
+                {pathname.includes("reports") ||
+                pathname.includes("statistics") ? (
                   <MdAnalytics style={{ position: "relative", top: 2 }} />
                 ) : (
                   <MdOutlineAnalytics
@@ -292,7 +293,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/reports"
                 >
-                  {pathname === "reports" ? (
+                  {pathname.includes("reports") ? (
                     <MdLeaderboard style={{ position: "relative", top: 2 }} />
                   ) : (
                     <MdOutlineLeaderboard
@@ -307,7 +308,7 @@ export default function AsideOptionsList({ isStudent, isTeacher }: IProps) {
                   onClick={handleClickCloseMobileMenu}
                   href="/learning/teachers/statistics"
                 >
-                  {pathname === "statistics" ? (
+                  {pathname.includes("statistics") ? (
                     <MdAnalytics style={{ position: "relative", top: 2 }} />
                   ) : (
                     <MdOutlineAnalytics

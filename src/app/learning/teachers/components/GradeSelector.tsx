@@ -2,16 +2,25 @@
 
 import { obtenerGrados } from "@/services/grados.service";
 import { THandleChange } from "@/types";
+import { useRouter } from "next-nprogress-bar";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-export default function GradeSelector() {
+interface IProps {
+  id_grado?: string;
+}
+
+export default function GradeSelector({ id_grado = "" }: IProps) {
   const [grados, setGrados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [gradoSelected, setGradoSelected] = useState("");
+  const [gradoSelected, _setGradoSelected] = useState(id_grado);
+
+  const router = useRouter();
+  const pathname = usePathname().split("/").slice(0, 4).join("/");
 
   const handleChange = (e: THandleChange) => {
-    setGradoSelected(e.target.value);
+    router.push(`${pathname}/grade/${e.target.value}`);
   };
 
   useEffect(() => {
@@ -54,7 +63,7 @@ export default function GradeSelector() {
           value={gradoSelected}
         >
           <option value="" disabled>
-            Seleccione su grado escolar *
+            Seleccione el grado escolar *
           </option>
           {grados.map((grado: any) => (
             <option key={grado.id} value={grado.id}>
