@@ -87,7 +87,7 @@ export default function FormRegistro({
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isModalRegistroOpen, formData.rol]);
+  }, [isModalRegistroOpen]);
 
   return (
     <form onSubmit={handleSubmit}>
