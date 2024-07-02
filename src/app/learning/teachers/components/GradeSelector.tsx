@@ -14,13 +14,14 @@ interface IProps {
 export default function GradeSelector({ id_grado = "" }: IProps) {
   const [grados, setGrados] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [gradoSelected, _setGradoSelected] = useState(id_grado);
+  const [selectedGrade, _setSelectedGrade] = useState(id_grado);
 
   const router = useRouter();
   const pathname = usePathname().split("/").slice(0, 4).join("/");
 
   const handleChange = (e: THandleChange) => {
-    router.push(`${pathname}/grade/${e.target.value}`);
+    const selGrade = e.target.value;
+    router.push(selGrade ? `${pathname}/grade/${selGrade}` : pathname);
   };
 
   useEffect(() => {
@@ -60,11 +61,9 @@ export default function GradeSelector({ id_grado = "" }: IProps) {
           required
           onChange={handleChange}
           disabled={isLoading}
-          value={gradoSelected}
+          value={selectedGrade}
         >
-          <option value="" disabled>
-            Seleccione el grado escolar *
-          </option>
+          <option value="">Seleccione el grado escolar *</option>
           {grados.map((grado: any) => (
             <option key={grado.id} value={grado.id}>
               {grado.nom_grado}
