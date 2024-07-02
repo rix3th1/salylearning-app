@@ -1,8 +1,8 @@
+import BotonCalificacion from "@/app/learning/teachers/questionaries/components/BotonCalificacion";
+import Nothing from "@/app/learning/teachers/questionaries/components/Nothing";
+import { RelativeTime } from "@/app/learning/teachers/questionaries/components/RelativeTime";
 import { EstadoCuestionario } from "@/services/contadores.service";
 import { obtenerCuestionariosEstudiantesPorEstado } from "@/services/cuestionario-estudiante.service";
-import BotonCalificacion from "../../components/BotonCalificacion";
-import Nothing from "../../components/Nothing";
-import { RelativeTime } from "../../components/RelativeTime";
 
 export default async function TableNotAchievedQuestionaries() {
   const cuestionariosEstudiantes =

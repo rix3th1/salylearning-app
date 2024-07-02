@@ -1,8 +1,8 @@
+import { plus_jakarta_sans } from "@/app/fonts";
 import FooterLogged from "@/components/FooterLogged";
 import Aside from "@/components/ui/Aside";
 import InternalNav from "@/components/ui/InternalNav";
 import ProgressProvider from "@/providers/ProgressProvider";
-import { plus_jakarta_sans } from "../fonts";
 
 export default function LearningTemplate({
   children,

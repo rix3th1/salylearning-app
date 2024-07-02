@@ -1,7 +1,7 @@
+import Statistics from "@/app/learning/teachers/statistics/components/Statistics";
 import Fallback from "@/components/Fallback";
 import { obtenerEstudiante } from "@/services/estudiantes.service";
 import { Suspense } from "react";
-import Statistics from "../../components/Statistics";
 
 interface IProps {
   id_estudiante: string;

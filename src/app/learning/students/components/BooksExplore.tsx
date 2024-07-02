@@ -1,6 +1,6 @@
+import { mapDataCarrousel } from "@/app/learning/libs";
+import Carrousel from "@/app/learning/teachers/books/new/components/Carrousel";
 import { obtenerLibros } from "@/services/libros.service";
-import { mapDataCarrousel } from "../../libs";
-import Carrousel from "../../teachers/books/new/components/Carrousel";
 
 export default async function BooksExplore() {
   const libros = await obtenerLibros.server();
