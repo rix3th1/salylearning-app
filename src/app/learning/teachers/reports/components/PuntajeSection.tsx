@@ -123,7 +123,7 @@ export default async function PuntajeSection() {
       </div>
 
       <div className="chart-style02" style={{ marginTop: "2rem" }}>
-        <h2>Estudiantes Registrados</h2>
+        <h2>Estudiantes Registrados (Ver Estadística)</h2>
         <div id="active-students-list" className="student">
           <Suspense fallback={<Fallback />}>
             <StudentsList />

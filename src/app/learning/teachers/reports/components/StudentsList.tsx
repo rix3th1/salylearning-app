@@ -14,7 +14,9 @@ export default async function StudentsList() {
         >
           {index + 1}.{" "}
           <span style={{ fontWeight: "bold" }}>Cod. Estudiante: </span>
-          {estudiante.cod_estudiante}.{" "}
+          <span style={{ fontStyle: "italic" }}>
+            {estudiante.cod_estudiante}.{" "}
+          </span>
           {estudiante.usuario.p_nombre + " " + estudiante.usuario.p_apellido}
         </Link>
       ))}
