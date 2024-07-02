@@ -12,6 +12,9 @@ export default async function StudentsList() {
           href={`/learning/teachers/statistics/student/${estudiante.id}`}
           className="list-group-item"
         >
+          {index + 1}.{" "}
+          <span style={{ fontWeight: "bold" }}>Cod. Estudiante: </span>
+          {estudiante.cod_estudiante}.{" "}
           {estudiante.usuario.p_nombre + " " + estudiante.usuario.p_apellido}
         </Link>
       ))}

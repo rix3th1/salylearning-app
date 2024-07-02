@@ -13,7 +13,7 @@ export default async function StatisticsHeader({ id_estudiante }: IProps) {
   return (
     <>
       <h2>
-        <span style={{ fontWeight: "bold" }}>Cod. Estudiante:</span>
+        <span style={{ fontWeight: "bold" }}>Cod. Estudiante: </span>
         {estudiante.cod_estudiante}.{" "}
         {estudiante.usuario.p_nombre + " " + estudiante.usuario.p_apellido}
       </h2>
