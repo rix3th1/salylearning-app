@@ -63,7 +63,7 @@ export default function GradeSelector({ id_grado = "" }: IProps) {
           disabled={isLoading}
           value={selectedGrade}
         >
-          <option value="">Seleccione el grado escolar *</option>
+          <option value="">No seleccionado</option>
           {grados.map((grado: any) => (
             <option key={grado.id} value={grado.id}>
               {grado.nom_grado}
