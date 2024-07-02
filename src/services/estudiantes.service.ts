@@ -29,8 +29,22 @@ export async function obtenerEstudiantesConMejorPuntaje(id_grado?: string) {
   return data;
 }
 
-export async function obtenerEstudiante() {
+export async function obtenerEstudiantePorIdUsuario() {
   const res = await fetchServer("/estudiantes/usuario", {
+    method: "GET",
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
+
+export async function obtenerEstudiante(id: string) {
+  const res = await fetchServer(`/estudiantes/${id}`, {
     method: "GET",
   });
 

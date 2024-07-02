@@ -1,14 +1,14 @@
 import { fetchServer } from "./api.service";
 import { EstadoCuestionario } from "./contadores.service";
 
-const urls = [
-  `/libros-estudiante/estadisticas-semanales?terminado=${true}`,
-  `/libros-estudiante/estadisticas-semanales?terminado=${false}`,
-  `/cuestionario-estudiante/estadisticas-semanales?estado_cuestionario=${EstadoCuestionario.COMPLETADO}`,
-  `/cuestionario-estudiante/estadisticas-semanales?estado_cuestionario=${EstadoCuestionario.PENDIENTE}`,
-];
+export async function obtenerEstadisticasDocente(id_estudiante?: string) {
+  const urls = [
+    `/libros-estudiante/estadisticas-semanales/${true}?id_estudiante=${id_estudiante}`,
+    `/libros-estudiante/estadisticas-semanales/${false}?id_estudiante=${id_estudiante}`,
+    `/cuestionario-estudiante/estadisticas-semanales/${EstadoCuestionario.COMPLETADO}?id_estudiante=${id_estudiante}`,
+    `/cuestionario-estudiante/estadisticas-semanales/${EstadoCuestionario.PENDIENTE}?id_estudiante=${id_estudiante}`,
+  ];
 
-export async function obtenerEstadisticasDocente() {
   const promises = urls.map((url) => fetchServer(url, { method: "GET" }));
 
   const responses = await Promise.all(promises);

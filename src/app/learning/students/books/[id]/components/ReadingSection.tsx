@@ -1,5 +1,5 @@
 import Fallback from "@/components/Fallback";
-import { obtenerEstudiante } from "@/services/estudiantes.service";
+import { obtenerEstudiantePorIdUsuario } from "@/services/estudiantes.service";
 import { crearLibroEstudiante } from "@/services/libro-estudiante.service";
 import { obtenerLibro } from "@/services/libros.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
@@ -16,7 +16,7 @@ export default async function ReadingSection({ libro_id }: IProps) {
   const libro = await obtenerLibro(libro_id);
 
   const user = await obtenerPerfilUsuario();
-  const estudiante = await obtenerEstudiante();
+  const estudiante = await obtenerEstudiantePorIdUsuario();
 
   id_libro_estudiante = libro.libros_estudiante.filter(
     (libroEstudiante: any) =>

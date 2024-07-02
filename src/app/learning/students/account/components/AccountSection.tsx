@@ -1,4 +1,4 @@
-import { obtenerEstudiante } from "@/services/estudiantes.service";
+import { obtenerEstudiantePorIdUsuario } from "@/services/estudiantes.service";
 import { obtenerPerfilUsuario } from "@/services/perfil.service";
 import { profileImage } from "@/utils/getProfileImage";
 import Image from "next/image";
@@ -9,7 +9,7 @@ export default async function AccountSection() {
   const user = await obtenerPerfilUsuario();
   const foto_perfil_id = user.foto_perfil?.id;
   const avatar_id = user.avatar_usuario.id;
-  const estudiante = await obtenerEstudiante();
+  const estudiante = await obtenerEstudiantePorIdUsuario();
 
   return (
     <>

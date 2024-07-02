@@ -2,8 +2,12 @@ import BarStatic from "@/components/Statistics/BarStatic";
 import { obtenerEstadisticasDocente } from "@/services/estatisticas-docente.service";
 import chartsData from "../meta/chartData.json";
 
-export default async function Statistics() {
-  const estadisticas = await obtenerEstadisticasDocente();
+interface IProps {
+  id_estudiante: string;
+}
+
+export default async function Statistics({ id_estudiante }: IProps) {
+  const estadisticas = await obtenerEstadisticasDocente(id_estudiante);
 
   return (
     <div className="row text-center">

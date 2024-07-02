@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Estadísticas Generales: Docentes | Saly Learning",
 };
 
-export default function ReportsAndStatisticsPage() {
+export default function GeneralStatisticsPage() {
   return (
     <>
       <PageHeader title="Estadísticas Generales" />
