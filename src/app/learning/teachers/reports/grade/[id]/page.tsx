@@ -5,6 +5,7 @@ import PuntajeSection from "@/app/learning/teachers/reports/components/PuntajeSe
 import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import StatisticsTitle from "../../../components/StatisticsTitle";
 // import PieStatic from "@/components/Statistics/PieStatic";
 
 interface IProps {
@@ -24,6 +25,13 @@ export default function ByGradeReportsPage({ params }: IProps) {
 
       <div className="container-fluid" style={{ margin: "15px" }}>
         <GradeSelector id_grado={params.id} />
+
+        <Suspense fallback={<Fallback />}>
+          <StatisticsTitle
+            label="Reporte de estudiantes grado"
+            id_grado={params.id}
+          />
+        </Suspense>
 
         <Suspense fallback={<Fallback />}>
           <PuntajeSection id_grado={params.id} />

@@ -15,7 +15,7 @@ export default async function PuntajeSection({ id_grado }: IProps) {
 
   return mejorPuntaje.length > 0 ? (
     <>
-      <div className="row">
+      <div className="row" style={{ marginTop: "2.6rem" }}>
         <div className="col-md-5">
           {/* Contenido de la primera columna */}
           {mejorPuntaje[0] && (

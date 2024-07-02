@@ -1,4 +1,16 @@
-import { fetchClient } from "./api.service";
+import { fetchClient, fetchServer } from "./api.service";
+
+export async function obtenerGrado(id: string) {
+  const res = await fetchServer(`/grados/${id}`, { method: "GET" });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message);
+  }
+
+  return data;
+}
 
 export async function obtenerGrados() {
   const res = await fetchClient("/grados", { method: "GET" });
