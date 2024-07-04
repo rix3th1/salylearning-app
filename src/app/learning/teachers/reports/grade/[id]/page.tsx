@@ -1,11 +1,11 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import GradeSelector from "@/app/learning/teachers/components/GradeSelector";
 import StatisticsAndReportsTabs from "@/app/learning/teachers/components/StatisticsAndReportsTabs";
+import StatisticsTitle from "@/app/learning/teachers/components/StatisticsTitle";
 import PuntajeSection from "@/app/learning/teachers/reports/components/PuntajeSection";
 import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import StatisticsTitle from "../../../components/StatisticsTitle";
 // import PieStatic from "@/components/Statistics/PieStatic";
 
 interface IProps {

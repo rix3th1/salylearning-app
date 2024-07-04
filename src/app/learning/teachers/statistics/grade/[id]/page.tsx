@@ -1,11 +1,11 @@
 import PageHeader from "@/app/learning/components/PageHeader";
 import GradeSelector from "@/app/learning/teachers/components/GradeSelector";
 import StatisticsAndReportsTabs from "@/app/learning/teachers/components/StatisticsAndReportsTabs";
+import StatisticsTitle from "@/app/learning/teachers/components/StatisticsTitle";
 import Statistics from "@/app/learning/teachers/statistics/components/Statistics";
 import Fallback from "@/components/Fallback";
 import type { Metadata } from "next";
 import { Suspense } from "react";
-import StatisticsTitle from "../../../components/StatisticsTitle";
 
 interface IProps {
   params: { id: string };
