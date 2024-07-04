@@ -59,7 +59,9 @@ export default function ModalAvatar({
   };
 
   useEffect(() => {
-    if (!isAvatarModalOpen || avatars.length > 0) return;
+    if (!isAvatarModalOpen || avatars.length > 0) {
+      return;
+    }
 
     toast.promise(obtenerAvatars(userType), {
       loading: "Cargando avatares...",

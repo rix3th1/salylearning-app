@@ -13,7 +13,7 @@ import ChangePswForm from "./ChangePswForm";
 
 export default function ChangePswSection() {
   const search = useSearchParams();
-  const token = search.get("token") || "";
+  const token = search.get("token") ?? "";
 
   const [isLoading, setIsLoading] = useState(true);
   const [validReq, setValidReq] = useState(false);

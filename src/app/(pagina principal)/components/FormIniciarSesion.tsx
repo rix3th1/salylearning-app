@@ -43,19 +43,19 @@ export default function FormIniciarSesion({
 
       if (!res?.ok) {
         throw new Error(
-          res?.error || "Error al iniciar sesión. Intente de nuevo."
+          res?.error ?? "Error al iniciar sesión. Intente de nuevo."
         );
       }
 
-      const callbackUrl = new URL(res?.url || "").searchParams.get(
-        "callbackUrl"
-      );
+      let callbackUrl = null;
+      if (res.url) {
+        callbackUrl = new URL(res.url).searchParams.get("callbackUrl");
+      }
 
       setIsModalIniciarSesionOpen(false);
-
       toast.success("Bienvenido a SalyLearning!");
       window.location.href =
-        callbackUrl ||
+        callbackUrl ??
         `/learning/${
           session?.user.rol === "DOCENTE" ? "teachers" : "students"
         }`;

@@ -12,7 +12,7 @@ import { toast } from "sonner";
 
 export default function InfoAccountVerified() {
   const search = useSearchParams();
-  const token = search.get("token") || "";
+  const token = search.get("token") ?? "";
 
   const [isLoading, setIsLoading] = useState(true);
   const [accountVerified, setAccountVerified] = useState(false);

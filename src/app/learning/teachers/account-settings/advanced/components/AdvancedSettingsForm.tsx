@@ -23,15 +23,15 @@ export default function AdvancedSettingsForm({ user, teacher }: IProps) {
   const [formData, setFormData] = useState({
     ...actualizarUsuarioInitState,
     ...actualizarDocenteInitState,
-    cod_docente: teacher.cod_docente || "",
-    p_nombre: user?.p_nombre,
-    s_nombre: user?.s_nombre || "",
-    p_apellido: user?.p_apellido,
-    s_apellido: user?.s_apellido || "",
-    email: user?.email,
-    username: user?.username,
-    fecha_nacimiento: user.fecha_nacimiento?.split("T")[0] || "",
-    ciudad: user?.ciudad || "",
+    cod_docente: teacher.cod_docente,
+    p_nombre: user.p_nombre,
+    s_nombre: user?.s_nombre ?? "",
+    p_apellido: user.p_apellido,
+    s_apellido: user?.s_apellido ?? "",
+    email: user.email,
+    username: user.username,
+    fecha_nacimiento: (user?.fecha_nacimiento ?? "").split("T")[0],
+    ciudad: user?.ciudad ?? "",
   });
 
   const router = useRouter();

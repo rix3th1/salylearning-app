@@ -18,7 +18,7 @@ export default async function CounterSection() {
           contadores[tile.counterIndex]
         ) : (
           <span style={{ fontSize: "18px" }}>
-            {tile.noDataText || "Ninguno."}
+            {tile.noDataText ?? "Ninguno."}
           </span>
         )}
       </div>

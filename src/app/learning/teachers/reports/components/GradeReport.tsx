@@ -25,7 +25,7 @@ export default function GradeReport({ gradeSelected }: IProps) {
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = url;
-        a.setAttribute("download", filename || "reporte.pdf");
+        a.setAttribute("download", filename);
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);

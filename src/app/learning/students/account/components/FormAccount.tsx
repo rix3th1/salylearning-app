@@ -35,14 +35,14 @@ export default function FormAccount({ user, student }: IProps) {
     ...actualizarUsuarioInitState,
     ...actualizarEstudianteInitState,
     ...actualizarGradoUsuarioInitState,
-    p_nombre: user?.p_nombre,
-    s_nombre: user?.s_nombre || "",
-    p_apellido: user?.p_apellido,
-    s_apellido: user?.s_apellido || "",
-    edad: user?.edad || null,
+    p_nombre: user.p_nombre,
+    s_nombre: user?.s_nombre ?? "",
+    p_apellido: user.p_apellido,
+    s_apellido: user?.s_apellido ?? "",
+    edad: user?.edad ?? null,
     id_grado: gradoSelected,
-    cod_estudiante: student.cod_estudiante || "",
-    apodo: student.apodo || "",
+    cod_estudiante: student.cod_estudiante,
+    apodo: student?.apodo ?? "",
   });
 
   const router = useRouter();

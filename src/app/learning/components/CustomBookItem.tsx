@@ -12,7 +12,7 @@ export default function CustomBookItem({ item }: IProps) {
     <div className="image-gallery-image">
       <Image
         src={item.original}
-        alt={item.originalAlt || "Imagen del libro"}
+        alt={item.originalAlt ?? "Imagen del libro"}
         className="image-gallery-image"
         width={400}
         height={500}
